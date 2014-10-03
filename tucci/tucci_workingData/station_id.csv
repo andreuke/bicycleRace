@@ -1,0 +1,301 @@
+from_station_name,from_station_id
+"Clinton St & Washington Blvd",91
+"Michigan Ave & Oak St",85
+"May St & Randolph St",88
+"Wood St & Division St",17
+"Larrabee St & Menomonee St",28
+"Michigan Ave & Congress Pkwy",45
+"Wood St & Milwaukee Ave",61
+"Racine Ave & Congress Pkwy",32
+"Clinton St & Tilden St",68
+"Loomis St & Taylor St",19
+"Cannon Dr & Fullerton Ave",34
+"Halsted St & Wrightwood Ave",349
+"Loomis St & Lexington St",320
+"Halsted St & James M Rochford St",55
+"Wabash Ave & Cermak Rd",42
+"Franklin St & Jackson Blvd",36
+"Daley Center Plaza",81
+"Clark St & Wrightwood Ave",340
+"Dearborn St & Adams St",37
+"State St & Randolph St",44
+"Lincoln Ave & Armitage Ave",94
+"Lake Shore Dr & Monroe St",76
+"Millennium Park",90
+"Michigan Ave & Lake St",52
+"Clark St & Randolph St",51
+"Southport Ave & Wrightwood Ave",190
+"Fairbanks Ct & Grand Ave",24
+"Ogden Ave & Chicago Ave",54
+"Sheffield Ave & Kingsbury St",20
+"Franklin St & Chicago Ave",31
+"Kingsbury St & Erie St",74
+"Clinton St & Madison St",77
+"Damen Ave & Pierce Ave",69
+"Dayton St & North Ave",60
+"Wabash Ave & Roosevelt Rd",59
+"Sheffield Ave & Fullerton Ave",67
+"Jefferson St & Monroe St",73
+"Noble St & Milwaukee Ave",29
+"Lincoln Ave & Eastwood Ave",311
+"State St & 16th St",72
+"Canal St & Jackson Blvd",75
+"Larrabee St & Kingsbury St",48
+"Wood St & North Ave",16
+"Halsted St & Polk St",108
+"State St & Harrison St",5
+"Ashland Ave & Augusta Blvd",30
+"McClurg Ct & Illinois St",26
+"Michigan Ave & Pearson St",25
+"Racine Ave & 18th St",15
+"Clinton St & Lake St",66
+"Ashland Ave & Wrightwood Ave",166
+"Aberdeen St & Jackson Blvd",21
+"Ashland Ave & Armitage Ave",58
+"Ashland Ave & Chicago Ave",350
+"May St & Taylor St",22
+"Clarendon Ave & Leland Ave",251
+"Wells St & Walton St",46
+"Larrabee St & North Ave",27
+"Adler Planetarium",341
+"Calumet Ave & 33rd St",149
+"Lincoln Ave & Fullerton Ave",127
+"Franklin St & Lake St",164
+"Halsted St & 35th St",279
+"Greenwood Ave & 47th St",252
+"Pine Grove Ave & Addison St",232
+"Cottage Grove Ave & 51st St",351
+"McCormick Place",62
+"Lake Shore Dr & Ohio St",99
+"Green St & Milwaukee Ave",84
+"Desplaines St & Kinzie St",56
+"Clark St & Congress Pkwy",50
+"Ashland Ave & Wellington Ave",250
+"Halsted St & 37th St",262
+"Museum Campus",97
+"Clinton St & Roosevelt Rd",57
+"Michigan Ave & Washington St",43
+"State St & Van Buren St",33
+"State St & Kinzie St",47
+"Kimbark Ave & 53rd St",322
+"Morgan St & 18th St",14
+"Racine Ave & Fullerton Ave",87
+"Broadway & Barry Ave",300
+"Morgan St & Lake St",71
+"Indiana Ave & Roosevelt Rd",255
+"Orleans St & Elm St",23
+"Montrose Harbor",249
+"Ravenswood Ave & Irving Park Rd",244
+"Sheffield Ave & Willow St",93
+"Dearborn St & Monroe St",49
+"Wells St & Erie St",53
+"Aberdeen St & Madison St",80
+"Blackstone Ave & Hyde Park Blvd",121
+"Hampden Ct & Diversey Pkwy",220
+"Wilton Ave & Diversey Pkwy",13
+"LaSalle St & Illinois St",181
+"Carpenter St & Huron St",92
+"Eckhart Park",86
+"Wood St & Grand Ave",285
+"California Ave & 21st St",348
+"Clarendon Ave & Gordon Ter",312
+"Green St & Randolph St",112
+"Martin Luther King Dr & Oakwood Blvd",179
+"Clark St & Waveland Ave",165
+"Ellis Ave & 58th St",328
+"Western Ave & Division St",305
+"Greenview Ave & Diversey Pkwy",319
+"Lakeview Ave & Fullerton Pkwy",313
+"Columbus Dr & Randolph St",195
+"Clark St & Lincoln Ave",141
+"Lincoln Ave & Addison St",330
+"Canal St & Adams St",192
+"Greenview Ave & Fullerton Ave",188
+"LaSalle St & Washington St",98
+"Canal St & Harrison St",169
+"Michigan Ave & 18th St",273
+"California Ave & Milwaukee Ave",123
+"Claremont Ave & Hirsch St",159
+"Orleans St & Merchandise Mart Plaza",100
+"State St & 19th St",178
+"Sheffield Ave & Wellington Ave",115
+"Clinton St & 18th St",170
+"Peoria St & Jackson Blvd",134
+"Fort Dearborn Dr & 31st St",150
+"Halsted St & 21st St",135
+"Damen Ave & Coulter St",167
+"Indiana Ave & 26th St",147
+"Blue Island Ave & 18th St",129
+"Damen Ave & Augusta Blvd",183
+"Southport Ave & Wellington Ave",153
+"Damen Ave & Wellington Ave",162
+"Western Ave & Winnebago Ave",116
+"May St & Cullerton St",171
+"Damen Ave & Division St",130
+"Stave St & Armitage Ave",185
+"Canal St & Madison St",174
+"Campbell Ave & North Ave",160
+"Milwaukee Ave & Wabansia Ave",158
+"Ogden Ave & Race Ave",186
+"Loomis St & Jackson Blvd",146
+"Ashland Ave & Lake St",119
+"Wabash Ave & 8th St",321
+"Ogden Ave & Congress Pkwy",122
+"Clark St & North Ave",126
+"Paulina St & Diversey Pkwy",163
+"Southport Ave & Belmont Ave",154
+"Wells St & Ohio St",212
+"Lincoln Ave & Diversey Pkwy",152
+"Ashland Ave & Grace St",347
+"Morgan Ave & 14th Pl",137
+"Racine Ave & 13th St",136
+"Mies van der Rohe Way & Chicago Ave",173
+"Clark St & Elm St",176
+"Sedgwick St & North Ave",118
+"Halsted St & Willow St",224
+"State St & Erie St",110
+"Dearborn Pkwy & Delaware Pl",140
+"State St & Pearson St",106
+"Lake Shore Dr & Wellington Ave",157
+"Sedgwick St & Huron St",111
+"Sheffield Ave & Addison St",114
+"Wilton Ave & Belmont Ave",117
+"Sangamon St & Washington Blvd",233
+"Larrabee St & Webster Ave",144
+"Southport Ave & Roscoe St",229
+"Clark St & Wellington Ave",156
+"Sedgwick St & Webster Ave",143
+"Michigan Ave & 14th St",168
+"Wells St & Polk St",175
+"Damen Ave & Chicago Ave",128
+"Ravenswood Ave & Berteau Ave",314
+"Damen Ave & Cullerton St",124
+"Streeter Dr & Illinois St",35
+"Clybourn Ave & Division St",138
+"State St & 35th St",184
+"900 W Harrison",109
+"Wentworth Ave & Archer Ave",120
+"Canal St & Monroe St",191
+"Cityfront Plaza & N Water St",196
+"State St & Wacker Dr",194
+"Wabash Ave & Grand Ave",199
+"Michigan Ave & Madison St",197
+"Halsted St & Madison St",198
+"Sheridan Rd & Irving Park Rd",240
+"Halsted St & 18th St",202
+"Theater on the Lake",177
+"King Dr & 47th St",200
+"Paulina St & 18th St",205
+"Halsted St & Archer Ave",206
+"Prairie Ave & Garfield Blvd",204
+"St Clair St & Erie St",211
+"Damen Ave & Madison St",215
+"Emerald Ave & 28th St",207
+"Indiana Ave & 40th St",201
+"Western Ave & 21st St",203
+"Ashland Ave & Division St",210
+"May St & Fulton St",217
+"Normal Ave & Archer Ave",209
+"Damen Ave & Grand Ave",214
+"California Ave & Division St",216
+"Leavitt St & North Ave",213
+"Ashland Ave & 21st St",208
+"Halsted St & Dickens Ave",225
+"Racine Ave & Belmont Ave",226
+"Southport Ave & Waveland Ave",227
+"Damen Ave & Cortland St",219
+"Lincoln Ave & Roscoe St",230
+"Sheridan Rd & Montrose Ave",231
+"Martin Luther King Dr & 29th St",237
+"Damen Ave & Melrose Ave",228
+"Western Ave & Leland Ave",239
+"Clark St & Montrose Ave",234
+"Sedgwick St & Schiller St",236
+"Clifton Ave & Armitage Ave",223
+"Morgan St & Polk St",241
+"Ravenswood Ave & Montrose Ave",238
+"Lincoln Ave & Leavitt St",243
+"Damen Ave & Leland Ave",242
+"Milwaukee Ave & Rockwell St",222
+"Wells St & 19th St",218
+"Woodlawn Ave & 55th St",248
+"Shore Drive & 55th St",247
+"State St & 29th St",193
+"Clarendon Ave & Junior Ter",245
+"Ashland Ave & Belle Plaine Ave",246
+"Wolcott Ave & Polk St",342
+"State St & 33rd St",148
+"California Ave & Francis Pl",259
+"Hermitage Ave & Polk St",261
+"Bissell St & Armitage Ave",113
+"Broadway & Sheridan Rd",256
+"Clifton Ave & Lawrence Ave",253
+"Wentworth Ave & 24th St",132
+"Calumet Ave & 18th St",338
+"Southport Ave & Clark St",292
+"Pine Grove Ave & Irving Park Rd",254
+"Logan Blvd & Elston Ave",258
+"Lincoln Ave & Waveland Ave",257
+"Ashland Ave & Grand Ave",277
+"Lake Shore Dr & North Blvd",268
+"Cottage Grove Ave & 43rd St",271
+"Ashland Ave & 13th St",275
+"California Ave & North Ave",276
+"Indiana Ave & 31st St",272
+"Racine Ave & 15th St",274
+"Western Ave & 24th St",281
+"Franklin St & Arcade Pl",287
+"Wells St & Evergreen Ave",291
+"Broadway & Belmont Ave",296
+"Halsted St & Maxwell St",282
+"Morgan St & 31st St",280
+"Larrabee St & Armitage Ave",288
+"Wallace Ave & 35th St",278
+"Michigan Ave & Jackson Blvd",284
+"LaSalle St & Jackson Blvd",283
+"Franklin St & Quincy St",286
+"Wells St & Concord Ln",289
+"Kedzie Ave & Milwaukee Ave",260
+"Lake Park Ave & 47th St",267
+"Rhodes Ave & 32nd St",263
+"Cottage Grove Ave & Oakwood Blvd",265
+"Stetson Ave & South Water St",264
+"Broadway & Wilson Ave",293
+"Broadway & Berwyn Ave",294
+"Broadway & Argyle St",295
+"Clark St & Schiller St",301
+"Halsted St & Roscoe St",299
+"Paulina St & Montrose Ave",297
+"Broadway & Cornelia Ave",303
+"Halsted St & Waveland Ave",304
+"Leavitt St & Armitage Ave",309
+"Sheffield Ave & Wrightwood Ave",302
+"Damen Ave & Charleston St",310
+"Leavitt St & Hirsch St",315
+"Wood St & Taylor St",317
+"Southport Ave & Irving Park Rd",318
+"Sheridan Rd & Lawrence Ave",323
+"Lincoln Ave & Belmont Ave",131
+"Clark St & Winnemac Ave",325
+"Sheridan Rd & Buena Ave",306
+"Southport Ave & Clybourn Ave",307
+"Sheffield Ave & Webster Ave",327
+"Damen Ave & Sunnyside Ave",316
+"Lake Shore Dr & Diversey Pkwy",329
+"Seeley Ave & Roscoe St",308
+"Lake Shore Dr & Belmont Ave",334
+"Clark St & Leland Ave",326
+"Ashland Ave & Blackhawk St",333
+"Clark St & Chicago Ave",337
+"Halsted St & Diversey Pkwy",332
+"Halsted St & Blackhawk St",331
+"Emerald Ave & 31st St",339
+"Lincoln Ave & Belle Plaine Ave",298
+"Stockton Dr & Wrightwood Ave",324
+"Lake Park Ave & 56th St",345
+"Wolcott Ave & Lawrence Ave",344
+"Kedzie Ave & Palmer Ct",290
+"Ada St & Washington Blvd",346
+"Cottage Grove Ave & 47th St",336
+"Calumet Ave & 35th St",335
+"Racine Ave & Wrightwood Ave",343
