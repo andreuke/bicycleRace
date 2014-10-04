@@ -1,0 +1,116 @@
+<html>
+	<head>
+	     <script src="http://d3js.org/d3.v3.min.js"></script>
+		 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+		 <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+		 <link rel="stylesheet" href="style.css" />
+	</head>
+
+
+	<body>
+
+		<h1>Divvy</h1>
+
+
+		<div id="map"></div>
+		<div id="cont"></div>
+
+		<script src="graphics/PieChart.js"></script>
+		<script type="text/javascript">
+			var map = L.map('map').setView([41.8710629,-87.6758785], 13);
+			
+			L.tileLayer('http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png', {
+	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+	subdomains: 'abcd',
+	minZoom: 4,
+	maxZoom: 18
+}).addTo(map);
+
+
+			var circle = L.circle([41.8710629,-87.6758785], 200, {
+						    color: 'red',
+						    fillColor: '#f03',
+						    fillOpacity: 0.5
+						}).addTo(map);
+
+			
+
+			var coordinates = [
+							    
+							];
+
+
+			var polygon = L.polygon(coordinates).addTo(map);
+
+			circle.bindPopup("I am a circle.");
+			polygon.bindPopup("I am a polygon.");
+
+
+			// JUST A TRY FOR LAYERING
+			var counter = 0;
+
+			function onStationClick(e) {
+				var latitude 	= parseFloat(e.latlng.lat);
+			  	var longitude 	= parseFloat(e.latlng.lng);
+    			coordinates.push([latitude, longitude]);
+				// console.log(coordinates);
+				console.log(polygon)
+				if(counter++ == 5) {
+					polygon = L.polygon(coordinates, {color: 'red'}).redraw().addTo(map);
+				}
+
+			}
+
+
+			// A PIE
+			var pie = new PieChart("#cont", [12,34,10,8,6], ["a","b","c","d","e"]);
+			pie.draw();
+
+
+
+			
+			// DIVVY STATIONS MARKERS
+			d3.json("data/divvy_stations.json", function(error, json) {
+			  if (error) return console.warn(error);
+			  var data = json.stationsData;
+			  console.log(data);
+			  for(var i = 0; i < data.length; i++) {
+			  	var latitude 	= parseFloat(data[i].latitude);
+			  	var longitude 	= parseFloat(data[i].longitude);
+			  	var station = L.marker([latitude, longitude]).addTo(map);
+			  	station.bindPopup("<b>" + data[i].name + "</b><br>Capacity: " + data[i].dpcapacity)
+			  	station.on('click', onStationClick);
+			  }
+			});
+
+
+			// COMMUNITY AREAS LAYER
+			d3.json("data/community_areas.json", function(error, json) {
+			  if (error) return console.warn(error);
+			  var communityAreas = json.features;
+
+			  var polygon
+
+			  for(var i = 0; i < communityAreas.length; i++) {
+			  	var coordinates = communityAreas[i].geometry.coordinates[0][0];
+			  	var edges = []
+			  	for(var j = 0; j < coordinates.length; j++) {
+					var latitude = parseFloat(coordinates[j][1]);
+					var longitude = parseFloat(coordinates[j][0]);
+					edges.push([latitude, longitude]);
+
+			  	}
+
+			  	polygon = L.multiPolygon([edges]).addTo(map);
+
+
+			  }
+			  
+			});
+
+
+
+		</script>
+
+	</body>
+	</html>
