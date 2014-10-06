@@ -16,6 +16,7 @@
 		<div id="cont"></div>
 
 		<script src="graphics/PieChart.js"></script>
+		<script src="graphics/BarChart.js"></script>
 		<script type="text/javascript">
 			var map = L.map('map').setView([41.8710629,-87.6758785], 13);
 			
@@ -63,7 +64,7 @@
 
 
 			// A PIE
-			var pie = new PieChart("#cont", [12,34,10,8,6], ["a","b","c","d","e"]);
+			var pie = new BarChart("#cont", [12,34,10,8,6], ["a","b","c","d","e"]);
 			pie.draw();
 
 
@@ -84,7 +85,7 @@
 			});
 
 
-			// COMMUNITY AREAS LAYER
+			// COMMUNITY AREAS LAYERS
 			d3.json("data/community_areas.json", function(error, json) {
 			  if (error) return console.warn(error);
 			  var communityAreas = json.features;

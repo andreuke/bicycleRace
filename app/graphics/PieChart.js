@@ -1,4 +1,3 @@
-var scale = 1;
 var pieColor = ["#F16745", "#FFC65D", "#7BC8A4", "#4CC3D9", "#93648D", "#404040"]
 
 
@@ -12,17 +11,25 @@ function PieChart(container,data,labels){
 
 PieChart.prototype.draw = function(){
 	//Width and height
-	w = parseInt(d3.select(this.container).style("width"));
-	h = parseInt(d3.select(this.container).style("height"));
+	var width = this.containerWidth;
+	var height = this.containerHeight;
 	var container = this.container;
-	var data = this.dataset;
 	var labels = this.labels;
 
 
-	legend_margin = h/7;
-	 
+	var outerRadius
 
-	var outerRadius = Math.min(w,h)/2*scale;
+	// Takes the min between width and height. 
+	// If the min is the width leaves enough space for the legend.
+	if(width*0.8 < height) {
+		outerRadius = 0.8 * width/2
+	}
+	else {
+		outerRadius = height/2
+	}
+
+
+
 	var innerRadius = 0;
 
 	var arc = d3	.svg
@@ -41,16 +48,20 @@ PieChart.prototype.draw = function(){
     				.ordinal()
     				.range(pieColor);
 
-	console.log("Colors: " + color)
+    var _svg = d3	.select(container)
+    				.append("svg")
+    				.attr("id","_svg")
+    				.attr("viewBox", "0 0 " + width + " " + height)
+    				.attr("preserveAspectRatio", "xMinYMin meet")
+    				.attr("width", "100%")
+					.attr("height", "100%")
 
 
 	//Create SVG element
-	var pie_svg = d3.select(container)
+	var pie_svg = d3.select("#_svg")
 					.append("svg")
-					.attr("width", "100%")
-					.attr("height", "100%")
-					.attr("preserveAspectRatio", "xMinYMin meet")
-					.attr("viewBox", "0 0 " + w + " " + h);
+					//.attr("class", "pieLeft")
+					// .attr("viewBox", "0 0 " + parseInt(d3.select(".pieLeft").style("width")) + " " + height);
 	
 	//Set up groups
 	arcs = pie_svg	.selectAll("g.arc")
@@ -76,40 +87,55 @@ PieChart.prototype.draw = function(){
 	    	})
 		    .attr("text-anchor", "middle")
 		    .attr("class","text")
-		    .attr("font-size", h/20+"px")
+		    .attr("font-size", height/15)
 		    .text(function(d,i) {
 		    	return addCommas(d.value);
 		    });
 	
 	// Legend
-	var legendPosition = 1.5*outerRadius + outerRadius*0.8;
 	var legend;
 
-	for(var i = 0; i < this.data.length; i++) {
-	legend = pie_svg	.append("g")
-					    .attr("class", "legend")
-					    .attr("transform", "translate(0," + i * legend_margin * 0.9 + ")");
-	
-	// Position and size
-	legend 	.append("rect")
-	    	.attr("x", legendPosition)
-		    .attr("width", legend_margin*0.8)
-		    .attr("height", legend_margin*0.8)
-		    .style("fill", 
-		    	color(i)
-		    );
-	
+	//Create SVG element
+	var legend_svg = d3.select("#_svg")
+					.append("svg")
+					// .attr("float", "left")
+					// .attr("class", "pieRight")
+					// .attr("width", "25%")
+					// .attr("height", "100%")
+					// .attr("preserveAspectRatio", "xMinYMin meet")
+					// .attr("viewBox", "0 0 " + parseInt(d3.select(".pieRight").style("width")) + " " + height);
 
-	// Labels
-	legend 	.append("text")
-		    .attr("x", 1.1*legendPosition - legend_margin)
-		    .attr("y", legend_margin/2.5)
-		    .attr("dy", ".35em")
-		    .style("text-anchor", "end")
-		    .attr("class","text")
-			.attr("font-size", h/14+"px")
-		    .text(labels[i]
-				);
+					
+
+	// Squares
+	for(var i = 0; i < this.data.length; i++) {
+
+		var colorSize = Math.min(width,height)*0.1;
+
+		legend = legend_svg	.append("g")
+						    .attr("class", "legend")
+						    .attr("transform", "translate(0," + colorSize * i  + ")");
+		
+		// Position and size
+		legend 	.append("rect")
+		    	.attr("x", "85%")
+			    .attr("height", colorSize)
+			    .attr("width", colorSize)
+			    .style("fill", 
+			    	color(i)
+			    );
+		
+
+		// Labels
+		legend 	.append("text")
+				.attr("x", "80%")
+			    .attr("y", colorSize*0.67)
+			    .attr("height", "10%")
+			    .attr("class","text")
+				.style("fill","black")
+				.attr("font-size", colorSize*0.67)
+			    .text(labels[i]
+					);
 
 	}
 }
@@ -117,19 +143,10 @@ PieChart.prototype.draw = function(){
 // TODO
 PieChart.prototype.update = function(data) {}
 
-PieChart.prototype.resize = function(){
-	var width = parseInt(d3.select(this.container).style("width"));
-	var height = parseInt(d3.select(this.container).style("height"));
-	
-	d3.select(this.container)	.select("svg")	
-								.attr("width", width)
-								.attr("height", height);
 
-	// TODO pixels
-	d3.select(this.container)	.selectAll("text")
-								.style("font-size", function(d) { return Math.min(height,width)/20 + "px"; })
-}
 
+
+/*** PRIVATE METHODS ***/
 
 // Support method to clean data. It acts clustering into a single category
 // "other", the categories having less than 12.5% of the size of the greatest element.

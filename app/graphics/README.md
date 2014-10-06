@@ -19,18 +19,5 @@ PLEASE FOLLOW THIS SCHEME FOR CHART CLASSES.
 	
 	// Specific Implementation
 	Chart.prototype.update = function(data) {}
-	
-	Chart.prototype.resize = function(){
-		var width = parseInt(d3.select(this.container).style("width"));
-		var height = parseInt(d3.select(this.container).style("height"));
 		
-		d3.select(this.container)	.select("svg")	
-									.attr("width", width)
-									.attr("height", height);
-	
-		// TODO pixels
-		d3.select(this.container)	.selectAll("text")
-									.style("font-size", function(d) { return Math.min(height,width)/20 + "px"; })
-	}
-	
 	// Private methods HERE
