@@ -1,0 +1,88 @@
+<html>
+	<head>
+		<title>CS424 Project 2</title>
+		<link rel="stylesheet" href="graphs.css">
+		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+		<script type="text/javascript" src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+	</head>
+	
+	<body>
+		<div id"=header">
+			<h1>Header</h1>
+		</div>
+		<div id="container" class="flex-container">
+
+			<div id="map"></div>
+			<div id="g1" class="flex-item orange"></div>
+			<div id="g2" class="flex-item grey"></div>
+			<div id="g3"class="flex-item red"></div>
+			
+			<div class="flex-vertical grey">		
+				<div id="g4" class="flex-item orange"></div>
+				<div id="g5" class="flex-item yellow"></div>
+				<div id="g6" class="flex-item grey"></div>
+			</div>
+
+			<div class="flex-vertical orange">		
+				<div id="g7" class="flex-item red"></div>
+				<div id="g8" class="flex-item gray"></div>
+				<div id="g9" class="flex-item green"></div>
+			</div>
+
+			<div id="last" class="flex-item"></div>
+		</div>
+
+		<div id="footer">
+			<h1>Footer</h1>
+		</div>
+		<script src="graphics/LineChart.js"></script>
+		<script>
+		
+			d3.select("#last")
+				.style("order","-1");
+
+			
+			var map = L.map('map').setView([41.8369, -87.6847], 11);
+
+			L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+			}).addTo(map);
+
+			var data = [50, 20, 10, 40, 15, 25,35, 12, 55, 45,12,1333,47,48,150, 30, 15, 100];
+			var labels = [1,2,3,4,5,6];
+
+			var plot1 = new LineChart("#g1", data, labels, "X Label", "Y Label");
+			var plot2 = new LineChart("#g2", data, labels, "X Label", "Y Label");
+			var plot3 = new LineChart("#g3", data, labels, "X Label", "Y Label");
+			var plot4 = new LineChart("#g4", data, labels, "X Label", "Y Label");
+			var plot5 = new LineChart("#g5", data, labels, "X Label", "Y Label");
+			var plot6 = new LineChart("#g6", data, labels, "X Label", "Y Label");
+			var plot7 = new LineChart("#g7", data, labels, "X Label", "Y Label");
+			var plot8 = new LineChart("#g8", data, labels, "X Label", "Y Label");
+			var plot9 = new LineChart("#g9", data, labels, "X Label", "Y Label");
+			var plot10 = new LineChart("#last", data, labels, "X Label", "Y Label");
+
+
+
+			plot1.draw();
+			plot2.draw();
+			plot3.draw();
+			plot4.draw();
+			plot5.draw();
+			plot6.draw();
+			plot7.draw();
+			plot8.draw();
+			plot9.draw();
+			plot10.draw();
+
+
+
+		</script>
+
+			
+		</script>
+
+	</body>
+
+</html>
