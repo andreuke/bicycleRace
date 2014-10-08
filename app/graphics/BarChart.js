@@ -4,14 +4,19 @@
     this.container = container;
     this.data = data;
     this.labels = labels;
-    this.containerWidth = parseInt(d3.select(this.container).style("width"));
-    this.containerHeight = parseInt(d3.select(this.container).style("height"));
+    // this.containerWidth = parseInt(d3.select(this.container).style("width"));
+    // this.containerHeight = parseInt(d3.select(this.container).style("height"));
   }
   
   BarChart.prototype.draw = function(){
     var container = this.container;
-    var width = this.containerWidth;
-    var height = this.containerHeight;
+    // var width = this.containerWidth;
+    // var height = this.containerHeight;
+    
+    // Use a 16:9 aspect ratio
+    var width = 1600;
+    var height = 900;
+    
     var data = this.data;  
     var labels = this.labels; 
 
@@ -37,7 +42,7 @@
     var bar_svg = d3.select(container)
           .append("svg")
           .attr("viewBox", "0 0 " + width + " " + height)
-          .attr("preserveAspectRatio", "xMinYMin meet")
+          .attr("preserveAspectRatio", "xMidYMid meet")
           .attr("width", "100%")
           .attr("height", "100%")
 

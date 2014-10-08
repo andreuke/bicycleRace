@@ -11,22 +11,29 @@ function PieChart(container,data,labels){
 
 PieChart.prototype.draw = function(){
 	//Width and height
-	var width = this.containerWidth;
-	var height = this.containerHeight;
+	// var width = this.containerWidth;
+	// var height = this.containerHeight;
+
+	var width = 2200;
+	var height = 900;
+
+	var centerX = width/2;
+	var centerY = height/2;
+
 	var container = this.container;
 	var labels = this.labels;
 
 
-	var outerRadius
+	var outerRadius = height/2;
 
 	// Takes the min between width and height. 
 	// If the min is the width leaves enough space for the legend.
-	if(width*0.8 < height) {
-		outerRadius = 0.8 * width/2
-	}
-	else {
-		outerRadius = height/2
-	}
+	// if(width*0.8 < height) {
+	// 	outerRadius = 0.8 * width/2
+	// }
+	// else {
+	// 	outerRadius = height/2
+	// }
 
 
 
@@ -52,24 +59,23 @@ PieChart.prototype.draw = function(){
     				.append("svg")
     				.attr("id","_svg")
     				.attr("viewBox", "0 0 " + width + " " + height)
-    				.attr("preserveAspectRatio", "xMinYMin meet")
+    				.attr("preserveAspectRatio", "xMidYMid meet")
     				.attr("width", "100%")
 					.attr("height", "100%")
-
+height
 
 	//Create SVG element
 	var pie_svg = d3.select("#_svg")
-					.append("svg")
+					.append("g")
 					//.attr("class", "pieLeft")
 					// .attr("viewBox", "0 0 " + parseInt(d3.select(".pieLeft").style("width")) + " " + height);
-	
 	//Set up groups
 	arcs = pie_svg	.selectAll("g.arc")
 					.data(pie(this.data))
 					.enter()
 					.append("g")
 					.attr("class", "arc")
-					.attr("transform", "translate(" + outerRadius + "," + outerRadius + ")");
+					.attr("transform", "translate(" + centerX + "," + centerY + ")");
 
 	
 	//Draw arc paths
@@ -97,7 +103,7 @@ PieChart.prototype.draw = function(){
 
 	//Create SVG element
 	var legend_svg = d3.select("#_svg")
-					.append("svg")
+					.append("g")
 					// .attr("float", "left")
 					// .attr("class", "pieRight")
 					// .attr("width", "25%")
@@ -118,7 +124,7 @@ PieChart.prototype.draw = function(){
 		
 		// Position and size
 		legend 	.append("rect")
-		    	.attr("x", "85%")
+		    	.attr("x", centerX + outerRadius*1.1)
 			    .attr("height", colorSize)
 			    .attr("width", colorSize)
 			    .style("fill", 
@@ -128,7 +134,7 @@ PieChart.prototype.draw = function(){
 
 		// Labels
 		legend 	.append("text")
-				.attr("x", "80%")
+				.attr("x", centerX + outerRadius*1.1 + colorSize*1.1)
 			    .attr("y", colorSize*0.67)
 			    .attr("height", "10%")
 			    .attr("class","text")

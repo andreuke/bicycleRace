@@ -1,14 +1,8 @@
-#map { height:	60%; }
-#cont { height:	40%; width:100%;}
+#map { height:	30%; }
+#cont { height:	70%; 
+		width:	100%;
+		background: yellow;}
 
-.pieLeft {
-	width:85%;
-	height:100%;
-}
-.pieRight {
-	width:15%;
-	height:100%;
-}
 
 .text {
 	font-family: helvetica;
