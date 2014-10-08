@@ -115,9 +115,10 @@
 
 		function allTripsTakenAccrossTheCityOn($day, $connessione){
 			$where = "startdate = '".$day."'";
-			$result = genericQuery('from_station_id, to_station_id', 'divvy_trips_distances_skinny', $where, '', $connessione);
+			$result = genericQuery('from_station_id, to_station_id, hour', 'divvy_trips_distances_skinny', $where, '', $connessione);
 			$variables = array('0' => 'from_station_id',
-								'1' => 'to_station_id');
+								'1' => 'to_station_id',
+								'2' => 'hour');
 
 			genericDisplayData($result, $variables);
 		}
