@@ -104,7 +104,7 @@ height
 	var legend;
 
 	//Create SVG element
-	var legend_svg = d3.select("#_svg")
+	var legend_svg = _svg
 					.append("g")
 					// .attr("float", "left")
 					// .attr("class", "pieRight")
