@@ -2,8 +2,8 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	*/
-function database(){
-
+function database(url){
+		this.queryUrl =  url;
 }
 
 
@@ -11,7 +11,7 @@ function database(){
 		//number ob bikes of by day of the week
 
 		var return_value = $.ajax({
-		url: "query.php",
+		url: this.queryUrl,
 		data: "mark=0&&query=0",
 		dataType:"json",
 		success: function(data){
@@ -25,7 +25,7 @@ function database(){
 
 	database.prototype.bikesOutByHourOfDay = function (){
 		var prova = $.ajax({
-		url: "query.php",
+		url: this.queryUrl,
 		data: "mark=0&&query=1",
 		dataType:"json",
 		success: function(data){
@@ -40,7 +40,7 @@ function database(){
 
 	database.prototype.bikesOutByDayOfTheYear = function () {
 		var return_value = $.ajax({
-		url: "query.php",
+		url: this.queryUrl,
 		data: "mark=0&&query=2",
 		dataType:"json",
 		success: function(data){
@@ -60,7 +60,7 @@ function database(){
 		var return_value;
 		switch($filter){
 			case 0 : return_value = $.ajax({
-						url: "query.php",
+						url: this.queryUrl,
 						data: "mark=0&&query=3",
 						dataType:"json",
 						success: function(data){
@@ -71,7 +71,7 @@ function database(){
 					});
 					break;
 			case 1 : return_value = $.ajax({
-						url: "query.php",
+						url: this.queryUrl,
 						data: "mark=0&&query=4",
 						dataType:"json",
 						success: function(data){
@@ -82,7 +82,7 @@ function database(){
 					});
 					break;
 			case 2: return_value = $.ajax({
-						url: "query.php",
+						url: this.queryUrl,
 						data: "mark=0&&query=5",
 						dataType:"json",
 						success: function(data){
@@ -109,7 +109,7 @@ function database(){
 
 		switch($filter){
 			case 0 : return_value = $.ajax({
-						url: "query.php",
+						url: this.queryUrl,
 						data: "mark=0&&query=6",
 						dataType:"json",
 						success: function(data){
@@ -119,7 +119,7 @@ function database(){
 					});
 					break;
 			case 1 : return_value = $.ajax({
-						url: "query.php",
+						url: this.queryUrl,
 						data: "mark=0&&query=7",
 						dataType:"json",
 						success: function(data){
@@ -129,7 +129,7 @@ function database(){
 					});
 					break;
 			case 2 : return_value = $.ajax({
-						url: "query.php",
+						url: this.queryUrl,
 						data: "mark=0&&query=8",
 						dataType:"json",
 						success: function(data){
@@ -159,7 +159,7 @@ function database(){
 
 			(function(dayFromCalendar){
 				return_value = $.ajax({	
-						url: "query.php",
+						url: this.queryUrl,
 						data: "mark=0&&query=9&&filter="+""+dayFromCalendar,
 						dataType:"json",
 						success: function(data){
@@ -179,7 +179,7 @@ function database(){
 			var return_value;
 			(function(dayFromCalendar){
 				return_value = $.ajax({	
-						url: "query.php",
+						url: this.queryUrl,
 						data: "mark=0&&query=10&&filter="+""+dayFromCalendar,
 						dataType:"json",
 						success: function(data){
