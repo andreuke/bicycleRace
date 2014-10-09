@@ -5,6 +5,8 @@ var map = L.map('map').setView([51.505, -0.09], 13);
    maxZoom: 18
 }).addTo(map);
 
+ var db = new database("app/data/query.php");
+
  var control = mainController();
 
  var view = mainView(control);

@@ -194,7 +194,7 @@ var initialController = function(controller) {
   that.addState("zoomedGraphs", []);
   that.addState("ini-mode", "normal")
   //States of the graphs
-  that.addState("ini-time1-data", [1, 2, 3, 4, 5, 6, 7, 8]);
+  that.addState("ini-time1-data", db.bikesOutByDayOfWeek());
   that.addState("ini-time2-data", [1, 2, 3, 4, 5, 6, 7, 8]);
   that.addState("ini-time3-data", [1, 2, 3, 4, 5, 6, 7, 8]);
   that.addState("ini-distr1-data", [1, 2, 3, 4, 5, 6, 7, 8]);
