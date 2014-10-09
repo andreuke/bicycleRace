@@ -214,7 +214,7 @@
 				for($i = 0; $i < count($variables); $i++){
 					echo '"label":"'.$var[$variables[$i]].'",';
 					$i++;
-					echo '"value":"'.$var[$variables[$i]].'",';
+					echo '"value":"'.$var[$variables[$i]].'"';
 					if($i != count($variables)-1){
 						echo ",";
 					}
@@ -241,7 +241,7 @@
 
 		function displayData($numOfMale, $numOfFemale, $unknown){
 			echo '{"data":[';
-			echo '{"label":"male","value":"'.$numOfMale.'"},{"label":"female","value":"'.$numOfFemale.'"},{"label":"unknown" "value":"'.$unknown.'"}';
+			echo '{"label":"male","value":"'.$numOfMale.'"},{"label":"female","value":"'.$numOfFemale.'"},{"label":"unknown","value":"'.$unknown.'"}';
 			echo ']}';
 		}
 
