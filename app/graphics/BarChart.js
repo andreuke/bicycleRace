@@ -44,8 +44,10 @@
           .attr("viewBox", "0 0 " + width + " " + height)
           .attr("preserveAspectRatio", "xMidYMid meet")
           .attr("width", "100%")
-          .attr("height", "100%")
-
+          // FLEXBOX Implementation
+          .attr("height", "")
+          // Default implementation
+          // .attr("height", "100%")
 
     // Draw rects
     bar_svg.selectAll("rect")

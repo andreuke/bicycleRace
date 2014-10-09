@@ -57,15 +57,17 @@ PieChart.prototype.draw = function(){
 
     var _svg = d3	.select(container)
     				.append("svg")
-    				.attr("id","_svg")
     				.attr("viewBox", "0 0 " + width + " " + height)
     				.attr("preserveAspectRatio", "xMidYMid meet")
     				.attr("width", "100%")
-					.attr("height", "100%")
+    				// FLEXBOX Implementation
+					.attr("height", "")
+					// Default implementation
+					// .attr("height", "100%")
 height
 
 	//Create SVG element
-	var pie_svg = d3.select("#_svg")
+	var pie_svg = _svg
 					.append("g")
 					//.attr("class", "pieLeft")
 					// .attr("viewBox", "0 0 " + parseInt(d3.select(".pieLeft").style("width")) + " " + height);

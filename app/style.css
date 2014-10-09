@@ -1,7 +1,12 @@
 #map { height:	30%; }
 #cont { height:	70%; 
-		width:	100%;
+		width:	50%;
+		float: left;
 		background: yellow;}
+#cont2 { height:	70%; 
+		width:	50%;
+		float: left;
+		background: orange;}
 
 
 .text {
