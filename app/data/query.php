@@ -212,7 +212,9 @@
 			while($var = mysql_fetch_array($result)){
 				echo '{';
 				for($i = 0; $i < count($variables); $i++){
-					echo '"'.$variables[$i].'":"'.$var[$variables[$i]].'"';
+					echo '"label":"'.$var[$variables[$i]].'",';
+					$i++;
+					echo '"value":"'.$var[$variables[$i]].'",';
 					if($i != count($variables)-1){
 						echo ",";
 					}
@@ -238,8 +240,8 @@
 		}
 
 		function displayData($numOfMale, $numOfFemale, $unknown){
-			echo '{"genders":[';
-			echo '{"male":"'.$numOfMale.'", "female":"'.$numOfFemale.'", "unknown":"'.$unknown.'"}';
+			echo '{"data":[';
+			echo '{"label":"male","value":"'.$numOfMale.'"},{"label":"female","value":"'.$numOfFemale.'"},{"label":"unknown" "value":"'.$unknown.'"}';
 			echo ']}';
 		}
 
@@ -259,7 +261,7 @@
 			$database = mysql_query($query, $connessione);
 			$numRows = mysql_num_rows($database);
 			$i = 0;
-			echo '{"bikes":[';
+			echo '{"data":[';
 			while($var = mysql_fetch_array($database)){
 				$period = $var['period'];
 				//if we are talking about day of the week, convert them..
@@ -296,7 +298,7 @@
 					$period = date("M-d",$period);
 				}
 				
-				echo '{"period":"'.$period.'", "total":"'.$var['total'].'"}';
+				echo '{"label":"'.$period.'", "value":"'.$var['total'].'"}';
 				if($i != $numRows-1){
 					echo ",";
 				}
