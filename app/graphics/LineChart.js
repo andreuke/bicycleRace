@@ -23,15 +23,6 @@ LineChart.prototype.update = function(data,labels) {
 	this.draw();
 }
 
-
-function numericScale(data, width){
-	return d3 	.scale
-				.linear()
-				.domain([0, d3 	.max(labels, function(d){
-									return parseInt(d)})])
-				.range([0, width]);
-}
-
 function ordinalScale(data, width){
 	return d3 	.scale
 				.linear()
@@ -39,15 +30,26 @@ function ordinalScale(data, width){
 				.range([0, width]);
 }
 
-function timeScale(data, width){
-	return d3 	.time
-				.scale()
+function numericScale(labels, width){
+	return d3 	.scale
+				.linear()
+				.domain([0, d3.max(labels, function(d){ return parseInt(d)})])
 				.range([0, width]);
 }
 
-function dateScale(data, width){	
+function timeScale(labels, width){
+	var parseTime = d3.time.format("%b-%d").parse;
 	return d3 	.time
 				.scale()
+				.domain(d3.extend(labels, function(d) { return parseTime(d);}))
+				.range([0, width]);
+}
+
+function dateScale(labels, width){	
+	var parseDate = d3.time.format("%b-%d").parse;
+	return d3 	.time
+				.scale()
+				.domain(d3.extent(labels, function(d) { return parseDate(d); }));
     			.range([0, width]);
 }
 
@@ -63,7 +65,7 @@ LineChart.prototype.draw = function(){
 	var height = 500;
   	var data = this.data;
   	var kind = this.kind;
-  	var lalebs = this.labels;
+  	var labels = this.labels;
   	var y_axis_label = this.y_axis_label;
 	var x_axis_label = this.x_axis_label;
 	var xScale;
@@ -74,13 +76,13 @@ LineChart.prototype.draw = function(){
 			xScale = ordinalScale(data, width * margin);
 			break;
 		case "numerical": 
-			xScale = numericScale(data, width * margin);
+			xScale = numericScale(labels, width * margin);
 			break;
 		case "date":
-			xScale = dateScale(data, width * margin);
+			xScale = dateScale(labels, width * margin);
 			break;
 		case "time":
-			xScale = timeScale(data, width * margin);
+			xScale = timeScale(labels, width * margin);
 			break;
 		default:
 			xScale = ordinalScale(data, width * margin);
@@ -119,8 +121,8 @@ LineChart.prototype.draw = function(){
     							var parseDate = d3.time.format("%b-%d").parse;
     							return xScale(parseDate(labels[i]));
     						case "time":
-    							var parseDate = d3.time.format("%d-%b-%y").parse;
-    							return xScale(parseDate(d));
+    							var parseTime = d3.time.format("%d-%b-%y").parse;
+    							return xScale(parseTime(d));
     						default:
     							return xScale(i);}
     					})
