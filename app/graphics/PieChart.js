@@ -151,7 +151,8 @@ height
 }
 
 // TODO
-PieChart.prototype.update = function(data) {
+PieChart.prototype.update = function(data,labels) {
+	this.labels = labels
 	this.data = data;
 	this.svg.remove();
 	this.draw();
