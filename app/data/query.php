@@ -127,7 +127,7 @@
 			switch ($filter) {
 				case '0':
 					//SELECT meters,count(*) FROM rides group by meters
-					$result = genericQuery('meters, count(*) as total', 'rides', 'true', 'group by meters', $connessione);
+					$result = genericQuery('meters, count(*) as total', 'divvy_trips_distances_skinny', 'true', 'group by meters', $connessione);
 					$variables = array('0' =>'meters' ,
 										'1' => 'total' );
 
