@@ -2,6 +2,8 @@
 Lorenzo Di Tucci <3
 Call function draw to create the calendar. All other functions are private.
 
+CHECK VARIABLE returnValue, that's what the query needs as input
+
 */
     function calendar(){
 
@@ -31,6 +33,10 @@ Call function draw to create the calendar. All other functions are private.
         //the svg 
         var svg;
 
+        //dimensions..
+        var width = 400;
+        var height = 400;
+
         /****************************************************/
 
 
@@ -39,8 +45,10 @@ Call function draw to create the calendar. All other functions are private.
         //svg creation
         svg = d3.select("body") 
                     .append("svg")
+                    .attr("viewBox","0 0 " + width + " " + height)
+                    .attr("preserveAspectRatio", "xMinYMin meet")
                     .attr("width","100%")
-                    .attr("height", /*"100%"*/ "100000");
+                    .attr("height", "100%");
 
         init();
         }
@@ -87,14 +95,29 @@ Call function draw to create the calendar. All other functions are private.
                 update_calendar_data(index);
             });
 
-            //text over the calendar: name of the month + 2013 (beginning: july 2013)
+            var monthTextXPos = 140;
+            var count = months.data[0].month.length;
+            
+            monthTextXPos = monthTextXPos - count;
+
+            //text over the calendar: name of the month(beginning: july 2013)
             svg
             .append("text")
-            .text(months.data[0].month+" 2013")
-            .attr("transform", "translate(" + (100) + " , "+ 40 + " )")
+            .text(months.data[0].month)
+            .attr("transform", "translate(" + (monthTextXPos) + " , "+ 40 + " )")
             .attr("class", "month-name")
             .attr("fill", "grey")
             .attr("font-size", "200%");
+
+            //year over the month
+
+            svg
+                .append("text")
+                .text("2013")
+                .attr("transform", "translate(" + (monthTextXPos) + " , "+ 15 + " )")
+                .attr("class", "year")
+                .attr("fill", "grey")
+                .attr("font-size", "125%");
 
             //Days of the week creation
             var k = 50;
@@ -155,24 +178,36 @@ Call function draw to create the calendar. All other functions are private.
 
                     selectedDay = d3.select("."+update);
                     selectedDay = selectedDay.text();//.text;
-                    console.log(selectedDay);
+                    //console.log(selectedDay);
+                    var selectedMonth, selectedYear;
+                    selectedYear = '2013';
                     
                     switch(index){
-                        case 0: console.log("JULY");
+                        case 0: //console.log("JULY");
+                                selectedMonth = '07';
                                     break;
-                        case 1: console.log("AUGUST");
+                        case 1: //console.log("AUGUST");
+                                selectedMonth = '08';
                                     break;
-                        case 2: console.log("SEPTEMBER");
+                        case 2: //console.log("SEPTEMBER");
+                                selectedMonth = '09';
                                     break;
-                        case 3: console.log("OCTOBER");
+                        case 3: //console.log("OCTOBER");
+                                selectedMonth = '10';
                                     break;
-                        case 4: console.log("NOVEMBER");
+                        case 4: //console.log("NOVEMBER");
+                                selectedMonth = '11';
                                     break;
-                        case 5: console.log("DECEMBER");
+                        case 5: //console.log("DECEMBER");
+                                selectedMonth = '12';
                                     break;
-                        default: console.log("error!!");
+                        default: //console.log("error!!");
                                     break;
                     }
+
+                    var returnValue = selectedYear + "-" + selectedMonth + "-" + selectedDay;
+                    console.log(" value to return is ->");
+                    console.log(returnValue);
                 })
 
 
@@ -184,11 +219,20 @@ Call function draw to create the calendar. All other functions are private.
             function update_calendar_name(index){
                 //remove the name...
                 svg.select(".month-name").remove();
+
+                var textXPos = 140;
+                var countChar = months.data[index].month.length;
+            
+                //countChar = countChar + 5; // " 2013"
+                //count = count/2;
+                //console.log(countChar);
+
+                textXPos = textXPos - countChar*3;
                 //update it...
                 svg
                 .append("text")
-                .text(months.data[index].month+" 2013")
-                .attr("transform", "translate(" + (100) + " , "+ 40 + " )")
+                .text(months.data[index].month)
+                .attr("transform", "translate(" + (textXPos) + " , "+ 40 + " )")
                 .attr("class", "month-name")
                 .attr("fill", "grey")
                 .attr("font-size", "200%")
@@ -256,25 +300,37 @@ Call function draw to create the calendar. All other functions are private.
                 }
 
                 selectedDay = d3.select("."+update);
-                selectedDay = selectedDay.text();//.text;
-                console.log(selectedDay);
+                    selectedDay = selectedDay.text();//.text;
+                    //console.log(selectedDay);
+                    var selectedMonth, selectedYear;
+                    selectedYear = '2013';
+                    
+                    switch(index){
+                        case 0: //console.log("JULY");
+                                selectedMonth = '07';
+                                    break;
+                        case 1: //console.log("AUGUST");
+                                selectedMonth = '08';
+                                    break;
+                        case 2: //console.log("SEPTEMBER");
+                                selectedMonth = '09';
+                                    break;
+                        case 3: //console.log("OCTOBER");
+                                selectedMonth = '10';
+                                    break;
+                        case 4: //console.log("NOVEMBER");
+                                selectedMonth = '11';
+                                    break;
+                        case 5: //console.log("DECEMBER");
+                                selectedMonth = '12';
+                                    break;
+                        default: console.log("error!!");
+                                    break;
+                    }
 
-                switch(index){
-                    case 0: console.log("JULY");
-                                break;
-                    case 1: console.log("AUGUST");
-                                break;
-                    case 2: console.log("SEPTEMBER");
-                                break;
-                    case 3: console.log("OCTOBER");
-                                break;
-                    case 4: console.log("NOVEMBER");
-                                break;
-                    case 5: console.log("DECEMBER");
-                                break;
-                    default: console.log("error!!");
-                                break;
-                }
+                    var returnValue = selectedYear + "-" + selectedMonth + "-" + selectedDay;
+                    console.log(" value to return is ->");
+                    console.log(returnValue);
             })
 
 
