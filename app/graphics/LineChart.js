@@ -5,17 +5,53 @@
 //http://projects.delimited.io/experiments/multi-series/multi-line.html
 //http://bl.ocks.org/d3noob/b3ff6ae1c120eea654b5
 
-function LineChart(container,data,labels, x_axis_label,y_axis_label){
+function LineChart(container,data,labels,x_axis_label,y_axis_label , kind){
 	this.container = container;
 	this.data = data;
 	this.labels = labels;
+	this.kind = kind;
+
 	this.y_axis_label = y_axis_label;
 	this.x_axis_label = x_axis_label;
+	this.main_svg = {}
 }
 
-/*LineChart.prototype.update = function(data) {
+LineChart.prototype.update = function(data,labels) {
+	this.data = data;
+	this.labels = labels;
+	this.main_svg.remove();
+	this.draw();
+}
 
-}*/
+
+function numericScale(data, width){
+	return d3 	.scale
+				.linear()
+				.domain([0, d3 	.max(labels, function(d){
+									return parseInt(d)})])
+				.range([0, width]);
+}
+
+function ordinalScale(data, width){
+	return d3 	.scale
+				.linear()
+				.domain([0, data.length-1])
+				.range([0, width]);
+}
+
+function timeScale(data, width){
+	return d3 	.time
+				.scale()
+				.range([0, width]);
+}
+
+function dateScale(data, width){	
+	return d3 	.time
+				.scale()
+    			.range([0, width]);
+}
+
+
 
 LineChart.prototype.draw = function(){
 
@@ -26,14 +62,30 @@ LineChart.prototype.draw = function(){
 	var width = 1000;
 	var height = 500;
   	var data = this.data;
+  	var kind = this.kind;
+  	var lalebs = this.labels;
   	var y_axis_label = this.y_axis_label;
 	var x_axis_label = this.x_axis_label;
+	var xScale;
 
 	// Creates x scale (linear, from 0 to number of data)
-	var xScale = d3 .scale
-					.linear()
-					.domain([0, data.length-1])
-					.range([0, width * margin]);
+	switch(kind){
+		case "ordinal":
+			xScale = ordinalScale(data, width * margin);
+			break;
+		case "numerical": 
+			xScale = numericScale(data, width * margin);
+			break;
+		case "date":
+			xScale = dateScale(data, width * margin);
+			break;
+		case "time":
+			xScale = timeScale(data, width * margin);
+			break;
+		default:
+			xScale = ordinalScale(data, width * margin);
+			break;
+		}
 
 	// Creates y Scale (linear, from 0 to max of data)
 	var yScale = d3	.scale
@@ -58,7 +110,20 @@ LineChart.prototype.draw = function(){
 	var line = d3	.svg
 					.line()
     				.x(function(d,i) { 
-    					return xScale(i); })
+    					switch(kind){
+    						case "ordinal":
+    							return xScale(i);
+    						case "numerical":
+    							return xScale(parseInt(labels[i]));
+    						case "date":
+    							var parseDate = d3.time.format("%b-%d").parse;
+    							return xScale(parseDate(labels[i]));
+    						case "time":
+    							var parseDate = d3.time.format("%d-%b-%y").parse;
+    							return xScale(parseDate(d));
+    						default:
+    							return xScale(i);}
+    					})
     				.y(function(d) { 
     					return yScale(d); });
 
@@ -69,9 +134,11 @@ LineChart.prototype.draw = function(){
                   .attr("preserveAspectRatio", "xMidYMid meet")
                   .attr("width", "100%")
                   //.attr("height", "")
-                  .append("g")
+             	
+             	this.main_svg = svg;
+                  
+                  svg = svg.append("g")
                   .attr("transform", "translate(" + (1-margin)/2*width + "," + (1-margin)/2*height + ")");
-                  //.attr("transform", "translate(" + width/2 + "," + height/2 + ")");
 
     // funtion for the x grid lines
     function make_x_axis() {
