@@ -194,18 +194,16 @@ var initialController = function(controller) {
   that.addState("zoomedGraphs", []);
   that.addState("ini-mode", "normal")
   //States of the graphs
-  var tmpDem1 = db.ridesBy(0);
-  var tmpDem2 = db.ridesBy(1);
-  var tmpDem3 = db.ridesBy(2);
-  that.addState("ini-time1-data", getFromJSON(db.bikesOutByDayOfTheYear(), "value"));
-  that.addState("ini-time2-data", getFromJSON(db.bikesOutByDayOfWeek(), "value"));
-  that.addState("ini-time3-data", getFromJSON(db.bikesOutByHourOfDay(), "value"));
-  that.addState("ini-distr1-data", getFromJSON(tmpDem1, "value"));
-  that.addState("ini-distr2-data", getFromJSON(tmpDem2, "value"));
-  that.addState("ini-distr3-data", getFromJSON(tmpDem3, "value"));
-  that.addState("ini-demog1-data", getFromJSON(db.riderDemographics(0), "value"));
-  that.addState("ini-demog2-data", getFromJSON(db.riderDemographics(2), "value"));
-  that.addState("ini-demog3-data", getFromJSON(db.riderDemographics(1), "value"));
+
+  that.addState("ini-time1-data", []);
+  that.addState("ini-time2-data", []); //getFromJSON(db.bikesOutByDayOfWeek(), "value"));
+  that.addState("ini-time3-data", []);
+  that.addState("ini-distr1-data", []); //getFromJSON(tmpDem1, "value"));
+  that.addState("ini-distr2-data", []); //getFromJSON(tmpDem2, "value"));
+  that.addState("ini-distr3-data", []); //getFromJSON(tmpDem3, "value"));
+  that.addState("ini-demog1-data", []);
+  that.addState("ini-demog2-data", []);
+  that.addState("ini-demog3-data", []);
 
   that.addState("ini-time1-type", "linechart");
   that.addState("ini-time2-type", "barchart");
@@ -217,16 +215,40 @@ var initialController = function(controller) {
   that.addState("ini-demog2-type", "piechart");
   that.addState("ini-demog3-type", "linechart");
 
-  that.addState("ini-time1-labels", getFromJSON(db.bikesOutByDayOfTheYear(), "label"));
-  that.addState("ini-time2-labels", getFromJSON(db.bikesOutByDayOfWeek(), "label"));
-  that.addState("ini-time3-labels", getFromJSON(db.bikesOutByHourOfDay(), "label"));
-  that.addState("ini-distr1-labels", getFromJSON(tmpDem1, "label"));
-  that.addState("ini-distr2-labels", getFromJSON(tmpDem2, "label"));
-  that.addState("ini-distr3-labels", getFromJSON(tmpDem3, "label"));
-  that.addState("ini-demog1-labels", getFromJSON(db.riderDemographics(0), "label"));
-  that.addState("ini-demog2-labels", getFromJSON(db.riderDemographics(2), "label"));
-  that.addState("ini-demog3-labels", getFromJSON(db.riderDemographics(1), "label"));
+  that.addState("ini-time1-labels", []);
+  that.addState("ini-time2-labels", []); //getFromJSON(db.bikesOutByDayOfWeek(), "label"));
+  that.addState("ini-time3-labels", []);
+  that.addState("ini-distr1-labels", []); //getFromJSON(tmpDem1, "label"));
+  that.addState("ini-distr2-labels", []); //getFromJSON(tmpDem2, "label"));
+  that.addState("ini-distr3-labels", []); //getFromJSON(tmpDem3, "label"));
+  that.addState("ini-demog1-labels", []);
+  that.addState("ini-demog2-labels", []);
+  that.addState("ini-demog3-labels", []);
 
+  that.addState("ini-time1-title", "Number of bikes in the year");
+  that.addState("ini-time2-title", "Number of bikes in the week");
+  that.addState("ini-time3-title", "Number of bikes by hour");
+  that.addState("ini-distr1-title", "Distribution of rides by distance");
+  that.addState("ini-distr2-title", "Distribution of rides by time");
+  that.addState("ini-distr3-title", "Distance for each bike");
+  that.addState("ini-demog1-title", "Gender");
+  that.addState("ini-demog2-title", "Subscribers");
+  that.addState("ini-demog3-title", "Age");
+
+  var dataCallback = function(data, state) {
+    that.set(state + "-labels", getFromJSON(data, "label"));
+    that.set(state + "-data", getFromJSON(data, "value"));
+  }
+
+  db.bikesOutByDayOfWeek(dataCallback, "ini-time2");
+  db.bikesOutByDayOfTheYear(dataCallback, "ini-time1");
+  db.bikesOutByHourOfDay(dataCallback, "ini-time3");
+  db.ridesBy(0, dataCallback, "ini-distr1");
+  db.ridesBy(1, dataCallback, "ini-distr2");
+  db.ridesBy(2, dataCallback, "ini-distr3");
+  db.riderDemographics(0, dataCallback, "ini-demog1");
+  db.riderDemographics(2, dataCallback, "ini-demog2");
+  db.riderDemographics(1, dataCallback, "ini-demog3");
 
   that.selectedGraph = function(graphId) {
     var selections = that.get("zoomedGraphs");
@@ -246,7 +268,6 @@ var initialController = function(controller) {
       that.set("ini-mode", "normal");
     };
   }
-
 
   that.exec("changeMode", "initial"); //TODO DA ELIMINARE
 
@@ -313,7 +334,7 @@ var initialView = function(controller, container) {
   graphs[2] = singleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-time3");
   graphs[8] = singleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-demog3");
   graphs[5] = singleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-distr3");
-  
+
 }
 
 var singleGraph = function(controller, where, idElement, idState) {
@@ -327,7 +348,7 @@ var singleGraph = function(controller, where, idElement, idState) {
     .attr("id", id)
     .classed("initial-slot-normal", true);
   var title = mainDiv.append("text")
-    .text(idStatus)
+    .text(_controller.get(idStatus + "-title"))
     .classed("graph-title", true);
   var graphDiv = mainDiv.append("div").attr("id", id + "-div-graph")
     .classed("div-graph", true)
@@ -374,7 +395,8 @@ var singleGraph = function(controller, where, idElement, idState) {
 
   }
   _controller.onChange(idStatus + "-data", function(data) {
-    graph.update(data)
+    //BAD PRACTICE. TODO: found another way
+    graph.update(data,_controller.get(idStatus + "-labels"));
   });
 
   _controller.onChange("ini-mode", handleChangeMode);
@@ -408,13 +430,13 @@ var pickAdayView = function(leftCointainer, rightContainer) {
 }
 
 var getFromJSON = function(json, what) {
-    var tmpArray = [];
-    for (var i = 0; i < json.data.length; i++) {
-      if (what === "value") {
-        tmpArray.push(parseInt(json.data[i][what],10));
-        } else {
-          tmpArray.push(json.data[i][what]);
-        }
-      }
-      return tmpArray;
+  var tmpArray = [];
+  for (var i = 0; i < json.data.length; i++) {
+    if (what === "value") {
+      tmpArray.push(parseInt(json.data[i][what], 10));
+    } else {
+      tmpArray.push(json.data[i][what]);
     }
+  }
+  return tmpArray;
+}
