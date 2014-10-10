@@ -11,53 +11,50 @@ function LineChart(container,data,labels, x_axis_label,y_axis_label){
 	this.labels = labels;
 	this.y_axis_label = y_axis_label;
 	this.x_axis_label = x_axis_label;
-	//this.containerWidth = parseInt(d3.select(this.container).style("width"));
-	//this.containerHeight = parseInt(d3.select(this.container).style("height"));
 }
 
-LineChart.prototype.update = function(data) {
+/*LineChart.prototype.update = function(data) {
 
-}
+}*/
 
 LineChart.prototype.draw = function(){
 
 	var something = 10;
-	var margin = 0.90;
+	var margin = 0.80;
+	var label_margin = 0.03;
 	var container = this.container;
-	//var width = this.containerWidth;
-	//var height = this.containerHeight;
 	var width = 1000;
 	var height = 500;
   	var data = this.data;
   	var y_axis_label = this.y_axis_label;
 	var x_axis_label = this.x_axis_label;
 
-	console.log(container);
-	console.log(width);
-	console.log(height);
-
-
+	// Creates x scale (linear, from 0 to number of data)
 	var xScale = d3 .scale
 					.linear()
 					.domain([0, data.length-1])
 					.range([0, width * margin]);
 
+	// Creates y Scale (linear, from 0 to max of data)
 	var yScale = d3	.scale
 					.linear()
 					.domain([0, d3.max(data) + something])
 	    			.range([height * margin,0]);
 
+	// Creates the x Axis
 	var xAxis = d3	.svg
 					.axis()
 	    			.scale(xScale)
-	    			.ticks(data.length)
+	    			//.ticks(data.length)
 	    			.orient("bottom");
 
+	// Creates the y Axis
 	var yAxis = d3	.svg
 					.axis()
 	    			.scale(yScale)
 	    			.orient("left");
 
+	// Creates the line of the LineChart
 	var line = d3	.svg
 					.line()
     				.x(function(d,i) { 
@@ -65,20 +62,23 @@ LineChart.prototype.draw = function(){
     				.y(function(d) { 
     					return yScale(d); });
 
+   	// Creates the SVG Element
 	var svg = d3  .select(container)
                   .append("svg")
                   .attr("viewBox","0 0 " + width + " " + height)
-                  .attr("preserveAspectRatio", "xMinYMin meet")
+                  .attr("preserveAspectRatio", "xMidYMid meet")
                   .attr("width", "100%")
-                  .attr("height", "")
+                  //.attr("height", "")
                   .append("g")
                   .attr("transform", "translate(" + (1-margin)/2*width + "," + (1-margin)/2*height + ")");
+                  //.attr("transform", "translate(" + width/2 + "," + height/2 + ")");
 
+    // funtion for the x grid lines
     function make_x_axis() {
     	return d3 	.svg
 			    	.axis()
 			        .scale(xScale)
-			        .ticks(data.length)
+			        //.ticks(data.length)
 			        .orient("bottom");
 	}
 
@@ -116,8 +116,9 @@ LineChart.prototype.draw = function(){
 	    .attr("transform", "translate(0," + height*margin  + ")")
 	    .call(xAxis)
 	   	.append("text")
+	   //	.attr("font-size", "2vw")
 	   	.attr("transform", "translate(" + width*margin  + "," + 0 + ")")
-	   	.attr("y", -height*(0.02))
+	   	.attr("y", -height*(label_margin))
 	    .style("text-anchor", "end")
 	   	.text(x_axis_label);
 
@@ -126,8 +127,9 @@ LineChart.prototype.draw = function(){
 	    .attr("class", "y axis")
 	    .call(yAxis)
 	    .append("text")
+	   // .attr("font-size", "2vw")
 	    .attr("transform", "rotate(-90)")
-	    .attr("y", width*(0.02))
+	    .attr("y", width*(label_margin))
 	    .style("text-anchor", "end")
 	   	.text(y_axis_label);
 }
