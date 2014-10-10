@@ -97,6 +97,7 @@ body{
 }
 
 .initial-slot-normal {
+  font-size: 2vh;
   min-width: 33%;
   min-height: 33%;
   flex:1 auto;
@@ -105,6 +106,7 @@ body{
 }
 
 .initial-slot-zoom {
+  font-size: 1vh;
   flex:1 auto;
   display: flex;
   flex-direction : column;
@@ -136,7 +138,6 @@ body{
 }
 
 .graph-title{
-  font-size: 1vw;
   flex:1;
 }
 
