@@ -41,7 +41,7 @@
 					ridesBy(1, $connessione); //1 is by time
 					break;
 				case '8':
-					ridesBy(2, $connessione); //2 is by avg distance of each bike
+					ridesBy(2, $connessione); //2 is by sum of distance of each bike
 					break;
 				case '9':
 					//echo "<br>nine!";
@@ -143,9 +143,9 @@
 					genericDisplayData($result, $variables);
 					break;
 				case '2':
-					//if we want the avg distance per each bike...
-					//SELECT bikeid, AVG(meters) FROM divvydb.rides group by bikeid;
-					$result = genericQuery('bikeid, AVG(meters) as avgdist','rides', 'true', 'group by bikeid', $connessione);
+					//if we want the sum of distance per each bike...
+					//SELECT bikeid, SUM(meters) FROM divvydb.rides group by bikeid;
+					$result = genericQuery('bikeid, SUM(meters) as avgdist','rides', 'true', 'group by bikeid', $connessione);
 					$variables = array('0' => 'bikeid',
 										'1' =>  'avgdist');
 
