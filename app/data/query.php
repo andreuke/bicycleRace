@@ -120,7 +120,7 @@
 								'1' => 'to_station_id',
 								'2' => 'hour');
 
-			genericDisplayData($result, $variables);
+			labelledDisplayData($result, $variables);
 		}
 
 		function ridesBy($filter, $connessione){
@@ -186,6 +186,30 @@
 					# code...
 					break;
 			}
+		}
+
+		function labelledDisplayData($result, $variables){
+			$numRows = mysql_num_rows($result);
+
+			echo '{"data":[';
+			$j=0;
+			while($var = mysql_fetch_array($result)){
+				echo '{';
+				for($i = 0; $i < count($variables); $i++){
+					echo '"'.$variables[$i].'":"'.$var[$variables[$i]].'"';
+					if($i != count($variables)-1){
+						echo ",";
+					}
+				}
+				echo '}';
+
+				if($j != $numRows-1){
+					echo ",";
+				}
+				$j++;
+			}
+
+			echo ']}';
 		}
 
 
