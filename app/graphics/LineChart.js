@@ -49,7 +49,7 @@ function dateScale(labels, width){
 	var parseDate = d3.time.format("%b-%d").parse;
 	return d3 	.time
 				.scale()
-				.domain(d3.extent(labels, function(d) { return parseDate(d); }));
+				.domain(d3.extent(labels, function(d) { return parseDate(d); }))
     			.range([0, width]);
 }
 
