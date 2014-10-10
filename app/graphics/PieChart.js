@@ -7,6 +7,7 @@ function PieChart(container,data,labels){
 	this.labels = labels;
 	this.containerWidth = parseInt(d3.select(this.container).style("width"));
 	this.containerHeight = parseInt(d3.select(this.container).style("height"));
+	this.svg = {};
 }
 
 PieChart.prototype.draw = function(){
@@ -64,6 +65,7 @@ PieChart.prototype.draw = function(){
 					.attr("height", "")
 					// Default implementation
 					// .attr("height", "100%")
+		this.svg = _svg;
 height
 
 	//Create SVG element
@@ -149,7 +151,11 @@ height
 }
 
 // TODO
-PieChart.prototype.update = function(data) {}
+PieChart.prototype.update = function(data) {
+	this.data = data;
+	this.svg.remove();
+	this.draw();
+}
 
 
 

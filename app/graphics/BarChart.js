@@ -4,6 +4,7 @@
     this.container = container;
     this.data = data;
     this.labels = labels;
+    this.svg = {};
     // this.containerWidth = parseInt(d3.select(this.container).style("width"));
     // this.containerHeight = parseInt(d3.select(this.container).style("height"));
   }
@@ -48,6 +49,8 @@
           .attr("height", "")
           // Default implementation
           // .attr("height", "100%")
+
+    this.svg = bar_svg;
 
     // Draw rects
     bar_svg.selectAll("rect")
@@ -115,14 +118,12 @@
                .style("fill", "black")
                .attr("font-size", height/25+"px");
      }
-
-       
-
-         
-
-
 }
 
-
+ BarChart.prototype.update = function(data) {
+  this.data = data;
+  this.svg.remove();
+  this.draw();
+ }
 
   
