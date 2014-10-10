@@ -102,7 +102,7 @@ function database(url){
 
 	/*
 	distribution of rides by filter
-	filter can be 0 -> distance, 1 -> time, 3 ->distance for each bike
+	filter can be 0 -> distance, 1 -> time, 2 ->distance for each bike
 	*/
 	database.prototype.ridesBy = function ($filter){
 		var return_value;

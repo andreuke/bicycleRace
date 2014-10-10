@@ -194,35 +194,38 @@ var initialController = function(controller) {
   that.addState("zoomedGraphs", []);
   that.addState("ini-mode", "normal")
   //States of the graphs
-  that.addState("ini-time1-data", db.bikesOutByDayOfWeek());
-  that.addState("ini-time2-data", [1, 2, 3, 4, 5, 6, 7, 8]);
-  that.addState("ini-time3-data", [1, 2, 3, 4, 5, 6, 7, 8]);
-  that.addState("ini-distr1-data", [1, 2, 3, 4, 5, 6, 7, 8]);
-  that.addState("ini-distr2-data", [1, 2, 3, 4, 5, 6, 7, 8]);
-  that.addState("ini-distr3-data", [1, 2, 3, 4, 5, 6, 7, 8]);
-  that.addState("ini-demog1-data", [1, 2, 3, 4, 5, 6, 7, 8]);
-  that.addState("ini-demog2-data", [1, 2, 3, 4, 5, 6, 7, 8]);
-  that.addState("ini-demog3-data", [1, 2, 3, 4, 5, 6, 7, 8]);
+  var tmpDem1 = db.ridesBy(0);
+  var tmpDem2 = db.ridesBy(1);
+  var tmpDem3 = db.ridesBy(2);
+  that.addState("ini-time1-data", getFromJSON(db.bikesOutByDayOfTheYear(), "value"));
+  that.addState("ini-time2-data", getFromJSON(db.bikesOutByDayOfWeek(), "value"));
+  that.addState("ini-time3-data", getFromJSON(db.bikesOutByHourOfDay(), "value"));
+  that.addState("ini-distr1-data", getFromJSON(tmpDem1, "value"));
+  that.addState("ini-distr2-data", getFromJSON(tmpDem2, "value"));
+  that.addState("ini-distr3-data", getFromJSON(tmpDem3, "value"));
+  that.addState("ini-demog1-data", getFromJSON(db.riderDemographics(0), "value"));
+  that.addState("ini-demog2-data", getFromJSON(db.riderDemographics(2), "value"));
+  that.addState("ini-demog3-data", getFromJSON(db.riderDemographics(1), "value"));
 
   that.addState("ini-time1-type", "linechart");
-  that.addState("ini-time2-type", "piechart");
+  that.addState("ini-time2-type", "barchart");
   that.addState("ini-time3-type", "linechart");
   that.addState("ini-distr1-type", "linechart");
-  that.addState("ini-distr2-type", "piechart");
+  that.addState("ini-distr2-type", "linechart");
   that.addState("ini-distr3-type", "linechart");
-  that.addState("ini-demog1-type", "linechart");
-  that.addState("ini-demog2-type", "linechart");
+  that.addState("ini-demog1-type", "piechart");
+  that.addState("ini-demog2-type", "piechart");
   that.addState("ini-demog3-type", "linechart");
 
-  that.addState("ini-time1-labels", ["popo", "franco"]);
-  that.addState("ini-time2-labels", ["popo", "franco"]);
-  that.addState("ini-time3-labels", ["popo", "franco"]);
-  that.addState("ini-distr1-labels", ["popo", "franco"]);
-  that.addState("ini-distr2-labels", ["popo", "franco"]);
-  that.addState("ini-distr3-labels", ["popo", "franco"]);
-  that.addState("ini-demog1-labels", ["popo", "franco"]);
-  that.addState("ini-demog2-labels", ["popo", "franco"]);
-  that.addState("ini-demog3-labels", ["popo", "franco"]);
+  that.addState("ini-time1-labels", getFromJSON(db.bikesOutByDayOfTheYear(), "label"));
+  that.addState("ini-time2-labels", getFromJSON(db.bikesOutByDayOfWeek(), "label"));
+  that.addState("ini-time3-labels", getFromJSON(db.bikesOutByHourOfDay(), "label"));
+  that.addState("ini-distr1-labels", getFromJSON(tmpDem1, "label"));
+  that.addState("ini-distr2-labels", getFromJSON(tmpDem2, "label"));
+  that.addState("ini-distr3-labels", getFromJSON(tmpDem3, "label"));
+  that.addState("ini-demog1-labels", getFromJSON(db.riderDemographics(0), "label"));
+  that.addState("ini-demog2-labels", getFromJSON(db.riderDemographics(2), "label"));
+  that.addState("ini-demog3-labels", getFromJSON(db.riderDemographics(1), "label"));
 
 
   that.selectedGraph = function(graphId) {
@@ -302,14 +305,15 @@ var initialView = function(controller, container) {
   _controller.onChange("mode", switchMainMode);
 
   graphs[0] = singleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-time1");
-  graphs[1] = singleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-time2");
-  graphs[2] = singleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-time3");
-  graphs[3] = singleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-distr1");
-  graphs[4] = singleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-distr2");
-  graphs[5] = singleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-distr3");
   graphs[6] = singleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-demog1");
+  graphs[3] = singleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-distr1");
+  graphs[1] = singleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-time2");
   graphs[7] = singleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-demog2");
+  graphs[4] = singleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-distr2");
+  graphs[2] = singleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-time3");
   graphs[8] = singleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-demog3");
+  graphs[5] = singleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-distr3");
+  
 }
 
 var singleGraph = function(controller, where, idElement, idState) {
@@ -386,3 +390,31 @@ var singleGraph = function(controller, where, idElement, idState) {
 
   return that;
 }
+
+var pickAdayController = function(parent) {
+  that = abstractController(parent);
+
+
+
+  return that;
+}
+
+var pickAdayView = function(leftCointainer, rightContainer) {
+  that = {};
+
+
+
+  return that;
+}
+
+var getFromJSON = function(json, what) {
+    var tmpArray = [];
+    for (var i = 0; i < json.data.length; i++) {
+      if (what === "value") {
+        tmpArray.push(parseInt(json.data[i][what],10));
+        } else {
+          tmpArray.push(json.data[i][what]);
+        }
+      }
+      return tmpArray;
+    }
