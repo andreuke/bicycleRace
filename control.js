@@ -4,7 +4,6 @@ var abstractController = function(parent) {
   that.callbacks = {};
   //Scope of the controller, do not change it directly
   that.scope = {};
-
   //Change the value of an attribute in the scope and execute every subscriber
   //Do not override
   //Use this function in the controllers if the change of state need elaboration
@@ -87,11 +86,19 @@ var abstractController = function(parent) {
 //Pricipal Controller
 //State of the application represented in this controller are:
 //mode: string that identifies in which current state the application is ("initial","pickAday"..)
-//mapSelections: Array cointainig all the stations currently selected
+//SelectedStation: Array cointainig all the stations currently selected
 var mainController = function() {
   var that = abstractController();
+
   that.addState("mode", ""); //mode of the application
-  that.addState("mapSelections", []); //array of the current station selected
+  that.addState("SelectedStation", []); //array of the current station selected
+
+  var addGraphState = function(data,labels,title,type){
+    that = {};
+    that.data = data;
+
+    return that;
+  }
 
   //Invoked  by views in oder to change the mode
   that.changeMode = function(mode) {
@@ -103,14 +110,14 @@ var mainController = function() {
   //Invoked by the map for notify the selection of a station
   //TODO finish implementation
   that.addSelectStation = function(idStation) {
-    tmp = that.get("mapSelections");
-    that.set("mapSelections", tmp.push(idStation));
+    tmp = that.get("SelectedStation");
+    that.set("SelectedStation", tmp.push(idStation));
   }
 
   //Invoked by the map for notifying the deselection of a station
   //finish implementation
   that.removeSelectStation = function(idStation) {
-    tmp = that.get("mapSelections");
+    tmp = that.get("SelectedStation");
     //TODO rimuovere stazione dal tmp
     //TODO settare il nuovo array
   }
@@ -196,11 +203,11 @@ var initialController = function(controller) {
   //States of the graphs
 
   that.addState("ini-time1-data", []);
-  that.addState("ini-time2-data", []); //getFromJSON(db.bikesOutByDayOfWeek(), "value"));
+  that.addState("ini-time2-data", []);
   that.addState("ini-time3-data", []);
-  that.addState("ini-distr1-data", []); //getFromJSON(tmpDem1, "value"));
-  that.addState("ini-distr2-data", []); //getFromJSON(tmpDem2, "value"));
-  that.addState("ini-distr3-data", []); //getFromJSON(tmpDem3, "value"));
+  that.addState("ini-distr1-data", []);
+  that.addState("ini-distr2-data", []);
+  that.addState("ini-distr3-data", []); 
   that.addState("ini-demog1-data", []);
   that.addState("ini-demog2-data", []);
   that.addState("ini-demog3-data", []);
@@ -215,12 +222,19 @@ var initialController = function(controller) {
   that.addState("ini-demog2-type", "piechart");
   that.addState("ini-demog3-type", "linechart");
 
+  that.addState("ini-time1-linechart-type", "ordinal");
+  that.addState("ini-time3-linechart-type", "ordinal");
+  that.addState("ini-distr1-linechart-type", "numerical");
+  that.addState("ini-distr2-linechart-type", "ordinal");
+  that.addState("ini-distr3-linechart-type", "ordinal");
+  that.addState("ini-demog3-linechart-type", "ordinal");
+
   that.addState("ini-time1-labels", []);
-  that.addState("ini-time2-labels", []); //getFromJSON(db.bikesOutByDayOfWeek(), "label"));
+  that.addState("ini-time2-labels", []);
   that.addState("ini-time3-labels", []);
-  that.addState("ini-distr1-labels", []); //getFromJSON(tmpDem1, "label"));
-  that.addState("ini-distr2-labels", []); //getFromJSON(tmpDem2, "label"));
-  that.addState("ini-distr3-labels", []); //getFromJSON(tmpDem3, "label"));
+  that.addState("ini-distr1-labels", []);
+  that.addState("ini-distr2-labels", []); 
+  that.addState("ini-distr3-labels", []); 
   that.addState("ini-demog1-labels", []);
   that.addState("ini-demog2-labels", []);
   that.addState("ini-demog3-labels", []);
@@ -348,7 +362,7 @@ var singleGraph = function(controller, where, idElement, idState) {
     .attr("id", id)
     .classed("initial-slot-normal", true);
   var title = mainDiv.append("text")
-    .text(_controller.get(idStatus + "-title"))
+    .text(_controller.get(idStatus + "-title") + id)
     .classed("graph-title", true);
   var graphDiv = mainDiv.append("div").attr("id", id + "-div-graph")
     .classed("div-graph", true)
@@ -364,7 +378,7 @@ var singleGraph = function(controller, where, idElement, idState) {
       graph = Chart(_controller.get(idStatus + "-data"), "#" + graphDiv.attr("id"), "100%", "");
       break;
     case "linechart":
-      graph = new LineChart("#" + graphDiv.attr("id"), _controller.get(idStatus + "-data"), _controller.get(idStatus + "-labels"), "ciccio", "pino");
+      graph = new LineChart("#" + graphDiv.attr("id"), _controller.get(idStatus + "-data"), _controller.get(idStatus + "-labels"), "ciccio", "pino",_controller.get(idStatus + "-linechart-type"));
       break;
   }
 
