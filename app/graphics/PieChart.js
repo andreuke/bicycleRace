@@ -1,5 +1,5 @@
-var pieColor = ["#F16745", "#FFC65D", "#7BC8A4", "#4CC3D9", "#93648D", "#404040"]
-
+//var pieColor = ["#F16745", "#FFC65D", "#7BC8A4", "#4CC3D9", "#93648D", "#404040"]
+var pieColor = ["#388BC4","#FF9A40", "#49B249", "#DE595A","#A57DC9","#93685F","#E28AC7", "#919191"];
 
 function PieChart(container,data,labels){
 	this.container = container;
