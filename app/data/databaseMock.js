@@ -5,7 +5,6 @@
 function databaseMock(url) {
 	this.queryUrl = url;
 }
-/*
 databaseMock.prototype.bikesOutByDayOfWeek = function(callback, state) {
 	//number ob bikes of by day of the week
 
@@ -22,7 +21,7 @@ databaseMock.prototype.bikesOutByDayOfWeek = function(callback, state) {
 
 	//callback(JSON.parse(return_value.responseText), state);
 	//return JSON.parse(return_value.responseText);
-}*/
+}
 
 databaseMock.prototype.bikesOutByHourOfDay = function(callback, state) {
 	var json = {};

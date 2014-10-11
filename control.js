@@ -92,8 +92,26 @@ var mainController = function() {
 
   that.addState("mode", ""); //mode of the application
   that.addState("SelectedStation", []); //array of the current station selected
+  that.addState("divvyStations",{});
+  that.addState("communityAreas",{});
+  
+  d3.json("app/data/divvy_stations.json", function(error, json) {
+    if (error){
+     return console.warn(error);
+   } else {
+      that.set("divvyStations",json);
+   }
+  });
 
-  var addGraphState = function(data,labels,title,type){
+   d3.json("app/data/community_areas.json", function(error, json) {
+    if (error){
+     return console.warn(error);
+   } else {
+      that.set("communityAreas",json);
+   }
+  });
+
+  var addGraphState = function(data, labels, title, type) {
     that = {};
     that.data = data;
 
@@ -131,6 +149,8 @@ var mainView = function(controller) {
   var slots = []
   var divButtons = d3.select("#mainButtons").attr("class", "flex-horizontal");
   var listButtons = {};
+  var map = new Map("map", [41.8, -87.67],_controller);
+  map.draw();
 
   //Buttons
   //Switch to initial view button
@@ -207,7 +227,7 @@ var initialController = function(controller) {
   that.addState("ini-time3-data", []);
   that.addState("ini-distr1-data", []);
   that.addState("ini-distr2-data", []);
-  that.addState("ini-distr3-data", []); 
+  that.addState("ini-distr3-data", []);
   that.addState("ini-demog1-data", []);
   that.addState("ini-demog2-data", []);
   that.addState("ini-demog3-data", []);
@@ -224,7 +244,7 @@ var initialController = function(controller) {
 
   that.addState("ini-time1-linechart-type", "ordinal");
   that.addState("ini-time3-linechart-type", "ordinal");
-  that.addState("ini-distr1-linechart-type", "numerical");
+  that.addState("ini-distr1-linechart-type", "ordinal");
   that.addState("ini-distr2-linechart-type", "ordinal");
   that.addState("ini-distr3-linechart-type", "ordinal");
   that.addState("ini-demog3-linechart-type", "ordinal");
@@ -233,15 +253,15 @@ var initialController = function(controller) {
   that.addState("ini-time2-labels", []);
   that.addState("ini-time3-labels", []);
   that.addState("ini-distr1-labels", []);
-  that.addState("ini-distr2-labels", []); 
-  that.addState("ini-distr3-labels", []); 
+  that.addState("ini-distr2-labels", []);
+  that.addState("ini-distr3-labels", []);
   that.addState("ini-demog1-labels", []);
   that.addState("ini-demog2-labels", []);
   that.addState("ini-demog3-labels", []);
 
   that.addState("ini-time1-title", "Number of bikes in the year");
   that.addState("ini-time2-title", "Number of bikes in the week");
-  that.addState("ini-time3-title", "Number of bikes by hour");
+  that.addState("ini-time3-title", "Number of rides by hour");
   that.addState("ini-distr1-title", "Distribution of rides by distance");
   that.addState("ini-distr2-title", "Distribution of rides by time");
   that.addState("ini-distr3-title", "Distance for each bike");
@@ -378,7 +398,7 @@ var singleGraph = function(controller, where, idElement, idState) {
       graph = Chart(_controller.get(idStatus + "-data"), "#" + graphDiv.attr("id"), "100%", "");
       break;
     case "linechart":
-      graph = new LineChart("#" + graphDiv.attr("id"), _controller.get(idStatus + "-data"), _controller.get(idStatus + "-labels"), "ciccio", "pino",_controller.get(idStatus + "-linechart-type"));
+      graph = new LineChart("#" + graphDiv.attr("id"), _controller.get(idStatus + "-data"), _controller.get(idStatus + "-labels"), "ciccio", "pino", _controller.get(idStatus + "-linechart-type"));
       break;
   }
 
@@ -410,7 +430,7 @@ var singleGraph = function(controller, where, idElement, idState) {
   }
   _controller.onChange(idStatus + "-data", function(data) {
     //BAD PRACTICE. TODO: found another way
-    graph.update(data,_controller.get(idStatus + "-labels"));
+    graph.update(data, _controller.get(idStatus + "-labels"));
   });
 
   _controller.onChange("ini-mode", handleChangeMode);
