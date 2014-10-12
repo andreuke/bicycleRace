@@ -13,7 +13,7 @@ function Map(container, initialCoord, controller) {
 	this.sat = false;
 	this.farView = initialZoom < this.zoomThreshold;
 
-	this.map = L.map(container).setView(initialCoord, initialZoom)
+	this.map = L.map(container).setView(initialCoord, initialZoom);
 
 	this.smallIcon = L.icon({
 		iconUrl: 'app/graphics/res/icon_small.png',
@@ -79,6 +79,7 @@ function Map(container, initialCoord, controller) {
 	});
 	this.controller.onChange("communityAreas",function (data){
 		that.loadCommunityAreas(data);
+		console
 		that.showCommunityAreas();
 	});
 
@@ -177,8 +178,8 @@ Map.prototype.showCommunityAreas = function() {
 	var communityAreas = this.communityAreas;
 	var map = this.map;
 
-	for (c in communityAreas) {
-		communityAreas[c].addTo(map)
+	for (var i = 0; i < communityAreas.length ; i++) {
+		communityAreas[i].addTo(map);
 
 	}
 }
@@ -207,6 +208,9 @@ Map.prototype.showStations = function() {
 	}
 }
 
+Map.prototype.redraw = function() {
+	this.map.invalidateSize();
+}
 
 Map.prototype.hideStations = function() {
 	for (s in this.stations) {
@@ -232,4 +236,26 @@ Map.prototype.addGraph = function(){
 	var container = '#popup-graph-container'
 	var pie = new PieChart(container, [12, 34, 10, 8, 6], ["ammaccabanana", "bopodollo", "cretinazzo", "dindaro", "ettortello"]);
 	pie.draw();
+}
+
+Map.prototype.drawLine = function(start, end, thickness) {
+	var points = [start, end];
+
+	var polyline = L.polyline(points,{color: 'red', weight: thickness});
+
+	polyline.addTo(this.map);
+	this.lines.push(polyline);
+
+}
+
+Map.prototype.drawTrip = function(fromID, toID, quantity) {
+	var start = this.stationList[fromID]
+	var end = this.stationList[toID]
+	this.drawLine(start, end, quantity*3);
+}
+
+Map.prototype.drawTrips = function(trips) {
+	for(var i = 0; i < trips.length; i++) {
+		this.drawTrip(trips[i].from_station_id, trips[i].to_station_id, trips[i].totalTripsMade);
+	}
 }

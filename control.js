@@ -147,6 +147,7 @@ var mainView = function(controller) {
   var divButtons = d3.select("#mainButtons").attr("class", "flex-horizontal");
   var listButtons = {};
   var map = new Map("map", [41.8, -87.67], _controller);
+  var divMap = d3.select("#map");
   map.draw();
 
   //Buttons
@@ -173,7 +174,7 @@ var mainView = function(controller) {
   //4 principal div of the application, the dimensions and positions
   //are related to the current mode
   slots[0] = d3.select("#div1");
-  slots[1] = d3.select("#div2"); //this slot cointains the map
+  slots[1] = d3.select("#div2");
   slots[2] = d3.select("#div3");
   slots[3] = d3.select("#div4");
 
@@ -184,14 +185,19 @@ var mainView = function(controller) {
     //TODO coprire tutte le mode
     switch (mode) {
       case "initial":
+        divMap.classed("left quart", true);
+        map.redraw();
         slots[0].attr("class", "flex-item right");
-        slots[1].attr("class", "quart left");
+        slots[1].attr("class", "invisible");
         slots[2].attr("class", "invisible");
         slots[3].attr("class", "invisible");
         break;
       case "pickAday":
+        divMap.classed("left", false);
+        divMap.classed("left-center quart", true);
+        map.redraw();
         slots[0].attr("class", "flex-item left green");
-        slots[1].attr("class", "quart left-center blue");
+        slots[1].attr("class", "invisible");
         slots[2].attr("class", "flex-item-double right red");
         slots[3].attr("class", "invisible");
     }
@@ -419,8 +425,8 @@ var pickAdayController = function(parent, prefixMap) {
   var that = abstractController(parent);
   that.addState("date", "");
   that.addState("hour", "");
-  that.addState("filter-value", "");
-  that.addState("filter-type", "");
+  that.addState("filter-type", "noFilter");
+  that.addState("filter-value", "noFilter");
   var mapPrefix = prefixMap;;
   var selectionsID = prefixMap + "-SelectedStation";
   var tripsID = prefixMap + "-tripsDisplayed";
@@ -433,6 +439,8 @@ var pickAdayController = function(parent, prefixMap) {
     that.addState(prefix + "-data", data);
     that.addState(prefix + "-labels", label);
     that.addState(prefix + "-title", title);
+    that.addState(prefix + "-filter-type", "noFilter");
+    that.addState(prefix + "-filter-value", "noFilter");
   }
 
   addGraphState("pick-chicago", [1, 2], [1, 2], "Chicago City", true, "chicago");
@@ -445,9 +453,14 @@ var pickAdayController = function(parent, prefixMap) {
   };
 
   //Callback for the data of the graphs
-  var callBackData = function(data, id) {
-    that.set(id + "-labels", getFromJSON(data, "label", false));
-    that.set(id + "-data", getFromJSON(data, "value", true));
+  var callBackActiveBikes = function(data, id) {
+    that.set(id + "-labels", getFromJSON(data, "hour", false));
+    that.set(id + "-data", getFromJSON(data, "numBike", true));
+  }
+
+  var callBackTrips = function(data, id) {
+    console.log(data);
+    data.tripId = id;
   }
 
   //TODO al cambiamento delle selezioni relative alla mappa associata
@@ -465,6 +478,7 @@ var pickAdayController = function(parent, prefixMap) {
       } else {
         if (selections.indexOf(tmpId) === -1) {
           that.set(tmpPrefix + "-show", false);
+          that.set(tmpPrefix + "-id", "");
           //remove trips
         } else {
           alreadySelected.push(tmpId);
@@ -473,7 +487,7 @@ var pickAdayController = function(parent, prefixMap) {
     };
     for (var i = 0; i < selections.length; i++) {
       if (alreadySelected.indexOf(selections[i]) === -1) {
-        //db.getData(empty prefixes[0])
+        //db.getData(emptyprefixes[0])
         //db.getTrips
         emptyPrefixes.slice(0, 1);
       }
@@ -485,14 +499,14 @@ var pickAdayController = function(parent, prefixMap) {
   //TODO al cambiamento dell'ora aggiornare i dati dei grafici,
   //e aggiornare i viaggi da mostrare sulla mappa(main controller)
   that.changeDateSelection = function(date) {
-    //TODO get the trips for all the city
-    //TODO get the trips fo all the selections
+    db.numberoOfActiveBikesOn(date, callBackActiveBikes, "pick-chicago");
+    db.tripsOn(date, "12", callBackTrips, "chicago-" + that.get("filter-type") + ":" + that.get("filter-value"));
     var selections = that.get(selectionsID);
     var hourSelected = that.get("hour");
     for (var i = 0; i < selections.length; i++) {
-      //query database per ogni selezione
+      //query database number of active bikes for station
+      //query dataBase trips for station given date and hour
     };
-    //that.set(tripsID, dati datosi) problema callbacks database
     that.set("date", date)
   }
 
@@ -501,7 +515,7 @@ var pickAdayController = function(parent, prefixMap) {
     //TODO get the trips fo all the selections
     var selections = that.get(selectionsID);
     var dateSelected = that.get("date");
-    //TODO recuperare dati
+    //TODO aggiornare tutti i trips
     that.set("hour", hour);
   }
 
@@ -538,7 +552,7 @@ var pickAdayView = function(controller, calendarContainer, graphsContainer) {
     graphs.push(pickSingleGraph("#" + rightDiv.attr("id"), _controller, tmpArray[i]));
   };
 
-  var cale = new calendar("#" + leftDiv.attr("id"),_controller);
+  var cale = new calendar("#" + leftDiv.attr("id"), _controller);
   cale.draw();
 
   var switchMainMode = function(mode) {
