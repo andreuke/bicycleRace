@@ -21,14 +21,7 @@ CHECK VARIABLE returnValue, that's what the query needs as input
         };
 
 
-
-        /*************  global variables    *****************/
-
-        // index of the month.
-        var index = 0;
-
-        //use to keep track of clicked things
-        var clicked = false;
+        calendar.prototype.draw = function(){
 
         //the svg 
         var svg;
@@ -37,10 +30,12 @@ CHECK VARIABLE returnValue, that's what the query needs as input
         var width = 400;
         var height = 400;
 
-        /****************************************************/
 
+        // index of the month.
+        var index = 0;
 
-        calendar.prototype.draw = function(){
+        //use to keep track of clicked things
+        var clicked = false;
             
         //svg creation
         svg = d3.select("body") 
@@ -50,7 +45,7 @@ CHECK VARIABLE returnValue, that's what the query needs as input
                     .attr("width","100%")
                     .attr("height", "100%");
 
-        init();
+        init(svg,index,clicked);
         }
         
         /*
@@ -61,7 +56,7 @@ CHECK VARIABLE returnValue, that's what the query needs as input
         console.log("day & mont "+day+" "+month);
         */
 
-        function init(){
+        function init(svg,index,clicked){
 
             //buttons to go to previous && next month
             svg.
@@ -91,8 +86,8 @@ CHECK VARIABLE returnValue, that's what the query needs as input
                    index++; 
                 }
                 
-                update_calendar_name(index);
-                update_calendar_data(index);
+                update_calendar_name(index,svg);
+                update_calendar_data(index,svg,clicked);
             });
 
             var monthTextXPos = 140;
@@ -122,7 +117,7 @@ CHECK VARIABLE returnValue, that's what the query needs as input
             //Days of the week creation
             var k = 50;
 
-            createDayOfWeek(k);
+            createDayOfWeek(k,svg);
 
 
             //creation of days...
@@ -216,7 +211,7 @@ CHECK VARIABLE returnValue, that's what the query needs as input
 
         
 
-            function update_calendar_name(index){
+            function update_calendar_name(index,svg){
                 //remove the name...
                 svg.select(".month-name").remove();
 
@@ -240,7 +235,7 @@ CHECK VARIABLE returnValue, that's what the query needs as input
 
             }
 
-            function update_calendar_data(index){
+            function update_calendar_data(index,svg,clicked){
                 for(var i = 1; i< 32; i++){
                     svg.select(".c"+i).remove();
                     svg.select(".t"+i).remove();
@@ -342,7 +337,7 @@ CHECK VARIABLE returnValue, that's what the query needs as input
             }
 
         
-            function createDayOfWeek(k){
+            function createDayOfWeek(k,svg){
                 svg
                 .append("text")
                 .text("Mo")
