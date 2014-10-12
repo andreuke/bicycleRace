@@ -263,6 +263,10 @@ Map.prototype.fakeQuery = function() {
 	this.drawTrips(data);
 }
 
+Map.prototype.invalidate = function() {
+	this.map.invalidateSize(true);
+}
+
 
 
 
@@ -270,6 +274,7 @@ Map.prototype.fakeQuery = function() {
 
 
 function onStationClick(e) {
+	console.log(e)
 
 	var map = e.target._map;
 
@@ -278,8 +283,7 @@ function onStationClick(e) {
 
 	// Leaves enough space for the popup
 	map.setView([latitude + 0.005, longitude], 15)
-	var stars = new Stars("#stars-container", 8);
-	stars.draw();
+	
 
 	// console.log("LAT: " + latitude + " - LONG: " + longitude);
 }

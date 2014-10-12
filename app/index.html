@@ -147,7 +147,11 @@ btn.addEventListener('click', function() {
   			map.fakeQuery();
   		}
   		else if(counter == 5) {
-  			map.hideStations();
+  			// map.hideStations();
+  		}
+  		else if(counter == 6) {
+  			d3.select("#map").style("width", "50%")
+  			map.invalidate()
   		}
   		counter++;
 });
