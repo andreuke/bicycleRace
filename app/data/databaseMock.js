@@ -29,7 +29,7 @@ databaseMock.prototype.bikesOutByHourOfDay = function(callback, state) {
 	for (var i = 0; i < 20; i++) {
 		json.data.push({
 			value: Number(Math.random() * 1000).toFixed(0).toString(),
-			label: "label" + i
+			label: i
 		});
 	}
 	window.setTimeout(function() {
@@ -43,7 +43,7 @@ databaseMock.prototype.bikesOutByDayOfTheYear = function(callback, state) {
 	for (var i = 0; i < 20; i++) {
 		json.data.push({
 			value: Number(Math.random() * 1000).toFixed(0).toString(),
-			label: "label" + i
+			label: i
 		});
 	}
 	window.setTimeout(function() {
@@ -81,7 +81,7 @@ databaseMock.prototype.ridesBy = function($filter, callback, state) {
 	for (var i = 0; i < 20; i++) {
 		json.data.push({
 			value: Number(Math.random() * 1000).toFixed(0).toString(),
-			label: "label" + i
+			label: Number(Math.random() * 1000).toFixed(0).toString()
 		});
 	}
 	window.setTimeout(function() {
