@@ -103,11 +103,11 @@
              
           
              	//$res = genericQuery('count(distinct bikeid) as numbike', 'divvy_trips_distances_skinny', "startdate = '".$day."' and hour = '".$i."'", '', $connessione);
-             	$res = genericQuery('count(distinct bikeid) as numbike', 'divvy_trips_distances_skinny', "startdate = '".$day."'", 'group by hour', $connessione);
+             	$res = genericQuery('hour,count(distinct bikeid) as numbike', 'divvy_trips_distances_skinny', "startdate = '".$day."'", 'group by hour', $connessione);
      
             for($i = 0; $i < 24; $i++){
             	$var = mysql_fetch_array($res);
-             	$dataArray[$i*2] = $i;
+             	$dataArray[$i*2] = $var['hour'];
              	$dataArray[$i*2+1] = $var['numbike'];
              }
 
