@@ -8,6 +8,9 @@ CHECK VARIABLE returnValue, that's what the query needs as input
 function calendar(container, controller) {
 this.cont = container;
 this.controller = controller
+ //use to keep track of clicked things
+var clicked = 'c1';
+var monthClicked = 0;
 }
 
 var months = {
@@ -53,9 +56,6 @@ calendar.prototype.draw = function() {
     // index of the month.
     var index = 0;
 
-    //use to keep track of clicked things
-    var clicked = false;
-
     //svg creation
     svg = d3.select(this.cont)
         .append("svg")
@@ -65,7 +65,7 @@ calendar.prototype.draw = function() {
         .attr("height", "")
         .attr("class","flex-item")
 
-    this.init(svg, index, clicked);
+    this.init(svg, index);
 }
 
 /*
@@ -76,7 +76,7 @@ calendar.prototype.draw = function() {
         console.log("day & mont "+day+" "+month);
         */
 
-calendar.prototype.init = function(svg, index, clicked) {
+calendar.prototype.init = function(svg, index) {
     var that = this;
     //buttons to go to previous && next month
     svg.
@@ -91,7 +91,7 @@ calendar.prototype.init = function(svg, index, clicked) {
                 index--;
             }
             that.update_calendar_name(index,svg);
-            that.update_calendar_data(index,svg,clicked);
+            that.update_calendar_data(index,svg);
         });
 
     svg.
@@ -107,7 +107,7 @@ calendar.prototype.init = function(svg, index, clicked) {
             }
 
             that.update_calendar_name(index, svg);
-            that.update_calendar_data(index, svg, clicked);
+            that.update_calendar_data(index, svg);
         });
 
     var monthTextXPos = 140;
@@ -171,21 +171,22 @@ calendar.prototype.init = function(svg, index, clicked) {
 
     d3.selectAll("rect")
         .on("click", function() {
-            if (clicked == true) {
+            if (that.clicked != undefined) {
                 d3.selectAll("rect")
                     .transition()
                     .duration(300)
                     .attr("fill", "white");
-                clicked = false;
+                that.clicked = undefined;
             }
             d3.select(this)
                 .transition()
                 .duration(300)
                 .attr("fill", "orange");
 
-            clicked = true;
 
             var text = d3.select(this).attr("class");
+            that.clicked = text;
+            that.monthClicked = index;
             var update = "t";
             for (var i = 1; i < text.length; i++) {
                 update = update + text.charAt(i);
@@ -255,7 +256,8 @@ calendar.prototype.update_calendar_name = function(index, svg) {
 
 }
 
-calendar.prototype.update_calendar_data = function(index, svg, clicked) {
+calendar.prototype.update_calendar_data = function(index, svg) {
+    var that = this;
     for (var i = 1; i < 32; i++) {
         svg.select(".c" + i).remove();
         svg.select(".t" + i).remove();
@@ -281,6 +283,10 @@ calendar.prototype.update_calendar_data = function(index, svg, clicked) {
             .attr("stroke-width", "3")
             .attr("class", "c" + i);
 
+        if(that.monthClicked == index && that.clicked != undefined){
+            svg.select("."+that.clicked).attr("fill", "orange");
+        }
+
         svg
             .append("text")
             .text(i)
@@ -294,21 +300,22 @@ calendar.prototype.update_calendar_data = function(index, svg, clicked) {
 
     d3.selectAll("rect")
         .on("click", function() {
-            if (clicked == true) {
+            if (that.clicked != undefined) {
                 d3.selectAll("rect")
                     .transition()
                     .duration(300)
                     .attr("fill", "white");
-                clicked = false;
+                that.clicked = undefined;
             }
             d3.select(this)
                 .transition()
                 .duration(300)
                 .attr("fill", "orange");
 
-            clicked = true;
 
             var text = d3.select(this).attr("class");
+            that.clicked = text;
+            that.monthClicked = index;
             var update = "t";
             for (var i = 1; i < text.length; i++) {
                 update = update + text.charAt(i);
