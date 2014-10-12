@@ -1,4 +1,4 @@
- var db = new database("app/data/query.php");
+ var db = new databaseMock("app/data/query.php");
 
  var control = mainController();
 
@@ -6,4 +6,10 @@
 
  var iniControl = initialController(control);
 
- var iniView = initialView(iniControl,"#initialDiv");
+ var iniView = initialView(iniControl,"#div1");
+
+ var pickControl = pickAdayController(control,"map1");
+
+ var pickView = pickAdayView(pickControl, "#div1","#div3");
+
+ control.exec("changeMode", "pickAday");
