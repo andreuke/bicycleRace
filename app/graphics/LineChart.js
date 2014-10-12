@@ -35,7 +35,7 @@ function ordinalScale(data, width){
 function numericScale(labels, width){
 	return d3 	.scale
 				.linear()
-				.domain([0, d3.max(labels, function(d){ return parseInt(d)})])
+				.domain([0, d3.max(labels, function(d){ return parseInt(d,10)})])
 				.range([0, width]);
 }
 
@@ -62,7 +62,7 @@ function yearScale(labels, width){
 	var year = 2013;
 	return d3 	.scale
 				.linear()
-				.domain([0, d3.max(labels, function(d){return year-parseInt(d)})])
+				.domain([0, d3.max(labels, function(d){return year-parseInt(d,10)})])
 				.range([0, width]);
 }
 
@@ -132,7 +132,7 @@ LineChart.prototype.draw = function(){
     						case "ordinal":
     							return xScale(i);
     						case "numerical":
-    							return xScale(parseInt(labels[i]));
+    							return xScale(parseInt(labels[i],10));
 /*    						case "time":
     							var parseTime = d3.time.format("%d-%b-%y").parse;
     							return xScale(parseTime(labels[i]));*/
@@ -141,7 +141,7 @@ LineChart.prototype.draw = function(){
     							return xScale(parseDate(labels[i]));
     						case "year":
     							var year = 2013;
-    							return xScale(year - parseInt(labels[i]));
+    							return xScale(year - parseInt(labels[i],10));
     						default:
     							return xScale(i);}
     					})

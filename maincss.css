@@ -91,7 +91,7 @@ body{
 
 .flex-vertical{
   flex-basis:0;
-  flex:1 auto;
+  flex:1;
   display: flex;
   flex-direction : column;
 }
@@ -107,7 +107,7 @@ body{
 
 .initial-slot-zoom {
   font-size: 1vh;
-  flex:1 auto;
+  flex:1;
   display: flex;
   flex-direction : column;
 }

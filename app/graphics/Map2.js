@@ -16,7 +16,7 @@ function Map(container, initialCoord, controller) {
 	this.map = L.map(container).setView(initialCoord, initialZoom)
 
 	this.smallIcon = L.icon({
-		iconUrl: 'app/graphics/src/icon_small.png',
+		iconUrl: 'app/graphics/res/icon_small.png',
 		//shadowUrl: 'graphics/leaf-shadow.png',
 
 		iconSize: [10, 10], // size of the icon
@@ -26,7 +26,7 @@ function Map(container, initialCoord, controller) {
 		popupAnchor: [0, -10] // point from which the popup should open r
 	});
 	this.largeIcon = L.icon({
-		iconUrl: 'app/graphics/src/icon_large.png',
+		iconUrl: 'app/graphics/res/icon_large.png',
 		//shadowUrl: 'graphics/leaf-shadow.png',
 
 		iconSize: [40, 48], // size of the icon

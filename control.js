@@ -91,32 +91,29 @@ var mainController = function() {
   var that = abstractController();
 
   that.addState("mode", ""); //mode of the application
-  that.addState("SelectedStation", []); //array of the current station selected
-  that.addState("divvyStations",{});
-  that.addState("communityAreas",{});
-  
+  that.addState("map1-SelectedStation", []); //array of the current station selected
+  that.addState("map2-SelectedStation", []);
+  that.addState("map1-tripsDisplayed", []);
+  that.addState("map2-tripsDisplayed", []);
+
+  that.addState("divvyStations", {});
+  that.addState("communityAreas", {});
+
   d3.json("app/data/divvy_stations.json", function(error, json) {
-    if (error){
-     return console.warn(error);
-   } else {
-      that.set("divvyStations",json);
-   }
+    if (error) {
+      return console.warn(error);
+    } else {
+      that.set("divvyStations", json);
+    }
   });
 
-   d3.json("app/data/community_areas.json", function(error, json) {
-    if (error){
-     return console.warn(error);
-   } else {
-      that.set("communityAreas",json);
-   }
+  d3.json("app/data/community_areas.json", function(error, json) {
+    if (error) {
+      return console.warn(error);
+    } else {
+      that.set("communityAreas", json);
+    }
   });
-
-  var addGraphState = function(data, labels, title, type) {
-    that = {};
-    that.data = data;
-
-    return that;
-  }
 
   //Invoked  by views in oder to change the mode
   that.changeMode = function(mode) {
@@ -127,9 +124,9 @@ var mainController = function() {
 
   //Invoked by the map for notify the selection of a station
   //TODO finish implementation
-  that.addSelectStation = function(idStation) {
-    tmp = that.get("SelectedStation");
-    that.set("SelectedStation", tmp.push(idStation));
+  that.addSelectStation = function(idStation, mapPrefix) {
+    tmp = that.get(mapPrefix + "-SelectedStation");
+    that.set(mapPrefix + "-SelectedStation", tmp.push(idStation));
   }
 
   //Invoked by the map for notifying the deselection of a station
@@ -149,7 +146,7 @@ var mainView = function(controller) {
   var slots = []
   var divButtons = d3.select("#mainButtons").attr("class", "flex-horizontal");
   var listButtons = {};
-  var map = new Map("map", [41.8, -87.67],_controller);
+  var map = new Map("map", [41.8, -87.67], _controller);
   map.draw();
 
   //Buttons
@@ -222,56 +219,27 @@ var initialController = function(controller) {
   that.addState("ini-mode", "normal")
   //States of the graphs
 
-  that.addState("ini-time1-data", []);
-  that.addState("ini-time2-data", []);
-  that.addState("ini-time3-data", []);
-  that.addState("ini-distr1-data", []);
-  that.addState("ini-distr2-data", []);
-  that.addState("ini-distr3-data", []);
-  that.addState("ini-demog1-data", []);
-  that.addState("ini-demog2-data", []);
-  that.addState("ini-demog3-data", []);
+  var addGraphState = function(prefix, data, label, title, type, linetype) {
+    that.addState(prefix + "-data", data);
+    that.addState(prefix + "-labels", label);
+    that.addState(prefix + "-title", title);
+    that.addState(prefix + "-type", type);
+    that.addState(prefix + "-linechart-type", linetype);
+  }
 
-  that.addState("ini-time1-type", "linechart");
-  that.addState("ini-time2-type", "barchart");
-  that.addState("ini-time3-type", "linechart");
-  that.addState("ini-distr1-type", "linechart");
-  that.addState("ini-distr2-type", "linechart");
-  that.addState("ini-distr3-type", "linechart");
-  that.addState("ini-demog1-type", "piechart");
-  that.addState("ini-demog2-type", "piechart");
-  that.addState("ini-demog3-type", "linechart");
+  addGraphState("ini-time1", [], [], "Number of bikes in the year", "linechart", "ordinal")
+  addGraphState("ini-time2", [], [], "Number of bikes in the week", "barchart", "ordinal")
+  addGraphState("ini-time3", [], [], "Number of rides by hour", "linechart", "ordinal")
+  addGraphState("ini-distr1", [], [], "Distribution of rides by distance", "linechart", "numerical")
+  addGraphState("ini-distr2", [], [], "Distribution of rides by time", "linechart", "numerical")
+  addGraphState("ini-distr3", [], [], "Distance for each bike", "linechart", "numerical")
+  addGraphState("ini-demog1", [], [], "Gender", "piechart", "ordinal")
+  addGraphState("ini-demog2", [], [], "Subscribers", "piechart", "ordinal")
+  addGraphState("ini-demog3", [], [], "Age", "linechart", "ordinal")
 
-  that.addState("ini-time1-linechart-type", "ordinal");
-  that.addState("ini-time3-linechart-type", "ordinal");
-  that.addState("ini-distr1-linechart-type", "ordinal");
-  that.addState("ini-distr2-linechart-type", "ordinal");
-  that.addState("ini-distr3-linechart-type", "ordinal");
-  that.addState("ini-demog3-linechart-type", "ordinal");
-
-  that.addState("ini-time1-labels", []);
-  that.addState("ini-time2-labels", []);
-  that.addState("ini-time3-labels", []);
-  that.addState("ini-distr1-labels", []);
-  that.addState("ini-distr2-labels", []);
-  that.addState("ini-distr3-labels", []);
-  that.addState("ini-demog1-labels", []);
-  that.addState("ini-demog2-labels", []);
-  that.addState("ini-demog3-labels", []);
-
-  that.addState("ini-time1-title", "Number of bikes in the year");
-  that.addState("ini-time2-title", "Number of bikes in the week");
-  that.addState("ini-time3-title", "Number of rides by hour");
-  that.addState("ini-distr1-title", "Distribution of rides by distance");
-  that.addState("ini-distr2-title", "Distribution of rides by time");
-  that.addState("ini-distr3-title", "Distance for each bike");
-  that.addState("ini-demog1-title", "Gender");
-  that.addState("ini-demog2-title", "Subscribers");
-  that.addState("ini-demog3-title", "Age");
-
-  var dataCallback = function(data, state) {
-    that.set(state + "-labels", getFromJSON(data, "label"));
-    that.set(state + "-data", getFromJSON(data, "value"));
+  var dataCallback = function(data, id) {
+    that.set(id + "-labels", getFromJSON(data, "label", false));
+    that.set(id + "-data", getFromJSON(data, "value", true));
   }
 
   db.bikesOutByDayOfWeek(dataCallback, "ini-time2");
@@ -303,8 +271,6 @@ var initialController = function(controller) {
     };
   }
 
-  that.exec("changeMode", "initial"); //TODO DA ELIMINARE
-
   return that;
 }
 
@@ -315,7 +281,9 @@ var initialView = function(controller, container) {
   var _controller = controller;
 
   var mainDiv = d3.select(container)
-    .attr("class", "flex-vertical");
+    .append("div")
+    .attr("id", "initialDiv")
+    .attr("class", "invisible");
   var zoomDiv = mainDiv.append("div")
     .attr("id", "zoomGraph")
     .classed("invisible", true);
@@ -351,7 +319,7 @@ var initialView = function(controller, container) {
     };
     zoomedGraphs = [];
     for (var i = 0; i < selections.length; i++) {
-      zoomedGraphs[i] = singleGraph(_controller, "#" + zoomDiv.attr("id"), selections[i] + "-zoom", selections[i]);
+      zoomedGraphs[i] = IniSingleGraph(_controller, "#" + zoomDiv.attr("id"), selections[i] + "-zoom", selections[i]);
     };
   }
 
@@ -359,19 +327,19 @@ var initialView = function(controller, container) {
   _controller.onChange("zoomedGraphs", handleSelections);
   _controller.onChange("mode", switchMainMode);
 
-  graphs[0] = singleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-time1");
-  graphs[6] = singleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-demog1");
-  graphs[3] = singleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-distr1");
-  graphs[1] = singleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-time2");
-  graphs[7] = singleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-demog2");
-  graphs[4] = singleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-distr2");
-  graphs[2] = singleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-time3");
-  graphs[8] = singleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-demog3");
-  graphs[5] = singleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-distr3");
+  graphs[0] = IniSingleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-time1");
+  graphs[6] = IniSingleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-demog1");
+  graphs[3] = IniSingleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-distr1");
+  graphs[1] = IniSingleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-time2");
+  graphs[7] = IniSingleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-demog2");
+  graphs[4] = IniSingleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-distr2");
+  graphs[2] = IniSingleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-time3");
+  graphs[8] = IniSingleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-demog3");
+  graphs[5] = IniSingleGraph(_controller, "#" + allGraphsDiv.attr("id"), "ini-distr3");
 
 }
 
-var singleGraph = function(controller, where, idElement, idState) {
+var IniSingleGraph = function(controller, where, idElement, idState) {
   var that = {};
   var id = idElement;
   var idStatus = idState || idElement;
@@ -447,26 +415,183 @@ var singleGraph = function(controller, where, idElement, idState) {
   return that;
 }
 
-var pickAdayController = function(parent) {
-  that = abstractController(parent);
+var pickAdayController = function(parent, prefixMap) {
+  var that = abstractController(parent);
+  that.addState("date", "");
+  that.addState("hour", "");
+  that.addState("filter-value", "");
+  that.addState("filter-type", "");
+  var mapPrefix = prefixMap;;
+  var selectionsID = prefixMap + "-SelectedStation";
+  var tripsID = prefixMap + "-tripsDisplayed";
 
+  that.addState("graphsPrefixArray", []);
 
+  var addGraphState = function(prefix, data, label, title, show, stationId) {
+    that.addState(prefix + "-idStation", stationId)
+    that.addState(prefix + "-show", show);
+    that.addState(prefix + "-data", data);
+    that.addState(prefix + "-labels", label);
+    that.addState(prefix + "-title", title);
+  }
+
+  addGraphState("pick-chicago", [1, 2], [1, 2], "Chicago City", true, "chicago");
+
+  for (var i = 0; i < 10; i++) {
+    var tmpArray = that.get("graphsPrefixArray");
+    tmpArray.push("pick-g" + (i + 1));
+    addGraphState("pick-g" + (i + 1), [], [], "", false, "");
+    that.set("graphsPrefixArray", tmpArray);
+  };
+
+  //Callback for the data of the graphs
+  var callBackData = function(data, id) {
+    that.set(id + "-labels", getFromJSON(data, "label", false));
+    that.set(id + "-data", getFromJSON(data, "value", true));
+  }
+
+  //TODO al cambiamento delle selezioni relative alla mappa associata
+  // aggiornare i grafici e i viaggi da mostrare
+  var handleMapSelections = function(selections) {
+    var slotsPrefix = that.get(graphsPrefixArray).slice(0);
+    var copySelections = selections.slice(0);
+    var emptyPrefixes = [];
+    var alreadySelected = [];
+    for (var i = 0; i < slotsPrefix.length; i++) {
+      var tmpPrefix = slotsPrefix[i]
+      var tmpId = that.get(tmpPrefix + "-id");
+      if (tmpId === "") { //prefisso libero
+        emptyPrefixes.push(tmpId);
+      } else {
+        if (selections.indexOf(tmpId) === -1) {
+          that.set(tmpPrefix + "-show", false);
+          //remove trips
+        } else {
+          alreadySelected.push(tmpId);
+        }
+      }
+    };
+    for (var i = 0; i < selections.length; i++) {
+      if (alreadySelected.indexOf(selections[i]) === -1) {
+        //db.getData(empty prefixes[0])
+        //db.getTrips
+        emptyPrefixes.slice(0, 1);
+      }
+    };
+
+  }
+  that.onChange(selectionsID, handleMapSelections);
+
+  //TODO al cambiamento dell'ora aggiornare i dati dei grafici,
+  //e aggiornare i viaggi da mostrare sulla mappa(main controller)
+  that.changeDateSelection = function(date) {
+    //TODO get the trips for all the city
+    //TODO get the trips fo all the selections
+    var selections = that.get(selectionsID);
+    var hourSelected = that.get("hour");
+    for (var i = 0; i < selections.length; i++) {
+      //query database per ogni selezione
+    };
+    //that.set(tripsID, dati datosi) problema callbacks database
+    that.set("date", date)
+  }
+
+  that.changeHourSelection = function(hour) {
+    //TODO get the trips for all the city
+    //TODO get the trips fo all the selections
+    var selections = that.get(selectionsID);
+    var dateSelected = that.get("date");
+    //TODO recuperare dati
+    that.set("hour", hour);
+  }
+
+  //TODO al cambiamento dei filtri aggiornare i dati dei grafici
+  // e dei viaggi
+  that.changeFilterSelection = function() {
+
+  }
+
+  that.changeValueFilter = function() {
+
+  }
+  return that;
+}
+
+var pickAdayView = function(controller, calendarContainer, graphsContainer) {
+  var that = {};
+  var _controller = controller;
+  var leftDiv = d3.select(calendarContainer)
+    .append("div")
+    .attr("id", "pick-input-div")
+    .attr("class", "flex-vertical");
+
+  var rightDiv = d3.select(graphsContainer)
+    .append("div")
+    .attr("id", "pick-visualization-div")
+    .attr("class", "flex-vertical");
+  var graphs = [];
+
+  var gChicago = pickSingleGraph("#" + rightDiv.attr("id"), _controller, "pick-chicago");
+
+  var tmpArray = _controller.get("graphsPrefixArray")
+  for (var i = 0; i < tmpArray.length; i++) {
+    graphs.push(pickSingleGraph("#" + rightDiv.attr("id"), _controller, tmpArray[i]));
+  };
+
+  var cale = new calendar("#" + leftDiv.attr("id"),_controller);
+  cale.draw();
+
+  var switchMainMode = function(mode) {
+    if (mode === "pickAday") {
+      leftDiv.attr("class", "flex-vertical");
+      rightDiv.attr("class", "flex-vertical");
+    } else {
+      leftDiv.attr("class", "invisible");
+      rightDiv.attr("class", "invisible");
+    }
+  }
+  _controller.onChange("mode", switchMainMode);
 
   return that;
 }
 
-var pickAdayView = function(leftCointainer, rightContainer) {
-  that = {};
+var pickSingleGraph = function(container, controller, prefixState) {
+  var that = {};
+  var myPrefix = prefixState;
+  var _controller = controller;
+  var mainDiv = d3.select(container).append("div")
+    .attr("id", myPrefix + "-div")
+    .attr("class", "flex-vertical");
+  var title = mainDiv.append("text").text(_controller.get(myPrefix + "-title"));
+  var divSvg = mainDiv.append("div")
+    .attr("id", myPrefix + "-div-svg")
+    .attr("class", "div-graph");
 
+  var graph = new LineChart("#" + divSvg.attr("id"), _controller.get(myPrefix + "-data"), _controller.get(myPrefix + "-labels"), "ciccio", "pino", "numerical");
+  graph.draw();
 
+  var changeData = function(data) {
+    graph.update(data, _controller.get(myPrefix + "-labels"));
+  }
+
+  var visible = function(show) {
+    if (show === true) {
+      mainDiv.attr("class", "flex-vertical");
+    } else {
+      mainDiv.attr("class", "invisible");
+    }
+  }
+  visible(_controller.get(myPrefix + "-show"));
+  _controller.onChange(myPrefix + "-data", changeData);
+  _controller.onChange(myPrefix + "-show", visible);
 
   return that;
 }
 
-var getFromJSON = function(json, what) {
+var getFromJSON = function(json, what, enableParse) {
   var tmpArray = [];
   for (var i = 0; i < json.data.length; i++) {
-    if (what === "value") {
+    if (enableParse === true) {
       tmpArray.push(parseInt(json.data[i][what], 10));
     } else {
       tmpArray.push(json.data[i][what]);
