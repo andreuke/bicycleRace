@@ -148,7 +148,7 @@ database.prototype.tripsOn = function(dayFromCalendar,hour, callback, iden) {
 	(function(dayFromCalendar,hour) {
 		return_value = $.ajax({
 			url: this.queryUrl,
-			data: "mark=0&&query=9&&filter=" + "" + dayFromCalendar+"&hour=" + "" +hour,
+			data: "mark=0&&query=9&&filter="+""+dayFromCalendar+"&hour="+hour,
 			dataType: "json",
 			success: function(data) {
 				callback(data, iden);
