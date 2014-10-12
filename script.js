@@ -1,4 +1,4 @@
- var db = new databaseMock("app/data/query.php");
+ var db = new database("app/data/query.php");
 
  var control = mainController();
 
