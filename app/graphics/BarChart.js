@@ -1,6 +1,8 @@
 
 
-  function BarChart(container,data,labels){
+  function BarChart(container,data,labels,flexBox){
+    this.flexBox = flexBox !== false
+
     this.container = container;
     this.data = data;
     this.labels = labels;
@@ -36,8 +38,8 @@
             .domain([0,d3.max(data)])
             .range([0,height - bar_margin]);
 
-            console.log(d3.max(data))
-
+    // Manage both flexBox and normal containers
+    var h = this.flexBox ? "" : "100%"
 
     //Create SVG element
     var bar_svg = d3.select(container)
@@ -46,11 +48,12 @@
           .attr("preserveAspectRatio", "xMidYMid meet")
           .attr("width", "100%")
           // FLEXBOX Implementation
-          .attr("height", "")
-          // Default implementation
-          // .attr("height", "100%")
+          .attr("height", h)
+
 
     this.svg = bar_svg;
+
+    var intra_bar_space = xScale.rangeBand()*0.1;
 
     // Draw rects
     bar_svg.selectAll("rect")
@@ -58,18 +61,17 @@
        .enter()
        .append("rect")
        .attr("x", function(d, i) {
-          return xScale(i);
+          return xScale(i) + intra_bar_space;
        })
        .attr("y", function(d) {
           return height - bar_margin - yScale(d);
        })
-       .attr("width", xScale.rangeBand())
+       .attr("width", xScale.rangeBand() - 2*intra_bar_space)
        .attr("height", function(d) {
           return yScale(d);
        })
        .attr("fill", function(d) {
           var percent = parseFloat(d)/parseFloat(d3.max(data));
-          console.log(percent)
           var low = 70;
           var high = 200;
           var col = parseInt(low + percent * (high-low));
@@ -94,8 +96,6 @@
        })
        .attr("y", function(d,i) {
           var position = height - bar_margin - yScale(d) + label_margin;
-          console.log("h " + height + " bm "  + bar_margin + " sc " + yScale(d) + " lm " + label_margin)
-          console.log(i + " - " + position + "  bar_h: " + height + "  scale: " + yScale(d))
           // If too low value write it over the bar
           if(yScale(d)/height < 0.1) {
             position = height - bar_margin - yScale(d);

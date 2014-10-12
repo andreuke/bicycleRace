@@ -1,7 +1,9 @@
 var pieColor = ["#F16745", "#FFC65D", "#7BC8A4", "#4CC3D9", "#93648D", "#404040"]
 
 
-function PieChart(container,data,labels){
+function PieChart(container,data,labels, flexBox){
+	this.flexBox = flexBox !== false
+
 	this.container = container;
 	this.data = data;
 	this.labels = labels;
@@ -56,15 +58,18 @@ PieChart.prototype.draw = function(){
     				.ordinal()
     				.range(pieColor);
 
+    // Manage both flexBox and normal containers
+    var h = this.flexBox ? "" : "100%"
+
     var _svg = d3	.select(container)
     				.append("svg")
     				.attr("viewBox", "0 0 " + width + " " + height)
     				.attr("preserveAspectRatio", "xMidYMid meet")
     				.attr("width", "100%")
     				// FLEXBOX Implementation
-					.attr("height", "")
+					// .attr("height", "")
 					// Default implementation
-					// .attr("height", "100%")
+					.attr("height", h)
 		this.svg = _svg;
 height
 

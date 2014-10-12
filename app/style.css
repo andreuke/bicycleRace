@@ -1,16 +1,42 @@
-#map { height:	30%; }
-#cont { height:	70%; 
-		width:	50%;
-		float: left;
-		background: yellow;}
-#cont2 { height:	70%; 
-		width:	50%;
-		float: left;
-		background: orange;}
+#map { 
+	height:	70%; 
+}
 
+#cont { 
+	height:	20%; 
+	width:	50%;
+	float: left;
+	background: yellow;
+}
+
+#cont2 { 
+	height:	20%; 
+	width:	50%;
+	float: left;
+	background: orange;
+}
 
 .text {
 	font-family: helvetica;
 	fill: white;
 	color: white;
+}
+
+.station-info h3 {
+	border-bottom: 1px solid #D3D3D3;
+	margin: 5px 0 10px;
+	padding-bottom: 5px;
+	color: #404040;
+	font-size: 18px;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.85);
+}
+
+#popup-graph-container { 
+	height:	100; 
+	width:	100%;		
+}
+
+#stars-container { 
+	height:	30; 
+	width:	100%;		
 }

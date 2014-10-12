@@ -9,7 +9,7 @@
 
 	<body>
 
-		<h1>Divvy</h1>
+		<h1 id="divvy">Divvy</h1>
 
 
 		<div id="map"></div>
@@ -18,102 +18,146 @@
 
 		<script src="graphics/PieChart.js"></script>
 		<script src="graphics/BarChart.js"></script>
+		<script src="graphics/Stars.js"></script>
+		<script src="graphics/Map.js"></script>
 		<script type="text/javascript">
-			var map = L.map('map').setView([41.8710629,-87.6758785], 13);
+// 			var map = L.map('map').setView([41.8710629,-87.6758785], 13);
 			
-			L.tileLayer('http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png', {
-	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-	subdomains: 'abcd',
-	minZoom: 4,
-	maxZoom: 18
-}).addTo(map);
+// // 			L.tileLayer('http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png', {
+// // 	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+// // 	subdomains: 'abcd',
+// // 	minZoom: 4,
+// // 	maxZoom: 18
+// // }).addTo(map);
 
 
-			var circle = L.circle([41.8710629,-87.6758785], 200, {
-						    color: 'red',
-						    fillColor: '#f03',
-						    fillOpacity: 0.5
-						}).addTo(map);
+//  var layer = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg', {
+// 	attribution: 'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+// 	subdomains: '1234',
+// 	minZoom: 4,
+// 	maxZoom: 18
+// });
+//  layer.addTo(map);
+
+
+// 			var circle = L.circle([41.8710629,-87.6758785], 200, {
+// 						    color: 'red',
+// 						    fillColor: '#f03',
+// 						    fillOpacity: 0.5
+// 						}).addTo(map);
 
 			
 
-			var coordinates = [
+// 			var coordinates = [
 							    
-							];
+// 							];
 
 
-			var polygon = L.polygon(coordinates).addTo(map);
+// 			var polygon = L.polygon(coordinates).addTo(map);
 
-			circle.bindPopup("I am a circle.");
-			polygon.bindPopup("I am a polygon.");
+// 			circle.bindPopup("I am a circle.");
+// 			polygon.bindPopup("I am a polygon.");
 
 
-			// JUST A TRY FOR LAYERING
-			var counter = 0;
+// 			// JUST A TRY FOR LAYERING
+// 			var counter = 0;
 
-			function onStationClick(e) {
-				var latitude 	= parseFloat(e.latlng.lat);
-			  	var longitude 	= parseFloat(e.latlng.lng);
-    			coordinates.push([latitude, longitude]);
-				// console.log(coordinates);
-				console.log(polygon)
-				if(counter++ == 5) {
-					polygon = L.polygon(coordinates, {color: 'red'}).redraw().addTo(map);
-				}
+// 			function onStationClick(e) {
+// 				var latitude 	= parseFloat(e.latlng.lat);
+// 			  	var longitude 	= parseFloat(e.latlng.lng);
+//     			coordinates.push([latitude, longitude]);
+// 				// console.log(coordinates);
+// 				// console.log(polygon)
+// 				// if(counter++ == 5) {
+// 				// 	polygon = L.polygon(coordinates, {color: 'red'}).redraw().addTo(map);
+// 				// }
 
-			}
+
+// 			}
 
 
 			// A PIE
-			var pie = new PieChart("#cont", [12,34,10,8,6], ["ammaccabana","bopodollo","cretinazzo","dindaro","ettortello"]);
+			var pie = new PieChart("#cont", [12,34,10,8,6], ["ammaccabana","bopodollo","cretinazzo","dindaro","ettortello"], false);
 			pie.draw();
 
-						// A PIE
-			var pie = new BarChart("#cont2", [12,34,10,8,6], ["ammaccabana","bopodollo","cretinazzo","dindaro","ettortello"]);
-			pie.draw();
+			// A PIE
+			var bar = new BarChart("#cont2", [12,34,10,8,6], ["ammaccabana","bopodollo","cretinazzo","dindaro","ettortello"], false);
+			bar.draw();
+
+			// var stars = new Stars("#cont2", 3);
+			// stars.draw();
 
 
 
 			
-			// DIVVY STATIONS MARKERS
-			d3.json("data/divvy_stations.json", function(error, json) {
-			  if (error) return console.warn(error);
-			  var data = json.stationsData;
-			  console.log(data);
-			  for(var i = 0; i < data.length; i++) {
-			  	var latitude 	= parseFloat(data[i].latitude);
-			  	var longitude 	= parseFloat(data[i].longitude);
-			  	var station = L.marker([latitude, longitude]).addTo(map);
-			  	station.bindPopup("<b>" + data[i].name + "</b><br>Capacity: " + data[i].dpcapacity)
-			  	station.on('click', onStationClick);
-			  }
-			});
+			// // DIVVY STATIONS MARKERS
+			// d3.json("data/divvy_stations.json", function(error, json) {
+			//   if (error) return console.warn(error);
+			//   var data = json.stationsData;
+			//   console.log(data);
+			//   for(var i = 0; i < data.length; i++) {
+			//   	var latitude 	= parseFloat(data[i].latitude);
+			//   	var longitude 	= parseFloat(data[i].longitude);
+			//   	var station = L.marker([latitude, longitude]).addTo(map);
+			//   	station.bindPopup("<h3>" + data[i].name + "</h3>" + "<br>Capacity: " + data[i].dpcapacity)
+			  			
+			//   	station.on('click', onStationClick);
+			//   }
+			// });
 
 
-			// COMMUNITY AREAS LAYERS
-			d3.json("data/community_areas.json", function(error, json) {
-			  if (error) return console.warn(error);
-			  var communityAreas = json.features;
+			// // COMMUNITY AREAS LAYERS
+			// d3.json("data/community_areas.json", function(error, json) {
+			//   if (error) return console.warn(error);
+			//   var communityAreas = json.features;
 
-			  var polygon
+			//   var polygon
 
-			  for(var i = 0; i < communityAreas.length; i++) {
-			  	var coordinates = communityAreas[i].geometry.coordinates[0][0];
-			  	var edges = []
-			  	for(var j = 0; j < coordinates.length; j++) {
-					var latitude = parseFloat(coordinates[j][1]);
-					var longitude = parseFloat(coordinates[j][0]);
-					edges.push([latitude, longitude]);
+			//   for(var i = 0; i < communityAreas.length; i++) {
+			//   	var coordinates = communityAreas[i].geometry.coordinates[0][0];
+			//   	var edges = []
+			//   	for(var j = 0; j < coordinates.length; j++) {
+			// 		var latitude = parseFloat(coordinates[j][1]);
+			// 		var longitude = parseFloat(coordinates[j][0]);
+			// 		edges.push([latitude, longitude]);
 
-			  	}
+			//   	}
 
-			  	polygon = L.multiPolygon([edges]).addTo(map);
+			//   	polygon = L.multiPolygon([edges]).addTo(map);
 
 
-			  }
+			//   }
 			  
-			});
+			// });
+counter = 0;
+var btn = document.getElementById('divvy');
+btn.addEventListener('click', function() {
+		if(counter < 2) {
+  			 map.switchView();
+  		}
+  		else if(counter == 2) {
+  			map.showCommunityAreas();
+  		}
+  		else if(counter == 3) {
+  			map.hideCommunityAreas();
+  		}
+  		if(counter == 0) {
+  			map.showStations();
+  			// map.drawTrip(5,13,12);
+  			map.fakeQuery();
+  		}
+  		else if(counter == 5) {
+  			map.hideStations();
+  		}
+  		counter++;
+});
 
+			var map = new Map('map', [41.8710629,-87.6758785]);
+			map.draw();
+			// map.satView();
+			map.loadCommunityAreas();
+			map.loadStations();
+			map.showStations();
 
 
 		</script>
