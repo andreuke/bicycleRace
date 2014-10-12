@@ -145,7 +145,7 @@ database.prototype.ridesBy = function($filter, callback, iden) {
 database.prototype.tripsOn = function(dayFromCalendar,hour, callback, iden) {
 	var return_value;
 
-	(function(dayFromCalendar,hour) {
+	//(function(dayFromCalendar,hour) {
 		return_value = $.ajax({
 			url: this.queryUrl,
 			data: "mark=0&&query=9&&filter="+""+dayFromCalendar+"&hour="+hour,
@@ -156,13 +156,13 @@ database.prototype.tripsOn = function(dayFromCalendar,hour, callback, iden) {
 			error: console.log(dayFromCalendar)
 
 		});
-	})(dayFromCalendar,hour);
+	//})(dayFromCalendar,hour);
 
 }
 
 database.prototype.numberoOfActiveBikesOn = function(dayFromCalendar, callback, iden) {
 	var return_value;
-	(function(dayFromCalendar) {
+	//(function(dayFromCalendar) {
 		return_value = $.ajax({
 			url: this.queryUrl,
 			data: "mark=0&&query=10&&filter=" + "" + dayFromCalendar,
@@ -173,5 +173,5 @@ database.prototype.numberoOfActiveBikesOn = function(dayFromCalendar, callback, 
 			error: console.log(dayFromCalendar)
 
 		});
-	})(dayFromCalendar);
+	//})(dayFromCalendar);
 }
