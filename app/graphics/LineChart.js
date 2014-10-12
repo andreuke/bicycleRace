@@ -23,6 +23,7 @@ LineChart.prototype.update = function(data,labels) {
 	this.draw();
 }
 
+// Builds ordinal scale
 function ordinalScale(data, width){
 	return d3 	.scale
 				.linear()
@@ -30,6 +31,7 @@ function ordinalScale(data, width){
 				.range([0, width]);
 }
 
+// Builds numerical scale 
 function numericScale(labels, width){
 	return d3 	.scale
 				.linear()
@@ -37,20 +39,31 @@ function numericScale(labels, width){
 				.range([0, width]);
 }
 
-function timeScale(labels, width){
+
+/*function timeScale(labels, width){
 	var parseTime = d3.time.format("%b-%d").parse;
 	return d3 	.time
 				.scale()
-				.domain(d3.extend(labels, function(d) { return parseTime(d);}))
+				.domain(d3.extent(labels, function(d) { return parseTime(d);}))
 				.range([0, width]);
-}
+}*/
 
+// Builds date Scale given Month and Day
 function dateScale(labels, width){	
 	var parseDate = d3.time.format("%b-%d").parse;
 	return d3 	.time
 				.scale()
 				.domain(d3.extent(labels, function(d) { return parseDate(d); }))
     			.range([0, width]);
+}
+
+// Builds Age Scale given the Year of the birthday
+function yearScale(labels, width){
+	var year = 2013;
+	return d3 	.scale
+				.linear()
+				.domain([0, d3.max(labels, function(d){return year-parseInt(d)})])
+				.range([0, width]);
 }
 
 
@@ -78,16 +91,18 @@ LineChart.prototype.draw = function(){
 		case "numerical": 
 			xScale = numericScale(labels, width * margin);
 			break;
+/*		case "time":
+			xScale = timeScale(labels, width * margin);
+			break;*/
 		case "date":
 			xScale = dateScale(labels, width * margin);
 			break;
-		case "time":
-			xScale = timeScale(labels, width * margin);
+		case "year":
+			xScale = yearScale(labels, width * margin);
 			break;
 		default:
 			xScale = ordinalScale(data, width * margin);
-			break;
-		}
+			break;}
 
 	// Creates y Scale (linear, from 0 to max of data)
 	var yScale = d3	.scale
@@ -111,18 +126,22 @@ LineChart.prototype.draw = function(){
 	// Creates the line of the LineChart
 	var line = d3	.svg
 					.line()
+					.interpolate("basis")
     				.x(function(d,i) { 
     					switch(kind){
     						case "ordinal":
     							return xScale(i);
     						case "numerical":
     							return xScale(parseInt(labels[i]));
+/*    						case "time":
+    							var parseTime = d3.time.format("%d-%b-%y").parse;
+    							return xScale(parseTime(labels[i]));*/
     						case "date":
     							var parseDate = d3.time.format("%b-%d").parse;
     							return xScale(parseDate(labels[i]));
-    						case "time":
-    							var parseTime = d3.time.format("%d-%b-%y").parse;
-    							return xScale(parseTime(d));
+    						case "year":
+    							var year = 2013;
+    							return xScale(year - parseInt(labels[i]));
     						default:
     							return xScale(i);}
     					})

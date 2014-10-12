@@ -46,10 +46,11 @@
 				case '9':
 					//echo "<br>nine!";
 					$day = $_GET['filter'];
+					$hour = $_GET['hour'];
 					//echo "<br>filter -> ".$day;
 
 					//all of the trips taken across the city by the filtered date
-					allTripsTakenAccrossTheCityOn($day, $connessione);
+					allTripsTakenAccrossTheCityOn($day, $connessione, $hour);
 					break;
 				case '10':
 					$day = $_GET['filter'];
@@ -113,17 +114,26 @@
 
 
 
-		function allTripsTakenAccrossTheCityOn($day, $connessione){
+		function allTripsTakenAccrossTheCityOn($day, $connessione, $hour){
+			/*
 			$where = "startdate = '".$day."'";
 			$result = genericQuery('from_station_id, to_station_id, hour', 'divvy_trips_distances_skinny', $where, '', $connessione);
 			$variables = array('0' => 'from_station_id',
 								'1' => 'to_station_id',
 								'2' => 'hour');
 
+			labelledDisplayData($result, $variables);*/
+
+			//select from_station_id, to_station_id, hour, count(*) as totalTripsMade from divvy_trips_distances_skinny where startdate = '2013-09-02' and hour = '12' group by from_station_id, to_station_id
+
+			$result = genericQuery('from_station_id, to_station_id, count(*) as totalTripsMade','divvy_trips_distances_skinny', 'startdate = "'.$day.'" and hour = "'.$hour.'"', 'group by from_station_id, to_station_id', $connessione);
+			$variables = array('0' => 'from_station_id',
+								'1' => 'to_station_id',
+								'2' => 'totalTripsMade');
 			labelledDisplayData($result, $variables);
 		}
 
-		function ridesBy($filter, $connessione){
+		function ridesBy($filter, $connessione/*, $step*/){
 			switch ($filter) {
 				case '0':
 					//SELECT meters,count(*) FROM rides group by meters
@@ -132,7 +142,24 @@
 										'1' => 'total' );
 
 					genericDisplayData($result,$variables);
+					
+					/*
+					//new version, with step
+					//SELECT count(*) FROM rides where meters between 0 and 100
+					//the max meters are 26334
+					$numOfIter = floor(26334/$step) + 1;
+					echo "<br>num of iter ->$numOfIter";
 
+					for($i = 0; $i < $numOfIter; $i++){
+						$from = $step * $i;
+						$to = $from + $step;
+						$result = genericQuery('count(*) as total', 'rides', 'meters between '.$from.' and '.$to.'','',$connessione);
+						$var = mysql_fetch_array($result);
+						echo "<br> value $to , value -> ".$var['total'];
+						//ob_flush();
+						//ob_clean();
+					}
+					*/
 					break;
 				case '1':
 					//SELECT seconds,count(*) FROM rides group by seconds
@@ -141,6 +168,7 @@
 										'1' => 'total' );
 
 					genericDisplayData($result, $variables);
+
 					break;
 				case '2':
 					//if we want the sum of distance per each bike...

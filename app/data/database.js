@@ -137,18 +137,18 @@ database.prototype.ridesBy = function($filter, callback, iden) {
 }
 
 /*
- * all trips taken accross the city per day &&
+ * all trips taken accross the city per day & hour &&
  * number of active bikes!
  * format of $dayFromCalendar = 2013-07-01
  */
 
-database.prototype.tripsOn = function(dayFromCalendar, callback, iden) {
+database.prototype.tripsOn = function(dayFromCalendar,hour, callback, iden) {
 	var return_value;
 
-	(function(dayFromCalendar) {
+	//(function(dayFromCalendar,hour) {
 		return_value = $.ajax({
 			url: this.queryUrl,
-			data: "mark=0&&query=9&&filter=" + "" + dayFromCalendar,
+			data: "mark=0&&query=9&&filter="+""+dayFromCalendar+"&hour="+hour,
 			dataType: "json",
 			success: function(data) {
 				callback(data, iden);
@@ -156,13 +156,13 @@ database.prototype.tripsOn = function(dayFromCalendar, callback, iden) {
 			error: console.log(dayFromCalendar)
 
 		});
-	})(dayFromCalendar);
+	//})(dayFromCalendar,hour);
 
 }
 
 database.prototype.numberoOfActiveBikesOn = function(dayFromCalendar, callback, iden) {
 	var return_value;
-	(function(dayFromCalendar) {
+	//(function(dayFromCalendar) {
 		return_value = $.ajax({
 			url: this.queryUrl,
 			data: "mark=0&&query=10&&filter=" + "" + dayFromCalendar,
@@ -173,5 +173,5 @@ database.prototype.numberoOfActiveBikesOn = function(dayFromCalendar, callback, 
 			error: console.log(dayFromCalendar)
 
 		});
-	})(dayFromCalendar);
+	//})(dayFromCalendar);
 }
