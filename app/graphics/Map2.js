@@ -7,7 +7,7 @@ function Map(container, initialCoord, controller, mapPrefix) {
 	this.initialCoord = initialCoord;
 	this.controller = controller;
 	var initialZoom = 13;
-	this.zoomThreshold = 14;
+	this.zoomThreshold = 15;
 
 
 	this.layer;
@@ -115,7 +115,6 @@ Map.prototype.draw = function() {
 	var map = this.map;
 
 	this.layer = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg', {
-		attribution: 'SNI e SNO',
 		subdomains: '1234',
 		minZoom: 4,
 		maxZoom: 18

@@ -86,7 +86,11 @@ var abstractController = function(parent) {
 //Pricipal Controller
 //State of the application represented in this controller are:
 //mode: string that identifies in which current state the application is ("initial","pickAday"..)
-//SelectedStation: Array cointainig all the stations currently selected
+//[mapIden]SelectedStation: Array cointainig all the stations currently selected
+//[mapIden]mapType:
+//[mapIden]showComunAreas:
+//divvyStations:
+//communityAreas:
 var mainController = function() {
   var that = abstractController();
 
@@ -150,7 +154,7 @@ var mainView = function(controller) {
   var slots = []
   var divButtons = d3.select("#mainButtons").attr("class", "flex-horizontal");
   var listButtons = {};
-  var map = new Map("map", [41.8, -87.67], _controller,"map1");
+  var map = new Map("map", [41.8, -87.67], _controller, "map1");
   var divMap = d3.select("#map");
   map.draw();
 
@@ -180,10 +184,10 @@ var mainView = function(controller) {
     .attr("id", "button-areas")
     .attr("class", "main-buttons")
     .on("click", function() {
-      if (_controller.get("map1-mapType") === "satellite"){
-        _controller.set("map1-mapType","map");
+      if (_controller.get("map1-mapType") === "satellite") {
+        _controller.set("map1-mapType", "map");
       } else {
-        _controller.set("map1-mapType","satellite");
+        _controller.set("map1-mapType", "satellite");
       }
     })
     .append("text")
@@ -193,10 +197,10 @@ var mainView = function(controller) {
     .attr("id", "button-maptype")
     .attr("class", "main-buttons")
     .on("click", function() {
-      if (_controller.get("map1-showComunAreas") === true){
-        _controller.set("map1-showComunAreas",false);
+      if (_controller.get("map1-showComunAreas") === true) {
+        _controller.set("map1-showComunAreas", false);
       } else {
-        _controller.set("map1-showComunAreas",true)
+        _controller.set("map1-showComunAreas", true)
       }
     })
     .append("text")
@@ -227,9 +231,9 @@ var mainView = function(controller) {
         divMap.classed("left", false);
         divMap.classed("left-center quart", true);
         map.redraw();
-        slots[0].attr("class", "flex-item left green");
+        slots[0].attr("class", "flex-item-double right");
         slots[1].attr("class", "invisible");
-        slots[2].attr("class", "flex-item-double right red");
+        slots[2].attr("class", "flex-item left");
         slots[3].attr("class", "invisible");
     }
   }
@@ -275,8 +279,22 @@ var initialController = function(controller) {
   addGraphState("ini-demog3", [], [], "Age", "linechart", "year")
 
   var dataCallback = function(data, id) {
-    that.set(id + "-labels", getFromJSON(data, "label", false));
-    that.set(id + "-data", getFromJSON(data, "value", true));
+    var tmp;
+    switch (id) {
+      case ("ini-distr1"):
+      tmp = dataElaboration.ranger(getFromJSON(data, "value", true), getFromJSON(data, "label", true),200)
+      that.set(id + "-labels", tmp.labels);
+      that.set(id + "-data", tmp.data);
+      break;
+      case ("ini-distr2"):
+      tmp = dataElaboration.ranger(getFromJSON(data, "value", true), getFromJSON(data, "label", true),100)
+      that.set(id + "-labels", tmp.labels);
+      that.set(id + "-data", tmp.data);
+      break;
+      default:
+        that.set(id + "-labels", getFromJSON(data, "label", false));
+        that.set(id + "-data", getFromJSON(data, "value", true));
+    }
   }
 
   db.bikesOutByDayOfWeek(dataCallback, "ini-time2");
@@ -474,7 +492,7 @@ var pickAdayController = function(parent, prefixMap) {
     that.addState(prefix + "-filter-value", "noFilter");
   }
 
-  addGraphState("pick-chicago", [1, 2], [1, 2], "Chicago City", true, "chicago");
+  addGraphState("pick-chicago", [], [], "Chicago City", true, "chicago");
 
   for (var i = 0; i < 10; i++) {
     var tmpArray = that.get("graphsPrefixArray");
@@ -492,7 +510,7 @@ var pickAdayController = function(parent, prefixMap) {
   var callBackTrips = function(data, id) {
     console.log(data);
     data.tripId = id;
-    that.set(tripsID,data.data);
+    that.set(tripsID, data.data);
   }
 
   //TODO al cambiamento delle selezioni relative alla mappa associata
@@ -584,8 +602,16 @@ var pickAdayView = function(controller, calendarContainer, graphsContainer) {
     graphs.push(pickSingleGraph("#" + rightDiv.attr("id"), _controller, tmpArray[i]));
   };
 
-  var cale = new calendar("#" + leftDiv.attr("id"), _controller);
+  var caleDiv = leftDiv.append("div").attr("id","cale-div")
+  .attr("class","flex-item");
+  var cale = new calendar("#" + caleDiv.attr("id"), _controller);
   cale.draw();
+
+  var sliderDiv = leftDiv.append("div").attr("id","slide-div")
+  .attr("class","flex-item");
+  var slider = sliderObject("#" + sliderDiv.attr("id"),0,23);
+
+  //slinder.attr("class","flex-item");
 
   var switchMainMode = function(mode) {
     if (mode === "pickAday") {

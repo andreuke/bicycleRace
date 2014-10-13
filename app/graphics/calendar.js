@@ -63,7 +63,7 @@ calendar.prototype.draw = function() {
         .attr("preserveAspectRatio", "xMinYMin meet")
         .attr("width", "100%")
         .attr("height", "")
-        .attr("class","flex-item")
+        //.attr("class","flex-item")
 
     this.init(svg, index);
 }

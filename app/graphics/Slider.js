@@ -1,24 +1,20 @@
-			update(12);
-
-d3 .select("#container")
+var sliderObject = function(where,min,max) {
+	sli = d3.select(where)
 	.append("input")
 	.attr("id","hourSlider")
 	.attr("type","range")
-	.attr("min","0")
-	.attr("max", "23")
-	.attr("default", "12")
-	.attr("id","hourSlider")
+	.attr("min",min)
+	.attr("max", max)
+	.attr("default", min)
+	.attr("id","hourSlider");
+	return sli;
+}
 
-
-
-d3	.select("#hourSlider")
-	.on("input", function() {
-			update(+this.value);});
-
+/*
 function update(hour) {
 	d3	.select("#hourSlider-value")
 		.text(hour);
 
 	d3	.select("#hourSlider")
 		.property("value", hour);
-}
+}*/
