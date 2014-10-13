@@ -83,8 +83,6 @@ function Map(container, initialCoord, controller, mapPrefix) {
 	});
 	this.controller.onChange("communityAreas",function (data){
 		that.loadCommunityAreas(data);
-		console
-		that.showCommunityAreas();
 	});
 	// this.controller.onChange("stationsPopularity",function (data){
 	// 	that.loadPopularity(data);
@@ -92,6 +90,21 @@ function Map(container, initialCoord, controller, mapPrefix) {
 
 	this.controller.onChange(myPrefix + "-tripsDisplayed",function(data){
 		that.drawTrips(data);
+
+	})
+	this.controller.onChange(myPrefix + "-showComunAreas",function(data){
+		if (data === true){
+			that.showCommunityAreas();
+		}else {
+			that.hideCommunityAreas();
+		}
+	});
+	this.controller.onChange(myPrefix + "-mapType",function(data){
+		if (data === "satellite"){
+			that.satView();
+		}else {
+			that.mapView();
+		}
 	});
 
 
