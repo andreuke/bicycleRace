@@ -1,5 +1,7 @@
 function Map(container, initialCoord, controller, mapPrefix) {
 	var that = this;
+
+	this.stationsAttributes = {}
 	
 	var myPrefix = mapPrefix;
 	this.lines = [];
@@ -11,8 +13,7 @@ function Map(container, initialCoord, controller, mapPrefix) {
 
 
 	this.layer;
-	this.stations = [];
-	this.stationList = [];
+	this.stationsMarkers = [];
 	this.communityAreas = [];
 	this.sat = false;
 	this.farView = initialZoom < this.zoomThreshold;
@@ -54,7 +55,7 @@ function Map(container, initialCoord, controller, mapPrefix) {
 
 
 	var map = this.map
-	var stations = this.stations
+	var stationsMarkers = this.stationsMarkers
 	var farView = this.farView;
 	var smallIcon = this.smallIcon;
 	var largeIcon = this.largeIcon;
@@ -65,13 +66,13 @@ function Map(container, initialCoord, controller, mapPrefix) {
 		var zoom = map.getZoom()
 
 		if (zoom < zoomThreshold & !farView) {
-			for (s in stations) {
-				stations[s].setIcon(smallIcon)
+			for (s in stationsMarkers) {
+				stationsMarkers[s].setIcon(smallIcon)
 			}
 			farView = !farView
 		} else if (zoom >= zoomThreshold & farView) {
-			for (s in stations) {
-				stations[s].setIcon(largeIcon)
+			for (s in stationsMarkers) {
+				stationsMarkers[s].setIcon(largeIcon)
 			}
 			farView = !farView
 		}
@@ -84,7 +85,7 @@ function Map(container, initialCoord, controller, mapPrefix) {
 	this.controller.onChange("communityAreas",function (data){
 		that.loadCommunityAreas(data);
 	});
-	// this.controller.onChange("stationsPopularity",function (data){
+	// this.controller.onChange("stationsAttributes",function (data){
 	// 	that.loadPopularity(data);
 	// });
 
@@ -164,27 +165,29 @@ Map.prototype.loadPopularity = function(json) {
 				popularity++;
 			}
 			var station = data[i]
-			that.stationsPopularity[parseInt(station.stationId)] = {popularity: popularity, 
+			that.stationsAttributes[parseInt(station.stationId)] = {popularity: popularity, 
 																	income: station.arrivingHere,
-																	outcome: station.startingFromHere};
+																	outcome: station.startingFromHere,
+																	latitude: undefined,
+																	longitude: undefined};
 		}
-		console.log(that.stationsPopularity);
+		console.log(that.stationsAttributes);
 	});
 }
 
 
 // DIVVY STATIONS MARKERS
 Map.prototype.loadStations = function(json) {
-	var stations = this.stations
+	var stationsMarkers = this.stationsMarkers
 	var that = this;
 	var map = this.map
 		var data = json.stationsData;
 		for (var i = 0; i < data.length; i++) {
 			var latitude = parseFloat(data[i].latitude);
 			var longitude = parseFloat(data[i].longitude);
+			var id = parseInt(data[i].id);
+			
 			var station = L.marker([latitude, longitude]) //.addTo(map);
-
-
 			var content = "<h3>" + data[i].name + "</h3>" +
 				"Capacity: " + data[i].dpcapacity +
 				"<br>" +
@@ -205,9 +208,10 @@ Map.prototype.loadStations = function(json) {
 			station.bindPopup(popup)
 
 			station.on('click', this.onStationClick);
-			stations.push(station)
+			stationsMarkers.push(station)
 
-			that.stationList[data[i].id] = L.latLng(latitude, longitude);
+			that.stationsAttributes[id].latitude = latitude;
+			that.stationsAttributes[id].longitude = longitude;
 		}
 }
 
@@ -253,7 +257,7 @@ Map.prototype.hideCommunityAreas = function() {
 }
 
 Map.prototype.showStations = function() {
-	var stations = this.stations;
+	var stationsMarkers = this.stationsMarkers;
 	var map = this.map;
 
 	if (map.getZoom() > this.zoomThreshold) {
@@ -262,8 +266,8 @@ Map.prototype.showStations = function() {
 		icon = this.smallIcon
 	}
 
-	for (s in stations) {
-		stations[s].setIcon(icon)
+	for (s in stationsMarkers) {
+		stationsMarkers[s].setIcon(icon)
 			.addTo(map)
 
 	}
@@ -274,8 +278,8 @@ Map.prototype.redraw = function() {
 }
 
 Map.prototype.hideStations = function() {
-	for (s in this.stations) {
-		this.map.removeLayer(this.stations[s])
+	for (s in this.stationsMarkers) {
+		this.map.removeLayer(this.stationsMarkers[s])
 	}
 
 }
@@ -340,8 +344,11 @@ Map.prototype.removeLines = function() {
 }
 
 Map.prototype.drawTrip = function(fromID, toID, quantity) {
-	var start = this.stationList[parseInt(fromID,10)];
-	var end = this.stationList[parseInt(toID,10)];
+	var start = L.latLng(	this.stationsAttributes[fromID].latitude, 
+							this.stationsAttributes[fromID].longitude);
+	var end = 	L.latLng(	this.stationsAttributes[toID].latitude, 
+							this.stationsAttributes[toID].longitude);
+
 	this.drawLine(start, end, parseInt(quantity,10));
 }
 

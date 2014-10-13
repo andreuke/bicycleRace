@@ -1,8 +1,7 @@
 function Map(container, initialCoord) {
 	//NEW ITEMS
 	this.lines = []
-	this.stationList = {};
-	this.stationsPopularity = {}
+	this.stationsAttributes = {}
 	that = this;
 
 
@@ -17,7 +16,7 @@ function Map(container, initialCoord) {
 
 
 	this.layer;
-	this.stations = [];
+	this.stationsMarkers = [];
 	this.communityAreas = [];
 	this.sat = false;
 	this.farView = initialZoom < this.zoomThreshold;
@@ -59,7 +58,7 @@ function Map(container, initialCoord) {
 
 
 	var map = this.map
-	var stations = this.stations
+	var stationsMarkers = this.stationsMarkers
 	var farView = this.farView;
 	var smallIcon = this.smallIcon;
 	var largeIcon = this.largeIcon;
@@ -70,13 +69,13 @@ function Map(container, initialCoord) {
 		var zoom = map.getZoom()
 
 		if (zoom < zoomThreshold & !farView) {
-			for (s in stations) {
-				stations[s].setIcon(smallIcon)
+			for (s in stationsMarkers) {
+				stationsMarkers[s].setIcon(smallIcon)
 			}
 			farView = !farView
 		} else if (zoom >= zoomThreshold & farView) {
-			for (s in stations) {
-				stations[s].setIcon(largeIcon)
+			for (s in stationsMarkers) {
+				stationsMarkers[s].setIcon(largeIcon)
 			}
 			farView = !farView
 		}
@@ -138,11 +137,12 @@ Map.prototype.loadPopularity = function() {
 				popularity++;
 			}
 			var station = data[i]
-			that.stationsPopularity[parseInt(station.stationId)] = {popularity: popularity, 
+			that.stationsAttributes[parseInt(station.stationId)] = {popularity: popularity, 
 																	income: station.arrivingHere,
-																	outcome: station.startingFromHere};
+																	outcome: station.startingFromHere,
+																	latitude: undefined,
+																	longitude: undefined};
 		}
-		console.log(that.stationsPopularity);
 	});
 }
 
@@ -150,7 +150,7 @@ Map.prototype.loadPopularity = function() {
 // DIVVY STATIONS MARKERS
 Map.prototype.loadStations = function() {
 	that = this
-	var stations = this.stations
+	var stationsMarkers = this.stationsMarkers
 	var map = this.map
 	d3.json("data/divvy_stations.json", function(error, json) {
 		if (error) return console.warn(error);
@@ -158,10 +158,13 @@ Map.prototype.loadStations = function() {
 		for (var i = 0; i < data.length; i++) {
 			var latitude = parseFloat(data[i].latitude);
 			var longitude = parseFloat(data[i].longitude);
+			var id = parseInt(data[i].id);
+
 			var station = L.marker([latitude, longitude]) //.addTo(map);
-
-			var pop = that.stationsPopularity[data[i].id].popularity
-
+			station.divId = id;
+			station.ciccio = function(e) {
+				onStationClick(e);
+			}
 			var content = "<h3>" + data[i].name + "</h3>" +
 				"Capacity: " + data[i].dpcapacity +
 				// "<br>" +
@@ -170,10 +173,10 @@ Map.prototype.loadStations = function() {
 				"1000 (From/To 475/525)" + 
 				"<br>" +
 				"<div id='popup-graph-container'></div>" +
-				"<button onclick='addGraph("+pop+")'>AGE</button>" +
+				"<button onclick='addGraph()'>AGE</button>" +
 				"<button>GENDER</button>" +
 				"<button>TYPE</button>"
-			
+
 			var popup = L.popup({
 					className: 'station-info'
 				})
@@ -181,11 +184,13 @@ Map.prototype.loadStations = function() {
 
 			station.bindPopup(popup)
 
-			station.on('click', onStationClick);
-			stations.push(station)
+			station.addEventListener('click', ciccio);
+			stationsMarkers.push(station)
 
 			// NEW: ADD TO LIST
-			that.stationList[data[i].id] = L.latLng(latitude, longitude);
+			that.stationsAttributes[id].latitude = latitude;
+			that.stationsAttributes[id].longitude = longitude;
+
 		}
 	});
 }
@@ -237,7 +242,7 @@ Map.prototype.hideCommunityAreas = function() {
 }
 
 Map.prototype.showStations = function() {
-	var stations = this.stations;
+	var stationsMarkers = this.stationsMarkers;
 	var map = this.map;
 
 	if (map.getZoom() > this.zoomThreshold) {
@@ -246,8 +251,8 @@ Map.prototype.showStations = function() {
 		icon = this.smallIcon
 	}
 
-	for (s in stations) {
-		stations[s].setIcon(icon)
+	for (s in stationsMarkers) {
+		stationsMarkers[s].setIcon(icon)
 			.addTo(map)
 
 	}
@@ -255,8 +260,8 @@ Map.prototype.showStations = function() {
 
 
 Map.prototype.hideStations = function() {
-	for (s in this.stations) {
-		this.map.removeLayer(this.stations[s])
+	for (s in this.stationsMarkers) {
+		this.map.removeLayer(this.stationsMarkers[s])
 	}
 
 }
@@ -282,8 +287,11 @@ Map.prototype.drawLine = function(start, end, thickness) {
 }
 
 Map.prototype.drawTrip = function(fromID, toID, quantity) {
-	var start = this.stationList[fromID]
-	var end = this.stationList[toID]
+	var start = L.latLng(	this.stationsAttributes[fromID].latitude, 
+							this.stationsAttributes[fromID].longitude)
+	var end = 	L.latLng(	this.stationsAttributes[toID].latitude, 
+							this.stationsAttributes[toID].longitude)
+
 	this.drawLine(start, end, quantity*3);
 }
 
@@ -306,12 +314,7 @@ Map.prototype.invalidate = function() {
 
 
 
-
-
-
-function onStationClick(e) {
-	console.log(e)
-
+function onStationClick(e, id) {
 	var map = e.target._map;
 
 	var latitude = parseFloat(e.latlng.lat);
@@ -319,6 +322,10 @@ function onStationClick(e) {
 
 	// Leaves enough space for the popup
 	map.setView([latitude + 0.005, longitude], 15)
+
+
+	var stars = new Stars("#stars-container", that.stationsAttributes[id].popularity)
+	stars.draw();
 	
 
 	// console.log("LAT: " + latitude + " - LONG: " + longitude);
@@ -331,4 +338,7 @@ function addGraph(popularity) {
 
 	var stars = new Stars("#stars-container", popularity)
 	stars.draw();
+
+
 }
+
