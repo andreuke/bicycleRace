@@ -95,6 +95,10 @@ var mainController = function() {
   that.addState("map2-SelectedStation", []);
   that.addState("map1-tripsDisplayed", []);
   that.addState("map2-tripsDisplayed", []);
+  that.addState("map1-showComunAreas", []);
+  that.addState("map2-showComunAreas", []);
+  that.addState("map1-mapType", []);
+  that.addState("map2-mapType", []);
 
   that.addState("divvyStations", {});
   that.addState("communityAreas", {});
@@ -171,6 +175,33 @@ var mainView = function(controller) {
     .append("text")
     .text("Pick a Day");
 
+
+  listButtons.comAreasButton = divButtons.append("div")
+    .attr("id", "button-areas")
+    .attr("class", "flex-item")
+    .on("click", function() {
+      if (_controller.get("map1-mapType") === "satellite"){
+        _controller.set("map1-mapType","map");
+      } else {
+        _controller.set("map1-mapType","satellite");
+      }
+    })
+    .append("text")
+    .text("Toggle type Map");
+
+  listButtons.mapType = divButtons.append("div")
+    .attr("id", "button-maptype")
+    .attr("class", "flex-item")
+    .on("click", function() {
+      if (_controller.get("map1-showComunAreas") === true){
+        _controller.set("map1-showComunAreas",false);
+      } else {
+        _controller.set("map1-showComunAreas",true)
+      }
+    })
+    .append("text")
+    .text("Toggle Community areas");
+
   //4 principal div of the application, the dimensions and positions
   //are related to the current mode
   slots[0] = d3.select("#div1");
@@ -241,7 +272,7 @@ var initialController = function(controller) {
   addGraphState("ini-distr3", [], [], "Distance for each bike", "linechart", "numerical")
   addGraphState("ini-demog1", [], [], "Gender", "piechart", "ordinal")
   addGraphState("ini-demog2", [], [], "Subscribers", "piechart", "ordinal")
-  addGraphState("ini-demog3", [], [], "Age", "linechart", "numerical")
+  addGraphState("ini-demog3", [], [], "Age", "linechart", "year")
 
   var dataCallback = function(data, id) {
     that.set(id + "-labels", getFromJSON(data, "label", false));
