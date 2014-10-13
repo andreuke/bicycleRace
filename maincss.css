@@ -83,6 +83,7 @@ body{
   flex:1;
   flex-direction : row;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .flex-vertical{
@@ -140,7 +141,16 @@ body{
 .div-graph {
   flex:10;
   display: flex;
+  margin:1vh;
 }
 .invisible{
   display: none;
+}
+
+.main-buttons {
+  text-align: center;
+  flex: 1;
+  border-style:ridge;
+  border-color:#bbb #888 #666 #aaa;
+  border-width: 2px 2px 2px 2px;
 }

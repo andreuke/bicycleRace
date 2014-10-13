@@ -335,7 +335,7 @@ Map.prototype.drawLine = function(start, end, thickness) {
 
 Map.prototype.removeLines = function() {
 	for(var i = 0; i < this.lines.length; i++) {
-		this.map.removeLayer(lines[i]);
+		this.map.removeLayer(this.lines[i]);
 	}	
 }
 
@@ -346,6 +346,7 @@ Map.prototype.drawTrip = function(fromID, toID, quantity) {
 }
 
 Map.prototype.drawTrips = function(trips) {
+	this.removeLines();
 	for(var i = 0; i < trips.length; i++) {
 		this.drawTrip(trips[i].from_station_id, trips[i].to_station_id, trips[i].totalTripsMade);
 	}

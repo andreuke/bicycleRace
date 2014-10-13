@@ -158,7 +158,7 @@ var mainView = function(controller) {
   //Switch to initial view button
   listButtons.iniButton = divButtons.append("div")
     .attr("id", "button-initial")
-    .attr("class", "flex-item")
+    .attr("class", "main-buttons")
     .on("click", function() {
       _controller.changeMode("initial")
     })
@@ -168,7 +168,7 @@ var mainView = function(controller) {
   //Switch to pickaDay view button
   listButtons.pickButton = divButtons.append("div")
     .attr("id", "button-pickAday")
-    .attr("class", "flex-item")
+    .attr("class", "main-buttons")
     .on("click", function() {
       _controller.changeMode("pickAday")
     })
@@ -178,7 +178,7 @@ var mainView = function(controller) {
 
   listButtons.comAreasButton = divButtons.append("div")
     .attr("id", "button-areas")
-    .attr("class", "flex-item")
+    .attr("class", "main-buttons")
     .on("click", function() {
       if (_controller.get("map1-mapType") === "satellite"){
         _controller.set("map1-mapType","map");
@@ -191,7 +191,7 @@ var mainView = function(controller) {
 
   listButtons.mapType = divButtons.append("div")
     .attr("id", "button-maptype")
-    .attr("class", "flex-item")
+    .attr("class", "main-buttons")
     .on("click", function() {
       if (_controller.get("map1-showComunAreas") === true){
         _controller.set("map1-showComunAreas",false);
@@ -613,7 +613,7 @@ var pickSingleGraph = function(container, controller, prefixState) {
     .attr("id", myPrefix + "-div-svg")
     .attr("class", "div-graph");
 
-  var graph = new LineChart("#" + divSvg.attr("id"), _controller.get(myPrefix + "-data"), _controller.get(myPrefix + "-labels"), "ciccio", "pino", "numerical");
+  var graph = new LineChart("#" + divSvg.attr("id"), _controller.get(myPrefix + "-data"), _controller.get(myPrefix + "-labels"), "hours", "trips", "numerical");
   graph.draw();
 
   var changeData = function(data) {

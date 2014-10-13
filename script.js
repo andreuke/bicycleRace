@@ -12,4 +12,4 @@
 
  var pickView = pickAdayView(pickControl, "#div1","#div3");
 
- control.exec("changeMode", "pickAday");
+ control.exec("changeMode", "initial");
