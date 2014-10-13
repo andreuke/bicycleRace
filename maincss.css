@@ -32,11 +32,6 @@ body{
 .right{
   order: 10;
 }
-.full-size{
-  height: 100%;
-  width: 100%;
-  background-color:blue;
-}
 
 .right-invisible{
 
@@ -54,11 +49,6 @@ body{
 #mainButtons {
   width: 100%;
   height: 5%;
-}
-
-.full-size{
-  width: 100%;
-  height: 100%;
 }
 
 .flex-container{
@@ -83,7 +73,6 @@ body{
   flex:1;
   flex-direction : row;
   flex-wrap: wrap;
-  align-items: center;
 }
 
 .flex-vertical{
@@ -153,4 +142,5 @@ body{
   border-style:ridge;
   border-color:#bbb #888 #666 #aaa;
   border-width: 2px 2px 2px 2px;
+  font-size: 3vh;
 }
