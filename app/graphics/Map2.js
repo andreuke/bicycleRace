@@ -1,5 +1,8 @@
-function Map(container, initialCoord, controller) {
+function Map(container, initialCoord, controller,mapPrefix) {
 	var that = this;
+	
+	var myPrefix = mapPrefix;
+	this.lines = [];
 	this.container = container;
 	this.initialCoord = initialCoord;
 	this.controller = controller;
@@ -9,11 +12,12 @@ function Map(container, initialCoord, controller) {
 
 	this.layer;
 	this.stations = [];
+	this.stationList = [];
 	this.communityAreas = [];
 	this.sat = false;
 	this.farView = initialZoom < this.zoomThreshold;
 
-	this.map = L.map(container).setView(initialCoord, initialZoom)
+	this.map = L.map(container).setView(initialCoord, initialZoom);
 
 	this.smallIcon = L.icon({
 		iconUrl: 'app/graphics/res/icon_small.png',
@@ -79,8 +83,12 @@ function Map(container, initialCoord, controller) {
 	});
 	this.controller.onChange("communityAreas",function (data){
 		that.loadCommunityAreas(data);
+		console
 		that.showCommunityAreas();
 	});
+	this.controller.onChange(myPrefix + "-tripsDisplayed",function(data){
+		that.drawTrips(data);
+	})
 
 
 }
@@ -122,6 +130,7 @@ Map.prototype.switchView = function() {
 // DIVVY STATIONS MARKERS
 Map.prototype.loadStations = function(json) {
 	var stations = this.stations
+	var that = this;
 	var map = this.map
 		var data = json.stationsData;
 		for (var i = 0; i < data.length; i++) {
@@ -146,6 +155,8 @@ Map.prototype.loadStations = function(json) {
 
 			station.on('click', this.onStationClick);
 			stations.push(station)
+
+			that.stationList[data[i].id] = L.latLng(latitude, longitude);
 		}
 }
 
@@ -177,8 +188,8 @@ Map.prototype.showCommunityAreas = function() {
 	var communityAreas = this.communityAreas;
 	var map = this.map;
 
-	for (c in communityAreas) {
-		communityAreas[c].addTo(map)
+	for (var i = 0; i < communityAreas.length ; i++) {
+		communityAreas[i].addTo(map);
 
 	}
 }
@@ -207,6 +218,9 @@ Map.prototype.showStations = function() {
 	}
 }
 
+Map.prototype.redraw = function() {
+	this.map.invalidateSize();
+}
 
 Map.prototype.hideStations = function() {
 	for (s in this.stations) {
@@ -232,4 +246,26 @@ Map.prototype.addGraph = function(){
 	var container = '#popup-graph-container'
 	var pie = new PieChart(container, [12, 34, 10, 8, 6], ["ammaccabanana", "bopodollo", "cretinazzo", "dindaro", "ettortello"]);
 	pie.draw();
+}
+
+Map.prototype.drawLine = function(start, end, thickness) {
+	var points = [start, end];
+
+	var polyline = L.polyline(points,{color: 'red', weight: thickness});
+
+	polyline.addTo(this.map);
+	this.lines.push(polyline);
+
+}
+
+Map.prototype.drawTrip = function(fromID, toID, quantity) {
+	var start = this.stationList[parseInt(fromID,10)];
+	var end = this.stationList[parseInt(toID,10)];
+	this.drawLine(start, end, parseInt(quantity,10)*3);
+}
+
+Map.prototype.drawTrips = function(trips) {
+	for(var i = 0; i < trips.length; i++) {
+		this.drawTrip(trips[i].from_station_id, trips[i].to_station_id, trips[i].totalTripsMade);
+	}
 }

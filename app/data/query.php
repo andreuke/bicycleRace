@@ -72,6 +72,7 @@
 
              //array for data..
              $dataArray = array();
+             $dataArray = array_fill(0, 24, 0);
 
              /*
              //uso explode e poi mktime
@@ -110,12 +111,20 @@
              	$dataArray[$i*2] = $var['hour'];
              	$dataArray[$i*2+1] = $var['numbike'];
              }*/
+             /*
              $i=0;
              while($var = mysql_fetch_array($res)){
              	$dataArray[$i] = $var['hour'];
              	$dataArray[$i+1] = $var['numbike'];
              	$i=$i+2;
              }
+             */
+
+             while($var = mysql_fetch_array($res)){
+             	$hour = $var['hour'];
+             	$dataArray[$hour] = $var['numbike'];
+             }
+             
 
              displayDataArrayBikePerHour($dataArray);
 		}
@@ -252,9 +261,9 @@
 
 		function displayDataArrayBikePerHour($arrayData){
 			echo '{"data":[';
-			for($i = 0; $i < count($arrayData); $i=$i+2){
-				echo '{ "hour" : "'.$arrayData[$i].'", "numBike": "'.$arrayData[$i+1].'"}';
-				if($i != count($arrayData)-2){
+			for($i = 0; $i < count($arrayData); $i=$i+1){
+				echo '{ "hour" : "'.$i.'", "numBike": "'.$arrayData[$i].'"}';
+				if($i != count($arrayData)-1){
 					echo ",";
 				}
 			}

@@ -354,6 +354,7 @@ calendar.prototype.update_calendar_data = function(index, svg) {
             var returnValue = selectedYear + "-" + selectedMonth + "-" + selectedDay;
             console.log(" value to return is ->");
             console.log(returnValue);
+            that.controller.changeDateSelection(returnValue);
         })
 
 

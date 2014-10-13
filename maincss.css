@@ -1,8 +1,3 @@
-#map {
-  height: 100%;
-  width: 100%;
-}
-
 body{
   margin: 0;
   position: absolute;
@@ -17,23 +12,24 @@ body{
   width: 25%;
 }
 
-.left{
-  transition: order 2s;
+.forty {
+  height: 100%;
+  width: 40%;
+}
+
+.left{;
   order:-10;
 }
 
 .left-center{
-  transition: order 2s
   order:-5;
 }
 
 .rigth-center{
-  transition: order 2s
   order: 5;
 }
 
 .right{
-  transition: order 2s
   order: 10;
 }
 .full-size{
