@@ -10,6 +10,6 @@
 
  var pickControl = pickAdayController(control,"map1");
 
- var pickView = pickAdayView(pickControl, "#div1","#div3");
+ var pickView = pickAdayView(pickControl, "#div3","#div1");
 
- control.exec("changeMode", "pickAday");
+ control.exec("changeMode", "initial");
