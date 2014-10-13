@@ -85,6 +85,9 @@ function Map(container, initialCoord, controller, mapPrefix) {
 	this.controller.onChange("communityAreas",function (data){
 		that.loadCommunityAreas(data);
 	});
+	this.controller.onChange("statPopularity",function (data){
+		that.loadPopularity(data);
+	});
 	// this.controller.onChange("stationsAttributes",function (data){
 	// 	that.loadPopularity(data);
 	// });
@@ -147,10 +150,7 @@ Map.prototype.switchView = function() {
 // TODO CONTROLLORE
 Map.prototype.loadPopularity = function(json) {
 	that = this;
-
-	d3.json("/app/data/popularity.json", function(error, json) {
-		if (error) return console.warn(error);
-		var data = json.data;
+	var data = json.data;
 
 		// Order by popularity
 		data = data.sort(function(a,b){
@@ -170,8 +170,6 @@ Map.prototype.loadPopularity = function(json) {
 																	latitude: undefined,
 																	longitude: undefined};
 		}
-		console.log(that.stationsAttributes);
-	});
 }
 
 
@@ -195,7 +193,7 @@ Map.prototype.loadStations = function(json) {
 				"1000 (From/To 475/525)" + 
 				"<br>" +
 				"<div id='popup-graph-container'></div>" +
-				"<button onclick='addPieChart()'>AGE</button>" +
+				"<button onclick='addPieChart("+id+")'>AGE</button>" +
 				"<button onclick='addBarChart()'>GENDER</button>" +
 				"<button onclick='addLineChart()'>TYPE</button>"
 
@@ -320,6 +318,9 @@ Map.prototype.onStationClick = function(e) {
 	var pie = new PieChart(container, [12, 34, 10, 8, 6], ["ammaccabanana", "bopodollo", "cretinazzo", "dindaro", "ettortello"], false);
 	pie.draw();
 
+
+	//var stars = new Stars("#stars-container", this.stationsAttributes[id].popularity)
+	//stars.draw();
 	// var starsContainer = "#stars-container"
 	// d3.select(starsContainer).selectAll("svg").remove()
 	// var stars = new Stars(starsContainer, popularity)

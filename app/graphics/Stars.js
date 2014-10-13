@@ -46,7 +46,7 @@ Stars.prototype.draw = function() {
 			name = "blank_star.png"
 		}
 		star_svg	.append("image")
-					.attr("xlink:href",'/app/graphics/res/' + name)
+					.attr("xlink:href",'app/graphics/res/' + name)
 					.attr("x",i*starSize)
 					.attr("width",starSize)
 					.attr("height",starSize);

@@ -106,23 +106,28 @@ var mainController = function() {
 
   that.addState("divvyStations", {});
   that.addState("communityAreas", {});
+  that.addState("statPopularity", {});
 
-  d3.json("app/data/divvy_stations.json", function(error, json) {
-    if (error) {
-      return console.warn(error);
-    } else {
-      that.set("divvyStations", json);
-    }
+
+  d3.json("app/data/popularity.json", function(error, json) {
+    if (error) return console.warn(error);
+    that.set("statPopularity", json);
+    d3.json("app/data/divvy_stations.json", function(error, json) {
+      if (error) {
+        return console.warn(error);
+      } else {
+        that.set("divvyStations", json);
+      }
+    });
   });
 
-  d3.json("app/data/community_areas.json", function(error, json) {
-    if (error) {
-      return console.warn(error);
-    } else {
-      that.set("communityAreas", json);
-    }
-  });
-
+    d3.json("app/data/community_areas.json", function(error, json) {
+      if (error) {
+        return console.warn(error);
+      } else {
+        that.set("communityAreas", json);
+      }
+    });
   //Invoked  by views in oder to change the mode
   that.changeMode = function(mode) {
     if (mode !== that.get("mode")) {
@@ -268,7 +273,7 @@ var initialController = function(controller) {
     that.addState(prefix + "-linechart-type", linetype);
   }
 
-  addGraphState("ini-time1", [], [], "Number of bikes in the year", "linechart", "ordinal")
+  addGraphState("ini-time1", [], [], "Number of bikes in the year", "linechart", "date")
   addGraphState("ini-time2", [], [], "Number of bikes in the week", "barchart", "ordinal")
   addGraphState("ini-time3", [], [], "Number of rides by hour", "linechart", "numerical")
   addGraphState("ini-distr1", [], [], "Distribution of rides by distance", "linechart", "numerical")
@@ -282,15 +287,15 @@ var initialController = function(controller) {
     var tmp;
     switch (id) {
       case ("ini-distr1"):
-      tmp = dataElaboration.ranger(getFromJSON(data, "value", true), getFromJSON(data, "label", true),200)
-      that.set(id + "-labels", tmp.labels);
-      that.set(id + "-data", tmp.data);
-      break;
+        tmp = dataElaboration.ranger(getFromJSON(data, "value", true), getFromJSON(data, "label", true), 200)
+        that.set(id + "-labels", tmp.labels);
+        that.set(id + "-data", tmp.data);
+        break;
       case ("ini-distr2"):
-      tmp = dataElaboration.ranger(getFromJSON(data, "value", true), getFromJSON(data, "label", true),100)
-      that.set(id + "-labels", tmp.labels);
-      that.set(id + "-data", tmp.data);
-      break;
+        tmp = dataElaboration.ranger(getFromJSON(data, "value", true), getFromJSON(data, "label", true), 100)
+        that.set(id + "-labels", tmp.labels);
+        that.set(id + "-data", tmp.data);
+        break;
       default:
         that.set(id + "-labels", getFromJSON(data, "label", false));
         that.set(id + "-data", getFromJSON(data, "value", true));
@@ -602,14 +607,15 @@ var pickAdayView = function(controller, calendarContainer, graphsContainer) {
     graphs.push(pickSingleGraph("#" + rightDiv.attr("id"), _controller, tmpArray[i]));
   };
 
-  var caleDiv = leftDiv.append("div").attr("id","cale-div")
-  .attr("class","flex-item");
+  var caleDiv = leftDiv.append("div").attr("id", "cale-div")
+    .attr("class", "flex-item");
   var cale = new calendar("#" + caleDiv.attr("id"), _controller);
   cale.draw();
 
-  var sliderDiv = leftDiv.append("div").attr("id","slide-div")
-  .attr("class","flex-item");
-  var slider = sliderObject("#" + sliderDiv.attr("id"),0,23);
+  var sliderDiv = leftDiv.append("div").attr("id", "slide-div")
+    .attr("class", "flex-item");
+  var slider = sliderObject("#" + sliderDiv.attr("id"), 0, 23);
+  slider.attr("width", "100%");
 
   //slinder.attr("class","flex-item");
 
