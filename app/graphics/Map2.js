@@ -1,5 +1,8 @@
-function Map(container, initialCoord, controller) {
+function Map(container, initialCoord, controller,mapPrefix) {
 	var that = this;
+	
+	var myPrefix = mapPrefix;
+	this.lines = [];
 	this.container = container;
 	this.initialCoord = initialCoord;
 	this.controller = controller;
@@ -9,6 +12,7 @@ function Map(container, initialCoord, controller) {
 
 	this.layer;
 	this.stations = [];
+	this.stationList = [];
 	this.communityAreas = [];
 	this.sat = false;
 	this.farView = initialZoom < this.zoomThreshold;
@@ -82,6 +86,9 @@ function Map(container, initialCoord, controller) {
 		console
 		that.showCommunityAreas();
 	});
+	this.controller.onChange(myPrefix + "-tripsDisplayed",function(data){
+		that.drawTrips(data);
+	})
 
 
 }
@@ -123,6 +130,7 @@ Map.prototype.switchView = function() {
 // DIVVY STATIONS MARKERS
 Map.prototype.loadStations = function(json) {
 	var stations = this.stations
+	var that = this;
 	var map = this.map
 		var data = json.stationsData;
 		for (var i = 0; i < data.length; i++) {
@@ -147,6 +155,8 @@ Map.prototype.loadStations = function(json) {
 
 			station.on('click', this.onStationClick);
 			stations.push(station)
+
+			that.stationList[data[i].id] = L.latLng(latitude, longitude);
 		}
 }
 
@@ -249,9 +259,9 @@ Map.prototype.drawLine = function(start, end, thickness) {
 }
 
 Map.prototype.drawTrip = function(fromID, toID, quantity) {
-	var start = this.stationList[fromID]
-	var end = this.stationList[toID]
-	this.drawLine(start, end, quantity*3);
+	var start = this.stationList[parseInt(fromID,10)];
+	var end = this.stationList[parseInt(toID,10)];
+	this.drawLine(start, end, parseInt(quantity,10)*3);
 }
 
 Map.prototype.drawTrips = function(trips) {

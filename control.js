@@ -146,7 +146,7 @@ var mainView = function(controller) {
   var slots = []
   var divButtons = d3.select("#mainButtons").attr("class", "flex-horizontal");
   var listButtons = {};
-  var map = new Map("map", [41.8, -87.67], _controller);
+  var map = new Map("map", [41.8, -87.67], _controller,"map1");
   var divMap = d3.select("#map");
   map.draw();
 
@@ -235,13 +235,13 @@ var initialController = function(controller) {
 
   addGraphState("ini-time1", [], [], "Number of bikes in the year", "linechart", "ordinal")
   addGraphState("ini-time2", [], [], "Number of bikes in the week", "barchart", "ordinal")
-  addGraphState("ini-time3", [], [], "Number of rides by hour", "linechart", "ordinal")
+  addGraphState("ini-time3", [], [], "Number of rides by hour", "linechart", "numerical")
   addGraphState("ini-distr1", [], [], "Distribution of rides by distance", "linechart", "numerical")
   addGraphState("ini-distr2", [], [], "Distribution of rides by time", "linechart", "numerical")
   addGraphState("ini-distr3", [], [], "Distance for each bike", "linechart", "numerical")
   addGraphState("ini-demog1", [], [], "Gender", "piechart", "ordinal")
   addGraphState("ini-demog2", [], [], "Subscribers", "piechart", "ordinal")
-  addGraphState("ini-demog3", [], [], "Age", "linechart", "ordinal")
+  addGraphState("ini-demog3", [], [], "Age", "linechart", "numerical")
 
   var dataCallback = function(data, id) {
     that.set(id + "-labels", getFromJSON(data, "label", false));
@@ -424,7 +424,7 @@ var IniSingleGraph = function(controller, where, idElement, idState) {
 var pickAdayController = function(parent, prefixMap) {
   var that = abstractController(parent);
   that.addState("date", "");
-  that.addState("hour", "");
+  that.addState("hour", "12");
   that.addState("filter-type", "noFilter");
   that.addState("filter-value", "noFilter");
   var mapPrefix = prefixMap;;
@@ -461,6 +461,7 @@ var pickAdayController = function(parent, prefixMap) {
   var callBackTrips = function(data, id) {
     console.log(data);
     data.tripId = id;
+    that.set(tripsID,data.data);
   }
 
   //TODO al cambiamento delle selezioni relative alla mappa associata
@@ -500,7 +501,7 @@ var pickAdayController = function(parent, prefixMap) {
   //e aggiornare i viaggi da mostrare sulla mappa(main controller)
   that.changeDateSelection = function(date) {
     db.numberoOfActiveBikesOn(date, callBackActiveBikes, "pick-chicago");
-    db.tripsOn(date, "12", callBackTrips, "chicago-" + that.get("filter-type") + ":" + that.get("filter-value"));
+    db.tripsOn(date, that.get("hour"), callBackTrips, "chicago-" + that.get("filter-type") + ":" + that.get("filter-value"));
     var selections = that.get(selectionsID);
     var hourSelected = that.get("hour");
     for (var i = 0; i < selections.length; i++) {
