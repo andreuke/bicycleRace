@@ -1,0 +1,28 @@
+input[type=range]{
+    -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    //width: 300px;
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+    box-shadow: inset 0 6px 6px -6px grey;
+
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: lightgrey;
+    margin-top: -5px;
+    box-shadow: inset 0px 0px 10px rgba(000,000,000,0.5);
+}
+
+input[type=range]:focus {
+    outline: none;
+}
