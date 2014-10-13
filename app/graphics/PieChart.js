@@ -17,7 +17,7 @@ PieChart.prototype.draw = function(){
 	// var width = this.containerWidth;
 	// var height = this.containerHeight;
 
-	var width = 2200;
+	var width = 1600;
 	var height = 900;
 
 	var centerX = width/2;

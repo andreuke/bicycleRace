@@ -1,7 +1,8 @@
 function Map(container, initialCoord) {
 	//NEW ITEMS
 	this.lines = []
-	this.stationList = new Array();
+	this.stationList = {};
+	this.stationsPopularity = {}
 	that = this;
 
 
@@ -118,6 +119,33 @@ Map.prototype.switchView = function() {
 	}
 }
 
+Map.prototype.loadPopularity = function() {
+	that = this;
+
+	d3.json("/app/data/popularity.json", function(error, json) {
+		if (error) return console.warn(error);
+		var data = json.data;
+
+		// Order by popularity
+		data = data.sort(function(a,b){
+    		return a.total - b.total;
+    	}
+	);
+
+		var popularity = 0;
+		for(var i = 0; i < data.length; i++) {
+			if(i%30 == 0) {
+				popularity++;
+			}
+			var station = data[i]
+			that.stationsPopularity[parseInt(station.stationId)] = {popularity: popularity, 
+																	income: station.arrivingHere,
+																	outcome: station.startingFromHere};
+		}
+		console.log(that.stationsPopularity);
+	});
+}
+
 
 // DIVVY STATIONS MARKERS
 Map.prototype.loadStations = function() {
@@ -132,15 +160,17 @@ Map.prototype.loadStations = function() {
 			var longitude = parseFloat(data[i].longitude);
 			var station = L.marker([latitude, longitude]) //.addTo(map);
 
+			var pop = that.stationsPopularity[data[i].id].popularity
+
 			var content = "<h3>" + data[i].name + "</h3>" +
 				"Capacity: " + data[i].dpcapacity +
-				"<br>" +
+				// "<br>" +
 				"<div id='stars-container'>Popularity</div>" +
 				"<br>" +
 				"1000 (From/To 475/525)" + 
 				"<br>" +
 				"<div id='popup-graph-container'></div>" +
-				"<button onclick='addGraph()'>AGE</button>" +
+				"<button onclick='addGraph("+pop+")'>AGE</button>" +
 				"<button>GENDER</button>" +
 				"<button>TYPE</button>"
 			
@@ -232,6 +262,12 @@ Map.prototype.hideStations = function() {
 }
 
 
+Map.prototype.addGraph = function(){
+	var container = '#popup-graph-container'
+	var pie = new PieChart(container, [12, 34, 10, 8, 6], ["ammaccabanana", "bopodollo", "cretinazzo", "dindaro", "ettortello"]);
+	pie.draw();
+}
+
 
 
 // NEW METHODS
@@ -288,8 +324,11 @@ function onStationClick(e) {
 	// console.log("LAT: " + latitude + " - LONG: " + longitude);
 }
 
-function addGraph() {
+function addGraph(popularity) {
 	var container = '#popup-graph-container'
 	var pie = new PieChart(container, [12, 34, 10, 8, 6], ["ammaccabanana", "bopodollo", "cretinazzo", "dindaro", "ettortello"], false);
 	pie.draw();
+
+	var stars = new Stars("#stars-container", popularity)
+	stars.draw();
 }

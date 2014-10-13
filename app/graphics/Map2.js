@@ -1,4 +1,4 @@
-function Map(container, initialCoord, controller,mapPrefix) {
+function Map(container, initialCoord, controller, mapPrefix) {
 	var that = this;
 	
 	var myPrefix = mapPrefix;
@@ -86,9 +86,13 @@ function Map(container, initialCoord, controller,mapPrefix) {
 		console
 		that.showCommunityAreas();
 	});
+	// this.controller.onChange("stationsPopularity",function (data){
+	// 	that.loadPopularity(data);
+	// });
+
 	this.controller.onChange(myPrefix + "-tripsDisplayed",function(data){
 		that.drawTrips(data);
-	})
+	});
 
 
 }
@@ -98,7 +102,7 @@ Map.prototype.draw = function() {
 	var map = this.map;
 
 	this.layer = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg', {
-		attribution: 'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+		attribution: 'SNI e SNO',
 		subdomains: '1234',
 		minZoom: 4,
 		maxZoom: 18
@@ -127,6 +131,35 @@ Map.prototype.switchView = function() {
 }
 
 
+// TODO CONTROLLORE
+Map.prototype.loadPopularity = function(json) {
+	that = this;
+
+	d3.json("/app/data/popularity.json", function(error, json) {
+		if (error) return console.warn(error);
+		var data = json.data;
+
+		// Order by popularity
+		data = data.sort(function(a,b){
+    		return a.total - b.total;
+    	}
+	);
+
+		var popularity = 0;
+		for(var i = 0; i < data.length; i++) {
+			if(i%30 == 0) {
+				popularity++;
+			}
+			var station = data[i]
+			that.stationsPopularity[parseInt(station.stationId)] = {popularity: popularity, 
+																	income: station.arrivingHere,
+																	outcome: station.startingFromHere};
+		}
+		console.log(that.stationsPopularity);
+	});
+}
+
+
 // DIVVY STATIONS MARKERS
 Map.prototype.loadStations = function(json) {
 	var stations = this.stations
@@ -138,13 +171,18 @@ Map.prototype.loadStations = function(json) {
 			var longitude = parseFloat(data[i].longitude);
 			var station = L.marker([latitude, longitude]) //.addTo(map);
 
+
 			var content = "<h3>" + data[i].name + "</h3>" +
 				"Capacity: " + data[i].dpcapacity +
 				"<br>" +
-				"<button onclick="+this+'.addGraph()'+">AGE</button>" +
-				"<button>GENDER</button>" +
-				"<button>TYPE</button>" +
-				"<div id='popup-graph-container'></div>"
+				"<div id='stars-container'>Popularity</div>" +
+				"<br>" +
+				"1000 (From/To 475/525)" + 
+				"<br>" +
+				"<div id='popup-graph-container'></div>" +
+				"<button onclick='addPieChart()'>AGE</button>" +
+				"<button onclick='addBarChart()'>GENDER</button>" +
+				"<button onclick='addLineChart()'>TYPE</button>"
 
 			var popup = L.popup({
 					className: 'station-info'
@@ -237,15 +275,39 @@ Map.prototype.onStationClick = function(e) {
 	var latitude = parseFloat(e.latlng.lat);
 	var longitude = parseFloat(e.latlng.lng);
 
+
+	var stars = new Stars("#stars-container", 7)
+	stars.draw();
+
 	// Leaves enough space for the popup
-	//map.setView([latitude, longitude], 15)
-	console.log("LAT: " + latitude + " - LONG: " + longitude);
+	map.setView([latitude + 0.005, longitude], 15)
+	// console.log("LAT: " + latitude + " - LONG: " + longitude);
 }
 
-Map.prototype.addGraph = function(){
+ function addLineChart(){
 	var container = '#popup-graph-container'
-	var pie = new PieChart(container, [12, 34, 10, 8, 6], ["ammaccabanana", "bopodollo", "cretinazzo", "dindaro", "ettortello"]);
+	d3.select(container).selectAll("svg").remove()
+	var pie = new LineChart(container, [12, 34, 10, 8, 6], ["ammaccabanana", "bopodollo", "cretinazzo", "dindaro", "ettortello"], false);
 	pie.draw();
+}
+
+ function addBarChart(){
+	var container = '#popup-graph-container'
+	d3.select(container).selectAll("svg").remove()
+	var pie = new BarChart(container, [12, 34, 10, 8, 6], ["ammaccabanana", "bopodollo", "cretinazzo", "dindaro", "ettortello"], false);
+	pie.draw();
+}
+ 
+ function addPieChart(){
+	var container = '#popup-graph-container'
+	d3.select(container).selectAll("svg").remove()
+	var pie = new PieChart(container, [12, 34, 10, 8, 6], ["ammaccabanana", "bopodollo", "cretinazzo", "dindaro", "ettortello"], false);
+	pie.draw();
+
+	// var starsContainer = "#stars-container"
+	// d3.select(starsContainer).selectAll("svg").remove()
+	// var stars = new Stars(starsContainer, popularity)
+	// stars.draw();
 }
 
 Map.prototype.drawLine = function(start, end, thickness) {
@@ -258,10 +320,16 @@ Map.prototype.drawLine = function(start, end, thickness) {
 
 }
 
+Map.prototype.removeLines = function() {
+	for(var i = 0; i < this.lines.length; i++) {
+		this.map.removeLayer(lines[i]);
+	}	
+}
+
 Map.prototype.drawTrip = function(fromID, toID, quantity) {
 	var start = this.stationList[parseInt(fromID,10)];
 	var end = this.stationList[parseInt(toID,10)];
-	this.drawLine(start, end, parseInt(quantity,10)*3);
+	this.drawLine(start, end, parseInt(quantity,10));
 }
 
 Map.prototype.drawTrips = function(trips) {
@@ -269,3 +337,4 @@ Map.prototype.drawTrips = function(trips) {
 		this.drawTrip(trips[i].from_station_id, trips[i].to_station_id, trips[i].totalTripsMade);
 	}
 }
+

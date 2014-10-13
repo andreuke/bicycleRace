@@ -153,12 +153,16 @@ btn.addEventListener('click', function() {
   			d3.select("#map").style("width", "50%")
   			map.invalidate()
   		}
+  		else if(counter == 7) {
+  			map.remove
+  		}
   		counter++;
 });
 
 			var map = new Map('map', [41.8710629,-87.6758785]);
 			map.draw();
 			// map.satView();
+			map.loadPopularity();
 			map.loadCommunityAreas();
 			map.loadStations();
 			map.showStations();
