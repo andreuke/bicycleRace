@@ -159,7 +159,7 @@ var mainView = function(controller) {
   var slots = []
   var divButtons = d3.select("#mainButtons").attr("class", "flex-horizontal");
   var listButtons = {};
-  var map = new Map("map", [41.8, -87.67], _controller, "map1");
+  var map = new Map("map", [41.869791, -87.631562], _controller, "map1");
   var divMap = d3.select("#map");
   map.draw();
 
@@ -172,7 +172,7 @@ var mainView = function(controller) {
       _controller.changeMode("initial")
     })
     .append("text")
-    .text("Initial");
+    .text("Overview");
 
   //Switch to pickaDay view button
   listButtons.pickButton = divButtons.append("div")
@@ -182,7 +182,7 @@ var mainView = function(controller) {
       _controller.changeMode("pickAday")
     })
     .append("text")
-    .text("Pick a Day");
+    .text("Select day");
 
 
   listButtons.comAreasButton = divButtons.append("div")
@@ -236,7 +236,7 @@ var mainView = function(controller) {
         divMap.classed("left", false);
         divMap.classed("left-center quart", true);
         map.redraw();
-        slots[0].attr("class", "flex-item-double right");
+        slots[0].attr("class", "flex-item-penta right");
         slots[1].attr("class", "invisible");
         slots[2].attr("class", "flex-item left");
         slots[3].attr("class", "invisible");
@@ -410,7 +410,7 @@ var IniSingleGraph = function(controller, where, idElement, idState) {
     .attr("id", id)
     .classed("initial-slot-normal", true);
   var title = mainDiv.append("text")
-    .text(_controller.get(idStatus + "-title") + id)
+    .text(_controller.get(idStatus + "-title"))
     .classed("graph-title", true);
   var graphDiv = mainDiv.append("div").attr("id", id + "-div-graph")
     .classed("div-graph", true)
@@ -426,7 +426,7 @@ var IniSingleGraph = function(controller, where, idElement, idState) {
       graph = Chart(_controller.get(idStatus + "-data"), "#" + graphDiv.attr("id"), "100%", "");
       break;
     case "linechart":
-      graph = new LineChart("#" + graphDiv.attr("id"), _controller.get(idStatus + "-data"), _controller.get(idStatus + "-labels"), "ciccio", "pino", _controller.get(idStatus + "-linechart-type"));
+      graph = new LineChart("#" + graphDiv.attr("id"), _controller.get(idStatus + "-data"), _controller.get(idStatus + "-labels"), "", "", _controller.get(idStatus + "-linechart-type"));
       break;
   }
 
@@ -513,7 +513,6 @@ var pickAdayController = function(parent, prefixMap) {
   }
 
   var callBackTrips = function(data, id) {
-    console.log(data);
     data.tripId = id;
     that.set(tripsID, data.data);
   }
@@ -568,8 +567,9 @@ var pickAdayController = function(parent, prefixMap) {
   that.changeHourSelection = function(hour) {
     //TODO get the trips for all the city
     //TODO get the trips fo all the selections
-    var selections = that.get(selectionsID);
-    var dateSelected = that.get("date");
+    db.tripsOn(that.get("date"), hour, callBackTrips, "chicago-" + that.get("filter-type") + ":" + that.get("filter-value"));
+    //var selections = that.get(selectionsID);
+    //var dateSelected = that.get("date");
     //TODO aggiornare tutti i trips
     that.set("hour", hour);
   }
@@ -615,7 +615,10 @@ var pickAdayView = function(controller, calendarContainer, graphsContainer) {
   var sliderDiv = leftDiv.append("div").attr("id", "slide-div")
     .attr("class", "flex-item");
   var slider = sliderObject("#" + sliderDiv.attr("id"), 0, 23);
-  slider.attr("width", "100%");
+  slider.on("input",function(){
+    _controller.changeHourSelection(slider.property("value"));
+  });
+
 
   //slinder.attr("class","flex-item");
 

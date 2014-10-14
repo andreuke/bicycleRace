@@ -67,6 +67,11 @@ body{
   display: flex;
   flex: 2;
 }
+.flex-item-penta {
+  text-align: center;
+  display: flex;
+  flex: 4;
+}
 
 .flex-horizontal{
   display: flex;
