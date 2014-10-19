@@ -85,12 +85,6 @@ function Map(container, initialCoord, controller, mapPrefix) {
 	this.controller.onChange("communityAreas",function (data){
 		that.loadCommunityAreas(data);
 	});
-	this.controller.onChange("statPopularity",function (data){
-		that.loadPopularity(data);
-	});
-	// this.controller.onChange("stationsAttributes",function (data){
-	// 	that.loadPopularity(data);
-	// });
 
 	this.controller.onChange(myPrefix + "-tripsDisplayed",function(data){
 		that.drawTrips(data);
@@ -147,40 +141,9 @@ Map.prototype.switchView = function() {
 }
 
 
-// TODO CONTROLLORE
-Map.prototype.loadPopularity = function(json) {
-	that = this;
-	var data = json.data;
-
-		// Order by popularity
-		data = data.sort(function(a,b){
-    		return a.total - b.total;
-    	}
-	);
-
-		var popularity = 0;
-		for(var i = 0; i < data.length; i++) {
-			if(i%30 == 0) {
-				popularity++;
-			}
-			var station = data[i]
-			that.stationsAttributes[parseInt(station.stationId)] = {name: undefined,
-																	capacity: undefined,
-																	popularity: popularity, 
-																	income: station.arrivingHere,
-																	outcome: station.startingFromHere,
-																	latitude: undefined,
-																	longitude: undefined,
-																	id: station.id};
-		}
-}
-
 
 // DIVVY STATIONS MARKERS
 Map.prototype.loadStations = function(json) {
-
-	console.log(json.stationsData)
-
 	var stationsMarkers = this.stationsMarkers
 	var that = this;
 	var map = this.map
@@ -223,18 +186,8 @@ Map.prototype.loadStations = function(json) {
 										longitude: latitude
 										};
 
-		// var stationData = that.stationsAttributes[id];
-
-		// stationData.name = s.name;
-		// stationData.capacity = s.dpcapacity;
-		// stationData.latitude = s.latitude;
-		// stationData.longitude = s.longitude;
-		// stationData.id = s.id;
-
-
+		
 		}
-		// console.log(JSON.stringify(that.stationsAttributes));
-		console.log(that.stationsAttributes);
 }
 
 // COMMUNITY AREAS LAYERS
