@@ -109,17 +109,17 @@ var mainController = function() {
   that.addState("statPopularity", {});
 
 
-  d3.json("app/data/popularity.json", function(error, json) {
-    if (error) return console.warn(error);
-    that.set("statPopularity", json);
-    d3.json("app/data/divvy_stations.json", function(error, json) {
+  // d3.json("app/data/popularity.json", function(error, json) {
+  //   if (error) return console.warn(error);
+  //   that.set("statPopularity", json);
+    d3.json("app/data/stationsData.json", function(error, json) {
       if (error) {
         return console.warn(error);
       } else {
         that.set("divvyStations", json);
       }
     });
-  });
+  // });
 
     d3.json("app/data/community_areas.json", function(error, json) {
       if (error) {

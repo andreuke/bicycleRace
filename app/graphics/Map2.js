@@ -164,22 +164,28 @@ Map.prototype.loadPopularity = function(json) {
 				popularity++;
 			}
 			var station = data[i]
-			that.stationsAttributes[parseInt(station.stationId)] = {popularity: popularity, 
+			that.stationsAttributes[parseInt(station.stationId)] = {name: undefined,
+																	capacity: undefined,
+																	popularity: popularity, 
 																	income: station.arrivingHere,
 																	outcome: station.startingFromHere,
 																	latitude: undefined,
-																	longitude: undefined};
+																	longitude: undefined,
+																	id: station.id};
 		}
 }
 
 
 // DIVVY STATIONS MARKERS
 Map.prototype.loadStations = function(json) {
+
+	console.log(json.stationsData)
+
 	var stationsMarkers = this.stationsMarkers
 	var that = this;
 	var map = this.map
 		var data = json.stationsData;
-		for (var i = 0; i < data.length; i++) {
+		for (i in data) {
 			var latitude = parseFloat(data[i].latitude);
 			var longitude = parseFloat(data[i].longitude);
 			var id = parseInt(data[i].id);
@@ -207,9 +213,28 @@ Map.prototype.loadStations = function(json) {
 			station.on('click', this.onStationClick);
 			stationsMarkers.push(station)
 
-			that.stationsAttributes[id].latitude = latitude;
-			that.stationsAttributes[id].longitude = longitude;
+			var s = data[i];
+		that.stationsAttributes[s.id] = {	name: s.name,
+										capacity: s.capacity,
+										popularity: s.popularity,
+										income: s.income,
+										outcome: s.outcome,
+										latitude: latitude,
+										longitude: latitude
+										};
+
+		// var stationData = that.stationsAttributes[id];
+
+		// stationData.name = s.name;
+		// stationData.capacity = s.dpcapacity;
+		// stationData.latitude = s.latitude;
+		// stationData.longitude = s.longitude;
+		// stationData.id = s.id;
+
+
 		}
+		// console.log(JSON.stringify(that.stationsAttributes));
+		console.log(that.stationsAttributes);
 }
 
 // COMMUNITY AREAS LAYERS
@@ -358,4 +383,5 @@ Map.prototype.drawTrips = function(trips) {
 		this.drawTrip(trips[i].from_station_id, trips[i].to_station_id, trips[i].totalTripsMade);
 	}
 }
+
 
