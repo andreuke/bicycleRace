@@ -52,8 +52,6 @@ function Map(container, initialCoord, controller, mapPrefix) {
 	//    popupAnchor:  [0, -87] // point from which the popup should open r
 	// });
 
-
-
 	var map = this.map
 	var stationsMarkers = this.stationsMarkers
 	var farView = this.farView;
@@ -118,6 +116,10 @@ Map.prototype.draw = function() {
 		maxZoom: 18
 	});
 	this.layer.addTo(map);
+	/******  TODO  ********/
+	// L.control.zoom({position: 'bottomright'}).addTo(map);
+
+
 }
 
 
@@ -149,22 +151,25 @@ Map.prototype.loadStations = function(json) {
 	var map = this.map
 		var data = json.stationsData;
 		for (i in data) {
-			var latitude = parseFloat(data[i].latitude);
-			var longitude = parseFloat(data[i].longitude);
-			var id = parseInt(data[i].id);
+			var s = data[i];
+			var latitude = parseFloat(s.latitude);
+			var longitude = parseFloat(s.longitude);
+			var id = parseInt(s.id);
 			
 			var station = L.marker([latitude, longitude]) //.addTo(map);
-			var content = "<h3>" + data[i].name + "</h3>" +
-				"Capacity: " + data[i].dpcapacity +
+			var content = "<h3>" + s.name + "</h3>" +
+				"Capacity: " + s.capacity +
 				"<br>" +
 				"<div id='stars-container'>Popularity</div>" +
 				"<br>" +
-				"1000 (From/To 475/525)" + 
+				(parseInt(s.income) + parseInt(s.outcome)) + " (In: " + s.income + " Out: " + s.outcome + ")" + 
 				"<br>" +
 				"<div id='popup-graph-container'></div>" +
 				"<button onclick='addPieChart("+id+")'>AGE</button>" +
 				"<button onclick='addBarChart()'>GENDER</button>" +
 				"<button onclick='addLineChart()'>TYPE</button>"
+
+
 
 			var popup = L.popup({
 					className: 'station-info'
@@ -173,18 +178,25 @@ Map.prototype.loadStations = function(json) {
 
 			station.bindPopup(popup)
 
-			station.on('click', this.onStationClick);
+			/***      TODO 		***/ 
+			var pop = s.popularity;
+			station.on('click', function (poppa) {
+	            return function () {
+	                that.drawStars(poppa);
+	            };
+        	}(pop));
+			/**********************/
+
 			stationsMarkers.push(station)
 
-			var s = data[i];
-		that.stationsAttributes[s.id] = {	name: s.name,
-										capacity: s.capacity,
-										popularity: s.popularity,
-										income: s.income,
-										outcome: s.outcome,
-										latitude: latitude,
-										longitude: latitude
-										};
+			that.stationsAttributes[s.id] = {	name: s.name,
+												capacity: s.capacity,
+												popularity: s.popularity,
+												income: s.income,
+												outcome: s.outcome,
+												latitude: latitude,
+												longitude: latitude
+												};
 
 		
 		}
@@ -197,19 +209,30 @@ Map.prototype.loadCommunityAreas = function(json) {
 
 		var polygon
 
+		
+
 		for (var i = 0; i < data.length; i++) {
+			var name = data[i].properties.name;
 			var coordinates = data[i].geometry.coordinates[0][0];
 			var edges = []
+
+			var centerLat = 0, centerLong = 0;
+
 			for (var j = 0; j < coordinates.length; j++) {
 				var latitude = parseFloat(coordinates[j][1]);
 				var longitude = parseFloat(coordinates[j][0]);
 				edges.push([latitude, longitude]);
 
+				centerLat += latitude;
+				centerLong += longitude;
 			}
+
+			centerLat /= coordinates.length;
+			centerLong /= coordinates.length;
 
 
 			polygon = L.multiPolygon([edges]) //.addTo(map);
-			communityAreas.push(polygon)
+			communityAreas.push(polygon)			
 
 		}
 }
@@ -259,6 +282,11 @@ Map.prototype.hideStations = function() {
 
 }
 
+Map.prototype.drawStars = function(pop) {
+	var stars = new Stars("#stars-container", pop)
+	stars.draw();
+}
+
 
 Map.prototype.onStationClick = function(e) {
 
@@ -267,15 +295,16 @@ Map.prototype.onStationClick = function(e) {
 	var latitude = parseFloat(e.latlng.lat);
 	var longitude = parseFloat(e.latlng.lng);
 
-
-	var stars = new Stars("#stars-container", 7)
-	stars.draw();
+	// TODO 
+	// var stars = new Stars("#stars-container", s.popularity)
+	// stars.draw();
 
 	// Leaves enough space for the popup
 	map.setView([latitude + 0.005, longitude], 15)
 	// console.log("LAT: " + latitude + " - LONG: " + longitude);
 }
 
+// TODO TEMPORANEE A CAUSA DI HARDCODE NEL POPUP
  function addLineChart(){
 	var container = '#popup-graph-container'
 	d3.select(container).selectAll("svg").remove()
@@ -295,7 +324,7 @@ Map.prototype.onStationClick = function(e) {
 	d3.select(container).selectAll("svg").remove()
 	var pie = new PieChart(container, [12, 34, 10, 8, 6], ["ammaccabanana", "bopodollo", "cretinazzo", "dindaro", "ettortello"], false);
 	pie.draw();
-
+// ************************************** //
 
 	//var stars = new Stars("#stars-container", this.stationsAttributes[id].popularity)
 	//stars.draw();

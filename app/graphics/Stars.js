@@ -1,11 +1,11 @@
 function Stars(container, value) {
 	this.maxStar = 5;
 	this.container = container;
-	if(value <= this.maxStar*2) {
+	if(0 <= value && value <= this.maxStar*2) {
 		this.value = value;
 	}
 	else {
-		this.value = this.maxStar*2;
+		this.value = 0;
 	}
 }
 
