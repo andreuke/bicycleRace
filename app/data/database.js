@@ -175,3 +175,56 @@ database.prototype.numberoOfActiveBikesOn = function(dayFromCalendar, callback, 
 		});
 	//})(dayFromCalendar);
 }
+
+database.prototype.overallOutflow = function (stationId){
+	var return_value;
+
+	return_value = $.ajax({
+		url: this.queryUrl,
+		data: "mark=1&query=0&station="+ "" + stationId,
+		dataType: "json",
+		success: function(data) {
+			callback(data,iden);
+		}
+	});
+}
+
+
+database.prototype.overallInflow = function (stationId){
+	var return_value;
+
+	return_value = $.ajax({
+		url: this.queryUrl,
+		data: "mark=1&query=1&station="+ "" + stationId,
+		dataType: "json",
+		success: function(data) {
+			callback(data,iden);
+		}
+	});
+}
+
+database.prototype.demographicInflowOutflow = function (stationId){
+	var return_value;
+
+	return_value = $.ajax({
+		url: this.queryUrl,
+		data: "mark=1&query=2&station="+ "" + stationId,
+		dataType: "json",
+		success: function(data) {
+			callback(data,iden);
+		}
+	});
+}
+
+database.prototype.overallBetweenHour = function (fromHour, toHour){
+	var return_value;
+
+	return_value = $.ajax({
+		url: this.queryUrl,
+		data: "mark=1&query=0&from="+ "" + fromHour+ "&to=" + "" +toHour,
+		dataType: "json",
+		success: function(data) {
+			callback(data,iden);
+		}
+	});
+}

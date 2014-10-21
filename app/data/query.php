@@ -59,6 +59,65 @@
 					# code...
 					break;
 			}
+		}else if($mark == 1){
+			switch($query){
+				case '0':
+					$stationId = $_GET['station'];
+					overallOutflow($stationId,$connessione);
+					break;
+				case '1':
+					$stationId = $_GET['station'];
+					overallInflow($stationId, $connessione);
+					break;
+				case '2':
+					$stationId = $_GET['station'];
+					demographicsInflowOutflow($stationId, $connessione);
+					break;
+				case '3':
+					$fromHour = $_GET['from'];
+					$toHour = $_GET['to'];
+					overallBetweenHour($fromHour,$toHour, $connessione);
+					break;
+				default:
+					echo "error!";
+					break;
+			}
+		}
+		//switch to labelled data if you wants labels....
+
+		function overallBetweenHour($fromHour, $toHour, $connessione){
+			$result = genericQuery('from_station_id,to_station_id, count(*) as total', 'divvy_trips_distances_skinny', 'hour >= '.$fromHour.' and hour < '.$toHour, 'group by from_station_id,to_station_id', $connessione);
+			$variables = array ('0' => 'from_station_id',
+								'1' => 'to_station_id',
+								'2' => 'total');
+
+			labelledDisplayData($result, $variables);
+		}
+
+		function demographicsInflowOutflow($stationId, $connessione){
+			$result = genericQuery('from_station_id,to_station_id, usertype, gender, birthyear','divvy_trips_distances', 'from_station_id = '.$stationId.' OR to_station_id='.$stationId, '', $connessione);
+			$variables  = array('0' => 'from_station_id',
+			 					'1' => 'to_station_id',
+			 					'2' => 'usertype',
+			 					'3' => 'gender',
+			 					'4' => 'birthyear');
+			labelledDisplayData($result, $variables);
+
+		}
+
+		function overallInflow($stationId, $connessione){
+			$result = genericQuery('from_station_id, count(*) as quante','divvy_trips_distances_skinny', 'to_station_id = '.$stationId, 'group by from_station_id', $connessione);
+
+			$variables = array('0' => 'from_station_id',
+								'1' => 'quante');
+			genericDisplayData($result, $variables);
+		}
+		function overallOutflow($station, $connessione){
+			$result = genericQuery('to_station_id, count(*) as quante','divvy_trips_distances_skinny', 'from_station_id = '.$station, 'group by to_station_id', $connessione);
+
+			$variables = array('0' => 'to_station_id',
+								'1' => 'quante');
+			genericDisplayData($result, $variables);
 		}
 
 		function allTripsTakenAccrossTheCityOnSecondPart($day, $connessione){
