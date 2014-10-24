@@ -282,18 +282,18 @@ var initialController = function(controller) {
     var tmp;
     switch (id) {
       case ("ini-distr1"):
-        tmp = dataElaboration.ranger(getFromJSON(data, "value", true), getFromJSON(data, "label", true), 200)
+        tmp = dataElaboration.ranger(dataElaboration.getFromJSON(data, "value", true), dataElaboration.getFromJSON(data, "label", true), 200)
         that.set(id + "-labels", tmp.labels);
         that.set(id + "-data", tmp.data);
         break;
       case ("ini-distr2"):
-        tmp = dataElaboration.ranger(getFromJSON(data, "value", true), getFromJSON(data, "label", true), 100)
+        tmp = dataElaboration.ranger(dataElaboration.getFromJSON(data, "value", true), dataElaboration.getFromJSON(data, "label", true), 100)
         that.set(id + "-labels", tmp.labels);
         that.set(id + "-data", tmp.data);
         break;
       default:
-        that.set(id + "-labels", getFromJSON(data, "label", false));
-        that.set(id + "-data", getFromJSON(data, "value", true));
+        that.set(id + "-labels", dataElaboration.getFromJSON(data, "label", false));
+        that.set(id + "-data", dataElaboration.getFromJSON(data, "value", true));
     }
   }
 
@@ -474,9 +474,12 @@ var pickAdayController = function(parent, prefixMap) {
   var that = abstractController(parent);
   that.addState("date", "");
   that.addState("hour", "12");
-  that.addState("filter-type", "noFilter");
-  that.addState("filter-value", "noFilter");
-  var mapPrefix = prefixMap;;
+  that.addState("filter-gender", "Male");
+  that.addState("filter-subscriber", "Subscriber");
+  that.addState("filter-age-min", 0);
+  that.addState("filter-age-max", 40);
+  
+  var mapPrefix = prefixMap;
   var selectionsID = prefixMap + "-SelectedStation";
   var tripsID = prefixMap + "-tripsDisplayed";
 
@@ -488,8 +491,6 @@ var pickAdayController = function(parent, prefixMap) {
     that.addState(prefix + "-data", data);
     that.addState(prefix + "-labels", label);
     that.addState(prefix + "-title", title);
-    that.addState(prefix + "-filter-type", "noFilter");
-    that.addState(prefix + "-filter-value", "noFilter");
   }
 
   addGraphState("pick-chicago", [], [], "Chicago City", true, "chicago");
@@ -503,31 +504,32 @@ var pickAdayController = function(parent, prefixMap) {
 
   //Callback for the data of the graphs
   var callBackActiveBikes = function(data, id) {
-    that.set(id + "-labels", getFromJSON(data, "hour", false));
-    that.set(id + "-data", getFromJSON(data, "numBike", true));
+    that.set(id + "-labels", dataElaboration.getFromJSON(data, "hour", false));
+    that.set(id + "-data", dataElaboration.getFromJSON(data, "numBike", true));
   }
 
   var callBackTrips = function(data, id) {
-    data.tripId = id;
+    console.log(data);
     that.set(tripsID, data.data);
   }
 
   //TODO al cambiamento delle selezioni relative alla mappa associata
   // aggiornare i grafici e i viaggi da mostrare
   var handleMapSelections = function(selections) {
-    var slotsPrefix = that.get(graphsPrefixArray).slice(0);
+    var slotsPrefix = that.get("graphsPrefixArray").slice(0);
     var copySelections = selections.slice(0);
     var emptyPrefixes = [];
     var alreadySelected = [];
     for (var i = 0; i < slotsPrefix.length; i++) {
       var tmpPrefix = slotsPrefix[i]
-      var tmpId = that.get(tmpPrefix + "-id");
+      var tmpId = that.get(tmpPrefix + "-idStation");
       if (tmpId === "") { //prefisso libero
-        emptyPrefixes.push(tmpId);
+        emptyPrefixes.push(tmpPrefix);
       } else {
         if (selections.indexOf(tmpId) === -1) {
           that.set(tmpPrefix + "-show", false);
-          that.set(tmpPrefix + "-id", "");
+          that.set(tmpPrefix + "-idStation", "");
+          emptyPrefixes.push(tmpPrefix);
           //remove trips
         } else {
           alreadySelected.push(tmpId);
@@ -536,25 +538,41 @@ var pickAdayController = function(parent, prefixMap) {
     };
     for (var i = 0; i < selections.length; i++) {
       if (alreadySelected.indexOf(selections[i]) === -1) {
-        //db.getData(emptyprefixes[0])
-        //db.getTrips
-        emptyPrefixes.slice(0, 1);
+        that.set(emptyPrefixes[0] + "-idStation",selections[i]);
+        that.set(emptyPrefixes[0] + "-show", true);
+        //TODO testare questa funzione del db
+        db.tripsTakenAccrossFilteredStation(selections[i], that.get("filter-gender"),
+          that.get("filter-age-min"), that.get("filter-age-max"),
+          that.get("filter-subscriber"), that.get("date"), that.get("hour"), callBackTrips, emptyPrefixes[0]);
+        //db.getData
+        emptyPrefixes.splice(0, 1);
       }
     };
 
   }
   that.onChange(selectionsID, handleMapSelections);
+  that.set(selectionsID, ["12","2"]);
+  that.set(selectionsID, ["12","3"]);
 
   //TODO al cambiamento dell'ora aggiornare i dati dei grafici,
   //e aggiornare i viaggi da mostrare sulla mappa(main controller)
   that.changeDateSelection = function(date) {
     db.numberoOfActiveBikesOn(date, callBackActiveBikes, "pick-chicago");
-    db.tripsOn(date, that.get("hour"), callBackTrips, "chicago-" + that.get("filter-type") + ":" + that.get("filter-value"));
+    db.tripsOn(date, that.get("hour"), callBackTrips);
     var selections = that.get(selectionsID);
     var hourSelected = that.get("hour");
+    var prefixes = that.get("graphsPrefixArray")
     for (var i = 0; i < selections.length; i++) {
-      //query database number of active bikes for station
-      //query dataBase trips for station given date and hour
+      for (var j = 0; j < 10 ; j++){
+       if (that.get(prefixes[j] + "-idStation") === selections[i]){
+          //query database number of active bikes for station
+          
+          //query dataBase trips for station given date and hour
+          db.tripsTakenAccrossFilteredStation(selections[i], that.get("filter-gender"),
+          that.get("filter-age-min"), that.get("filter-age-max"),
+          that.get("filter-subscriber"), date, that.get("hour"), callBackTrips, emptyPrefixes[0]);
+       } 
+      }
     };
     that.set("date", date)
   }
@@ -562,7 +580,7 @@ var pickAdayController = function(parent, prefixMap) {
   that.changeHourSelection = function(hour) {
     //TODO get the trips for all the city
     //TODO get the trips fo all the selections
-    db.tripsOn(that.get("date"), hour, callBackTrips, "chicago-" + that.get("filter-type") + ":" + that.get("filter-value"));
+    db.tripsOn(that.get("date"), hour, callBackTrips);
     //var selections = that.get(selectionsID);
     //var dateSelected = that.get("date");
     //TODO aggiornare tutti i trips
@@ -571,11 +589,11 @@ var pickAdayController = function(parent, prefixMap) {
 
   //TODO al cambiamento dei filtri aggiornare i dati dei grafici
   // e dei viaggi
-  that.changeFilterSelection = function() {
+  that.changeFilterSelection = function(filterType) {
 
   }
 
-  that.changeValueFilter = function() {
+  that.changeValueFilter = function(filterValue) {
 
   }
   return that;
@@ -613,6 +631,8 @@ var pickAdayView = function(controller, calendarContainer, graphsContainer) {
   slider.on("input",function(){
     _controller.changeHourSelection(slider.property("value"));
   });
+
+  var filters = filterSelector("#" + leftDiv.attr("id"),_controller);
 
 
   //slinder.attr("class","flex-item");
@@ -664,14 +684,29 @@ var pickSingleGraph = function(container, controller, prefixState) {
   return that;
 }
 
-var getFromJSON = function(json, what, enableParse) {
-  var tmpArray = [];
-  for (var i = 0; i < json.data.length; i++) {
-    if (enableParse === true) {
-      tmpArray.push(parseInt(json.data[i][what], 10));
-    } else {
-      tmpArray.push(json.data[i][what]);
-    }
-  }
-  return tmpArray;
+var filterSelector = function(container, controller) {
+  that = {};
+  var _controller = controller;
+  var mainDiv = d3.select(container).append("div")
+    .attr("class","flex-vertical");
+  var title = mainDiv.append("text")
+    .classed("label-filter",true)
+    .text("Filter by:");
+  var tableDiv = mainDiv.append("div").attr("class","flex-vertical");
+  var genderDiv = tableDiv.append("div").attr("class","flex-horizontal");
+  var subscrDiv = tableDiv.append("div").attr("class", "flex-horizontal");
+  var minAgeDiv = tableDiv.append("div").attr("class","flex-horizontal");
+  var maxAgeDiv = tableDiv.append("div").attr("class", "flex-horizontal");
+
+  genderDiv.append("text").attr("class","flex-item").text("Gender");
+  subscrDiv.append("text").attr("class","flex-item").text("Subscribers");
+  minAgeDiv.append("text").attr("class","flex-item").text("Min Age");
+  maxAgeDiv.append("text").attr("class","flex-item").text("Max Age");
+  
+  var boxGender = genderDiv.append("select").classed("box-filter",true);
+  var boxSubscr = subscrDiv.append("select").classed("box-filter",true);
+  var boxMinAge = minAgeDiv.append("select").classed("box-filter",true);
+  var boxMaxAge = maxAgeDiv.append("select").classed("box-filter",true);
+
+  return that;
 }

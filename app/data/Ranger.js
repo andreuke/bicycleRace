@@ -21,8 +21,20 @@ var dataElaboration = {
 			new_labels[i] = "" + range * (i + 1);
 		}
 		return {
-			data : result,
+			data: result,
 			labels: new_labels
 		}
+	},
+
+	getFromJSON: function(json, what, enableParse) {
+		var tmpArray = [];
+		for (var i = 0; i < json.data.length; i++) {
+			if (enableParse === true) {
+				tmpArray.push(parseInt(json.data[i][what], 10));
+			} else {
+				tmpArray.push(json.data[i][what]);
+			}
+		}
+		return tmpArray;
 	},
 }
