@@ -176,7 +176,7 @@ database.prototype.numberoOfActiveBikesOn = function(dayFromCalendar, callback, 
 	//})(dayFromCalendar);
 }
 
-database.prototype.overallOutflow = function (stationId){
+database.prototype.overallOutflow = function (stationId, callback, iden){
 	var return_value;
 
 	return_value = $.ajax({
@@ -190,7 +190,7 @@ database.prototype.overallOutflow = function (stationId){
 }
 
 
-database.prototype.overallInflow = function (stationId){
+database.prototype.overallInflow = function (stationId, callback, iden){
 	var return_value;
 
 	return_value = $.ajax({
@@ -203,9 +203,49 @@ database.prototype.overallInflow = function (stationId){
 	});
 }
 
-database.prototype.demographicInflowOutflow = function (stationId){
+/*three filter type 
+		-> 0 : MaleVsFemaleVsUnknown
+		-> 1 : Age
+		-> 2 : Subscriber vs Customer
+	*/
+
+database.prototype.demographicInflowOutflow = function (stationId, filter,callback, iden){
 	var return_value;
 
+	switch(filter){
+		case 0:
+				return_value = $.ajax({
+				url: this.queryUrl,
+				data: "mark=1&query=2&station="+ "" + stationId,
+				dataType: "json",
+				success: function(data) {
+					callback(data,iden);
+				}
+			});
+		case 1:
+				return_value = $.ajax({
+				url: this.queryUrl,
+				data: "mark=1&query=3&station="+ "" + stationId,
+				dataType: "json",
+				success: function(data) {
+					callback(data,iden);
+				}
+			});
+				break;
+		case 2:
+				return_value = $.ajax({
+				url: this.queryUrl,
+				data: "mark=1&query=4&station="+ "" + stationId,
+				dataType: "json",
+				success: function(data) {
+					callback(data,iden);
+				}
+			});
+				break;
+		default :
+				console.log("DB:error!!");
+	}
+	/*
 	return_value = $.ajax({
 		url: this.queryUrl,
 		data: "mark=1&query=2&station="+ "" + stationId,
@@ -214,14 +254,32 @@ database.prototype.demographicInflowOutflow = function (stationId){
 			callback(data,iden);
 		}
 	});
+	*/
 }
 
-database.prototype.overallBetweenHour = function (fromHour, toHour){
+database.prototype.overallBetweenHour = function (fromHour, toHour, callback, iden){
 	var return_value;
 
 	return_value = $.ajax({
 		url: this.queryUrl,
-		data: "mark=1&query=0&from="+ "" + fromHour+ "&to=" + "" +toHour,
+		data: "mark=1&query=5&from="+ "" + fromHour+ "&to=" + "" +toHour,
+		dataType: "json",
+		success: function(data) {
+			callback(data,iden);
+		}
+	});
+}
+/*
+ageFRom >= && ageTo < 
+type = Subscriber || Customer
+day = aaaa-mm-gg
+*/
+database.prototype.tripsTakenAccrossFilteredStation = function (stationId, gender, ageFrom, ageTo, type, day, hour, callback, iden){
+	var return_value;
+
+	return_value = $.ajax({
+		url: this.queryUrl,
+		data: "mark=1&query=6&station="+ "" +stationId+ "" + "&gender="+ "" +gender+ "" +"&ageFrom="+ "" + ageFrom + "" +"&ageTo="+ "" +ageTo+ "" +"&type="+ "" +type+ "" +"&day="+ "" +day+ "" +"&hour="+ "" +hour,
 		dataType: "json",
 		success: function(data) {
 			callback(data,iden);

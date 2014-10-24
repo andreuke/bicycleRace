@@ -71,12 +71,38 @@
 					break;
 				case '2':
 					$stationId = $_GET['station'];
-					demographicsInflowOutflow($stationId, $connessione);
+					//demographicsInflowOutflow($stationId, $connessione);
+					demographicsInflowOutflowInStation($stationId,0,$connessione);
 					break;
 				case '3':
+					$stationId = $_GET['station'];
+					demographicsInflowOutflowInStation($stationId,1,$connessione);
+					break;
+				case '4':
+					$stationId = $_GET['station'];
+					demographicsInflowOutflowInStation($stationId,2,$connessione);
+					break;
+				case '5':
 					$fromHour = $_GET['from'];
 					$toHour = $_GET['to'];
 					overallBetweenHour($fromHour,$toHour, $connessione);
+					break;
+				case '6':
+					/*
+					pick a day from a calendar and play it back to show all of the trips taken as well as sunrise / sunset and the weather.
+					the user can chose to see the entire city or a subset of stations.
+					Graphical data should be shown for the overall city as well as each selected station.
+					Allow the user to filter by gender, age, subscriber vs customer
+					*/
+					$stationId = $_GET['station'];
+					$gender = $_GET['gender'];
+					$ageFrom = $_GET['ageFrom'];
+					$ageTo = $_GET['ageTo'];
+					$subscriberOrCustomer = $_GET['type'];
+					$day = $_GET['day'];
+					$hour = $_GET['hour'];
+
+					tripsTakenAccrossStation($stationId,$gender,$ageFrom,$ageTo,$subscriberOrCustomer,$day, $hour,$connessione);
 					break;
 				default:
 					echo "error!";
@@ -84,6 +110,27 @@
 			}
 		}
 		//switch to labelled data if you wants labels....
+
+		function tripsTakenAccrossStation($stationId,$gender,$ageFrom,$ageTo,$subscriberOrCustomer,$day, $hour,$connessione){
+			// $result = genericQuery('from_station_id, to_station_id, count(*) as totalTripsMade','divvy_trips_distances_skinny', 'startdate = "'.$day.'" and hour = "'.$hour.'"', 'group by from_station_id, to_station_id', $connessione);
+			// $variables = array('0' => 'from_station_id',
+			// 					'1' => 'to_station_id',
+			// 					'2' => 'totalTripsMade');
+			// labelledDisplayData($result, $variables);
+
+			//example SELECT b.from_station_id, b.to_station_id, count(*) as totalTripsMade 
+			//FROM divvy_trips_distances as a join divvy_trips_distances_skinny as b on a.trip_id = b.trip_id 
+			//WHERE a.startdate = "2013-08-30" and b.hour = "08" and (a.from_station_id = "5" or a.to_station_id = "5") and a.gender = "Male" and a.age_in_2014 >= "0" and a.age_in_2014 < "140" and a.usertype = "Subscriber" group by from_station_id, to_station_id
+
+			$result = genericQuery('a.from_station_id, a.to_station_id, count(*) as totalTripsMade', 
+							'divvy_trips_distances as a JOIN divvy_trips_distances_skinny as b on a.trip_id = b.trip_id', 
+							'a.startdate = "'.$day.'" and b.hour = "'.$hour.'" and (a.from_station_id = "'.$stationId.'" OR a.to_station_id = "'.$stationId.'") 
+							and a.gender = "'.$gender.'" and a.age_in_2014 >= "'.$ageFrom.'" and a.age_in_2014 < "'.$ageTo.'" and a.usertype = "'.$subscriberOrCustomer.'"', 'group by a.from_station_id, a.to_station_id', $connessione);
+			$variables = array('0' => 'from_station_id',
+								'1' => 'to_station_id',
+								'2' => 'totalTripsMade');
+			labelledDisplayData($result, $variables);
+		}
 
 		function overallBetweenHour($fromHour, $toHour, $connessione){
 			$result = genericQuery('from_station_id,to_station_id, count(*) as total', 'divvy_trips_distances_skinny', 'hour >= '.$fromHour.' and hour < '.$toHour, 'group by from_station_id,to_station_id', $connessione);
@@ -93,6 +140,41 @@
 
 			labelledDisplayData($result, $variables);
 		}
+
+		function demographicsInflowOutflowInStation($stationId,$filter,$connessione){
+			switch ($filter) {
+				case '0': //MaleVsFemaleVsUnknown
+					$male = genericQuery("SUM(total) as numOfMale", "demographics_data_b", "stationId = '".$stationId."' and gender = 'Male'", "", $connessione);
+					$result = mysql_fetch_array($male);
+					$numOfMale = $result['numOfMale'];
+
+					$female = genericQuery("SUM(total) as numOfFemale", "demographics_data_b", "stationId = '".$stationId."' and gender = 'Female'", "", $connessione);
+					$result = mysql_fetch_array($female);
+					$numOfFemale = $result['numOfFemale'];
+
+					$queryUnknown = genericQuery("count(*) as numOfUnknown", "divvy_trips_distances", "usertype = 'Customer' and (from_station_id='".$stationId."' or to_station_id = '".$stationId."' )", "", $connessione);
+					$unknown = mysql_fetch_array($queryUnknown);
+					displayData($numOfMale, $numOfFemale, $unknown['numOfUnknown']);
+					break;
+				case '1': //age
+					$result = genericQuery('birthyear,sum(total) as total', 'demographics_data_b', 'total!=0 and stationId = '.$stationId.'',' group by birthyear',$connessione);
+					$variables = array('0' => "birthyear",
+										'1' => "total");
+					genericDisplayData($result, $variables);
+					break;
+				case '2': //subscriber vs customer
+						$result =  genericQuery('usertype, count(*) as total', 'divvy_trips_distances', '(from_station_id = '.$stationId.' or to_station_id = '.$stationId.')', ' group by usertype', $connessione);
+						$variables = array('0' => 'usertype',
+											'1' => 'total' );
+						genericDisplayData($result, $variables);
+						break;
+				default:
+					# code...
+					break;
+			}
+		}
+
+		
 
 		function demographicsInflowOutflow($stationId, $connessione){
 			$result = genericQuery('from_station_id,to_station_id, usertype, gender, birthyear','divvy_trips_distances', 'from_station_id = '.$stationId.' OR to_station_id='.$stationId, '', $connessione);
@@ -163,7 +245,7 @@
              
           
              	//$res = genericQuery('count(distinct bikeid) as numbike', 'divvy_trips_distances_skinny', "startdate = '".$day."' and hour = '".$i."'", '', $connessione);
-             	$res = genericQuery('hour,count(distinct bikeid) as numbike', 'divvy_trips_distances_skinny', "startdate = '".$day."'", 'group by hour', $connessione);
+             	$res = genericQuery('hour,count(bikeid) as numbike', 'divvy_trips_distances_skinny', "startdate = '".$day."'", 'group by hour', $connessione);
      	/*
             for($i = 0; $i < 24; $i++){
             	$var = mysql_fetch_array($res);
