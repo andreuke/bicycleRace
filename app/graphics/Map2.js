@@ -2,7 +2,8 @@ function Map(container, initialCoord, controller, mapPrefix) {
 	var that = this;
 
 	this.stationsAttributes = {}
-	
+	this.database = new database("app/data/query.php");
+
 	var myPrefix = mapPrefix;
 	this.lines = [];
 	this.container = container;
@@ -76,29 +77,29 @@ function Map(container, initialCoord, controller, mapPrefix) {
 		}
 	});
 
-	this.controller.onChange("divvyStations",function (data){
+	this.controller.onChange("divvyStations", function(data) {
 		that.loadStations(data);
 		that.showStations();
 	});
-	this.controller.onChange("communityAreas",function (data){
+	this.controller.onChange("communityAreas", function(data) {
 		that.loadCommunityAreas(data);
 	});
 
-	this.controller.onChange(myPrefix + "-tripsDisplayed",function(data){
+	this.controller.onChange(myPrefix + "-tripsDisplayed", function(data) {
 		that.drawTrips(data);
 
 	})
-	this.controller.onChange(myPrefix + "-showComunAreas",function(data){
-		if (data === true){
+	this.controller.onChange(myPrefix + "-showComunAreas", function(data) {
+		if (data === true) {
 			that.showCommunityAreas();
-		}else {
+		} else {
 			that.hideCommunityAreas();
 		}
 	});
-	this.controller.onChange(myPrefix + "-mapType",function(data){
-		if (data === "satellite"){
+	this.controller.onChange(myPrefix + "-mapType", function(data) {
+		if (data === "satellite") {
 			that.satView();
-		}else {
+		} else {
 			that.mapView();
 		}
 	});
@@ -117,7 +118,9 @@ Map.prototype.draw = function() {
 	});
 	this.layer.addTo(map);
 	/******  TODO  ********/
-	// L.control.zoom({position: 'bottomright'}).addTo(map);
+	L.control.zoom({
+		position: 'bottomright'
+	}).addTo(map);
 
 
 }
@@ -149,99 +152,118 @@ Map.prototype.loadStations = function(json) {
 	var stationsMarkers = this.stationsMarkers
 	var that = this;
 	var map = this.map
-		var data = json.stationsData;
-		for (i in data) {
-			var s = data[i];
-			var latitude = parseFloat(s.latitude);
-			var longitude = parseFloat(s.longitude);
-			var id = parseInt(s.id);
-			
-			var station = L.marker([latitude, longitude]) //.addTo(map);
-			var content = "<h3>" + s.name + "</h3>" +
-				"Capacity: " + s.capacity +
-				"<br>" +
-				"<div id='stars-container'>Popularity</div>" +
-				"<br>" +
-				(parseInt(s.income) + parseInt(s.outcome)) + " (In: " + s.income + " Out: " + s.outcome + ")" + 
-				"<br>" +
-				"<div id='popup-graph-container'></div>" +
-				"<button onclick='addPieChart("+id+")'>AGE</button>" +
-				"<button onclick='addBarChart()'>GENDER</button>" +
-				"<button onclick='addLineChart()'>TYPE</button>"
+	var data = json.stationsData;
+	for (i in data) {
+		var s = data[i];
+		var latitude = parseFloat(s.latitude);
+		var longitude = parseFloat(s.longitude);
+		var id = parseInt(s.id);
+
+		var station = L.marker([latitude, longitude]) //.addTo(map);
+		var content = "<h3>" + s.name + "</h3>" +
+			"Capacity: " + s.capacity +
+			"<br>" +
+			"<div id='stars-container'>Popularity</div>" +
+			"<br>" +
+			(parseInt(s.income) + parseInt(s.outcome)) + " (In: " + s.income + " Out: " + s.outcome + ")" +
+			"<br>" +
+			"<div id='popup-graph-container'></div>" +
+			"<button onclick='addLineChart(" + id + ")'>AGE</button>" +
+			"<button onclick='getGenderData(" + id + ")'>GENDER</button>" +
+			"<button onclick='getUsertypeData(" + id + ")'>TYPE</button>"
+
+		var popup = L.popup({
+				className: 'station-info'
+			})
+			.setContent(content)
+
+		station.bindPopup(popup)
 
 
 
-			var popup = L.popup({
-					className: 'station-info'
-				})
-				.setContent(content)
+		stationsMarkers.push(station)
 
-			station.bindPopup(popup)
+		that.stationsAttributes[s.id] = {
+			name: s.name,
+			capacity: s.capacity,
+			popularity: s.popularity,
+			income: s.income,
+			outcome: s.outcome,
+			latitude: latitude,
+			longitude: longitude
+		};
 
-			/***      TODO 		***/ 
-			var pop = s.popularity;
-			station.on('click', function (poppa) {
-	            return function () {
-	                that.drawStars(poppa);
-	            };
-        	}(pop));
-			/**********************/
+		// Double closure for the known loop problem.
+		station.on('click', function(id) {
+			return function() {
+				that.centerMap(id);
+				that.showStationPopup(id);
+			};
+		}(s.id));
 
-			stationsMarkers.push(station)
+		//      	// Double closure for the known loop problem.
+		// station.on('mouseover', function (n, lat, long) {
+		//           return function () {
+		//           	var content = "<h3> Station </h3>" + n;
+		//           	that.showPopup(content, lat, long);
+		//           };
+		//      	}(s.name, s.latitude, s.longitude));
 
-			that.stationsAttributes[s.id] = {	name: s.name,
-												capacity: s.capacity,
-												popularity: s.popularity,
-												income: s.income,
-												outcome: s.outcome,
-												latitude: latitude,
-												longitude: latitude
-												};
 
-		
-		}
+	}
 }
 
 // COMMUNITY AREAS LAYERS
 Map.prototype.loadCommunityAreas = function(json) {
+	var that = this;
 	var communityAreas = this.communityAreas;
-		var data = json.features;
+	var data = json.features;
 
-		var polygon
-
-		
-
-		for (var i = 0; i < data.length; i++) {
-			var name = data[i].properties.name;
-			var coordinates = data[i].geometry.coordinates[0][0];
-			var edges = []
-
-			var centerLat = 0, centerLong = 0;
-
-			for (var j = 0; j < coordinates.length; j++) {
-				var latitude = parseFloat(coordinates[j][1]);
-				var longitude = parseFloat(coordinates[j][0]);
-				edges.push([latitude, longitude]);
-
-				centerLat += latitude;
-				centerLong += longitude;
-			}
-
-			centerLat /= coordinates.length;
-			centerLong /= coordinates.length;
+	var polygon
 
 
-			polygon = L.multiPolygon([edges]) //.addTo(map);
-			communityAreas.push(polygon)			
 
+	for (var i = 0; i < data.length; i++) {
+		var name = data[i].properties.name;
+		var coordinates = data[i].geometry.coordinates[0][0];
+		var edges = []
+
+		var centerLat = 0,
+			centerLong = 0;
+
+		for (var j = 0; j < coordinates.length; j++) {
+			var latitude = parseFloat(coordinates[j][1]);
+			var longitude = parseFloat(coordinates[j][0]);
+			edges.push([latitude, longitude]);
+
+			centerLat += latitude;
+			centerLong += longitude;
 		}
+
+		centerLat /= coordinates.length;
+		centerLong /= coordinates.length;
+
+
+		polygon = L.multiPolygon([edges]) //.addTo(map);
+
+		// Double closure for the known loop problem.
+		polygon.on('click', function(n, lat, long) {
+			return function() {
+				var content = "<h3> Community Area </h3>" + n;
+				that.showPopup(content, lat, long);
+			};
+		}(name, centerLat, centerLong));
+
+		communityAreas.push(polygon)
+
+	}
 }
 
 Map.prototype.showCommunityAreas = function() {
 	var communityAreas = this.communityAreas;
 	var map = this.map;
 
-	for (var i = 0; i < communityAreas.length ; i++) {
+	for (var i = 0; i < communityAreas.length; i++) {
 		communityAreas[i].addTo(map);
 
 	}
@@ -282,62 +304,126 @@ Map.prototype.hideStations = function() {
 
 }
 
-Map.prototype.drawStars = function(pop) {
-	var stars = new Stars("#stars-container", pop)
+Map.prototype.drawStars = function(popularity) {
+	var stars = new Stars("#stars-container", popularity)
 	stars.draw();
 }
 
 
-Map.prototype.onStationClick = function(e) {
+Map.prototype.showStationPopup = function(id) {
+	var station = this.stationsAttributes[id];
 
-	var map = e.target._map;
+	this.drawStars(station.popularity);
+}
 
-	var latitude = parseFloat(e.latlng.lat);
-	var longitude = parseFloat(e.latlng.lng);
+Map.prototype.centerMap = function(id) {
+	var station = this.stationsAttributes[id];
 
-	// TODO 
-	// var stars = new Stars("#stars-container", s.popularity)
-	// stars.draw();
+
+	var latitude = station.latitude;
+	var longitude = station.longitude;
 
 	// Leaves enough space for the popup
-	map.setView([latitude + 0.005, longitude], 15)
-	// console.log("LAT: " + latitude + " - LONG: " + longitude);
+	this.map.setView([latitude + 0.005, longitude], 15)
+}
+
+Map.prototype.showPopup = function(content, lat, long) {
+
+	var coordinates = L.latLng(lat, long);
+
+	L.popup().setLatLng(coordinates)
+		.setContent(content)
+		.openOn(this.map);
 }
 
 // TODO TEMPORANEE A CAUSA DI HARDCODE NEL POPUP
- function addLineChart(){
+function addBarChart(id) {
+	var container = '#popup-graph-container'
+	d3.select(container).selectAll("svg").remove()
+	var pie = new BarChart(container, [12, 34, 10, 8, 6], ["ammaccabanana", "bopodollo", "cretinazzo", "dindaro", "ettortello"], false);
+	pie.draw();
+}
+
+function getGenderData(id) {
+	db.demographicInflowOutflow(id, pieCallback, "gender")
+}
+
+function getUsertypeData(id) {
+	db.demographicInflowOutflow(id, pieCallback, "usertype")
+
+}
+
+function addLineChart() {
 	var container = '#popup-graph-container'
 	d3.select(container).selectAll("svg").remove()
 	var pie = new LineChart(container, [12, 34, 10, 8, 6], ["ammaccabanana", "bopodollo", "cretinazzo", "dindaro", "ettortello"], false);
 	pie.draw();
 }
 
- function addBarChart(){
-	var container = '#popup-graph-container'
-	d3.select(container).selectAll("svg").remove()
-	var pie = new BarChart(container, [12, 34, 10, 8, 6], ["ammaccabanana", "bopodollo", "cretinazzo", "dindaro", "ettortello"], false);
-	pie.draw();
-}
- 
- function addPieChart(){
-	var container = '#popup-graph-container'
-	d3.select(container).selectAll("svg").remove()
-	var pie = new PieChart(container, [12, 34, 10, 8, 6], ["ammaccabanana", "bopodollo", "cretinazzo", "dindaro", "ettortello"], false);
-	pie.draw();
-// ************************************** //
+function pieCallback(data, kind) {
 
-	//var stars = new Stars("#stars-container", this.stationsAttributes[id].popularity)
-	//stars.draw();
-	// var starsContainer = "#stars-container"
-	// d3.select(starsContainer).selectAll("svg").remove()
-	// var stars = new Stars(starsContainer, popularity)
-	// stars.draw();
+	var values = []
+	var labels = []
+
+	if (kind == "gender") {
+
+		var male = 0;
+		var female = 0;
+		var unknown = 0;
+
+		var data = data.data;
+
+		for (var i in data) {
+			var gender = data[i].gender;
+
+			if (gender == "Male") {
+				male++;
+			} else if (gender == "Female")  {
+				female++;
+			} else {
+				unknown++;
+			}
+		}
+
+		values = [male, female, unknown]
+		labels = ["Male", "Female", "Unknown"];
+	}
+
+	else if (kind == "usertype") {
+
+		var subscriber = 0;
+		var customer = 0;
+
+		var data = data.data;
+
+		for (var i in data) {
+			var usertype = data[i].usertype;
+
+			if (usertype == "Subscriber") {
+				subscriber++;
+			} else if (usertype == "Customer")  {
+				customer++;
+			}
+		}
+
+		values = [subscriber, customer]
+		labels = ["Subscriber", "Customer"];
+	}
+
+
+	var container = '#popup-graph-container'
+	d3.select(container).selectAll("svg").remove()
+	var pie = new PieChart(container, values, labels, false);
+	pie.draw();
 }
 
 Map.prototype.drawLine = function(start, end, thickness) {
 	var points = [start, end];
 
-	var polyline = L.polyline(points,{color: 'red', weight: thickness});
+	var polyline = L.polyline(points, {
+		color: 'red',
+		weight: thickness
+	});
 
 	polyline.addTo(this.map);
 	this.lines.push(polyline);
@@ -345,25 +431,32 @@ Map.prototype.drawLine = function(start, end, thickness) {
 }
 
 Map.prototype.removeLines = function() {
-	for(var i = 0; i < this.lines.length; i++) {
+	for (var i = 0; i < this.lines.length; i++) {
 		this.map.removeLayer(this.lines[i]);
-	}	
+	}
 }
 
 Map.prototype.drawTrip = function(fromID, toID, quantity) {
-	var start = L.latLng(	this.stationsAttributes[fromID].latitude, 
-							this.stationsAttributes[fromID].longitude);
-	var end = 	L.latLng(	this.stationsAttributes[toID].latitude, 
-							this.stationsAttributes[toID].longitude);
+	var start = L.latLng(this.stationsAttributes[fromID].latitude,
+		this.stationsAttributes[fromID].longitude);
+	var end = L.latLng(this.stationsAttributes[toID].latitude,
+		this.stationsAttributes[toID].longitude);
 
-	this.drawLine(start, end, parseInt(quantity,10));
+	this.drawLine(start, end, parseInt(quantity, 10));
 }
 
 Map.prototype.drawTrips = function(trips) {
 	this.removeLines();
-	for(var i = 0; i < trips.length; i++) {
+	for (var i = 0; i < trips.length; i++) {
 		this.drawTrip(trips[i].from_station_id, trips[i].to_station_id, trips[i].totalTripsMade);
 	}
 }
 
-
+var getFromJSON = function(json, what) {
+				var tmpArray = [];
+			  	for (var i = 0; i < json.data.length; i++) 
+			    	if (what === "birthyear") 
+			      		tmpArray.push(parseInt(json.data[i][what], 10));
+			      	else tmpArray.push(json.data[i][what]);
+			  	return tmpArray;
+			}
