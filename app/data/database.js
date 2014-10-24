@@ -222,6 +222,7 @@ database.prototype.demographicInflowOutflow = function (stationId, filter,callba
 					callback(data,iden);
 				}
 			});
+				break;
 		case 1:
 				return_value = $.ajax({
 				url: this.queryUrl,

@@ -153,6 +153,8 @@ Map.prototype.loadStations = function(json) {
 	var that = this;
 	var map = this.map
 	var data = json.stationsData;
+
+
 	for (i in data) {
 		var s = data[i];
 		var latitude = parseFloat(s.latitude);
@@ -168,16 +170,21 @@ Map.prototype.loadStations = function(json) {
 			(parseInt(s.income) + parseInt(s.outcome)) + " (In: " + s.income + " Out: " + s.outcome + ")" +
 			"<br>" +
 			"<div id='popup-graph-container'></div>" +
-			"<button onclick='addLineChart(" + id + ")'>AGE</button>" +
-			"<button onclick='getGenderData(" + id + ")'>GENDER</button>" +
-			"<button onclick='getUsertypeData(" + id + ")'>TYPE</button>"
+			// "<button onclick='addLineChart(" + id + ")'>AGE</button>" +
+			// "<button onclick='getGenderData(" + id + ")'>GENDER</button>" +
+			// "<button onclick='getUsertypeData(" + id + ")'>TYPE</button>"
+			"<button id='age_btn'>AGE</button>" +
+			"<button id='gender_btn'>GENDER</button>" +
+			"<button id='type_btn'>TYPE</button>";
+
+		
 
 		var popup = L.popup({
 				className: 'station-info'
 			})
 			.setContent(content)
 
-		station.bindPopup(popup)
+		station.bindPopup(popup);
 
 
 
@@ -197,9 +204,9 @@ Map.prototype.loadStations = function(json) {
 		station.on('click', function(id) {
 			return function() {
 				that.centerMap(id);
-				that.showStationPopup(id);
+				that.showStationPopup(id, station);
 			};
-		}(s.id));
+		}(s.id, station));
 
 		//      	// Double closure for the known loop problem.
 		// station.on('mouseover', function (n, lat, long) {
@@ -310,8 +317,23 @@ Map.prototype.drawStars = function(popularity) {
 }
 
 
-Map.prototype.showStationPopup = function(id) {
+Map.prototype.showStationPopup = function(id, station) {
+	var that = this;
+
 	var station = this.stationsAttributes[id];
+
+	d3	.select("#gender_btn")
+		.on("click", function() {
+			console.log(that)
+			that.getGenderData(id);
+		});
+
+	d3	.select("#type_btn")
+		.on("click", function() {
+			console.log(that)
+			that.getUsertypeData(id);
+		});
+
 
 	this.drawStars(station.popularity);
 }
@@ -337,19 +359,12 @@ Map.prototype.showPopup = function(content, lat, long) {
 }
 
 // TODO TEMPORANEE A CAUSA DI HARDCODE NEL POPUP
-function addBarChart(id) {
-	var container = '#popup-graph-container'
-	d3.select(container).selectAll("svg").remove()
-	var pie = new BarChart(container, [12, 34, 10, 8, 6], ["ammaccabanana", "bopodollo", "cretinazzo", "dindaro", "ettortello"], false);
-	pie.draw();
+Map.prototype.getGenderData = function(id) {
+	db.demographicInflowOutflow(id, 0, this.pieCallback, "gender")
 }
 
-function getGenderData(id) {
-	db.demographicInflowOutflow(id, pieCallback, "gender")
-}
-
-function getUsertypeData(id) {
-	db.demographicInflowOutflow(id, pieCallback, "usertype")
+Map.prototype.getUsertypeData = function(id) {
+	db.demographicInflowOutflow(id, 2, this.pieCallback, "usertype")
 
 }
 
@@ -360,7 +375,9 @@ function addLineChart() {
 	pie.draw();
 }
 
-function pieCallback(data, kind) {
+Map.prototype.pieCallback = function(data, kind) {
+
+	console.log(data)
 
 	var values = []
 	var labels = []
@@ -451,12 +468,3 @@ Map.prototype.drawTrips = function(trips) {
 		this.drawTrip(trips[i].from_station_id, trips[i].to_station_id, trips[i].totalTripsMade);
 	}
 }
-
-var getFromJSON = function(json, what) {
-				var tmpArray = [];
-			  	for (var i = 0; i < json.data.length; i++) 
-			    	if (what === "birthyear") 
-			      		tmpArray.push(parseInt(json.data[i][what], 10));
-			      	else tmpArray.push(json.data[i][what]);
-			  	return tmpArray;
-			}
