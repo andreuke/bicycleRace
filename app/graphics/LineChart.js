@@ -14,6 +14,48 @@ function LineChart(container,data,labels,x_axis_label,y_axis_label , kind){
 	this.y_axis_label = y_axis_label;
 	this.x_axis_label = x_axis_label;
 	this.main_svg = {}
+
+	this.ordinalScale = function(data, width){
+		return d3 	.scale
+					.linear()
+					.domain([0, data.length-1])
+					.range([0, width]);
+	}
+
+	// Builds numerical scale 
+	this.numericScale = function(labels, width){
+		return d3 	.scale
+					.linear()
+					.domain([0, d3.max(labels, function(d){ return parseInt(d,10)})])
+					.range([0, width]);
+	}
+
+	// Builds date Scale given Month and Day
+	this.dateScale = function(labels, width){	
+		var parseDate = d3.time.format("%b-%d").parse;
+		return d3 	.time
+					.scale()
+					.domain(d3.extent(labels, function(d) { return parseDate(d); }))
+	    			.range([0, width]);
+	}
+
+	// Builds Age Scale given the Year of the birthday
+	this.yearScale = function(labels, width){
+		var year = 2013;
+		return d3 	.scale
+					.linear()
+					.domain([0, d3.max(labels, function(d){return year-parseInt(d,10)})])
+					.range([0, width]);
+	}
+
+	/*function timeScale(labels, width){
+	var parseTime = d3.time.format("%b-%d").parse;
+	return d3 	.time
+				.scale()
+				.domain(d3.extent(labels, function(d) { return parseTime(d);}))
+				.range([0, width]);
+	}*/
+
 }
 
 LineChart.prototype.update = function(data,labels) {
@@ -23,51 +65,6 @@ LineChart.prototype.update = function(data,labels) {
 	this.draw();
 }
 
-// Builds ordinal scale
-function ordinalScale(data, width){
-	return d3 	.scale
-				.linear()
-				.domain([0, data.length-1])
-				.range([0, width]);
-}
-
-// Builds numerical scale 
-function numericScale(labels, width){
-	return d3 	.scale
-				.linear()
-				.domain([0, d3.max(labels, function(d){ return parseInt(d,10)})])
-				.range([0, width]);
-}
-
-
-/*function timeScale(labels, width){
-	var parseTime = d3.time.format("%b-%d").parse;
-	return d3 	.time
-				.scale()
-				.domain(d3.extent(labels, function(d) { return parseTime(d);}))
-				.range([0, width]);
-}*/
-
-// Builds date Scale given Month and Day
-function dateScale(labels, width){	
-	var parseDate = d3.time.format("%b-%d").parse;
-	return d3 	.time
-				.scale()
-				.domain(d3.extent(labels, function(d) { return parseDate(d); }))
-    			.range([0, width]);
-}
-
-// Builds Age Scale given the Year of the birthday
-function yearScale(labels, width){
-	var year = 2013;
-	return d3 	.scale
-				.linear()
-				.domain([0, d3.max(labels, function(d){return year-parseInt(d,10)})])
-				.range([0, width]);
-}
-
-
-
 LineChart.prototype.draw = function(){
 
 	var something = 10;
@@ -76,6 +73,7 @@ LineChart.prototype.draw = function(){
 	var container = this.container;
 	var width = 1000;
 	var height = 500;
+	var year = 2013;
   	var data = this.data;
   	var kind = this.kind;
   	var labels = this.labels;
@@ -86,22 +84,22 @@ LineChart.prototype.draw = function(){
 	// Creates x scale (linear, from 0 to number of data)
 	switch(kind){
 		case "ordinal":
-			xScale = ordinalScale(data, width * margin);
+			xScale = this.ordinalScale(data, width * margin);
 			break;
 		case "numerical": 
-			xScale = numericScale(labels, width * margin);
+			xScale = this.numericScale(labels, width * margin);
 			break;
 /*		case "time":
 			xScale = timeScale(labels, width * margin);
 			break;*/
 		case "date":
-			xScale = dateScale(labels, width * margin);
+			xScale = this.dateScale(labels, width * margin);
 			break;
 		case "year":
-			xScale = yearScale(labels, width * margin);
+			xScale = this.yearScale(labels, width * margin);
 			break;
 		default:
-			xScale = ordinalScale(data, width * margin);
+			xScale = this.ordinalScale(data, width * margin);
 			break;}
 
 	// Creates y Scale (linear, from 0 to max of data)
@@ -140,7 +138,6 @@ LineChart.prototype.draw = function(){
     							var parseDate = d3.time.format("%b-%d").parse;
     							return xScale(parseDate(labels[i]));
     						case "year":
-    							var year = 2013;
     							return xScale(year - parseInt(labels[i],10));
     						default:
     							return xScale(i);}
