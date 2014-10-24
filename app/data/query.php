@@ -122,10 +122,29 @@
 			//FROM divvy_trips_distances as a join divvy_trips_distances_skinny as b on a.trip_id = b.trip_id 
 			//WHERE a.startdate = "2013-08-30" and b.hour = "08" and (a.from_station_id = "5" or a.to_station_id = "5") and a.gender = "Male" and a.age_in_2014 >= "0" and a.age_in_2014 < "140" and a.usertype = "Subscriber" group by from_station_id, to_station_id
 
+			$where = '(a.from_station_id = "'.$stationId.'" OR a.to_station_id = "'.$stationId.'") and a.age_in_2014 >= "'.$ageFrom.'" and a.age_in_2014 < "'.$ageTo.'"
+						and a.startdate = "'.$day.'" and b.hour = "'.$hour.'"';
+
+			if($gender != ""){
+				$where .= ' and a.gender = "'.$gender.'"';
+			}
+			if($subscriberOrCustomer != ""){
+				$where .= ' and a.usertype = "'.$subscriberOrCustomer.'"';
+			}
+
+			//echo $where;
+
+			$result = genericQuery('a.from_station_id, a.to_station_id, count(*) as totalTripsMade', 
+							'divvy_trips_distances as a JOIN divvy_trips_distances_skinny as b on a.trip_id = b.trip_id', 
+							$where, 
+							'group by a.from_station_id, a.to_station_id', $connessione);
+
+			/*
 			$result = genericQuery('a.from_station_id, a.to_station_id, count(*) as totalTripsMade', 
 							'divvy_trips_distances as a JOIN divvy_trips_distances_skinny as b on a.trip_id = b.trip_id', 
 							'a.startdate = "'.$day.'" and b.hour = "'.$hour.'" and (a.from_station_id = "'.$stationId.'" OR a.to_station_id = "'.$stationId.'") 
 							and a.gender = "'.$gender.'" and a.age_in_2014 >= "'.$ageFrom.'" and a.age_in_2014 < "'.$ageTo.'" and a.usertype = "'.$subscriberOrCustomer.'"', 'group by a.from_station_id, a.to_station_id', $connessione);
+			*/
 			$variables = array('0' => 'from_station_id',
 								'1' => 'to_station_id',
 								'2' => 'totalTripsMade');
@@ -442,7 +461,7 @@
 
 		function genericQuery($select, $from, $where, $extraCode,$connessione){
 			$query = "SELECT $select FROM $from WHERE $where"." ".$extraCode;
-			//echo "<br> query -> ".$query;
+			echo "<br> query -> ".$query;
 			$database = mysql_query($query, $connessione);
 
 			return $database;

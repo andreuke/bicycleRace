@@ -222,6 +222,7 @@ database.prototype.demographicInflowOutflow = function (stationId, filter,callba
 					callback(data,iden);
 				}
 			});
+				break;
 		case 1:
 				return_value = $.ajax({
 				url: this.queryUrl,
@@ -273,6 +274,9 @@ database.prototype.overallBetweenHour = function (fromHour, toHour, callback, id
 ageFRom >= && ageTo < 
 type = Subscriber || Customer
 day = aaaa-mm-gg
+gender = Male | Female
+
+IF YOU PUT CUSTOMER, gender must be "" and agefrom = -1 and age to = 100000000000000 * 10 ^ n with n>1 && n < + inf 
 */
 database.prototype.tripsTakenAccrossFilteredStation = function (stationId, gender, ageFrom, ageTo, type, day, hour, callback, iden){
 	var return_value;
