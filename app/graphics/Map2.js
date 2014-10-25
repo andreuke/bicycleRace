@@ -227,7 +227,7 @@ Map.prototype.loadStations = function(json) {
 		var id = parseInt(s.id);
 
 		var station = L.marker([latitude, longitude]) //.addTo(map);
-		var content = "<h3>" + s.name + "</h3>" +
+		var content = "<h3 style='font-size: 3vh;'>" + s.name + "</h3>" +
 			"Capacity: " + s.capacity +
 			"<br>" +
 			"<div id='stars-container'>Popularity</div>" +
@@ -246,6 +246,7 @@ Map.prototype.loadStations = function(json) {
 
 		var popup = L.popup({
 				className: 'station-info'
+				// ,maxWidth: 50vh, minWidth: 250, maxHeight: 50vh, autoPan: true, closeButton: true, autoPanPadding: [5, 5]
 			})
 			.setContent(content)
 
@@ -342,7 +343,6 @@ Map.prototype.loadCommunityAreas = function(json) {
 		var label = L.marker([centerLat, centerLong], {
 			icon: myIcon
 		});
-
 
 		communityAreas.push(polygon)
 		communityAreasLabels.push(label)
