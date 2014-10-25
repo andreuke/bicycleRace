@@ -114,6 +114,13 @@
 
 					tripsTakenAccrossStationSecondPart($stationId,$gender,$ageFrom,$ageTo,$subscriberOrCustomer,$day,$connessione);
 					break;
+				case '8':
+					$hourFrom = $_GET['hourFrom'];
+					$hourTo = $_GET['hourTo'];
+					$ratio = $_GET['ratio'];
+
+					biggestImbalance($hourFrom, $hourTo, $ratio, $connessione);
+					break;
 				default:
 					echo "error!";
 					break;
@@ -121,6 +128,13 @@
 		}
 		//switch to labelled data if you wants labels....
 
+		function biggestImbalance($hourFrom, $hourTo, $ratio, $connessione){
+			$result = genericQuery('distinct station_id', 'imbalances', 'hour >= '.$hourFrom.' and hour < '.$hourTo.' and (inflow > '.$ratio.'*outflow OR outflow > '.$ratio.'*inflow)','', $connessione);
+
+			$variables = array('0' => 'station_id');
+
+			labelledDisplayData($result, $variables);
+		}
 		function tripsTakenAccrossStationSecondPart($stationId,$gender,$ageFrom,$ageTo,$subscriberOrCustomer,$day,$connessione){
 			//array for data..
              $dataArray = array();
