@@ -290,3 +290,16 @@ database.prototype.tripsTakenAccrossFilteredStation = function (stationId, gende
 		}
 	});
 }
+
+database.prototype.numberoOfActiveBikesFilteredStation = function (stationId, gender, ageFrom, ageTo, type, day, callback, iden){
+	var return_value;
+
+	return_value = $.ajax({
+		url: this.queryUrl,
+		data: "mark=1&query=7&station="+ "" +stationId+ "" + "&gender="+ "" +gender+ "" +"&ageFrom="+ "" + ageFrom + "" +"&ageTo="+ "" +ageTo+ "" +"&type="+ "" +type+ "" +"&day="+ "" +day,
+		dataType: "json",
+		success: function(data) {
+			callback(data,iden);
+		}
+	});
+}

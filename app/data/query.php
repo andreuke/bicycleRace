@@ -104,12 +104,49 @@
 
 					tripsTakenAccrossStation($stationId,$gender,$ageFrom,$ageTo,$subscriberOrCustomer,$day, $hour,$connessione);
 					break;
+				case '7':
+					$stationId = $_GET['station'];
+					$gender = $_GET['gender'];
+					$ageFrom = $_GET['ageFrom'];
+					$ageTo = $_GET['ageTo'];
+					$subscriberOrCustomer = $_GET['type'];
+					$day = $_GET['day'];
+
+					tripsTakenAccrossStationSecondPart($stationId,$gender,$ageFrom,$ageTo,$subscriberOrCustomer,$day,$connessione);
+					break;
 				default:
 					echo "error!";
 					break;
 			}
 		}
 		//switch to labelled data if you wants labels....
+
+		function tripsTakenAccrossStationSecondPart($stationId,$gender,$ageFrom,$ageTo,$subscriberOrCustomer,$day,$connessione){
+			//array for data..
+             $dataArray = array();
+             $dataArray = array_fill(0, 24, 0);
+
+             $where = '(a.from_station_id = "'.$stationId.'" OR a.to_station_id = "'.$stationId.'") and a.age_in_2014 >= "'.$ageFrom.'" and a.age_in_2014 < "'.$ageTo.'"
+						and a.startdate = "'.$day.'"';
+
+			if($gender != ""){
+				$where .= ' and a.gender = "'.$gender.'"';
+			}
+			if($subscriberOrCustomer != ""){
+				$where .= ' and a.usertype = "'.$subscriberOrCustomer.'"';
+			}
+
+             $res = genericQuery('b.hour,count(b.bikeid) as numbike', 'divvy_trips_distances as a JOIN divvy_trips_distances_skinny as b on a.trip_id = b.trip_id', $where, 'group by hour', $connessione);
+
+
+             while($var = mysql_fetch_array($res)){
+             	$hour = $var['hour'];
+             	$dataArray[$hour] = $var['numbike'];
+             }
+             
+
+             displayDataArrayBikePerHour($dataArray);
+		}
 
 		function tripsTakenAccrossStation($stationId,$gender,$ageFrom,$ageTo,$subscriberOrCustomer,$day, $hour,$connessione){
 			// $result = genericQuery('from_station_id, to_station_id, count(*) as totalTripsMade','divvy_trips_distances_skinny', 'startdate = "'.$day.'" and hour = "'.$hour.'"', 'group by from_station_id, to_station_id', $connessione);
