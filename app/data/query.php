@@ -140,9 +140,12 @@
              $dataArray = array();
              $dataArray = array_fill(0, 24, 0);
 
-             $where = '(a.from_station_id = "'.$stationId.'" OR a.to_station_id = "'.$stationId.'") and a.age_in_2014 >= "'.$ageFrom.'" and a.age_in_2014 < "'.$ageTo.'"
+             $where = 'a.age_in_2014 >= "'.$ageFrom.'" and a.age_in_2014 < "'.$ageTo.'"
 						and a.startdate = "'.$day.'"';
 
+			if($stationId != ''){
+				$where .= ' and (a.from_station_id = "'.$stationId.'" OR a.to_station_id = "'.$stationId.'")';
+			}
 			if($gender != ""){
 				if($gender == 'Unknown'){
 					$gender = '';
@@ -176,9 +179,12 @@
 			//FROM divvy_trips_distances as a join divvy_trips_distances_skinny as b on a.trip_id = b.trip_id 
 			//WHERE a.startdate = "2013-08-30" and b.hour = "08" and (a.from_station_id = "5" or a.to_station_id = "5") and a.gender = "Male" and a.age_in_2014 >= "0" and a.age_in_2014 < "140" and a.usertype = "Subscriber" group by from_station_id, to_station_id
 
-			$where = '(a.from_station_id = "'.$stationId.'" OR a.to_station_id = "'.$stationId.'") and a.age_in_2014 >= "'.$ageFrom.'" and a.age_in_2014 < "'.$ageTo.'"
+			$where = 'a.age_in_2014 >= "'.$ageFrom.'" and a.age_in_2014 < "'.$ageTo.'"
 						and a.startdate = "'.$day.'" and b.hour = "'.$hour.'"';
 
+			if($stationId != ''){
+				$where .= ' and (a.from_station_id = "'.$stationId.'" OR a.to_station_id = "'.$stationId.'")';
+			}
 			if($gender != ""){
 				if($gender == 'Unknown'){
 					$gender = '';
