@@ -107,22 +107,22 @@ var mainController = function() {
   that.addState("divvyStations", {});
   that.addState("communityAreas", {});
 
-    d3.json("app/data/stations_data.json", function(error, json) {
-      if (error) {
-        return console.warn(error);
-      } else {
-        that.set("divvyStations", json);
-      }
-    });
+  d3.json("app/data/stations_data.json", function(error, json) {
+    if (error) {
+      return console.warn(error);
+    } else {
+      that.set("divvyStations", json);
+    }
+  });
 
 
-    d3.json("app/data/community_areas.json", function(error, json) {
-      if (error) {
-        return console.warn(error);
-      } else {
-        that.set("communityAreas", json);
-      }
-    });
+  d3.json("app/data/community_areas.json", function(error, json) {
+    if (error) {
+      return console.warn(error);
+    } else {
+      that.set("communityAreas", json);
+    }
+  });
   //Invoked  by views in oder to change the mode
   that.changeMode = function(mode) {
     if (mode !== that.get("mode")) {
@@ -478,7 +478,7 @@ var pickAdayController = function(parent, prefixMap) {
   that.addState("filter-subscriber", "Subscriber");
   that.addState("filter-age-min", 0);
   that.addState("filter-age-max", 40);
-  
+
   var mapPrefix = prefixMap;
   var selectionsID = prefixMap + "-SelectedStation";
   var tripsID = prefixMap + "-tripsDisplayed";
@@ -538,12 +538,12 @@ var pickAdayController = function(parent, prefixMap) {
     };
     for (var i = 0; i < selections.length; i++) {
       if (alreadySelected.indexOf(selections[i]) === -1) {
-        that.set(emptyPrefixes[0] + "-idStation",selections[i]);
+        that.set(emptyPrefixes[0] + "-idStation", selections[i]);
         that.set(emptyPrefixes[0] + "-show", true);
         //TODO testare questa funzione del db
-        db.tripsTakenAccrossFilteredStation(selections[i], that.get("filter-gender"),
-          that.get("filter-age-min"), that.get("filter-age-max"),
-          that.get("filter-subscriber"), that.get("date"), that.get("hour"), callBackTrips, emptyPrefixes[0]);
+        //db.tripsTakenAccrossFilteredStation(selections[i], that.get("filter-gender"),
+        //  that.get("filter-age-min"), that.get("filter-age-max"),
+        //  that.get("filter-subscriber"), that.get("date"), that.get("hour"), callBackTrips, emptyPrefixes[0]);
         //db.getData
         emptyPrefixes.splice(0, 1);
       }
@@ -551,8 +551,8 @@ var pickAdayController = function(parent, prefixMap) {
 
   }
   that.onChange(selectionsID, handleMapSelections);
-  that.set(selectionsID, ["12","2"]);
-  that.set(selectionsID, ["12","3"]);
+  that.set(selectionsID, ["52", "53"]);
+  //that.set(selectionsID, ["55","57"]);
 
   //TODO al cambiamento dell'ora aggiornare i dati dei grafici,
   //e aggiornare i viaggi da mostrare sulla mappa(main controller)
@@ -563,15 +563,15 @@ var pickAdayController = function(parent, prefixMap) {
     var hourSelected = that.get("hour");
     var prefixes = that.get("graphsPrefixArray")
     for (var i = 0; i < selections.length; i++) {
-      for (var j = 0; j < 10 ; j++){
-       if (that.get(prefixes[j] + "-idStation") === selections[i]){
+      for (var j = 0; j < 10; j++) {
+        if (that.get(prefixes[j] + "-idStation") === selections[i]) {
           //query database number of active bikes for station
-          
+
           //query dataBase trips for station given date and hour
-          db.tripsTakenAccrossFilteredStation(selections[i], that.get("filter-gender"),
-          that.get("filter-age-min"), that.get("filter-age-max"),
-          that.get("filter-subscriber"), date, that.get("hour"), callBackTrips, emptyPrefixes[0]);
-       } 
+          //db.tripsTakenAccrossFilteredStation(selections[i], that.get("filter-gender"),
+          //that.get("filter-age-min"), that.get("filter-age-max"),
+          //that.get("filter-subscriber"), date, that.get("hour"), callBackTrips, prefixes[j]);
+        }
       }
     };
     that.set("date", date)
@@ -628,11 +628,11 @@ var pickAdayView = function(controller, calendarContainer, graphsContainer) {
   var sliderDiv = leftDiv.append("div").attr("id", "slide-div")
     .attr("class", "flex-item");
   var slider = sliderObject("#" + sliderDiv.attr("id"), 0, 23);
-  slider.on("input",function(){
+  slider.on("input", function() {
     _controller.changeHourSelection(slider.property("value"));
   });
 
-  var filters = filterSelector("#" + leftDiv.attr("id"),_controller);
+  var filters = filterSelector("#" + leftDiv.attr("id"), _controller);
 
 
   //slinder.attr("class","flex-item");
@@ -688,25 +688,56 @@ var filterSelector = function(container, controller) {
   that = {};
   var _controller = controller;
   var mainDiv = d3.select(container).append("div")
-    .attr("class","flex-vertical");
+    .attr("class", "flex-vertical");
   var title = mainDiv.append("text")
-    .classed("label-filter",true)
+    .classed("label-filter", true)
     .text("Filter by:");
-  var tableDiv = mainDiv.append("div").attr("class","flex-vertical");
-  var genderDiv = tableDiv.append("div").attr("class","flex-horizontal");
+  var tableDiv = mainDiv.append("div").attr("class", "flex-vertical");
+  var genderDiv = tableDiv.append("div").attr("class", "flex-horizontal");
   var subscrDiv = tableDiv.append("div").attr("class", "flex-horizontal");
-  var minAgeDiv = tableDiv.append("div").attr("class","flex-horizontal");
+  var minAgeDiv = tableDiv.append("div").attr("class", "flex-horizontal");
   var maxAgeDiv = tableDiv.append("div").attr("class", "flex-horizontal");
 
-  genderDiv.append("text").attr("class","flex-item").text("Gender");
-  subscrDiv.append("text").attr("class","flex-item").text("Subscribers");
-  minAgeDiv.append("text").attr("class","flex-item").text("Min Age");
-  maxAgeDiv.append("text").attr("class","flex-item").text("Max Age");
-  
-  var boxGender = genderDiv.append("select").classed("box-filter",true);
-  var boxSubscr = subscrDiv.append("select").classed("box-filter",true);
-  var boxMinAge = minAgeDiv.append("select").classed("box-filter",true);
-  var boxMaxAge = maxAgeDiv.append("select").classed("box-filter",true);
+  genderDiv.append("text").attr("class", "flex-item").text("Gender");
+  subscrDiv.append("text").attr("class", "flex-item").text("Subscribers");
+  minAgeDiv.append("text").attr("class", "flex-item").text("Min Age");
+  maxAgeDiv.append("text").attr("class", "flex-item").text("Max Age");
+
+  var boxGender = genderDiv.append("select").classed("box-filter", true);
+  var boxSubscr = subscrDiv.append("select").classed("box-filter", true);
+  var boxMinAge = minAgeDiv.append("select").classed("box-filter", true);
+  var boxMaxAge = maxAgeDiv.append("select").classed("box-filter", true);
+
+  boxGender.append("option").text("");
+  boxGender.append("option").text("Male");
+  boxGender.append("option").text("Female");
+  boxGender.append("option").text("Unknown");
+
+  boxSubscr.append("option").text("");
+  boxSubscr.append("option").text("Subscriber");
+  boxSubscr.append("option").text("Pino");
+
+  boxMinAge.append("option").text("");
+  boxMaxAge.append("option").text("");
+
+  for (var i = 0; i < 100; i++) {
+    boxMinAge.append("option").text(i + 1);
+    boxMaxAge.append("option").text(i + 1);
+  };
+
+  boxGender.on("change",function(){
+    _controller.set("filter-gender",boxGender.property("value"));
+  });
+  boxSubscr.on("change",function(){
+    _controller.set("filter-subscriber",boxSubscr.property("value"));
+  });
+  boxMinAge.on("change",function(){
+    _controller.set("filter-age-min",boxMinAge.property("value"));
+  });
+  boxMaxAge.on("change",function(){
+    _controller.set("filter-age-max",boxMaxAge.property("value"));
+  });
+
 
   return that;
 }

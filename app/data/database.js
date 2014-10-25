@@ -290,3 +290,37 @@ database.prototype.tripsTakenAccrossFilteredStation = function (stationId, gende
 		}
 	});
 }
+
+database.prototype.numberoOfActiveBikesFilteredStation = function (stationId, gender, ageFrom, ageTo, type, day, callback, iden){
+	var return_value;
+
+	return_value = $.ajax({
+		url: this.queryUrl,
+		data: "mark=1&query=7&station="+ "" +stationId+ "" + "&gender="+ "" +gender+ "" +"&ageFrom="+ "" + ageFrom + "" +"&ageTo="+ "" +ageTo+ "" +"&type="+ "" +type+ "" +"&day="+ "" +day,
+		dataType: "json",
+		success: function(data) {
+			callback(data,iden);
+		}
+	});
+}
+
+/*
+returns stations with the biggest imbalance inflow outflow. 
+It is divided by hours.
+hourFrom >=
+hourTo <
+ratio: number used for calculate the imbalance. example: ratio = 8 -> the function return the values
+that satify inflow > 8 * outflow || outflow > 8 * inflow
+*/
+database.prototype.biggestImbalanceInflowOutflowBetween = function (hourFrom, hourTo, ratio, callback, iden){
+	var return_value;
+
+	return_value = $.ajax({
+		url: this.queryUrl,
+		data: "mark=1&query=8&hourFrom="+ "" +hourFrom+ "" + "&hourTo="+ "" +hourTo+ "" +"&ratio="+ "" + ratio,
+		dataType: "json",
+		success: function(data) {
+			callback(data,iden);
+		}
+	});
+}
