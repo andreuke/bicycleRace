@@ -461,7 +461,7 @@
 
 		function genericQuery($select, $from, $where, $extraCode,$connessione){
 			$query = "SELECT $select FROM $from WHERE $where"." ".$extraCode;
-			echo "<br> query -> ".$query;
+			//echo "<br> query -> ".$query;
 			$database = mysql_query($query, $connessione);
 
 			return $database;
