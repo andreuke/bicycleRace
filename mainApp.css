@@ -1,0 +1,27 @@
+body{
+  margin: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+}
+
+.single-frame{
+  flex:1;
+}
+
+.invisible{
+  display: none;
+}
+
+.button{
+  width: 2%;
+  white-space: pre;
+  font-size: 1 vh;
+}
+
+.text-button{
+
+}
