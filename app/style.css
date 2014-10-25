@@ -1,25 +1,13 @@
-#map { 
-	height:	70%; 
-}
-
-#cont { 
-	height:	20%; 
-	width:	50%;
-	float: left;
-	background: yellow;
-}
-
-#cont2 { 
-	height:	20%; 
-	width:	50%;
-	float: left;
-	background: orange;
-}
-
 .text {
 	font-family: helvetica;
 	fill: white;
 	color: white;
+}
+
+.community_area_text {
+	font-family: helvetica;
+	fill: blue;
+	color: blue;
 }
 
 .station-info h3 {
@@ -31,12 +19,3 @@
 	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.85);
 }
 
-/*#popup-graph-container { 
-	height:	100; 
-	width:	100%;		
-}
-
-#stars-container { 
-	height:	30; 
-	width:	100%;		
-}*/

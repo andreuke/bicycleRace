@@ -10,18 +10,20 @@ function Map(container, initialCoord, controller, mapPrefix) {
 	this.initialCoord = initialCoord;
 	this.controller = controller;
 	var initialZoom = 13;
-	this.zoomThreshold = 15;
+	this.zoomThreshold = 14;
 
 
 	this.layer;
 	this.stationsMarkers = [];
 	this.communityAreas = [];
+	this.communityAreasLabels = [];
+
 	this.sat = false;
 	this.farView = initialZoom < this.zoomThreshold;
 
 	this.map = L.map(container).setView(initialCoord, initialZoom);
 
-	this.smallIcon = L.icon({
+	this.iconSmall = L.icon({
 		iconUrl: 'app/graphics/res/icon_small.png',
 		//shadowUrl: 'graphics/leaf-shadow.png',
 
@@ -31,19 +33,80 @@ function Map(container, initialCoord, controller, mapPrefix) {
 		// shadowAnchor: [4, 62],  // the same for the shadow
 		popupAnchor: [0, -10] // point from which the popup should open r
 	});
-	this.largeIcon = L.icon({
+	this.startIconSmall = L.icon({
+		iconUrl: 'app/graphics/res/icon_small_start.png',
+		//shadowUrl: 'graphics/leaf-shadow.png',
+
+		iconSize: [10, 10], // size of the icon
+		//shadowSize:   [50, 64], // size of the shadow
+		iconAnchor: [5, 10], // point of the icon which will correspond to marker's location
+		// shadowAnchor: [4, 62],  // the same for the shadow
+		popupAnchor: [0, -10] // point from which the popup should open r
+	});
+	this.endIconSmall = L.icon({
+		iconUrl: 'app/graphics/res/icon_small_end.png',
+		//shadowUrl: 'graphics/leaf-shadow.png',
+
+		iconSize: [10, 10], // size of the icon
+		//shadowSize:   [50, 64], // size of the shadow
+		iconAnchor: [5, 10], // point of the icon which will correspond to marker's location
+		// shadowAnchor: [4, 62],  // the same for the shadow
+		popupAnchor: [0, -10] // point from which the popup should open r
+	});
+	this.unselectedIconSmall = L.icon({
+		iconUrl: 'app/graphics/res/icon_small_unselected.png',
+		//shadowUrl: 'graphics/leaf-shadow.png',
+
+		iconSize: [10, 10], // size of the icon
+		//shadowSize:   [50, 64], // size of the shadow
+		iconAnchor: [5, 10], // point of the icon which will correspond to marker's location
+		// shadowAnchor: [4, 62],  // the same for the shadow
+		popupAnchor: [0, -10] // point from which the popup should open r
+	});
+
+	this.iconLarge = L.icon({
 		iconUrl: 'app/graphics/res/icon_large.png',
 		//shadowUrl: 'graphics/leaf-shadow.png',
 
-		iconSize: [40, 48], // size of the icon
+		iconSize: [48, 48], // size of the icon
+		//shadowSize:   [50, 64], // size of the shadow
+		iconAnchor: [20, 48], // point of the icon which will correspond to marker's location
+		// shadowAnchor: [4, 62],  // the same for the shadow
+		popupAnchor: [0, -48] // point from which the popup should open r
+	});
+	this.startIconLarge = L.icon({
+		iconUrl: 'app/graphics/res/icon_large_start.png',
+		//shadowUrl: 'graphics/leaf-shadow.png',
+
+		iconSize: [48, 48], // size of the icon
+		//shadowSize:   [50, 64], // size of the shadow
+		iconAnchor: [20, 48], // point of the icon which will correspond to marker's location
+		// shadowAnchor: [4, 62],  // the same for the shadow
+		popupAnchor: [0, -48] // point from which the popup should open r
+	});
+	this.endIconLarge = L.icon({
+		iconUrl: 'app/graphics/res/icon_large_end.png',
+		//shadowUrl: 'graphics/leaf-shadow.png',
+
+		iconSize: [48, 48], // size of the icon
+		//shadowSize:   [50, 64], // size of the shadow
+		iconAnchor: [20, 48], // point of the icon which will correspond to marker's location
+		// shadowAnchor: [4, 62],  // the same for the shadow
+		popupAnchor: [0, -48] // point from which the popup should open r
+	});
+	this.unselectedIconLarge = L.icon({
+		iconUrl: 'app/graphics/res/icon_large_unselected.png',
+		//shadowUrl: 'graphics/leaf-shadow.png',
+
+		iconSize: [48, 48], // size of the icon
 		//shadowSize:   [50, 64], // size of the shadow
 		iconAnchor: [20, 48], // point of the icon which will correspond to marker's location
 		// shadowAnchor: [4, 62],  // the same for the shadow
 		popupAnchor: [0, -48] // point from which the popup should open r
 	});
 
-	// this.largeIcon = L.icon({
-	//    iconUrl: 'graphics/src/ertura.png',
+	// this.iconLarge = L.icon({
+	//    iconUrl: 'app/graphics/res/ertura.png',
 	//    //shadowUrl: 'graphics/leaf-shadow.png',
 
 	//    iconSize:     [50, 87], // size of the icon
@@ -56,23 +119,25 @@ function Map(container, initialCoord, controller, mapPrefix) {
 	var map = this.map
 	var stationsMarkers = this.stationsMarkers
 	var farView = this.farView;
-	var smallIcon = this.smallIcon;
-	var largeIcon = this.largeIcon;
+	var iconSmall = this.iconSmall;
+	var iconLarge = this.iconLarge;
 	var zoomThreshold = this.zoomThreshold;
 
 	map.on('zoomend', function() {
 
 		var zoom = map.getZoom()
 
-		if (zoom < zoomThreshold & !farView) {
-			for (s in stationsMarkers) {
-				stationsMarkers[s].setIcon(smallIcon)
-			}
+		if (zoom <= zoomThreshold & !farView) {
+			// for (s in stationsMarkers) {
+			// 	stationsMarkers[s].setIcon(iconSmall)
+			// }
+			that.showStations();
 			farView = !farView
-		} else if (zoom >= zoomThreshold & farView) {
-			for (s in stationsMarkers) {
-				stationsMarkers[s].setIcon(largeIcon)
-			}
+		} else if (zoom > zoomThreshold & farView) {
+			// for (s in stationsMarkers) {
+			// 	stationsMarkers[s].setIcon(iconLarge)
+			// }
+			that.showStations();
 			farView = !farView
 		}
 	});
@@ -170,14 +235,14 @@ Map.prototype.loadStations = function(json) {
 			(parseInt(s.income) + parseInt(s.outcome)) + " (In: " + s.income + " Out: " + s.outcome + ")" +
 			"<br>" +
 			"<div id='popup-graph-container'></div>" +
-			// "<button onclick='addLineChart(" + id + ")'>AGE</button>" +
-			// "<button onclick='getGenderData(" + id + ")'>GENDER</button>" +
-			// "<button onclick='getUsertypeData(" + id + ")'>TYPE</button>"
 			"<button id='age_btn'>AGE</button>" +
 			"<button id='gender_btn'>GENDER</button>" +
-			"<button id='type_btn'>TYPE</button>";
+			"<button id='type_btn'>TYPE</button>" +
+			"<br>" +
+			"<button id='inflow_btn'>INFLOW</button>" +
+			"<button id='outflow_btn'>OUTFLOW</button>";
 
-		
+
 
 		var popup = L.popup({
 				className: 'station-info'
@@ -188,7 +253,11 @@ Map.prototype.loadStations = function(json) {
 
 
 
-		stationsMarkers.push(station)
+		stationsMarkers[id] = {
+			marker: station,
+			type: "default"
+		};
+
 
 		that.stationsAttributes[s.id] = {
 			name: s.name,
@@ -224,6 +293,8 @@ Map.prototype.loadStations = function(json) {
 Map.prototype.loadCommunityAreas = function(json) {
 	var that = this;
 	var communityAreas = this.communityAreas;
+	var communityAreasLabels = this.communityAreasLabels;
+
 	var data = json.features;
 
 	var polygon
@@ -261,7 +332,20 @@ Map.prototype.loadCommunityAreas = function(json) {
 			};
 		}(name, centerLat, centerLong));
 
+		// Community areas labels
+		var content = "<i class='community_area_text'>" + name + "</i>"
+		var myIcon = L.divIcon({
+			className: 'my-div-icon',
+			html: content
+		});
+
+		var label = L.marker([centerLat, centerLong], {
+			icon: myIcon
+		});
+
+
 		communityAreas.push(polygon)
+		communityAreasLabels.push(label)
 
 	}
 }
@@ -272,6 +356,7 @@ Map.prototype.showCommunityAreas = function() {
 
 	for (var i = 0; i < communityAreas.length; i++) {
 		communityAreas[i].addTo(map);
+		this.communityAreasLabels[i].addTo(map)
 
 	}
 }
@@ -279,6 +364,8 @@ Map.prototype.showCommunityAreas = function() {
 Map.prototype.hideCommunityAreas = function() {
 	for (c in this.communityAreas) {
 		this.map.removeLayer(this.communityAreas[c])
+		this.map.removeLayer(this.communityAreasLabels[c])
+
 	}
 
 }
@@ -286,29 +373,38 @@ Map.prototype.hideCommunityAreas = function() {
 Map.prototype.showStations = function() {
 	var stationsMarkers = this.stationsMarkers;
 	var map = this.map;
+	var large = false;
 
 	if (map.getZoom() > this.zoomThreshold) {
-		icon = this.largeIcon
-	} else {
-		icon = this.smallIcon
+		large = true;
 	}
+
 
 	for (s in stationsMarkers) {
-		stationsMarkers[s].setIcon(icon)
-			.addTo(map)
+		if (stationsMarkers[s].type === "unselected") {
+			icon = large ? this.unselectedIconLarge : this.unselectedIconSmall
+		} else if (stationsMarkers[s].type === "start") {
+			icon = large ? this.startIconLarge : this.startIconSmall
+		} else if (stationsMarkers[s].type === "end") {
+			icon = large ? this.endIconLarge : this.endIconSmall
+		} else {
+			icon = large ? this.iconLarge : this.iconSmall
+		}
 
+
+		stationsMarkers[s].marker.setIcon(icon).addTo(map);
 	}
-}
-
-Map.prototype.redraw = function() {
-	this.map.invalidateSize();
 }
 
 Map.prototype.hideStations = function() {
 	for (s in this.stationsMarkers) {
-		this.map.removeLayer(this.stationsMarkers[s])
+		this.map.removeLayer(this.stationsMarkers[s].marker)
 	}
 
+}
+
+Map.prototype.redraw = function() {
+	this.map.invalidateSize();
 }
 
 Map.prototype.drawStars = function(popularity) {
@@ -324,23 +420,30 @@ Map.prototype.showStationPopup = function(id, station) {
 	this.drawStars(station.popularity);
 
 
-	d3	.select("#gender_btn")
-		.on("click", function() {
+	d3.select("#gender_btn")
+		.on("click", function()  {
 			that.getData(id, 0, "pie");
 		});
 
-	d3	.select("#type_btn")
-		.on("click", function() {
+	d3.select("#type_btn")
+		.on("click", function()  {
 			that.getData(id, 2, "pie");
 		});
 
-	d3	.select("#age_btn")
-		.on("click", function() {
+	d3.select("#age_btn")
+		.on("click", function()  {
 			that.getData(id, 1, "line");
 		});
 
+	d3.select("#inflow_btn")
+		.on("click", function()  {
+			that.getInflowData(id);
+		});
 
-
+	d3.select("#outflow_btn")
+		.on("click", function()  {
+			that.getOutflowData(id);
+		});
 }
 
 Map.prototype.centerMap = function(id) {
@@ -363,53 +466,81 @@ Map.prototype.showPopup = function(content, lat, long) {
 		.openOn(this.map);
 }
 
-// TODO TEMPORANEE A CAUSA DI HARDCODE NEL POPUP
 Map.prototype.getData = function(id, query, graphType) {
 	db.demographicInflowOutflow(id, query, this.dataCallback, graphType)
 }
 
-// Map.prototype.getUsertypeData = function(id) {
-// 	db.demographicInflowOutflow(id, 2, this.pieCallback, "usertype")
-
-// }
-
-// Map.prototype.getUsertypeData = function(id) {
-// 	db.demographicInflowOutflow(id, 2, this.pieCallback, "usertype")
-
-// }
-
-function addLineChart() {
-	var container = '#popup-graph-container'
-	d3.select(container).selectAll("svg").remove()
-	var pie = new LineChart(container, [12, 34, 10, 8, 6], ["ammaccabanana", "bopodollo", "cretinazzo", "dindaro", "ettortello"], false);
-	pie.draw();
+Map.prototype.getInflowData = function(id) {
+	var info = {
+		id: id,
+		direction: "in",
+		mapObject: this
+	}
+	db.overallInflow(id, this.flowCallback, info)
 }
+
+Map.prototype.getOutflowData = function(id) {
+	var info = {
+		id: id,
+		direction: "out",
+		mapObject: this
+	}
+	db.overallOutflow(id, this.flowCallback, info)
+}
+
+
 
 Map.prototype.dataCallback = function(data, graphType) {
 
-	console.log(data)
-
-
 	var values = dataElaboration.getFromJSON(data, "value", true)
-	var labels = dataElaboration.getFromJSON(data, "labels", false)
-	
+	var labels = dataElaboration.getFromJSON(data, "label", false)
+
 
 
 	var container = '#popup-graph-container'
 	d3.select(container).selectAll("svg").remove()
 	var graph
 
-	if(graphType === "pie") {
+	if (graphType === "pie")  {
 		graph = new PieChart(container, values, labels, false);
-	}
-	else if(graphType === "bar") {
+	} else if (graphType === "bar") {
 		graph = new BarChart(container, values, labels, false);
-	}
-	else if(graphType === "line") {
+	} else if (graphType === "line") {
 		graph = new LineChart(container, values, labels, false);
 	}
 
 	graph.draw();
+}
+
+Map.prototype.flowCallback = function(data, info) {
+	var baseStation = info.id;
+	var that = info.mapObject;
+
+	var values = dataElaboration.getFromJSON(data, "label", true)
+	var quantities = dataElaboration.getFromJSON(data, "value", true)
+
+	var trips = [];
+
+
+	for (var i = 0; i < values.length; i++) {
+		// Rescale quantity
+		var quantity = (quantities[i] / 15)+1;
+
+		if (info.direction === "in") {
+			trips[i] = {
+				from_station_id: values[i],
+				to_station_id: baseStation,
+				totalTripsMade: quantity
+			}
+		} else if (info.direction === "out") {
+			trips[i] = {
+				from_station_id: baseStation,
+				to_station_id: values[i],
+				totalTripsMade: quantity
+			}
+		}
+	}
+	that.drawTrips(trips, "start", "end");
 }
 
 Map.prototype.drawLine = function(start, end, thickness) {
@@ -431,18 +562,31 @@ Map.prototype.removeLines = function() {
 	}
 }
 
-Map.prototype.drawTrip = function(fromID, toID, quantity) {
+Map.prototype.drawTrip = function(fromID, toID, quantity, fromLabel, toLabel) {
 	var start = L.latLng(this.stationsAttributes[fromID].latitude,
 		this.stationsAttributes[fromID].longitude);
 	var end = L.latLng(this.stationsAttributes[toID].latitude,
 		this.stationsAttributes[toID].longitude);
 
 	this.drawLine(start, end, parseInt(quantity, 10));
+
+	this.stationsMarkers[fromID].type = fromLabel
+	this.stationsMarkers[toID].type = toLabel
 }
 
-Map.prototype.drawTrips = function(trips) {
+Map.prototype.drawTrips = function(trips, fromLabel, toLabel) {
 	this.removeLines();
-	for (var i = 0; i < trips.length; i++) {
-		this.drawTrip(trips[i].from_station_id, trips[i].to_station_id, trips[i].totalTripsMade);
+	this.hideStations();
+
+	for (s in this.stationsMarkers) {
+		this.stationsMarkers[s].type = "unselected"
 	}
+
+	for (var i = 0; i < trips.length; i++) {
+		var from = trips[i].from_station_id;
+		var to = trips[i].to_station_id;
+		var quantity = trips[i].totalTripsMade;
+		this.drawTrip(from, to, quantity, fromLabel, toLabel);
+	}
+	this.showStations();
 }

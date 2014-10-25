@@ -18,7 +18,7 @@ PieChart.prototype.draw = function(){
 	// var height = this.containerHeight;
 
 	var width = 1600;
-	var height = 900;
+	var height = 800;
 
 	var centerX = width/2;
 	var centerY = height/2;
@@ -71,7 +71,7 @@ PieChart.prototype.draw = function(){
 					// Default implementation
 					.attr("height", h)
 		this.svg = _svg;
-height
+
 
 	//Create SVG element
 	var pie_svg = _svg
@@ -98,7 +98,7 @@ height
 	//Labels
 	arcs	.append("text")
 	    	.attr("transform", function(d) {
-	    		return "translate(" + arc.centroid(d) + ")";
+	    		return "translate(" + arc.centroid(d)[0] + ", " + arc.centroid(d)[1]*1.7 + ")";
 	    	})
 		    .attr("text-anchor", "middle")
 		    .attr("class","text")
