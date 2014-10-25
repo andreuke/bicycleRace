@@ -260,12 +260,14 @@ var initialController = function(controller) {
   that.addState("ini-mode", "normal")
   //States of the graphs
 
-  var addGraphState = function(prefix, data, label, title, type, linetype) {
+  var addGraphState = function(prefix, data, label, title, type, linetype, lablx, lably) {
     that.addState(prefix + "-data", data);
     that.addState(prefix + "-labels", label);
     that.addState(prefix + "-title", title);
     that.addState(prefix + "-type", type);
     that.addState(prefix + "-linechart-type", linetype);
+    that.addState(prefix + "-linechart-labl-x", lablx);
+    that.addState(prefix + "-linechart-labl-y", lably);
   }
 
   addGraphState("ini-time1", [], [], "Number of bikes in the year", "linechart", "date")
@@ -325,7 +327,6 @@ var initialController = function(controller) {
       that.set("ini-mode", "normal");
     };
   }
-
   return that;
 }
 
@@ -345,7 +346,6 @@ var initialView = function(controller, container) {
   var allGraphsDiv = mainDiv.append("div")
     .attr("id", "allGraphs")
     .classed("flex-horizontal", true);
-
 
   var switchMyMode = function(mode) {
     if (mode === "normal") {
@@ -424,7 +424,6 @@ var IniSingleGraph = function(controller, where, idElement, idState) {
       graph = new LineChart("#" + graphDiv.attr("id"), _controller.get(idStatus + "-data"), _controller.get(idStatus + "-labels"), "", "", _controller.get(idStatus + "-linechart-type"));
       break;
   }
-
   graph.draw();
 
   var handleChangeMode = function(mode) {
@@ -455,12 +454,8 @@ var IniSingleGraph = function(controller, where, idElement, idState) {
     //BAD PRACTICE. TODO: found another way
     graph.update(data, _controller.get(idStatus + "-labels"));
   });
-
   _controller.onChange("ini-mode", handleChangeMode);
-
   _controller.onChange("zoomedGraphs", selectionHighLight);
-
-
   mainDiv.on("click", clickEvent);
 
   that.remove = function() {
@@ -474,10 +469,10 @@ var pickAdayController = function(parent, prefixMap) {
   var that = abstractController(parent);
   that.addState("date", "");
   that.addState("hour", "12");
-  that.addState("filter-gender", "Male");
-  that.addState("filter-subscriber", "Subscriber");
-  that.addState("filter-age-min", 0);
-  that.addState("filter-age-max", 40);
+  that.addState("filter-gender", "");
+  that.addState("filter-subscriber", "");
+  that.addState("filter-age-min", -1);
+  that.addState("filter-age-max", 200);
 
   var mapPrefix = prefixMap;
   var selectionsID = prefixMap + "-SelectedStation";
@@ -509,8 +504,24 @@ var pickAdayController = function(parent, prefixMap) {
   }
 
   var callBackTrips = function(data, id) {
+    data.id = id;
     console.log(data);
-    that.set(tripsID, data.data);
+    var trips = that.get(tripsID);
+    var found = false;
+    for (var i = 0; i < trips.length; i++) {
+      if (trips[i].id === id) {
+        trips[i].data = data.data;
+        found = true;
+      }
+    }
+    if (!found) {
+      trips.push(data);
+    }
+    that.set(tripsID, trips);
+  }
+
+  var removeTrips = function(stationId) {
+
   }
 
   //TODO al cambiamento delle selezioni relative alla mappa associata
@@ -527,10 +538,16 @@ var pickAdayController = function(parent, prefixMap) {
         emptyPrefixes.push(tmpPrefix);
       } else {
         if (selections.indexOf(tmpId) === -1) {
+          var trips = that.get(tripsID);
           that.set(tmpPrefix + "-show", false);
           that.set(tmpPrefix + "-idStation", "");
           emptyPrefixes.push(tmpPrefix);
-          //remove trips
+          for (var i = 0; i < trips.length; i++) {
+            if (trips[i].id === tmpId) {
+              trips.splice(i,1);
+              i = i - 1;
+            }
+          };
         } else {
           alreadySelected.push(tmpId);
         }
@@ -540,11 +557,15 @@ var pickAdayController = function(parent, prefixMap) {
       if (alreadySelected.indexOf(selections[i]) === -1) {
         that.set(emptyPrefixes[0] + "-idStation", selections[i]);
         that.set(emptyPrefixes[0] + "-show", true);
-        //TODO testare questa funzione del db
-        //db.tripsTakenAccrossFilteredStation(selections[i], that.get("filter-gender"),
-        //  that.get("filter-age-min"), that.get("filter-age-max"),
-        //  that.get("filter-subscriber"), that.get("date"), that.get("hour"), callBackTrips, emptyPrefixes[0]);
-        //db.getData
+        that.set(emptyPrefixes[0] + "-title", "station number: " + that.get(emptyPrefixes[0] + "-idStation"));
+
+        db.numberoOfActiveBikesFilteredStation(selections[i], that.get("filter-gender"),
+          that.get("filter-age-min"), that.get("filter-age-max"),
+          that.get("filter-subscriber"), that.get("date"), callBackActiveBikes, emptyPrefixes[0]);
+
+        db.tripsTakenAccrossFilteredStation(selections[i], that.get("filter-gender"),
+          that.get("filter-age-min"), that.get("filter-age-max"),
+          that.get("filter-subscriber"), that.get("date"), that.get("hour"), callBackTrips, selections[i]);
         emptyPrefixes.splice(0, 1);
       }
     };
@@ -552,50 +573,81 @@ var pickAdayController = function(parent, prefixMap) {
   }
   that.onChange(selectionsID, handleMapSelections);
   that.set(selectionsID, ["52", "53"]);
-  //that.set(selectionsID, ["55","57"]);
+  
+  that.set(selectionsID, ["55","52","59","53"]);
 
   //TODO al cambiamento dell'ora aggiornare i dati dei grafici,
   //e aggiornare i viaggi da mostrare sulla mappa(main controller)
   that.changeDateSelection = function(date) {
     db.numberoOfActiveBikesOn(date, callBackActiveBikes, "pick-chicago");
-    db.tripsOn(date, that.get("hour"), callBackTrips);
     var selections = that.get(selectionsID);
     var hourSelected = that.get("hour");
-    var prefixes = that.get("graphsPrefixArray")
-    for (var i = 0; i < selections.length; i++) {
-      for (var j = 0; j < 10; j++) {
-        if (that.get(prefixes[j] + "-idStation") === selections[i]) {
-          //query database number of active bikes for station
+    var prefixes = that.get("graphsPrefixArray");
+    if (selections.length === 0) {
+      db.tripsOn(date, that.get("hour"), callBackTrips, "chicago");
+    } else {
+      for (var i = 0; i < selections.length; i++) {
+        for (var j = 0; j < 10; j++) {
+          if (that.get(prefixes[j] + "-idStation") === selections[i]) {
+            //query database number of active bikes for station
+            db.numberoOfActiveBikesFilteredStation(selections[i], that.get("filter-gender"),
+              that.get("filter-age-min"), that.get("filter-age-max"),
+              that.get("filter-subscriber"), date, callBackActiveBikes, prefixes[j]);
 
-          //query dataBase trips for station given date and hour
-          //db.tripsTakenAccrossFilteredStation(selections[i], that.get("filter-gender"),
-          //that.get("filter-age-min"), that.get("filter-age-max"),
-          //that.get("filter-subscriber"), date, that.get("hour"), callBackTrips, prefixes[j]);
+            //query dataBase trips for station given date and hour
+            db.tripsTakenAccrossFilteredStation(selections[i], that.get("filter-gender"),
+              that.get("filter-age-min"), that.get("filter-age-max"),
+              that.get("filter-subscriber"), date, that.get("hour"), callBackTrips, selections[i]);
+          }
         }
-      }
-    };
+      };
+    }
     that.set("date", date)
   }
 
   that.changeHourSelection = function(hour) {
-    //TODO get the trips for all the city
-    //TODO get the trips fo all the selections
-    db.tripsOn(that.get("date"), hour, callBackTrips);
-    //var selections = that.get(selectionsID);
-    //var dateSelected = that.get("date");
-    //TODO aggiornare tutti i trips
+    var selections = that.get(selectionsID);
+    if (selections.length !== 0) {
+      for (var i = 0; i < selections.length; i++) {
+           //query dataBase trips for station given date and hour
+            db.tripsTakenAccrossFilteredStation(selections[i], that.get("filter-gender"),
+              that.get("filter-age-min"), that.get("filter-age-max"),
+              that.get("filter-subscriber"), that.get("date"), hour, callBackTrips, selections[i]);
+        }
+    } else {
+      db.tripsOn(that.get("date"), hour, callBackTrips, "chicago");
+    }
     that.set("hour", hour);
   }
 
-  //TODO al cambiamento dei filtri aggiornare i dati dei grafici
-  // e dei viaggi
-  that.changeFilterSelection = function(filterType) {
-
+  var handleChangeFilter = function() {
+    var selections = that.get(selectionsID);
+    var prefixes = that.get("graphsPrefixArray");
+    for (var i = 0; i < selections.length; i++) {
+      for (var j = 0; j < 10; j++) {
+        if (that.get(prefixes[j] + "-idStation") === selections[i]) {
+          db.numberoOfActiveBikesFilteredStation(selections[i], that.get("filter-gender"),
+            that.get("filter-age-min"), that.get("filter-age-max"),
+            that.get("filter-subscriber"), that.get("date"), callBackActiveBikes, prefixes[j]);
+          //query dataBase trips for station given date and hour
+          db.tripsTakenAccrossFilteredStation(selections[i], that.get("filter-gender"),
+            that.get("filter-age-min"), that.get("filter-age-max"),
+            that.get("filter-subscriber"), that.get("date"), that.get("hour"), callBackTrips, selections[i]);
+        }
+      }
+    }
   }
 
-  that.changeValueFilter = function(filterValue) {
-
+  that.changeFilter = function(filterType, value) {
+    //TODO aggiungere controlli????
+    that.set(filterType, value);
   }
+
+  that.onChange("filter-subscriber", handleChangeFilter);
+  that.onChange("filter-age-min", handleChangeFilter);
+  that.onChange("filter-age-max", handleChangeFilter);
+  that.onChange("filter-gender", handleChangeFilter);
+
   return that;
 }
 
@@ -725,17 +777,17 @@ var filterSelector = function(container, controller) {
     boxMaxAge.append("option").text(i + 1);
   };
 
-  boxGender.on("change",function(){
-    _controller.set("filter-gender",boxGender.property("value"));
+  boxGender.on("change", function() {
+    _controller.changeFilter("filter-gender", boxGender.property("value"));
   });
-  boxSubscr.on("change",function(){
-    _controller.set("filter-subscriber",boxSubscr.property("value"));
+  boxSubscr.on("change", function() {
+    _controller.changeFilter("filter-subscriber", boxSubscr.property("value"));
   });
-  boxMinAge.on("change",function(){
-    _controller.set("filter-age-min",boxMinAge.property("value"));
+  boxMinAge.on("change", function() {
+    _controller.changeFilter("filter-age-min", boxMinAge.property("value"));
   });
-  boxMaxAge.on("change",function(){
-    _controller.set("filter-age-max",boxMaxAge.property("value"));
+  boxMaxAge.on("change", function() {
+    _controller.changeFilter("filter-age-max", boxMaxAge.property("value"));
   });
 
 

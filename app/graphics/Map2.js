@@ -12,7 +12,8 @@ function Map(container, initialCoord, controller, mapPrefix) {
 	var initialZoom = 13;
 	this.zoomThreshold = 14;
 
-
+	//TODO mettere apposto i colori
+	this.lineColors = ["red","green","blue","black", "orange"];
 	this.layer;
 	this.stationsMarkers = [];
 	this.communityAreas = [];
@@ -68,11 +69,11 @@ function Map(container, initialCoord, controller, mapPrefix) {
 		iconUrl: 'app/graphics/res/icon_large.png',
 		//shadowUrl: 'graphics/leaf-shadow.png',
 
-		iconSize: [48, 48], // size of the icon
+iconSize: [48, 48], // size of the icon
 		//shadowSize:   [50, 64], // size of the shadow
 		iconAnchor: [20, 48], // point of the icon which will correspond to marker's location
 		// shadowAnchor: [4, 62],  // the same for the shadow
-		popupAnchor: [0, -48] // point from which the popup should open r
+		popupAnchor: [0, -48] // point from which the popup should open rpen r
 	});
 	this.startIconLarge = L.icon({
 		iconUrl: 'app/graphics/res/icon_large_start.png',
@@ -151,7 +152,7 @@ function Map(container, initialCoord, controller, mapPrefix) {
 	});
 
 	this.controller.onChange(myPrefix + "-tripsDisplayed", function(data) {
-		that.drawTrips(data);
+		that.drawGroupTrips(data);
 
 	})
 	this.controller.onChange(myPrefix + "-showComunAreas", function(data) {
@@ -249,6 +250,8 @@ Map.prototype.loadStations = function(json) {
 			})
 			.setContent(content)
 
+		//popup.options.minWidth = 300;
+		//popup.options.maxWidth = 800;
 		station.bindPopup(popup);
 
 
@@ -543,11 +546,11 @@ Map.prototype.flowCallback = function(data, info) {
 	that.drawTrips(trips, "start", "end");
 }
 
-Map.prototype.drawLine = function(start, end, thickness) {
+Map.prototype.drawLine = function(start, end, thickness, col) {
 	var points = [start, end];
-
+	var myCol = col || 'red';
 	var polyline = L.polyline(points, {
-		color: 'red',
+		color: myCol,
 		weight: thickness
 	});
 
@@ -562,31 +565,35 @@ Map.prototype.removeLines = function() {
 	}
 }
 
-Map.prototype.drawTrip = function(fromID, toID, quantity, fromLabel, toLabel) {
+Map.prototype.drawTrip = function(fromID, toID, quantity, fromLabel, toLabel,col) {
 	var start = L.latLng(this.stationsAttributes[fromID].latitude,
 		this.stationsAttributes[fromID].longitude);
 	var end = L.latLng(this.stationsAttributes[toID].latitude,
 		this.stationsAttributes[toID].longitude);
 
-	this.drawLine(start, end, parseInt(quantity, 10));
+	this.drawLine(start, end, parseInt(quantity, 10),col);
 
 	this.stationsMarkers[fromID].type = fromLabel
 	this.stationsMarkers[toID].type = toLabel
 }
 
-Map.prototype.drawTrips = function(trips, fromLabel, toLabel) {
-	this.removeLines();
-	this.hideStations();
-
-	for (s in this.stationsMarkers) {
-		this.stationsMarkers[s].type = "unselected"
-	}
-
+Map.prototype.drawTrips = function(trips, fromLabel, toLabel,col) {
 	for (var i = 0; i < trips.length; i++) {
 		var from = trips[i].from_station_id;
 		var to = trips[i].to_station_id;
 		var quantity = trips[i].totalTripsMade;
-		this.drawTrip(from, to, quantity, fromLabel, toLabel);
+		this.drawTrip(from, to, quantity, fromLabel, toLabel,col);
 	}
 	this.showStations();
+}
+
+Map.prototype.drawGroupTrips = function (array) {
+	this.removeLines();
+	this.hideStations();
+	for (s in this.stationsMarkers) {
+		this.stationsMarkers[s].type = "unselected"
+	}
+	for (var i = 0; i < array.length; i++) {
+		this.drawTrips (array[i].data,"","", this.lineColors[i]);
+	};
 }
