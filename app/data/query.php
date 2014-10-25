@@ -144,6 +144,9 @@
 						and a.startdate = "'.$day.'"';
 
 			if($gender != ""){
+				if($gender == 'Unknown'){
+					$gender = '';
+				}
 				$where .= ' and a.gender = "'.$gender.'"';
 			}
 			if($subscriberOrCustomer != ""){
@@ -177,6 +180,9 @@
 						and a.startdate = "'.$day.'" and b.hour = "'.$hour.'"';
 
 			if($gender != ""){
+				if($gender == 'Unknown'){
+					$gender = '';
+				}
 				$where .= ' and a.gender = "'.$gender.'"';
 			}
 			if($subscriberOrCustomer != ""){
