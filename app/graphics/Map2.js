@@ -321,21 +321,26 @@ Map.prototype.showStationPopup = function(id, station) {
 	var that = this;
 
 	var station = this.stationsAttributes[id];
+	this.drawStars(station.popularity);
+
 
 	d3	.select("#gender_btn")
 		.on("click", function() {
-			console.log(that)
-			that.getGenderData(id);
+			that.getData(id, 0, "pie");
 		});
 
 	d3	.select("#type_btn")
 		.on("click", function() {
-			console.log(that)
-			that.getUsertypeData(id);
+			that.getData(id, 2, "pie");
+		});
+
+	d3	.select("#age_btn")
+		.on("click", function() {
+			that.getData(id, 1, "line");
 		});
 
 
-	this.drawStars(station.popularity);
+
 }
 
 Map.prototype.centerMap = function(id) {
@@ -359,14 +364,19 @@ Map.prototype.showPopup = function(content, lat, long) {
 }
 
 // TODO TEMPORANEE A CAUSA DI HARDCODE NEL POPUP
-Map.prototype.getGenderData = function(id) {
-	db.demographicInflowOutflow(id, 0, this.pieCallback, "gender")
+Map.prototype.getData = function(id, query, graphType) {
+	db.demographicInflowOutflow(id, query, this.dataCallback, graphType)
 }
 
-Map.prototype.getUsertypeData = function(id) {
-	db.demographicInflowOutflow(id, 2, this.pieCallback, "usertype")
+// Map.prototype.getUsertypeData = function(id) {
+// 	db.demographicInflowOutflow(id, 2, this.pieCallback, "usertype")
 
-}
+// }
+
+// Map.prototype.getUsertypeData = function(id) {
+// 	db.demographicInflowOutflow(id, 2, this.pieCallback, "usertype")
+
+// }
 
 function addLineChart() {
 	var container = '#popup-graph-container'
@@ -375,63 +385,31 @@ function addLineChart() {
 	pie.draw();
 }
 
-Map.prototype.pieCallback = function(data, kind) {
+Map.prototype.dataCallback = function(data, graphType) {
 
 	console.log(data)
 
-	var values = []
-	var labels = []
 
-	if (kind == "gender") {
-
-		var male = 0;
-		var female = 0;
-		var unknown = 0;
-
-		var data = data.data;
-
-		for (var i in data) {
-			var gender = data[i].gender;
-
-			if (gender == "Male") {
-				male++;
-			} else if (gender == "Female")  {
-				female++;
-			} else {
-				unknown++;
-			}
-		}
-
-		values = [male, female, unknown]
-		labels = ["Male", "Female", "Unknown"];
-	}
-
-	else if (kind == "usertype") {
-
-		var subscriber = 0;
-		var customer = 0;
-
-		var data = data.data;
-
-		for (var i in data) {
-			var usertype = data[i].usertype;
-
-			if (usertype == "Subscriber") {
-				subscriber++;
-			} else if (usertype == "Customer")  {
-				customer++;
-			}
-		}
-
-		values = [subscriber, customer]
-		labels = ["Subscriber", "Customer"];
-	}
+	var values = dataElaboration.getFromJSON(data, "value", true)
+	var labels = dataElaboration.getFromJSON(data, "labels", false)
+	
 
 
 	var container = '#popup-graph-container'
 	d3.select(container).selectAll("svg").remove()
-	var pie = new PieChart(container, values, labels, false);
-	pie.draw();
+	var graph
+
+	if(graphType === "pie") {
+		graph = new PieChart(container, values, labels, false);
+	}
+	else if(graphType === "bar") {
+		graph = new BarChart(container, values, labels, false);
+	}
+	else if(graphType === "line") {
+		graph = new LineChart(container, values, labels, false);
+	}
+
+	graph.draw();
 }
 
 Map.prototype.drawLine = function(start, end, thickness) {
