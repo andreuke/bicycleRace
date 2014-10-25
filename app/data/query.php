@@ -470,7 +470,7 @@
 
 		function displayData($numOfMale, $numOfFemale, $unknown){
 			echo '{"data":[';
-			echo '{"label":"male","value":"'.$numOfMale.'"},{"label":"female","value":"'.$numOfFemale.'"},{"label":"unknown","value":"'.$unknown.'"}';
+			echo '{"label":"Male","value":"'.$numOfMale.'"},{"label":"Female","value":"'.$numOfFemale.'"},{"label":"Unknown","value":"'.$unknown.'"}';
 			echo ']}';
 		}
 
