@@ -344,3 +344,16 @@ database.prototype.weatherHour = function (day, hour, callback, iden){
 		}
 	});
 }
+
+database.prototype.weatherSunriseSunset = function (day, callback, iden){
+	var return_value;
+
+	return_value = $.ajax({
+		url: this.queryUrl,
+		data: "mark=1&query=10&day="+ "" +day,
+		dataType: "json",
+		success: function(data) {
+			callback(data,iden);
+		}
+	});
+}

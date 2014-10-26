@@ -19,7 +19,7 @@ function WeatherLineChart(container,data,labels,x_axis_label,y_axis_label , sunr
 	this.yScale = {};
 	this.main_svg = {};
 
-	this.ordinalScale = function(data, width){
+	this.weatherScale = function(data, width){
 		return d3 	.scale
 					.linear()
 					.domain([0, data.length-1])
@@ -28,12 +28,16 @@ function WeatherLineChart(container,data,labels,x_axis_label,y_axis_label , sunr
 
 }
 
-WeatherLineChart.prototype.update = function(data,labels) {
+WeatherLineChart.prototype.update = function(data,labels,sunrise,sunset) {
 	this.data = data;
 	this.labels = labels;
+	this.sunrise = sunrise;
+	this.sunset = sunset;
 	this.main_svg.remove();
 	this.draw();
 }
+
+
 
 WeatherLineChart.prototype.updateHour = function(hour){
 	var container = this.container;
@@ -89,17 +93,7 @@ WeatherLineChart.prototype.draw = function(){
 	var sunset = this.sunset;
 	var hour = this.hour;
 
-	// Creates x scale (linear, from 0 to number of data)
-	//switch(kind){
-	//	case "ordinal":
-			xScale = this.ordinalScale(data, width * margin);
-	//		break;
-	//	case "numerical": 
-	//		xScale = this.numericScale(labels, width * margin);
-	//		break;
-	//	default:
-	//		xScale = this.ordinalScale(data, width * margin);
-	//		break;}
+	xScale = this.weatherScale(data, width * margin);
 
 	// Creates y Scale (linear, from 0 to max of data)
 	yScale = d3	.scale
@@ -125,14 +119,7 @@ WeatherLineChart.prototype.draw = function(){
 					.line()
 					.interpolate("basis")
     				.x(function(d,i) { 
-    					//switch(kind){
-    					//	case "ordinal":
-    							return xScale(i);
-    					//	case "numerical":
-    					//		return xScale(parseInt(labels[i],10));
-    					//	default:
-    					//		return xScale(i);}
-    					})
+    					return xScale(i);})
     				.y(function(d) { 
     					return yScale(d); });
 
@@ -181,28 +168,8 @@ WeatherLineChart.prototype.draw = function(){
             .tickFormat(""));
 
 // Draw the Sunrise Marker    
-	/*svg .append("svg:line")
-		.attr("class", "sunriseLine")
-		.attr("x1", that.xScale(parseInt(sunrise)))
-		.attr("y1", yScale(0))
-		.attr("x2", that.xScale(parseInt(sunrise)))
-		.attr("y2", yScale(d3.max(data)+something))
-		.style("stroke","red")
-		.style("stroke-width","5px");*/
-
-// Draw the sunset Marker
-	/*svg .append("svg:line")
-		.attr("class", "sunsetLine")
-		.attr("x1", that.xScale(parseInt(sunset)))
-		.attr("y1", yScale(0))
-		.attr("x2", that.xScale(parseInt(sunset)))
-		.attr("y2", yScale(d3.max(data)+something))
-		.style("stroke","green")
-		.style("stroke-width","5px");*/
-
-// Draw the Sunrise Marker    
 	svg .append("svg:rect")
-		.attr("class", "sunriseLine")
+		.attr("class", "sunriseRect")
 		.attr("x", xScale(0))
 		.attr("y", yScale(d3.max(data)+something))
 		.attr("width", xScale(parseInt(sunrise))-xScale(0))
@@ -220,8 +187,8 @@ WeatherLineChart.prototype.draw = function(){
 
 // Draw the sunset Marker
 	svg .append("svg:rect")
-		.attr("class", "sunsetLine")
-		.attr("x", xScale(sunset))
+		.attr("class", "sunsetRect")
+		.attr("x", xScale(parseInt(sunset)))
 		.attr("y", yScale(d3.max(data)+something))
 		.attr("width", xScale(23)-xScale(parseInt(sunset)))
 		.attr("height", yScale(0)-yScale(d3.max(data)+something))
@@ -239,12 +206,6 @@ svg .append("svg:image")
 	// Draw the hour marker
 	svg .append("svg:line")
 		.attr("class", "hourLine")
-		//.attr("x1", xScale(parseInt(hour)))
-		//.attr("y1", yScale(0))
-		//.attr("x2", xScale(parseInt(hour)))
-		//.attr("y2", yScale(d3.max(data)+something))
-		//.style("stroke","yellow")
-		//.style("stroke-width","5px");
 
     // Draw the line
 	svg	.append("path")
