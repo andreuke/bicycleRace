@@ -133,18 +133,23 @@ var mainController = function() {
   //Invoked by the map for notify the selection of a station
   //TODO finish implementation
   that.addSelectStation = function(idStation, mapPrefix) {
-    tmp = that.get(mapPrefix + "-SelectedStation");
-    tmp.push(idStation);
-    that.set(mapPrefix + "-SelectedStation", tmp);
+    var tmp = that.get(mapPrefix + "-SelectedStation");
+    if (tmp.indexOf(idStation) === -1) {
+      tmp.push(idStation);
+      that.set(mapPrefix + "-SelectedStation", tmp);
+    }
   }
 
   //Invoked by the map for notifying the deselection of a station
   //finish implementation
   that.removeSelectStation = function(idStation) {
-    //tmp = that.get("SelectedStation");
-    //TODO rimuovere stazione dal tmp
-    //TODO settare il nuovo array
+    var tmp = that.get("map1-SelectedStation");
+    if (tmp.indexOf(idStation) !== -1) {
+      tmp.splice(tmp.indexOf(idStation), 1);
+      that.set("map1-SelectedStation", tmp);
+    }
   }
+
   return that;
 }
 
@@ -181,6 +186,7 @@ var mainView = function(controller) {
     .text("Select day");
 
 
+  /*
   listButtons.comAreasButton = divButtons.append("div")
     .attr("id", "button-areas")
     .attr("class", "main-buttons")
@@ -205,7 +211,7 @@ var mainView = function(controller) {
       }
     })
     .append("text")
-    .text("Toggle Community areas");
+    .text("Toggle Community areas");*/
 
   //4 principal div of the application, the dimensions and positions
   //are related to the current mode
@@ -236,6 +242,16 @@ var mainView = function(controller) {
         slots[1].attr("class", "invisible");
         slots[2].attr("class", "flex-item left");
         slots[3].attr("class", "invisible");
+        break;
+      case "stationDetails": //FINIRE
+        divMap.classed("left", false);
+        divMap.classed("left-center forty", true);
+        map.redraw();
+        slots[0].attr("class", "flex-item-penta right");
+        slots[1].attr("class", "invisible");
+        slots[2].attr("class", "invisible");
+        slots[3].attr("class", "invisible");
+        break;
     }
   }
 
@@ -476,10 +492,10 @@ var pickAdayController = function(parent, prefixMap) {
   that.addState("filter-age-max", 200);
   that.addState("sunrise", "3");
   that.addState("sunset", "15");
-  that.addState("dayWeather",[]);
-  that.addState("currentWeather","");
-  that.addState("currentTemp",[]);
-  that.addState("currentWeatherDescr","");
+  that.addState("dayWeather", []);
+  that.addState("currentWeather", "");
+  that.addState("currentTemp", []);
+  that.addState("currentWeatherDescr", "");
 
   var mapPrefix = prefixMap;
   var selectionsID = prefixMap + "-SelectedStation";
@@ -495,7 +511,7 @@ var pickAdayController = function(parent, prefixMap) {
     that.addState(prefix + "-title", title);
   }
 
-  var zeros = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+  var zeros = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   addGraphState("pick-chicago", zeros, [], "Chicago City", true, "chicago");
 
   for (var i = 0; i < 10; i++) {
@@ -528,16 +544,16 @@ var pickAdayController = function(parent, prefixMap) {
     that.set(tripsID, trips);
   }
 
-  var callBackDayWeather = function(json,id) {
+  var callBackDayWeather = function(json, id) {
     console.log(json);
-    that.set("dayWeather",json);
+    that.set("dayWeather", json);
   }
 
-  var callBackCurrentWeather = function(json,id){
+  var callBackCurrentWeather = function(json, id) {
     console.log(json);
-    that.set("currentTemp", [json.data[0].tempC,json.data[0].tempF]);
-    that.set("currentWeather",json.data[0].icon);
-    that.set("currentWeatherDescr",json.data[0].cond);
+    that.set("currentTemp", [json.data[0].tempC, json.data[0].tempF]);
+    that.set("currentWeather", json.data[0].icon);
+    that.set("currentWeatherDescr", json.data[0].cond);
   }
 
   //TODO al cambiamento delle selezioni relative alla mappa associata
@@ -547,7 +563,7 @@ var pickAdayController = function(parent, prefixMap) {
     var copySelections = selections.slice(0);
     var emptyPrefixes = [];
     var alreadySelected = [];
-    var trips ;
+    var trips;
     for (var i = 0; i < slotsPrefix.length; i++) {
       var tmpPrefix = slotsPrefix[i]
       var tmpId = that.get(tmpPrefix + "-idStation");
@@ -559,15 +575,17 @@ var pickAdayController = function(parent, prefixMap) {
           that.set(tmpPrefix + "-show", false);
           that.set(tmpPrefix + "-idStation", "");
           emptyPrefixes.push(tmpPrefix);
-          for (var i = 0; i < trips.length; i++) {
-            if (trips[i].id === tmpId) {
-              trips.splice(i, 1);
-              i = i - 1;
+          for (var j = 0; j < trips.length; j++) {
+            if (trips[j].id === tmpId) {
+              trips.splice(j, 1);
+              that.set(tripsID,trips);
+              //i = i - 1;
             }
           };
-        } else {
-          alreadySelected.push(tmpId);
         }
+      }
+      if (selections.indexOf(tmpId) !== -1) {
+        alreadySelected.push(tmpId);
       }
     };
     for (var i = 0; i < selections.length; i++) {
@@ -587,15 +605,16 @@ var pickAdayController = function(parent, prefixMap) {
       }
     };
 
-    if(selections.length === 0){
-      db.numberoOfActiveBikesFilteredStation("", that.get("filter-gender"),
-          that.get("filter-age-min"), that.get("filter-age-max"),
-          that.get("filter-subscriber"), that.get("date"), callBackActiveBikes, "pick-chicago");
+    if (selections.length === 0) {
+      db.tripsTakenAccrossFilteredStation("", that.get("filter-gender"),
+        that.get("filter-age-min"), that.get("filter-age-max"),
+        that.get("filter-subscriber"), that.get("date"), that.get("hour"), callBackTrips, "chicago");
     } else {
       trips = that.get(tripsID);
       for (var i = 0; i < trips.length; i++) {
         if (trips[i].id === "chicago") {
           trips.splice(i, 1);
+          that.set(tripsID, trips);
           break;
         }
       };
@@ -609,6 +628,12 @@ var pickAdayController = function(parent, prefixMap) {
   //TODO al cambiamento dell'ora aggiornare i dati dei grafici,
   //e aggiornare i viaggi da mostrare sulla mappa(main controller)
   that.changeDateSelection = function(date) {
+    db.weatherHour(date, "", callBackDayWeather);
+    db.weatherSunriseSunset(date, function(data) {
+      console.log(data);
+      that.set("sunrise", data.data[0].sunrise);
+      that.set("sunset", data.data[0].sunset);
+    })
     db.numberoOfActiveBikesFilteredStation("", that.get("filter-gender"),
       that.get("filter-age-min"), that.get("filter-age-max"),
       that.get("filter-subscriber"), date, callBackActiveBikes, "pick-chicago");
@@ -636,8 +661,6 @@ var pickAdayController = function(parent, prefixMap) {
         }
       };
     }
-
-    db.weatherHour(date,"",callBackDayWeather);
     that.set("date", date)
   }
 
@@ -655,7 +678,7 @@ var pickAdayController = function(parent, prefixMap) {
         that.get("filter-age-min"), that.get("filter-age-max"),
         that.get("filter-subscriber"), that.get("date"), that.get("hour"), callBackTrips, "chicago");
     }
-    db.weatherHour(that.get("date"),hour,callBackCurrentWeather);
+    db.weatherHour(that.get("date"), hour, callBackCurrentWeather);
     that.set("hour", hour);
   }
 
@@ -770,7 +793,7 @@ var pickSingleGraph = function(container, controller, prefixState) {
   graph.draw();
 
   var changeData = function(data) {
-    graph.update(data, _controller.get(myPrefix + "-labels"),_controller.get("sunrise"),_controller.get("sunset"));
+    graph.update(data, _controller.get(myPrefix + "-labels"), _controller.get("sunrise"), _controller.get("sunset"));
     graph.updateHour(_controller.get("hour"));
     graph.hourWeather(_controller.get("dayWeather"));
   }
@@ -794,6 +817,10 @@ var pickSingleGraph = function(container, controller, prefixState) {
   })
   _controller.onChange("dayWeather", function(json) {
     graph.hourWeather(json);
+  })
+
+  mainDiv.on("click", function() {
+    _controller.exec("removeSelectStation", _controller.get(myPrefix + "-idStation"));
   })
 
   return that;

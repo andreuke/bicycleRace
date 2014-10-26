@@ -11,6 +11,7 @@ function WeatherLineChart(container,data,labels,x_axis_label,y_axis_label , sunr
 	this.labels = labels;
 	this.sunrise = sunrise;
 	this.sunset = sunset;
+  this.iconsWeather = [];
 	this.hour = hour;
 	this.y_axis_label = y_axis_label;
 	this.x_axis_label = x_axis_label;
@@ -45,7 +46,7 @@ WeatherLineChart.prototype.updateHour = function(hour){
 	var yScale = this.yScale;
 	var data = this.data;
 	var something = 10;
-	
+
 	d3 	.select(container)
 		.select(".hourLine")
 		.attr("x1", xScale(parseInt(hour)))
@@ -66,13 +67,18 @@ WeatherLineChart.prototype.hourWeather = function(hour){
 	var data = this.data;
 	svg = svg .select("g");
 
+  for (var j = 0; j < this.iconsWeather[i] ; j++) {
+    this.iconsWeather[i].remove();
+  }
+  //svg.selectAll("image").remove();
+
 	for(var i =0; i< 24; i++){
-	    svg .append("svg:image")
+	    this.iconsWeather.push(svg .append("svg:image")
 	        .attr("xlink:href", "app/graphics/images/" + hour.data[i].icon + ".svg")
 	        .attr("x", xScale(parseInt(hour.data[i].hour))- 16 )
 	        .attr("y", - 40 )
 	       	.attr("height","32")
-	       	.attr("width","32");
+	       	.attr("width","32"));
 	    }
 }
 

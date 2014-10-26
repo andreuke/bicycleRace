@@ -504,6 +504,7 @@ Map.prototype.showStationPopup = function(id, station) {
 	d3.select("#detail_btn")
 		.on("click", function()  {
 			console.log("DETAIL_TEST")
+			that.controller.exec("changeMode","stationDetails");
 			// that.controller.removeSelectStation(id, that.myPrefix);
 		});
 }
