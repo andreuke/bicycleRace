@@ -15,6 +15,7 @@ function Map(container, initialCoord, controller, mapPrefix) {
 
 	//TODO mettere apposto i colori
 	this.lineColors = ["red", "green", "blue", "black", "orange"];
+
 	this.mapLayer = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg', {
 		subdomains: '1234',
 		minZoom: 4,
@@ -187,9 +188,6 @@ function Map(container, initialCoord, controller, mapPrefix) {
 
 	})
 	/***************** END CONTROLLER SUBSRCIPTIONS *****************/
-
-
-
 }
 
 
@@ -267,18 +265,6 @@ Map.prototype.loadStations = function(json) {
 		};
 	}
 
-	// var markers = that.stationsMarkers.filter(function(element) {
-	// 	return element.marker
-	// });
-
-	// console.log(markers)
-
-	// var markersLayers = L.layerGroup(markers);
-
-
-
-	
-
 // COMMUNITY AREAS LAYERS
 Map.prototype.loadCommunityAreas = function(json) {
 	var that = this;
@@ -287,9 +273,7 @@ Map.prototype.loadCommunityAreas = function(json) {
 
 	var data = json.features;
 
-	var polygon
-
-
+	// var polygon
 
 	for (var i = 0; i < data.length; i++) {
 		var name = data[i].properties.name;
@@ -312,15 +296,17 @@ Map.prototype.loadCommunityAreas = function(json) {
 		centerLong /= coordinates.length;
 
 
-		polygon = L.multiPolygon([edges]) //.addTo(map);
+		var polygon = L.multiPolygon([edges]) //.addTo(map);
 
 		// Double closure for the known loop problem.
-		polygon.on('click', function(n, lat, long) {
+		polygon.on('click', function(poly, n, lat, long) {
 			return function() {
-				var content = "<h3> Community Area </h3>" + n;
-				that.showPopup(content, lat, long);
+				var content = "<h3 class=popup-text-big>" + n + "</h3>" + 
+							"<br>" +
+							"<button id='select_stations_btn' class=popup-text>SELECT STATIONS</button>";
+				that.showPopup(poly, content, lat, long);
 			};
-		}(name, centerLat, centerLong));
+		}(polygon, name, centerLat, centerLong));
 
 		// Community areas labels
 		var content = "<i class='community_area_text'>" + name + "</i>"
@@ -338,7 +324,7 @@ Map.prototype.loadCommunityAreas = function(json) {
 
 	}
 
-
+	// Community Areas Layes
 	var ca_list = L.layerGroup(communityAreas);
 	var ca_labels = L.layerGroup(communityAreasLabels);
 
@@ -352,7 +338,6 @@ Map.prototype.loadCommunityAreas = function(json) {
 		CommunityAreasLabels: ca_labels 
 	}
 
-	/******  TODO  ********/
 	L.control.layers(mapLayers, layers,{
 		position: 'bottomright'
 	}).addTo(this.map);
@@ -433,13 +418,19 @@ Map.prototype.removeLines = function() {
 	}
 }
 
-Map.prototype.showPopup = function(content, lat, long) {
+Map.prototype.showPopup = function(polygon, content, lat, long) {
+	var that = this;
 
 	var coordinates = L.latLng(lat, long);
 
 	L.popup().setLatLng(coordinates)
 		.setContent(content)
 		.openOn(this.map);
+
+	d3.select("#select_stations_btn")
+		.on("click", function()  {
+			that.selectStations(polygon);
+		});
 }
 
 Map.prototype.resetStations = function() {
@@ -622,6 +613,21 @@ Map.prototype.switchPopupContent = function(mode) {
 			.setContent(content)
 		station.bindPopup(popup);
 	}
+}
+
+Map.prototype.selectStations = function(polygon) {
+			console.log(polygon)
+
+	this.resetStations();
+	for(i in this.stationsAttributes) {
+		var latitude = this.stationsAttributes[i].latitude;
+		var longitude = this.stationsAttributes[i].longitude;
+
+		var contained = polygon.getBounds().contains(L.latLng(latitude, longitude))
+
+		this.stationsMarkers[i].type = contained ? "default" : "unselected";
+	}
+	this.showStations();
 }
 /***************** END LOGIC FUNCTIONS *****************/
 
