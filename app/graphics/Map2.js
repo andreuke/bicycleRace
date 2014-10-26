@@ -496,12 +496,6 @@ Map.prototype.showStationPopup = function(id, station) {
 			that.controller.addSelectStation(""+id, that.myPrefix);
 		});
 
-	d3.select("#remove_btn")
-		.on("click", function()  {
-			console.log("REMOVE_TEST")
-			that.controller.removeSelectStation(""+id, that.myPrefix);
-		});
-	
 	d3.select("#detail_btn")
 		.on("click", function()  {
 			console.log("DETAIL_TEST")
@@ -566,7 +560,6 @@ Map.prototype.switchPopupContent = function(mode) {
 			content +=
 				"<br>" +
 				"<button id='add_btn' class=popup-text>ADD STATION</button>" +
-				"<button id='remove_btn' class=popup-text>REMOVE STATION</button>" +
 				"<br>" +
 				"<button id='detail_btn' class=popup-text>SHOW DETAILS</button>";
 
