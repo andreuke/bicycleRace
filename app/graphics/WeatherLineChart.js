@@ -66,11 +66,11 @@ WeatherLineChart.prototype.hourWeather = function(hour){
 	var data = this.data;
 	svg = svg .select("g");
 
-	for(var i =0; i<hour.data.length; i++){
+	for(var i =0; i< 24; i++){
 	    svg .append("svg:image")
 	        .attr("xlink:href", "app/graphics/images/" + hour.data[i].icon + ".svg")
 	        .attr("x", xScale(parseInt(hour.data[i].hour))- 16 )
-	        .attr("y", yScale(d3.max(data)) - 50 )
+	        .attr("y", - 40 )
 	       	.attr("height","32")
 	       	.attr("width","32");
 	    }
