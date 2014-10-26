@@ -326,3 +326,21 @@ database.prototype.biggestImbalanceInflowOutflowBetween = function (hourFrom, ho
 		}
 	});
 }
+
+/*
+day format as usual
+pass hour = '' for the 24 hour format
+day is mandatory
+*/
+database.prototype.weatherHour = function (day, hour, callback, iden){
+	var return_value;
+
+	return_value = $.ajax({
+		url: this.queryUrl,
+		data: "mark=1&query=9&day="+ "" +day+ "" +"hour="+ "" +hour,
+		dataType: "json",
+		success: function(data) {
+			callback(data,iden);
+		}
+	});
+}
