@@ -178,7 +178,7 @@ WeatherLineChart.prototype.draw = function(){
 		.style("opacity","0.4")
         
     svg .append("svg:image")
-        .attr("xlink:href", "images/weather_sunset.svg")
+        .attr("xlink:href", "app/graphics/images/weather_sunset.svg")
         .attr("x", xScale(parseInt(sunrise))-xScale(0) -35/2 )
         //.attr("y", yScale(d3.max(data)+something))
         .attr("y", yScale(0) + 35/2)
@@ -196,7 +196,7 @@ WeatherLineChart.prototype.draw = function(){
 		.style("opacity","0.4");
 
 svg .append("svg:image")
-        .attr("xlink:href", "images/weather_sundown.svg")
+        .attr("xlink:href", "app/graphics/images/weather_sundown.svg")
         .attr("x", xScale(parseInt(sunset))-35/2)
         //.attr("y", 0)
         .attr("y", yScale(0) + 35/2)
