@@ -15,7 +15,16 @@ function Map(container, initialCoord, controller, mapPrefix) {
 
 	//TODO mettere apposto i colori
 	this.lineColors = ["red", "green", "blue", "black", "orange"];
-	this.layer;
+	this.mapLayer = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg', {
+		subdomains: '1234',
+		minZoom: 4,
+		maxZoom: 18
+	});
+	this.satLayer = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpeg', {
+		subdomains: '1234',
+		minZoom: 4,
+		maxZoom: 18
+	});
 	this.stationsMarkers = [];
 	this.communityAreas = [];
 	this.communityAreasLabels = [];
@@ -23,7 +32,8 @@ function Map(container, initialCoord, controller, mapPrefix) {
 	this.sat = false;
 	this.farView = initialZoom < this.zoomThreshold;
 
-	this.map = L.map(container).setView(initialCoord, initialZoom);
+	this.map = L.map(container, {inertia: true, zoomControl: false})
+				.setView(initialCoord, initialZoom);
 
 	this.iconSmall = L.icon({
 		iconUrl: 'app/graphics/res/icon_small.png',
@@ -158,20 +168,20 @@ function Map(container, initialCoord, controller, mapPrefix) {
 		that.drawGroupTrips(data);
 
 	})
-	this.controller.onChange(myPrefix + "-showComunAreas", function(data) {
-		if (data === true) {
-			that.showCommunityAreas();
-		} else {
-			that.hideCommunityAreas();
-		}
-	});
-	this.controller.onChange(myPrefix + "-mapType", function(data) {
-		if (data === "satellite") {
-			that.satView();
-		} else {
-			that.mapView();
-		}
-	});
+	// this.controller.onChange(myPrefix + "-showComunAreas", function(data) {
+	// 	if (data === true) {
+	// 		that.showCommunityAreas();
+	// 	} else {
+	// 		that.hideCommunityAreas();
+	// 	}
+	// });
+	// this.controller.onChange(myPrefix + "-mapType", function(data) {
+	// 	if (data === "satellite") {
+	// 		that.satView();
+	// 	} else {
+	// 		that.mapView();
+	// 	}
+	// });
 	this.controller.onChange("mode", function(mode) {
 		that.switchPopupContent(mode);
 
@@ -185,39 +195,11 @@ function Map(container, initialCoord, controller, mapPrefix) {
 
 Map.prototype.draw = function() {
 	var map = this.map;
+	this.mapLayer.addTo(map);
 
-	this.layer = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg', {
-		subdomains: '1234',
-		minZoom: 4,
-		maxZoom: 18
-	});
-	this.layer.addTo(map);
-	/******  TODO  ********/
 	L.control.zoom({
-		position: 'bottomright'
-	}).addTo(map);
-
-
-}
-
-
-Map.prototype.satView = function() {
-	this.sat = true;
-	this.layer.setUrl('http://otile{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpeg');
-}
-
-Map.prototype.mapView = function() {
-	this.sat = false;
-	this.layer.setUrl('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg');
-}
-
-Map.prototype.switchView = function() {
-	var sat = this.sat;
-	if (sat) {
-		this.mapView()
-	} else {
-		this.satView();
-	}
+		position: 'bottomleft'
+	}).addTo(this.map);
 }
 
 
@@ -284,7 +266,18 @@ Map.prototype.loadStations = function(json) {
 			longitude: longitude
 		};
 	}
-}
+
+	// var markers = that.stationsMarkers.filter(function(element) {
+	// 	return element.marker
+	// });
+
+	// console.log(markers)
+
+	// var markersLayers = L.layerGroup(markers);
+
+
+
+	
 
 // COMMUNITY AREAS LAYERS
 Map.prototype.loadCommunityAreas = function(json) {
@@ -344,6 +337,26 @@ Map.prototype.loadCommunityAreas = function(json) {
 		communityAreasLabels.push(label)
 
 	}
+
+
+	var ca_list = L.layerGroup(communityAreas);
+	var ca_labels = L.layerGroup(communityAreasLabels);
+
+	var mapLayers = {
+		Map: this.mapLayer,
+		Satellite: that.satLayer
+	}
+
+	var layers = {
+		CommunityAreas: ca_list,
+		CommunityAreasLabels: ca_labels 
+	}
+
+	/******  TODO  ********/
+	L.control.layers(mapLayers, layers,{
+		position: 'bottomright'
+	}).addTo(this.map);
+}
 }
 
 /****************** GRAPHIC LAYERS ********************/
