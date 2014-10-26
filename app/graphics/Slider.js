@@ -1,4 +1,6 @@
 var sliderObject = function(where,min,max) {
+	
+
 	sli = d3.select(where)
 	.append("input")
 	.attr("id","hourSlider")

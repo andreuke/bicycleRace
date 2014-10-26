@@ -134,13 +134,14 @@ var mainController = function() {
   //TODO finish implementation
   that.addSelectStation = function(idStation, mapPrefix) {
     tmp = that.get(mapPrefix + "-SelectedStation");
-    that.set(mapPrefix + "-SelectedStation", tmp.push(idStation));
+    tmp.push(idStation);
+    that.set(mapPrefix + "-SelectedStation", tmp);
   }
 
   //Invoked by the map for notifying the deselection of a station
   //finish implementation
   that.removeSelectStation = function(idStation) {
-    tmp = that.get("SelectedStation");
+    //tmp = that.get("SelectedStation");
     //TODO rimuovere stazione dal tmp
     //TODO settare il nuovo array
   }
@@ -229,7 +230,7 @@ var mainView = function(controller) {
         break;
       case "pickAday":
         divMap.classed("left", false);
-        divMap.classed("left-center quart", true);
+        divMap.classed("left-center forty", true);
         map.redraw();
         slots[0].attr("class", "flex-item-penta right");
         slots[1].attr("class", "invisible");
@@ -473,6 +474,12 @@ var pickAdayController = function(parent, prefixMap) {
   that.addState("filter-subscriber", "");
   that.addState("filter-age-min", -1);
   that.addState("filter-age-max", 200);
+  that.addState("sunrise", "3");
+  that.addState("sunset", "15");
+  that.addState("dayWeather",[]);
+  that.addState("currentWeather","");
+  that.addState("currentTemp",[]);
+  that.addState("currentWeatherDescr","");
 
   var mapPrefix = prefixMap;
   var selectionsID = prefixMap + "-SelectedStation";
@@ -488,12 +495,13 @@ var pickAdayController = function(parent, prefixMap) {
     that.addState(prefix + "-title", title);
   }
 
-  addGraphState("pick-chicago", [], [], "Chicago City", true, "chicago");
+  var zeros = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+  addGraphState("pick-chicago", zeros, [], "Chicago City", true, "chicago");
 
   for (var i = 0; i < 10; i++) {
     var tmpArray = that.get("graphsPrefixArray");
     tmpArray.push("pick-g" + (i + 1));
-    addGraphState("pick-g" + (i + 1), [], [], "", false, "");
+    addGraphState("pick-g" + (i + 1), zeros, [], "", false, "");
     that.set("graphsPrefixArray", tmpArray);
   };
 
@@ -505,7 +513,7 @@ var pickAdayController = function(parent, prefixMap) {
 
   var callBackTrips = function(data, id) {
     data.id = id;
-    console.log(data);
+    //console.log(data);
     var trips = that.get(tripsID);
     var found = false;
     for (var i = 0; i < trips.length; i++) {
@@ -520,8 +528,16 @@ var pickAdayController = function(parent, prefixMap) {
     that.set(tripsID, trips);
   }
 
-  var removeTrips = function(stationId) {
+  var callBackDayWeather = function(json,id) {
+    console.log(json);
+    that.set("dayWeather",json);
+  }
 
+  var callBackCurrentWeather = function(json,id){
+    console.log(json);
+    that.set("currentTemp", [json.data[0].tempC,json.data[0].tempF]);
+    that.set("currentWeather",json.data[0].icon);
+    that.set("currentWeatherDescr",json.data[0].cond);
   }
 
   //TODO al cambiamento delle selezioni relative alla mappa associata
@@ -531,6 +547,7 @@ var pickAdayController = function(parent, prefixMap) {
     var copySelections = selections.slice(0);
     var emptyPrefixes = [];
     var alreadySelected = [];
+    var trips ;
     for (var i = 0; i < slotsPrefix.length; i++) {
       var tmpPrefix = slotsPrefix[i]
       var tmpId = that.get(tmpPrefix + "-idStation");
@@ -538,13 +555,13 @@ var pickAdayController = function(parent, prefixMap) {
         emptyPrefixes.push(tmpPrefix);
       } else {
         if (selections.indexOf(tmpId) === -1) {
-          var trips = that.get(tripsID);
+          trips = that.get(tripsID);
           that.set(tmpPrefix + "-show", false);
           that.set(tmpPrefix + "-idStation", "");
           emptyPrefixes.push(tmpPrefix);
           for (var i = 0; i < trips.length; i++) {
             if (trips[i].id === tmpId) {
-              trips.splice(i,1);
+              trips.splice(i, 1);
               i = i - 1;
             }
           };
@@ -570,21 +587,38 @@ var pickAdayController = function(parent, prefixMap) {
       }
     };
 
+    if(selections.length === 0){
+      db.numberoOfActiveBikesFilteredStation("", that.get("filter-gender"),
+          that.get("filter-age-min"), that.get("filter-age-max"),
+          that.get("filter-subscriber"), that.get("date"), callBackActiveBikes, "pick-chicago");
+    } else {
+      trips = that.get(tripsID);
+      for (var i = 0; i < trips.length; i++) {
+        if (trips[i].id === "chicago") {
+          trips.splice(i, 1);
+          break;
+        }
+      };
+    }
+
   }
   that.onChange(selectionsID, handleMapSelections);
-  that.set(selectionsID, ["52", "53"]);
-  
-  that.set(selectionsID, ["55","52","59","53"]);
+  //that.set(selectionsID, ["55", "52", "59", "53"]);
+  //that.set(selectionsID, ["52", "53"]);
 
   //TODO al cambiamento dell'ora aggiornare i dati dei grafici,
   //e aggiornare i viaggi da mostrare sulla mappa(main controller)
   that.changeDateSelection = function(date) {
-    db.numberoOfActiveBikesOn(date, callBackActiveBikes, "pick-chicago");
+    db.numberoOfActiveBikesFilteredStation("", that.get("filter-gender"),
+      that.get("filter-age-min"), that.get("filter-age-max"),
+      that.get("filter-subscriber"), date, callBackActiveBikes, "pick-chicago");
     var selections = that.get(selectionsID);
     var hourSelected = that.get("hour");
     var prefixes = that.get("graphsPrefixArray");
     if (selections.length === 0) {
-      db.tripsOn(date, that.get("hour"), callBackTrips, "chicago");
+      db.tripsTakenAccrossFilteredStation("", that.get("filter-gender"),
+        that.get("filter-age-min"), that.get("filter-age-max"),
+        that.get("filter-subscriber"), date, that.get("hour"), callBackTrips, "chicago");
     } else {
       for (var i = 0; i < selections.length; i++) {
         for (var j = 0; j < 10; j++) {
@@ -602,6 +636,8 @@ var pickAdayController = function(parent, prefixMap) {
         }
       };
     }
+
+    db.weatherHour(date,"",callBackDayWeather);
     that.set("date", date)
   }
 
@@ -609,20 +645,32 @@ var pickAdayController = function(parent, prefixMap) {
     var selections = that.get(selectionsID);
     if (selections.length !== 0) {
       for (var i = 0; i < selections.length; i++) {
-           //query dataBase trips for station given date and hour
-            db.tripsTakenAccrossFilteredStation(selections[i], that.get("filter-gender"),
-              that.get("filter-age-min"), that.get("filter-age-max"),
-              that.get("filter-subscriber"), that.get("date"), hour, callBackTrips, selections[i]);
-        }
+        //query dataBase trips for station given date and hour
+        db.tripsTakenAccrossFilteredStation(selections[i], that.get("filter-gender"),
+          that.get("filter-age-min"), that.get("filter-age-max"),
+          that.get("filter-subscriber"), that.get("date"), hour, callBackTrips, selections[i]);
+      }
     } else {
-      db.tripsOn(that.get("date"), hour, callBackTrips, "chicago");
+      db.tripsTakenAccrossFilteredStation("", that.get("filter-gender"),
+        that.get("filter-age-min"), that.get("filter-age-max"),
+        that.get("filter-subscriber"), that.get("date"), that.get("hour"), callBackTrips, "chicago");
     }
+    db.weatherHour(that.get("date"),hour,callBackCurrentWeather);
     that.set("hour", hour);
   }
 
   var handleChangeFilter = function() {
     var selections = that.get(selectionsID);
     var prefixes = that.get("graphsPrefixArray");
+    if (selections.length === 0) {
+      db.tripsTakenAccrossFilteredStation("", that.get("filter-gender"),
+        that.get("filter-age-min"), that.get("filter-age-max"),
+        that.get("filter-subscriber"), that.get("date"), that.get("hour"), callBackTrips, "chicago")
+    }
+    db.numberoOfActiveBikesFilteredStation("", that.get("filter-gender"),
+      that.get("filter-age-min"), that.get("filter-age-max"),
+      that.get("filter-subscriber"), that.get("date"), callBackActiveBikes, "pick-chicago");
+
     for (var i = 0; i < selections.length; i++) {
       for (var j = 0; j < 10; j++) {
         if (that.get(prefixes[j] + "-idStation") === selections[i]) {
@@ -636,6 +684,7 @@ var pickAdayController = function(parent, prefixMap) {
         }
       }
     }
+
   }
 
   that.changeFilter = function(filterType, value) {
@@ -662,7 +711,7 @@ var pickAdayView = function(controller, calendarContainer, graphsContainer) {
   var rightDiv = d3.select(graphsContainer)
     .append("div")
     .attr("id", "pick-visualization-div")
-    .attr("class", "flex-vertical");
+    .attr("class", "pick-vis-div");
   var graphs = [];
 
   var gChicago = pickSingleGraph("#" + rightDiv.attr("id"), _controller, "pick-chicago");
@@ -679,8 +728,10 @@ var pickAdayView = function(controller, calendarContainer, graphsContainer) {
 
   var sliderDiv = leftDiv.append("div").attr("id", "slide-div")
     .attr("class", "flex-item");
+
   var slider = sliderObject("#" + sliderDiv.attr("id"), 0, 23);
   slider.on("input", function() {
+    //console.log(slider.property("value"));
     _controller.changeHourSelection(slider.property("value"));
   });
 
@@ -692,7 +743,7 @@ var pickAdayView = function(controller, calendarContainer, graphsContainer) {
   var switchMainMode = function(mode) {
     if (mode === "pickAday") {
       leftDiv.attr("class", "flex-vertical");
-      rightDiv.attr("class", "flex-vertical");
+      rightDiv.attr("class", "pick-vis-div");
     } else {
       leftDiv.attr("class", "invisible");
       rightDiv.attr("class", "invisible");
@@ -709,29 +760,41 @@ var pickSingleGraph = function(container, controller, prefixState) {
   var _controller = controller;
   var mainDiv = d3.select(container).append("div")
     .attr("id", myPrefix + "-div")
-    .attr("class", "flex-vertical");
+    .attr("class", "pick-single-graph");
   var title = mainDiv.append("text").text(_controller.get(myPrefix + "-title"));
   var divSvg = mainDiv.append("div")
     .attr("id", myPrefix + "-div-svg")
     .attr("class", "div-graph");
 
-  var graph = new LineChart("#" + divSvg.attr("id"), _controller.get(myPrefix + "-data"), _controller.get(myPrefix + "-labels"), "hours", "trips", "numerical");
+  var graph = new WeatherLineChart("#" + divSvg.attr("id"), _controller.get(myPrefix + "-data"), _controller.get(myPrefix + "-labels"), "hours", "trips", _controller.get("sunrise"), _controller.get("sunset"), _controller.get("hour"));
   graph.draw();
 
   var changeData = function(data) {
-    graph.update(data, _controller.get(myPrefix + "-labels"));
+    graph.update(data, _controller.get(myPrefix + "-labels"),_controller.get("sunrise"),_controller.get("sunset"));
+    graph.updateHour(_controller.get("hour"));
+    graph.hourWeather(_controller.get("dayWeather"));
   }
 
   var visible = function(show) {
     if (show === true) {
-      mainDiv.attr("class", "flex-vertical");
+      mainDiv.attr("class", "pick-single-graph");
     } else {
       mainDiv.attr("class", "invisible");
     }
   }
   visible(_controller.get(myPrefix + "-show"));
+
   _controller.onChange(myPrefix + "-data", changeData);
   _controller.onChange(myPrefix + "-show", visible);
+  _controller.onChange("hour", function(hour) {
+    graph.updateHour(hour);
+  });
+  _controller.onChange(myPrefix + "-title", function(tit) {
+    title.text(tit);
+  })
+  _controller.onChange("dayWeather", function(json) {
+    graph.hourWeather(json);
+  })
 
   return that;
 }
@@ -740,15 +803,15 @@ var filterSelector = function(container, controller) {
   that = {};
   var _controller = controller;
   var mainDiv = d3.select(container).append("div")
-    .attr("class", "flex-vertical");
+    .attr("class", "filter-div");
   var title = mainDiv.append("text")
     .classed("label-filter", true)
     .text("Filter by:");
   var tableDiv = mainDiv.append("div").attr("class", "flex-vertical");
-  var genderDiv = tableDiv.append("div").attr("class", "flex-horizontal");
-  var subscrDiv = tableDiv.append("div").attr("class", "flex-horizontal");
-  var minAgeDiv = tableDiv.append("div").attr("class", "flex-horizontal");
-  var maxAgeDiv = tableDiv.append("div").attr("class", "flex-horizontal");
+  var genderDiv = tableDiv.append("div").attr("class", "div-line-filter");
+  var subscrDiv = tableDiv.append("div").attr("class", "div-line-filter");
+  var minAgeDiv = tableDiv.append("div").attr("class", "div-line-filter");
+  var maxAgeDiv = tableDiv.append("div").attr("class", "div-line-filter");
 
   genderDiv.append("text").attr("class", "flex-item").text("Gender");
   subscrDiv.append("text").attr("class", "flex-item").text("Subscribers");
