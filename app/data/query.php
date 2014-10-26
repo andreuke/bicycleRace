@@ -134,8 +134,68 @@
 					echo "error!";
 					break;
 			}
+		} else if($mark == 2){
+			switch($query){
+				case '0':
+						$fromStation = $_GET['fromStation'];
+						$toStation = $_GET['toStation'];
+
+						tripsDataBetweenStations(0,$fromStation, $toStation, $connessione);
+						break;
+				case '1':
+						$fromStation = $_GET['fromStation'];
+						$toStation = $_GET['toStation'];
+
+						tripsDataBetweenStations(1,$fromStation, $toStation, $connessione);
+						break;
+				case '2':
+						$fromStation = $_GET['fromStation'];
+						$toStation = $_GET['toStation'];
+
+						tripsDataBetweenStations(2,$fromStation, $toStation, $connessione);
+						break;
+				default:echo "DB:Error";
+						break;
+			}
 		}
 		//switch to labelled data if you wants labels....
+
+		function tripsDataBetweenStations($filter,$fromStation, $toStation, $connessione){
+			switch($filter){
+				case '0'://MaleVsFemaleVsUnknown
+						$result = genericQuery('count(*) as numOfMale','divvy_trips_distances','gender = "Male" and from_station_id = "'.$fromStation.'" and to_station_id = "'.$toStation.'"','',$connessione);
+						$male = mysql_fetch_array($result);
+						$male = $male['numOfMale'];
+
+						$result = genericQuery('count(*) as numOfFemale','divvy_trips_distances','gender = "Female" and from_station_id = "'.$fromStation.'" and to_station_id = "'.$toStation.'"','',$connessione);
+						$female = mysql_fetch_array($result);
+						$female = $female['numOfFemale'];
+
+						$result = genericQuery('count(*) as numOfUnknown','divvy_trips_distances','gender = "" and from_station_id = "'.$fromStation.'" and to_station_id = "'.$toStation.'"','',$connessione);
+						$unknown = mysql_fetch_array($result);
+						$unknown = $unknown['numOfUnknown'];
+
+						displayData($male,$female,$unknown);
+						break;
+				case '1'://age
+						//update this...
+						$result = genericQuery('birthyear,sum(total) as total', 'demographics_data_a', 'total!=0 and stationFrom = "'.$fromStation.'" and stationTo = "'.$toStation.'"',' group by birthyear',$connessione);
+						$variables = array('0' => "birthyear",
+											'1' => "total");
+
+						genericDisplayData($result, $variables);
+						break;
+				case '2'://subscriber vs customer
+						$result =  genericQuery('usertype, count(*) as total', 'divvy_trips_distances', 'from_station_id = '.$fromStation.' and to_station_id = '.$toStation.'', ' group by usertype', $connessione);
+						$variables = array('0' => 'usertype',
+											'1' => 'total' );
+						genericDisplayData($result, $variables);
+						break;
+				default:
+						echo "DB:Error";
+						break;
+			}
+		}
 
 		function weatherSunriseSunset($day, $connessione){
 			$result = genericQuery('sunrise,sunset','weather_sun', 'date = "'.$day.'"', '', $connessione);
@@ -144,6 +204,7 @@
 								'1' => 'sunset' );
 			labelledDisplayData($result, $variables);
 		}
+
 		function weather24Hour($day, $hour, $connessione){
 
 			$where = 'date = "'.$day.'"';
@@ -486,6 +547,7 @@
 					break;
 			}
 		}
+		
 
 		function labelledDisplayData($result, $variables){
 			$numRows = mysql_num_rows($result);

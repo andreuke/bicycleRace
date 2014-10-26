@@ -337,7 +337,7 @@ database.prototype.weatherHour = function (day, hour, callback, iden){
 
 	return_value = $.ajax({
 		url: this.queryUrl,
-		data: "mark=1&query=9&day="+ "" +day+ "" +"hour="+ "" +hour,
+		data: "mark=1&query=9&day="+ "" +day+ "" +"&hour="+ "" +hour,
 		dataType: "json",
 		success: function(data) {
 			callback(data,iden);
@@ -356,4 +356,45 @@ database.prototype.weatherSunriseSunset = function (day, callback, iden){
 			callback(data,iden);
 		}
 	});
+}
+
+/*
+filter is
+	0: malevsFemalevsUnknown
+	1: age
+	2: subscriberVsCustomer
+*/
+database.prototype.tripsDataBetweenStations = function(filter, fromStation, toStation, callback, iden){
+	var return_value;
+
+	switch(filter){
+		case 0: return_value = $.ajax({
+				url: this.queryUrl,
+				data: "mark=2&query=0&fromStation="+ "" +fromStation+ "" + "&toStation="+ "" +toStation,
+				dataType: "json",
+				success: function(data) {
+					callback(data,iden);
+					}
+				});
+				break;
+		case 1: return_value = $.ajax({
+				url: this.queryUrl,
+				data: "mark=2&query=1&fromStation="+ "" +fromStation+ "" + "&toStation="+ "" +toStation,
+				dataType: "json",
+				success: function(data) {
+					callback(data,iden);
+					}
+				});
+				break;
+		case 2: return_value = $.ajax({
+				url: this.queryUrl,
+				data: "mark=2&query=2&fromStation="+ "" +fromStation+ "" + "&toStation="+ "" +toStation,
+				dataType: "json",
+				success: function(data) {
+					callback(data,iden);
+					}
+				});
+				break;
+		default: console.log("DB:error!");
+	}
 }

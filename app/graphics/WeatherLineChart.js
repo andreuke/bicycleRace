@@ -58,20 +58,22 @@ WeatherLineChart.prototype.updateHour = function(hour){
     
 
 
-WeatherLineChart.prototype.hourWeather = function(hour, weather){
+WeatherLineChart.prototype.hourWeather = function(hour){
     var container = this.container;
 	var xScale = this.xScale;
 	var yScale = this.yScale;
 	var svg = this.main_svg;
 	var data = this.data;
+	svg = svg .select("g");
 
-    svg .select("g")
-    	.append("svg:image")
-        .attr("xlink:href", "images/weather_" + weather + ".svg")
-        .attr("x", xScale(parseInt(hour))- 12.5 )
-        .attr("y", yScale(d3.max(data)) - 50 )
-       	.attr("height","25")
-       	.attr("width","25");
+	for(var i =0; i<hour.data.length; i++){
+	    svg .append("svg:image")
+	        .attr("xlink:href", "app/graphics/images/" + hour.data[i].icon + ".svg")
+	        .attr("x", xScale(parseInt(hour.data[i].hour))- 16 )
+	        .attr("y", yScale(d3.max(data)) - 50 )
+	       	.attr("height","32")
+	       	.attr("width","32");
+	    }
 }
 
 WeatherLineChart.prototype.draw = function(){
