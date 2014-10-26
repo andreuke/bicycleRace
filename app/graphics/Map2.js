@@ -71,7 +71,7 @@ function Map(container, initialCoord, controller, mapPrefix) {
 
 iconSize: [48, 48], // size of the icon
 		//shadowSize:   [50, 64], // size of the shadow
-		iconAnchor: [20, 48], // point of the icon which will correspond to marker's location
+		iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
 		// shadowAnchor: [4, 62],  // the same for the shadow
 		popupAnchor: [0, -48] // point from which the popup should open rpen r
 	});
@@ -81,7 +81,7 @@ iconSize: [48, 48], // size of the icon
 
 		iconSize: [48, 48], // size of the icon
 		//shadowSize:   [50, 64], // size of the shadow
-		iconAnchor: [20, 48], // point of the icon which will correspond to marker's location
+		iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
 		// shadowAnchor: [4, 62],  // the same for the shadow
 		popupAnchor: [0, -48] // point from which the popup should open r
 	});
@@ -91,7 +91,7 @@ iconSize: [48, 48], // size of the icon
 
 		iconSize: [48, 48], // size of the icon
 		//shadowSize:   [50, 64], // size of the shadow
-		iconAnchor: [20, 48], // point of the icon which will correspond to marker's location
+		iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
 		// shadowAnchor: [4, 62],  // the same for the shadow
 		popupAnchor: [0, -48] // point from which the popup should open r
 	});
@@ -101,7 +101,7 @@ iconSize: [48, 48], // size of the icon
 
 		iconSize: [48, 48], // size of the icon
 		//shadowSize:   [50, 64], // size of the shadow
-		iconAnchor: [20, 48], // point of the icon which will correspond to marker's location
+		iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
 		// shadowAnchor: [4, 62],  // the same for the shadow
 		popupAnchor: [0, -48] // point from which the popup should open r
 	});
@@ -228,26 +228,32 @@ Map.prototype.loadStations = function(json) {
 		var id = parseInt(s.id);
 
 		var station = L.marker([latitude, longitude]) //.addTo(map);
-		var content = "<h3 style='font-size: 3vh;'>" + s.name + "</h3>" +
-			"Capacity: " + s.capacity +
+		var content = "<h3 class='popup-title'>" + s.name + "</h3>" +
+			"<text class=popup-text> Capacity: " + s.capacity + "</text>" +
 			"<br>" +
-			"<div id='stars-container'>Popularity</div>" +
+			"<div id='stars-container' class=popup-text>Popularity</div>" +
 			"<br>" +
-			(parseInt(s.income) + parseInt(s.outcome)) + " (In: " + s.income + " Out: " + s.outcome + ")" +
+			"<text class=popup-text>" + (parseInt(s.income) + parseInt(s.outcome)) + 
+			" (In: " + s.income + " Out: " + s.outcome + ")" + "</text>" +
 			"<br>" +
 			"<div id='popup-graph-container'></div>" +
-			"<button id='age_btn'>AGE</button>" +
-			"<button id='gender_btn'>GENDER</button>" +
-			"<button id='type_btn'>TYPE</button>" +
+			"<button id='age_btn' class=popup-text>AGE</button>" +
+			"<button id='gender_btn' class=popup-text>GENDER</button>" +
+			"<button id='type_btn' class=popup-text>TYPE</button>" +
 			"<br>" +
-			"<button id='inflow_btn'>INFLOW</button>" +
-			"<button id='outflow_btn'>OUTFLOW</button>";
+			"<button id='inflow_btn' class=popup-text>INFLOW</button>" +
+			"<button id='outflow_btn' class=popup-text>OUTFLOW</button>";
 
 
 
 		var popup = L.popup({
-				className: 'station-info'
-				// ,maxWidth: 50vh, minWidth: 250, maxHeight: 50vh, autoPan: true, closeButton: true, autoPanPadding: [5, 5]
+				className: 'station-info',
+				maxWidth: '10000',
+				minWidth: '250',
+				maxHeight: '10000',
+				autoPan: true,
+				closeButton: true,
+				autoPanPadding: [5, 5]
 			})
 			.setContent(content)
 
@@ -543,6 +549,8 @@ Map.prototype.flowCallback = function(data, info) {
 			}
 		}
 	}
+	that.removeLines();
+	that.resetStations();
 	that.drawTrips(trips, "start", "end");
 }
 
@@ -589,11 +597,15 @@ Map.prototype.drawTrips = function(trips, fromLabel, toLabel,col) {
 
 Map.prototype.drawGroupTrips = function (array) {
 	this.removeLines();
+	this.resetStations();
+	for (var i = 0; i < array.length; i++) {
+		this.drawTrips (array[i].data,"","", this.lineColors[i]);
+	};
+}
+
+Map.prototype.resetStations = function() {
 	this.hideStations();
 	for (s in this.stationsMarkers) {
 		this.stationsMarkers[s].type = "unselected"
 	}
-	for (var i = 0; i < array.length; i++) {
-		this.drawTrips (array[i].data,"","", this.lineColors[i]);
-	};
 }
