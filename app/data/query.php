@@ -115,11 +115,12 @@
 					tripsTakenAccrossStationSecondPart($stationId,$gender,$ageFrom,$ageTo,$subscriberOrCustomer,$day,$connessione);
 					break;
 				case '8':
+					$filter = $_GET['filter'];
 					$hourFrom = $_GET['hourFrom'];
 					$hourTo = $_GET['hourTo'];
 					$ratio = $_GET['ratio'];
 
-					biggestImbalance($hourFrom, $hourTo, $ratio, $connessione);
+					biggestImbalance($filter,$hourFrom, $hourTo, $ratio, $connessione);
 					break;
 				case '9':
 					$day = $_GET['day'];
@@ -220,8 +221,43 @@
 								'4' => 'cond');
 			labelledDisplayData($result, $variables);
 		}
-		function biggestImbalance($hourFrom, $hourTo, $ratio, $connessione){
-			$result = genericQuery('distinct station_id', 'imbalances', 'hour >= '.$hourFrom.' and hour < '.$hourTo.' and (inflow > '.$ratio.'*outflow OR outflow > '.$ratio.'*inflow)','', $connessione);
+
+		// /*
+		// inflow > ratio * outflow
+		// */
+		// function biggestImbalanceInflow($hourFrom, $hourTo, $ratio, $connessione){
+		// 	$result = genericQuery('distinct station_id', 'imbalances', 'hour >= '.$hourFrom.' and hour < '.$hourTo.' and (inflow > '.$ratio.'*outflow)','', $connessione);
+
+		// 	$variables = array('0' => 'station_id');
+
+		// 	labelledDisplayData($result, $variables);
+		// }
+
+		// /*
+		// outflow > ratio * inflow
+		// */
+		// function biggestImbalanceOutflow($hourFrom, $hourTo, $ratio, $connessione){
+		// 	$result = genericQuery('distinct station_id', 'imbalances', 'hour >= '.$hourFrom.' and hour < '.$hourTo.' and (outflow > '.$ratio.'*inflow)','', $connessione);
+
+		// 	$variables = array('0' => 'station_id');
+
+		// 	labelledDisplayData($result, $variables);
+		// }
+
+		/*
+		filter :	0 inflow >ratio * outflow
+					1 outflow > ratio * inflow
+		*/
+		function biggestImbalance($filter, $hourFrom, $hourTo, $ratio, $connessione){
+			switch($filter){
+				case '0':$result = genericQuery('distinct station_id', 'imbalances', 'hour >= '.$hourFrom.' and hour < '.$hourTo.' and (inflow > '.$ratio.'*outflow)','', $connessione);
+						break;
+				case '1':$result = genericQuery('distinct station_id', 'imbalances', 'hour >= '.$hourFrom.' and hour < '.$hourTo.' and (outflow > '.$ratio.'*inflow)','', $connessione);
+						break;
+				default: echo "error!";
+						break;
+			}
+			//$result = genericQuery('distinct station_id', 'imbalances', 'hour >= '.$hourFrom.' and hour < '.$hourTo.' and (inflow > '.$ratio.'*outflow OR outflow > '.$ratio.'*inflow)','', $connessione);
 
 			$variables = array('0' => 'station_id');
 
@@ -232,8 +268,21 @@
              $dataArray = array();
              $dataArray = array_fill(0, 24, 0);
 
-             $where = 'a.age_in_2014 >= "'.$ageFrom.'" and a.age_in_2014 < "'.$ageTo.'"
-						and a.startdate = "'.$day.'"';
+      //        $where = 'a.age_in_2014 >= "'.$ageFrom.'" and a.age_in_2014 < "'.$ageTo.'"
+						// and a.startdate = "'.$day.'"';
+
+			$where = 'a.startdate = "'.$day.'"';
+
+			if($ageFrom == ""){
+				$where .= ' and a.age_in_2014 >= "1"';
+			}else{
+				$where .= ' and a.age_in_2014 >= "'.$ageFrom.'"';
+			}
+			if($ageTo == ""){
+				$where .= ' and a.age_in_2014 < "200"';
+			}else{
+				$where .= ' and a.age_in_2014 < "'.$ageTo.'"';
+			}
 
 			if($stationId != ''){
 				$where .= ' and (a.from_station_id = "'.$stationId.'" OR a.to_station_id = "'.$stationId.'")';
@@ -271,9 +320,21 @@
 			//FROM divvy_trips_distances as a join divvy_trips_distances_skinny as b on a.trip_id = b.trip_id 
 			//WHERE a.startdate = "2013-08-30" and b.hour = "08" and (a.from_station_id = "5" or a.to_station_id = "5") and a.gender = "Male" and a.age_in_2014 >= "0" and a.age_in_2014 < "140" and a.usertype = "Subscriber" group by from_station_id, to_station_id
 
-			$where = 'a.age_in_2014 >= "'.$ageFrom.'" and a.age_in_2014 < "'.$ageTo.'"
-						and a.startdate = "'.$day.'" and b.hour = "'.$hour.'"';
+			// $where = 'a.age_in_2014 >= "'.$ageFrom.'" and a.age_in_2014 < "'.$ageTo.'"
+			// 			and a.startdate = "'.$day.'" and b.hour = "'.$hour.'"';
 
+			$where = 'a.startdate = "'.$day.'" and b.hour = "'.$hour.'"';
+
+			if($ageFrom == ""){
+				$where .= ' and a.age_in_2014 >= "1"';
+			}else{
+				$where .= ' and a.age_in_2014 >= "'.$ageFrom.'"';
+			}
+			if($ageTo == ""){
+				$where .= ' and a.age_in_2014 < "200"';
+			}else{
+				$where .= ' and a.age_in_2014 < "'.$ageTo.'"';
+			}
 			if($stationId != ''){
 				$where .= ' and (a.from_station_id = "'.$stationId.'" OR a.to_station_id = "'.$stationId.'")';
 			}
@@ -325,8 +386,8 @@
 					$female = genericQuery("SUM(total) as numOfFemale", "demographics_data_b", "stationId = '".$stationId."' and gender = 'Female'", "", $connessione);
 					$result = mysql_fetch_array($female);
 					$numOfFemale = $result['numOfFemale'];
-
-					$queryUnknown = genericQuery("count(*) as numOfUnknown", "divvy_trips_distances", "usertype = 'Customer' and (from_station_id='".$stationId."' or to_station_id = '".$stationId."' )", "", $connessione);
+					
+					$queryUnknown = genericQuery("count(*) as numOfUnknown", "divvy_trips_distances", "gender = '' and (from_station_id='".$stationId."' or to_station_id = '".$stationId."' )", "", $connessione);
 					$unknown = mysql_fetch_array($queryUnknown);
 					displayData($numOfMale, $numOfFemale, $unknown['numOfUnknown']);
 					break;
