@@ -126,6 +126,10 @@
 					$hour = $_GET['hour'];
 					weather24Hour($day,$hour, $connessione);
 					break;
+				case '10':
+					$day = $_GET['day'];
+					weatherSunriseSunset($day, $connessione);
+					break;
 				default:
 					echo "error!";
 					break;
@@ -133,6 +137,13 @@
 		}
 		//switch to labelled data if you wants labels....
 
+		function weatherSunriseSunset($day, $connessione){
+			$result = genericQuery('sunrise,sunset','weather_sun', 'date = "'.$day.'"', '', $connessione);
+
+			$variables = array('0' => 'sunrise',
+								'1' => 'sunset' );
+			labelledDisplayData($result, $variables);
+		}
 		function weather24Hour($day, $hour, $connessione){
 
 			$where = 'date = "'.$day.'"';
