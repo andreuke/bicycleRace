@@ -121,6 +121,11 @@
 
 					biggestImbalance($hourFrom, $hourTo, $ratio, $connessione);
 					break;
+				case '9':
+					$day = $_GET['day'];
+					$hour = $_GET['hour'];
+					weather24Hour($day,$hour, $connessione);
+					break;
 				default:
 					echo "error!";
 					break;
@@ -128,6 +133,21 @@
 		}
 		//switch to labelled data if you wants labels....
 
+		function weather24Hour($day, $hour, $connessione){
+
+			$where = 'date = "'.$day.'"';
+			if($hour != ''){
+				$where .= ' and hour = '.$hour;
+			}
+			$result = genericQuery('hour, tempC, tempF, icon, cond', 'weather', $where, '', $connessione);
+
+			$variables = array('0' => 'hour',
+								'1' => 'tempC',
+								'2' => 'tempF',
+								'3' => 'icon',
+								'4' => 'cond');
+			labelledDisplayData($result, $variables);
+		}
 		function biggestImbalance($hourFrom, $hourTo, $ratio, $connessione){
 			$result = genericQuery('distinct station_id', 'imbalances', 'hour >= '.$hourFrom.' and hour < '.$hourTo.' and (inflow > '.$ratio.'*outflow OR outflow > '.$ratio.'*inflow)','', $connessione);
 
