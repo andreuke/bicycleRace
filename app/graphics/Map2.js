@@ -5,6 +5,7 @@ function Map(container, initialCoord, controller, mapPrefix) {
 	this.database = new database("app/data/query.php");
 
 	var myPrefix = mapPrefix;
+	this.myPrefix = myPrefix;
 	this.lines = [];
 	this.container = container;
 	this.initialCoord = initialCoord;
@@ -13,7 +14,7 @@ function Map(container, initialCoord, controller, mapPrefix) {
 	this.zoomThreshold = 14;
 
 	//TODO mettere apposto i colori
-	this.lineColors = ["red","green","blue","black", "orange"];
+	this.lineColors = ["red", "green", "blue", "black", "orange"];
 	this.layer;
 	this.stationsMarkers = [];
 	this.communityAreas = [];
@@ -69,7 +70,7 @@ function Map(container, initialCoord, controller, mapPrefix) {
 		iconUrl: 'app/graphics/res/icon_large.png',
 		//shadowUrl: 'graphics/leaf-shadow.png',
 
-iconSize: [48, 48], // size of the icon
+		iconSize: [48, 48], // size of the icon
 		//shadowSize:   [50, 64], // size of the shadow
 		iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
 		// shadowAnchor: [4, 62],  // the same for the shadow
@@ -143,6 +144,8 @@ iconSize: [48, 48], // size of the icon
 		}
 	});
 
+
+	/******************* CONTROLLER SUBSRCIPTIONS *******************/
 	this.controller.onChange("divvyStations", function(data) {
 		that.loadStations(data);
 		that.showStations();
@@ -169,6 +172,12 @@ iconSize: [48, 48], // size of the icon
 			that.mapView();
 		}
 	});
+	this.controller.onChange("mode", function(mode) {
+		that.switchPopupContent(mode);
+
+	})
+	/***************** END CONTROLLER SUBSRCIPTIONS *****************/
+
 
 
 }
@@ -233,16 +242,10 @@ Map.prototype.loadStations = function(json) {
 			"<br>" +
 			"<div id='stars-container' class=popup-text>Popularity</div>" +
 			"<br>" +
-			"<text class=popup-text>" + (parseInt(s.income) + parseInt(s.outcome)) + 
+			"<text class=popup-text>" + (parseInt(s.income) + parseInt(s.outcome)) +
 			" (In: " + s.income + " Out: " + s.outcome + ")" + "</text>" +
 			"<br>" +
-			"<div id='popup-graph-container'></div>" +
-			"<button id='age_btn' class=popup-text>AGE</button>" +
-			"<button id='gender_btn' class=popup-text>GENDER</button>" +
-			"<button id='type_btn' class=popup-text>TYPE</button>" +
-			"<br>" +
-			"<button id='inflow_btn' class=popup-text>INFLOW</button>" +
-			"<button id='outflow_btn' class=popup-text>OUTFLOW</button>";
+			"<button id='detail_btn' class=popup-text>SHOW DETAILS</button>";
 
 
 
@@ -256,27 +259,11 @@ Map.prototype.loadStations = function(json) {
 				autoPanPadding: [5, 5]
 			})
 			.setContent(content)
-
-		//popup.options.minWidth = 300;
-		//popup.options.maxWidth = 800;
 		station.bindPopup(popup);
-
-
 
 		stationsMarkers[id] = {
 			marker: station,
 			type: "default"
-		};
-
-
-		that.stationsAttributes[s.id] = {
-			name: s.name,
-			capacity: s.capacity,
-			popularity: s.popularity,
-			income: s.income,
-			outcome: s.outcome,
-			latitude: latitude,
-			longitude: longitude
 		};
 
 		// Double closure for the known loop problem.
@@ -287,15 +274,15 @@ Map.prototype.loadStations = function(json) {
 			};
 		}(s.id, station));
 
-		//      	// Double closure for the known loop problem.
-		// station.on('mouseover', function (n, lat, long) {
-		//           return function () {
-		//           	var content = "<h3> Station </h3>" + n;
-		//           	that.showPopup(content, lat, long);
-		//           };
-		//      	}(s.name, s.latitude, s.longitude));
-
-
+		that.stationsAttributes[s.id] = {
+			name: s.name,
+			capacity: s.capacity,
+			popularity: s.popularity,
+			income: s.income,
+			outcome: s.outcome,
+			latitude: latitude,
+			longitude: longitude
+		};
 	}
 }
 
@@ -359,6 +346,7 @@ Map.prototype.loadCommunityAreas = function(json) {
 	}
 }
 
+/****************** GRAPHIC LAYERS ********************/
 Map.prototype.showCommunityAreas = function() {
 	var communityAreas = this.communityAreas;
 	var map = this.map;
@@ -412,16 +400,64 @@ Map.prototype.hideStations = function() {
 
 }
 
+Map.prototype.drawLine = function(start, end, thickness, col) {
+	var points = [start, end];
+	var myCol = col || 'red';
+	var polyline = L.polyline(points, {
+		color: myCol,
+		weight: thickness
+	});
+
+	polyline.addTo(this.map);
+	this.lines.push(polyline);
+
+}
+
+Map.prototype.removeLines = function() {
+	for (var i = 0; i < this.lines.length; i++) {
+		this.map.removeLayer(this.lines[i]);
+	}
+}
+
+Map.prototype.showPopup = function(content, lat, long) {
+
+	var coordinates = L.latLng(lat, long);
+
+	L.popup().setLatLng(coordinates)
+		.setContent(content)
+		.openOn(this.map);
+}
+
+Map.prototype.resetStations = function() {
+	this.hideStations();
+	for (s in this.stationsMarkers) {
+		this.stationsMarkers[s].type = "unselected"
+	}
+}
+/**************** END GRAPHIC LAYERS *******************/
+
+
+
+/***************** UTILITY FUNCTIONS *******************/
 Map.prototype.redraw = function() {
 	this.map.invalidateSize();
 }
 
-Map.prototype.drawStars = function(popularity) {
-	var stars = new Stars("#stars-container", popularity)
-	stars.draw();
+Map.prototype.centerMap = function(id) {
+	var station = this.stationsAttributes[id];
+
+
+	var latitude = station.latitude;
+	var longitude = station.longitude;
+
+	// Leaves enough space for the popup
+	this.map.setView([latitude + 0.005, longitude], 15)
 }
+/**************** END UTILITY FUNCTIONS ****************/
 
 
+
+/****************** LOGIC FUNCTIONS ********************/
 Map.prototype.showStationPopup = function(id, station) {
 	var that = this;
 
@@ -453,28 +489,119 @@ Map.prototype.showStationPopup = function(id, station) {
 		.on("click", function()  {
 			that.getOutflowData(id);
 		});
+
+	d3.select("#add_btn")
+		.on("click", function()  {
+			console.log("ADD_TEST")
+			that.controller.addSelectStation(id, that.myPrefix);
+		});
+
+	d3.select("#remove_btn")
+		.on("click", function()  {
+			console.log("REMOVE_TEST")
+			that.controller.removeSelectStation(id, that.myPrefix);
+		});
+	
+	d3.select("#detail_btn")
+		.on("click", function()  {
+			console.log("DETAIL_TEST")
+			// that.controller.removeSelectStation(id, that.myPrefix);
+		});
 }
 
-Map.prototype.centerMap = function(id) {
-	var station = this.stationsAttributes[id];
-
-
-	var latitude = station.latitude;
-	var longitude = station.longitude;
-
-	// Leaves enough space for the popup
-	this.map.setView([latitude + 0.005, longitude], 15)
+Map.prototype.drawStars = function(popularity) {
+	var stars = new Stars("#stars-container", popularity)
+	stars.draw();
 }
 
-Map.prototype.showPopup = function(content, lat, long) {
 
-	var coordinates = L.latLng(lat, long);
+Map.prototype.drawTrip = function(fromID, toID, quantity, fromLabel, toLabel, col) {
+	var start = L.latLng(this.stationsAttributes[fromID].latitude,
+		this.stationsAttributes[fromID].longitude);
+	var end = L.latLng(this.stationsAttributes[toID].latitude,
+		this.stationsAttributes[toID].longitude);
 
-	L.popup().setLatLng(coordinates)
-		.setContent(content)
-		.openOn(this.map);
+	this.drawLine(start, end, parseInt(quantity, 10), col);
+
+	this.stationsMarkers[fromID].type = fromLabel
+	this.stationsMarkers[toID].type = toLabel
 }
 
+Map.prototype.drawTrips = function(trips, fromLabel, toLabel, col) {
+	for (var i = 0; i < trips.length; i++) {
+		var from = trips[i].from_station_id;
+		var to = trips[i].to_station_id;
+		var quantity = trips[i].totalTripsMade;
+		this.drawTrip(from, to, quantity, fromLabel, toLabel, col);
+	}
+	this.showStations();
+}
+
+Map.prototype.drawGroupTrips = function(array) {
+	this.removeLines();
+	this.resetStations();
+	for (var i = 0; i < array.length; i++) {
+		this.drawTrips(array[i].data, "", "", this.lineColors[i]);
+	};
+}
+
+Map.prototype.switchPopupContent = function(mode) {
+	for (i in this.stationsAttributes) {
+		var s = this.stationsAttributes[i]
+
+		var content = "<h3 class='popup-title'>" + s.name + "</h3>" +
+			"<text class=popup-text> Capacity: " + s.capacity + "</text>" +
+			"<br>" +
+			"<div id='stars-container' class=popup-text>Popularity</div>" +
+			"<br>" +
+			"<text class=popup-text>" + (parseInt(s.income) + parseInt(s.outcome)) +
+			" (In: " + s.income + " Out: " + s.outcome + ")" + "</text>";
+
+		if (mode === "initial") {
+			content +=
+				"<br>" +
+				"<button id='detail_btn' class=popup-text>SHOW DETAILS</button>";
+
+		} else if (mode === "pickAday")  {
+			content +=
+				"<br>" +
+				"<button id='add_btn' class=popup-text>ADD STATION</button>" +
+				"<button id='remove_btn' class=popup-text>REMOVE STATION</button>" +
+				"<br>" +
+				"<button id='detail_btn' class=popup-text>SHOW DETAILS</button>";
+
+		} else if (mode === "stationDetails") {
+			content +=
+				"<br>" +
+				"<div id='popup-graph-container'></div>" +
+				"<button id='age_btn' class=popup-text>AGE</button>" +
+				"<button id='gender_btn' class=popup-text>GENDER</button>" +
+				"<button id='type_btn' class=popup-text>TYPE</button>" +
+				"<br>" +
+				"<button id='inflow_btn' class=popup-text>INFLOW</button>" +
+				"<button id='outflow_btn' class=popup-text>OUTFLOW</button>";
+		}
+
+
+		var station = this.stationsMarkers[i].marker;
+		
+		var popup = L.popup({
+				className: 'station-info',
+				maxWidth: '10000',
+				minWidth: '250',
+				maxHeight: '10000',
+				autoPan: true,
+				closeButton: true,
+				autoPanPadding: [5, 5]
+			})
+			.setContent(content)
+		station.bindPopup(popup);
+	}
+}
+/***************** END LOGIC FUNCTIONS *****************/
+
+
+/******************* DATA FUNCTIONS ********************/
 Map.prototype.getData = function(id, query, graphType) {
 	db.demographicInflowOutflow(id, query, this.dataCallback, graphType)
 }
@@ -496,8 +623,6 @@ Map.prototype.getOutflowData = function(id) {
 	}
 	db.overallOutflow(id, this.flowCallback, info)
 }
-
-
 
 Map.prototype.dataCallback = function(data, graphType) {
 
@@ -530,10 +655,9 @@ Map.prototype.flowCallback = function(data, info) {
 
 	var trips = [];
 
-
 	for (var i = 0; i < values.length; i++) {
 		// Rescale quantity
-		var quantity = (quantities[i] / 15)+1;
+		var quantity = (quantities[i] / 15) + 1;
 
 		if (info.direction === "in") {
 			trips[i] = {
@@ -553,59 +677,4 @@ Map.prototype.flowCallback = function(data, info) {
 	that.resetStations();
 	that.drawTrips(trips, "start", "end");
 }
-
-Map.prototype.drawLine = function(start, end, thickness, col) {
-	var points = [start, end];
-	var myCol = col || 'red';
-	var polyline = L.polyline(points, {
-		color: myCol,
-		weight: thickness
-	});
-
-	polyline.addTo(this.map);
-	this.lines.push(polyline);
-
-}
-
-Map.prototype.removeLines = function() {
-	for (var i = 0; i < this.lines.length; i++) {
-		this.map.removeLayer(this.lines[i]);
-	}
-}
-
-Map.prototype.drawTrip = function(fromID, toID, quantity, fromLabel, toLabel,col) {
-	var start = L.latLng(this.stationsAttributes[fromID].latitude,
-		this.stationsAttributes[fromID].longitude);
-	var end = L.latLng(this.stationsAttributes[toID].latitude,
-		this.stationsAttributes[toID].longitude);
-
-	this.drawLine(start, end, parseInt(quantity, 10),col);
-
-	this.stationsMarkers[fromID].type = fromLabel
-	this.stationsMarkers[toID].type = toLabel
-}
-
-Map.prototype.drawTrips = function(trips, fromLabel, toLabel,col) {
-	for (var i = 0; i < trips.length; i++) {
-		var from = trips[i].from_station_id;
-		var to = trips[i].to_station_id;
-		var quantity = trips[i].totalTripsMade;
-		this.drawTrip(from, to, quantity, fromLabel, toLabel,col);
-	}
-	this.showStations();
-}
-
-Map.prototype.drawGroupTrips = function (array) {
-	this.removeLines();
-	this.resetStations();
-	for (var i = 0; i < array.length; i++) {
-		this.drawTrips (array[i].data,"","", this.lineColors[i]);
-	};
-}
-
-Map.prototype.resetStations = function() {
-	this.hideStations();
-	for (s in this.stationsMarkers) {
-		this.stationsMarkers[s].type = "unselected"
-	}
-}
+/***************** END DATA FUNCTIONS *****************/
