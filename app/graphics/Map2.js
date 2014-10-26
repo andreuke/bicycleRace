@@ -411,6 +411,7 @@ Map.prototype.drawLine = function(start, end, thickness, col) {
 	polyline.addTo(this.map);
 	this.lines.push(polyline);
 
+	return polyline;
 }
 
 Map.prototype.removeLines = function() {
@@ -515,7 +516,25 @@ Map.prototype.drawTrip = function(fromID, toID, quantity, fromLabel, toLabel, co
 	var end = L.latLng(this.stationsAttributes[toID].latitude,
 		this.stationsAttributes[toID].longitude);
 
-	this.drawLine(start, end, parseInt(quantity, 10), col);
+	var line = this.drawLine(start, end, parseInt(quantity, 10), col);
+
+	var content = 
+			"<text class=popup-text-big>" + this.stationsAttributes[fromID].name + " - " +
+			this.stationsAttributes[toID].name + "</text>" + 
+			"<br>" +
+			"<text class=popup-text> Trips: " + quantity + "</text>";
+
+	var popup = L.popup({
+				maxWidth: '10000',
+				// minWidth: '250',
+				maxHeight: '10000',
+				autoPan: true,
+				closeButton: true,
+				autoPanPadding: [5, 5]
+			})
+			.setContent(content)
+		line.bindPopup(popup);
+
 
 	this.stationsMarkers[fromID].type = fromLabel
 	this.stationsMarkers[toID].type = toLabel
@@ -650,7 +669,8 @@ Map.prototype.flowCallback = function(data, info) {
 
 	for (var i = 0; i < values.length; i++) {
 		// Rescale quantity
-		var quantity = (quantities[i] / 15) + 1;
+		// var quantity = (quantities[i] / 15) + 1;
+		var quantity = quantities[i];
 
 		if (info.direction === "in") {
 			trips[i] = {
