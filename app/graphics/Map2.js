@@ -493,13 +493,13 @@ Map.prototype.showStationPopup = function(id, station) {
 	d3.select("#add_btn")
 		.on("click", function()  {
 			console.log("ADD_TEST")
-			that.controller.addSelectStation(id, that.myPrefix);
+			that.controller.addSelectStation(""+id, that.myPrefix);
 		});
 
 	d3.select("#remove_btn")
 		.on("click", function()  {
 			console.log("REMOVE_TEST")
-			that.controller.removeSelectStation(id, that.myPrefix);
+			that.controller.removeSelectStation(""+id, that.myPrefix);
 		});
 	
 	d3.select("#detail_btn")
