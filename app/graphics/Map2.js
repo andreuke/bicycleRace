@@ -144,6 +144,11 @@ Map.prototype.loadStations = function(json) {
 			"<text class=popup-text>" + (parseInt(s.income) + parseInt(s.outcome)) +
 			" (In: " + s.income + " Out: " + s.outcome + ")" + "</text>" +
 			"<br>" +
+			"<div id='popup-graph-container'></div>" +
+			"<button id='age_btn' class=popup-text>AGE</button>" +
+				"<button id='gender_btn' class=popup-text>GENDER</button>" +
+				"<button id='type_btn' class=popup-text>TYPE</button>" +
+			"<br>" +
 			"<button id='detail_btn' class=popup-text>SHOW DETAILS</button>";
 
 
@@ -423,9 +428,7 @@ Map.prototype.showStationPopup = function(id, station) {
 
 	d3.select("#detail_btn")
 		.on("click", function()  {
-			console.log("DETAIL_TEST")
 			that.controller.exec("changeMode", "stationDetails");
-			// that.controller.removeSelectStation(id, that.myPrefix);
 		});
 }
 
@@ -510,10 +513,20 @@ Map.prototype.switchPopupContent = function(mode) {
 		if (mode === "initial") {
 			content +=
 				"<br>" +
+				"<div id='popup-graph-container'></div>" +
+				"<button id='age_btn' class=popup-text>AGE</button>" +
+				"<button id='gender_btn' class=popup-text>GENDER</button>" +
+				"<button id='type_btn' class=popup-text>TYPE</button>" +
+				"<br>" +
 				"<button id='detail_btn' class=popup-text>SHOW DETAILS</button>";
 
 		} else if (mode === "pickAday")  {
 			content +=
+				"<div id='popup-graph-container'></div>" +
+				"<button id='age_btn' class=popup-text>AGE</button>" +
+				"<button id='gender_btn' class=popup-text>GENDER</button>" +
+				"<button id='type_btn' class=popup-text>TYPE</button>" +
+				"<br>" +
 				"<br>" +
 				"<button id='add_btn' class=popup-text>ADD STATION</button>" +
 				"<br>" +
@@ -521,11 +534,6 @@ Map.prototype.switchPopupContent = function(mode) {
 
 		} else if (mode === "stationDetails") {
 			content +=
-				"<br>" +
-				"<div id='popup-graph-container'></div>" +
-				"<button id='age_btn' class=popup-text>AGE</button>" +
-				"<button id='gender_btn' class=popup-text>GENDER</button>" +
-				"<button id='type_btn' class=popup-text>TYPE</button>" +
 				"<br>" +
 				"<button id='inflow_btn' class=popup-text>INFLOW</button>" +
 				"<button id='outflow_btn' class=popup-text>OUTFLOW</button>";
