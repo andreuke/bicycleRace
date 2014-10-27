@@ -438,13 +438,13 @@ Map.prototype.drawStars = function(popularity) {
 }
 
 
-Map.prototype.drawTrip = function(fromID, toID, quantity, fromLabel, toLabel, col) {
+Map.prototype.drawTrip = function(fromID, toID, quantity, fromLabel, toLabel, col, scale) {
 	var start = L.latLng(this.stationsAttributes[fromID].latitude,
 		this.stationsAttributes[fromID].longitude);
 	var end = L.latLng(this.stationsAttributes[toID].latitude,
 		this.stationsAttributes[toID].longitude);
 
-	var line = this.drawLine(start, end, parseInt(quantity, 10), col);
+	var line = this.drawLine(start, end, parseFloat(quantity, 10)*scale, col);
 
 	var content =
 		"<text class=popup-text-big>" + this.stationsAttributes[fromID].name + " - " +
@@ -468,26 +468,33 @@ Map.prototype.drawTrip = function(fromID, toID, quantity, fromLabel, toLabel, co
 	this.stationsMarkers[toID].type = toLabel
 }
 
-Map.prototype.drawTrips = function(trips, fromLabel, toLabel, col) {
+Map.prototype.drawTrips = function(trips, fromLabel, toLabel, col, scale) {
 	for (var i = 0; i < trips.length; i++) {
 		var from = trips[i].from_station_id;
 		var to = trips[i].to_station_id;
 		var quantity = trips[i].totalTripsMade;
-		this.drawTrip(from, to, quantity, fromLabel, toLabel, col);
+		this.drawTrip(from, to, quantity, fromLabel, toLabel, col, scale);
 	}
 	this.showStations();
 }
 
 Map.prototype.drawGroupTrips = function(array) {
 	var ids = [];
+	var scale;
 
 	this.removeLines();
 	this.resetStations();
 	for (var i = 0; i < array.length; i++) {
-		this.drawTrips(array[i].data, "default", "default", this.lineColors[i]);
 		if(array[i].id !== "chicago") {
 			ids[i] = array[i].id
+			scale = 3.0;
 		}
+		else {
+			scale = 1.5;
+		}
+
+		this.drawTrips(array[i].data, "default", "default", this.lineColors[i], scale);
+
 	};
 
 	for(var i = 0; i < ids.length; i++) {
@@ -648,7 +655,7 @@ Map.prototype.flowCallback = function(data, info) {
 	}
 	that.removeLines();
 	that.resetStations();
-	that.drawTrips(trips, "start", "end");
+	that.drawTrips(trips, "start", "end", that.lineColors[i], 0.05);
 }
 /***************** END DATA FUNCTIONS *****************/
 
