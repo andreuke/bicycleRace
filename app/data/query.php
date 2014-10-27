@@ -387,12 +387,16 @@
 					$result = mysql_fetch_array($female);
 					$numOfFemale = $result['numOfFemale'];
 					
-					$queryUnknown = genericQuery("count(*) as numOfUnknown", "divvy_trips_distances", "gender = '' and (from_station_id='".$stationId."' or to_station_id = '".$stationId."' )", "", $connessione);
+					// $queryUnknown = genericQuery("count(*) as numOfUnknown", "divvy_trips_distances", "gender = '' and (from_station_id='".$stationId."' or to_station_id = '".$stationId."' )", "", $connessione);
+					// $unknown = mysql_fetch_array($queryUnknown);
+					// displayData($numOfMale, $numOfFemale, $unknown['numOfUnknown']);
+
+					$queryUnknown = genericQuery("SUM(total) as numOfUnknown", "demographics_data_b", "gender = 'Unknown' and stationId = '".$stationId."'", "", $connessione);
 					$unknown = mysql_fetch_array($queryUnknown);
 					displayData($numOfMale, $numOfFemale, $unknown['numOfUnknown']);
 					break;
 				case '1': //age
-					$result = genericQuery('birthyear,sum(total) as total', 'demographics_data_b', 'total!=0 and stationId = '.$stationId.'',' group by birthyear',$connessione);
+					$result = genericQuery('birthyear,sum(total) as total', 'demographics_data_b', 'birthyear != 0 and total!=0 and stationId = '.$stationId.'',' group by birthyear',$connessione);
 					$variables = array('0' => "birthyear",
 										'1' => "total");
 					genericDisplayData($result, $variables);
