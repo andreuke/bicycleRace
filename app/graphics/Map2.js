@@ -80,7 +80,8 @@ function Map(container, initialCoord, controller, mapPrefix) {
 		that.loadStations(data);
 		that.showStations();
 	});
-	this.controller.onChange("communityAreas", function(data) {
+	this.controller.onChange("communityAreas",
+	 function(data) {
 		that.loadCommunityAreas(data);
 	});
 
@@ -537,13 +538,11 @@ Map.prototype.drawGroupTrips = function(array) {
 		else {
 			scale = 1.5;
 		}
-
-		this.drawTrips(array[i].data, "default", "default", this.lineColors[i], scale);
-
+		this.drawTrips(array[i].data, "default", "default", colMap.getCol(array[i].id), scale);
 	};
 
 	for(var i = 0; i < ids.length; i++) {
-		this.stationsMarkers[ids[i]].type = ""+i;
+		this.stationsMarkers[ids[i]].type = ""+colMap.getColid(ids[i]);
 	}
 	this.showStations();
 

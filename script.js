@@ -1,3 +1,5 @@
+ var colMap = colMapper();
+ 
  var db = new database("app/data/query.php");
 
  var control = mainController();

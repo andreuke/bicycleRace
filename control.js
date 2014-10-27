@@ -2,6 +2,7 @@ var abstractController = function(parent) {
   var that = {};
   that.parentController = parent;
   that.callbacks = {};
+
   //Scope of the controller, do not change it directly
   that.scope = {};
   //Change the value of an attribute in the scope and execute every subscriber
@@ -138,6 +139,7 @@ var mainController = function() {
   that.addSelectStation = function(idStation, mapPrefix) {
     var tmp = that.get(mapPrefix + "-SelectedStation");
     if (tmp.indexOf(idStation) === -1 && tmp.length < 3) {
+      colMap.addID(idStation);
       tmp.push(idStation);
       that.set(mapPrefix + "-SelectedStation", tmp);
     }
@@ -148,6 +150,7 @@ var mainController = function() {
   that.removeSelectStation = function(idStation) {
     var tmp = that.get("map1-SelectedStation");
     if (tmp.indexOf(idStation) !== -1) {
+      colMap.removeID(idStation);
       tmp.splice(tmp.indexOf(idStation), 1);
       that.set("map1-SelectedStation", tmp);
     }
@@ -177,51 +180,55 @@ var mainView = function(controller) {
   var _controller = controller;
   var slots = []
   var divButtons = d3.select("#mainButtons").attr("class", "flex-horizontal");
-  var listButtons = {};
+  var listButtons = [];
   var map = new Map("map", [41.869791, -87.631562], _controller, "map1");
   var divMap = d3.select("#map");
   map.draw();
 
   //Buttons
   //Switch to initial view button
-  listButtons.iniButton = divButtons.append("div")
+  listButtons.push(divButtons.append("div")
+    .attr("modeID","initial")
     .attr("id", "button-initial")
     .attr("class", "main-buttons")
     .on("click", function() {
       _controller.changeMode("initial")
-    })
-    .append("text")
+    }))
+    listButtons[listButtons.length - 1].append("text")
     .text("Overview");
 
   //Switch to pickaDay view button
-  listButtons.pickButton = divButtons.append("div")
+  listButtons.push(divButtons.append("div")
+    .attr("modeID","pickAday")
     .attr("id", "button-pickAday")
     .attr("class", "main-buttons")
     .on("click", function() {
       _controller.changeMode("pickAday")
-    })
-    .append("text")
+    }))
+  listButtons[listButtons.length - 1].append("text")
     .text("Select day");
 
   //Switch to station details view button
-  listButtons.detailsButton = divButtons.append("div")
+  listButtons.push(divButtons.append("div")
+    .attr("modeID","stationDetails")
     .attr("id", "button-stationDetails")
     .attr("class", "main-buttons")
     .on("click", function() {
       _controller.changeMode("stationDetails")
-    })
-    .append("text")
+    }))
+  listButtons[listButtons.length - 1].append("text")
     .text("Station Details");
 
 
   //Switch to pattern view button
-  listButtons.patternButton = divButtons.append("div")
+  listButtons.push(divButtons.append("div")
+    .attr("modeID","pattern")
     .attr("id", "button-pattern")
     .attr("class", "main-buttons")
     .on("click", function() {
       _controller.changeMode("pattern")
-    })
-    .append("text")
+    }))
+  listButtons[listButtons.length - 1].append("text")
     .text("Pattern");
 
   /*
@@ -253,10 +260,10 @@ var mainView = function(controller) {
 
   //4 principal div of the application, the dimensions and positions
   //are related to the current mode
-  slots[0] = d3.select("#div1");
-  slots[1] = d3.select("#div2");
-  slots[2] = d3.select("#div3");
-  slots[3] = d3.select("#div4");
+  slots[0] = d3.select("#div1").classed("border-gray", true);
+  slots[1] = d3.select("#div2").classed("border-gray", true);
+  slots[2] = d3.select("#div3").classed("border-gray", true);
+  slots[3] = d3.select("#div4").classed("border-gray", true);
 
   //Changes
   //Call back method inviked when there is a change in the mode
@@ -281,9 +288,8 @@ var mainView = function(controller) {
         slots[2].attr("class", "flex-item left");
         slots[3].attr("class", "invisible");
         break;
-      case "stationDetails": //FINIRE
-      case "pattern":
-        divMap.classed("left", false);
+      case "stationDetails":
+      divMap.classed("left", false);
         divMap.classed("left-center forty", true);
         map.redraw();
         slots[0].attr("class", "invisible");
@@ -291,6 +297,28 @@ var mainView = function(controller) {
         slots[2].attr("class", "invisible");
         slots[3].attr("class", "flex-item-penta right");
         break;
+      case "pattern":
+        divMap.classed("left", false);
+
+        divMap.classed("left-center ottanta", true);
+        map.redraw();
+        slots[0].attr("class", "invisible");
+        slots[1].attr("class", "invisible");
+        slots[2].attr("class", "invisible");
+        slots[3].attr("class", "flex-item-penta right");
+        break;
+    }
+
+    for(var i = 0; i < slots.length; i++ ){
+      slots[i].classed("border-gray", true);
+    }
+
+    for (var j = 0; j < listButtons.length; j++){
+      if(listButtons[j].attr("modeID") === mode){
+        listButtons[j].attr("class","main-buttons-selected");
+      }else {
+        listButtons[j].attr("class","main-buttons");
+      }
     }
   }
 
@@ -894,6 +922,23 @@ var pickSingleGraph = function(container, controller, prefixState) {
     _controller.exec("removeSelectStation", _controller.get(myPrefix + "-idStation"));
   })
 
+  _controller.onChange(myPrefix + "-idStation", function(id) {
+    if (id === "") {
+      mainDiv.style("border-color", "#b3b3b3");
+    } else{
+     mainDiv.style("border-color", colMap.getCol(id));
+    }
+  });
+
+  _controller.onChange("map1-SelectedStation", function(data){
+    /* Cambio numero grafici per linea in base al numero di dimensioni
+    if (data.length === 1){
+      mainDiv.style("min-width","60%");
+    }else {
+      mainDiv.style("min-width","45%");
+    }*/
+  })
+
   return that;
 }
 
@@ -938,7 +983,7 @@ var filterSelector = function(container, controller) {
 
   boxSubscr.append("option").text("");
   boxSubscr.append("option").text("Subscriber");
-  boxSubscr.append("option").text("Pino");
+  boxSubscr.append("option").text("Customer");
 
   boxMinAge.append("option").text("");
   boxMaxAge.append("option").text("");
@@ -1162,55 +1207,10 @@ var patternView = function(container, controller) {
     .attr("class", "flex-horizontal")
     .attr("id", "other-main-div");
 
-  var title = mainDiv.append("text").attr("class", "flex-item").attr("min-width", "100%");
-
-  var divGender = mainDiv.append("div").attr("class", "detail-pie-div");
-  divGender.append("text").text("Gender").attr("class", "det-title-graphs");
-  var divGenderSvg = divGender.append("div").attr("class", "flex-item").attr("id", "div-svg-pp3");
-  var graphGender = {};
-
-  var divType = mainDiv.append("div").attr("class", "detail-pie-div");
-  divType.append("text").text("Type").attr("class", "det-title-graphs");
-  var divTypeSvg = divType.append("div").attr("class", "flex-item").attr("id", "div-svg-pp1");
-  var graphType = {};
-
-  var divAge = mainDiv.append("div").attr("class", "detail-line-div");
-  divAge.append("text").text("Age").attr("class", "det-title-graphs");
-  var divAgeSvg = divAge.append("div").attr("class", "flex-item").attr("id", "div-svg-pp2");
-  var graphAge = {};
-
-  // _controller.onChange("det-gender-data", function(data) {
-  //   if (!alreadyDrawGender) {
-  //     alreadyDrawGender = true;
-  //     graphGender = new PieChart("#" + divGenderSvg.attr("id"), data, ["Male", "Female", "Unknown"]);
-  //     graphGender.draw();
-  //   } else {
-  //     graphGender.update(data, ["Male", "Female", "Unknown"]);
-  //   }
-  // });
-
-  // _controller.onChange("det-age-data", function(data) {
-  //   if (!alreadyDrawAge) {
-  //     alreadyDrawAge = true;
-  //     graphAge = new LineChart("#" + divAgeSvg.attr("id"), data, _controller.get("det-age-labels"), "Age", "Trips", "year");
-  //     graphAge.draw();
-  //   } else {
-  //     graphAge.update(data, _controller.get("det-age-labels"));
-  //   }
-  // });
-
-  // _controller.onChange("det-type-data", function(data) {
-  //   if (!alreadyDrawType) {
-  //     alreadyDrawType = true;
-  //     graphType = new PieChart("#" + divTypeSvg.attr("id"), data, ["Customers", "Subscribers"]);
-  //     graphType.draw();
-  //   } else {
-  //     graphType.update(data, ["Customers", "Subscribers"]);
-  //   }
-  // });
+  var title = mainDiv.append("text").attr("class", "flex-item").style("min-width", "100%");
 
 
-  var boxHour = divGender.append("select").classed("box-filter", true);
+  var boxHour = mainDiv.append("select").classed("box-filter", true);
 
   boxHour.on("change", function() {
     _controller.changeHourSelection(boxHour.property("value"));
@@ -1222,7 +1222,7 @@ var patternView = function(container, controller) {
   };
 
 
-  var boxPeriod = divGender.append("select").classed("box-filter", true);
+  var boxPeriod = mainDiv.append("select").classed("box-filter", true);
 
   boxPeriod.on("change", function() {
     _controller.changePeriodSelection(boxPeriod.property("value"));
