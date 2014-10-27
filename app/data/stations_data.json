@@ -1,1 +1,3005 @@
-{"stationsData":{"5":{"name":"State St &amp; Harrison St","capacity":"19","popularity":9,"income":"5071","outcome":"4988","latitude":"41.87395806000000000","longitude":"-87.62773949000000000","id":"5"},"13":{"name":"Wilton Ave &amp; Diversey Pkwy","capacity":"19","popularity":9,"income":"4271","outcome":"3684","latitude":"41.93250008000000000","longitude":"-87.65268082000000000","id":"13"},"14":{"name":"Morgan St &amp; 18th St","capacity":"15","popularity":6,"income":"1428","outcome":"1500","latitude":"41.85808600000000000","longitude":"-87.65107300000000000","id":"14"},"15":{"name":"Racine Ave &amp; 18th St","capacity":"15","popularity":6,"income":"1612","outcome":"1656","latitude":"41.85818061000000000","longitude":"-87.65648665000000000","id":"15"},"16":{"name":"Wood St &amp; North Ave","capacity":"15","popularity":6,"income":"1612","outcome":"1724","latitude":"41.91032900000000000","longitude":"-87.67251600000000000","id":"16"},"17":{"name":"Wood St &amp; Division St","capacity":"15","popularity":8,"income":"2813","outcome":"2677","latitude":"41.90332000000000000","longitude":"-87.67273000000000000","id":"17"},"19":{"name":"Loomis St &amp; Taylor St","capacity":"15","popularity":6,"income":"1862","outcome":"1809","latitude":"41.86941700000000000","longitude":"-87.66099600000000000","id":"19"},"20":{"name":"Sheffield Ave &amp; Kingsbury St","capacity":"15","popularity":8,"income":"3002","outcome":"2727","latitude":"41.90959193000000000","longitude":"-87.65349723000000000","id":"20"},"21":{"name":"Aberdeen St &amp; Jackson Blvd","capacity":"15","popularity":7,"income":"2548","outcome":"2746","latitude":"41.87772613000000000","longitude":"-87.65478743000000000","id":"21"},"22":{"name":"May St &amp; Taylor St","capacity":"15","popularity":7,"income":"2249","outcome":"2174","latitude":"41.86948210000000000","longitude":"-87.65548640000000000","id":"22"},"23":{"name":"Orleans St &amp; Elm St","capacity":"15","popularity":7,"income":"2002","outcome":"1987","latitude":"41.90292400000000000","longitude":"-87.63771500000000000","id":"23"},"24":{"name":"Fairbanks Ct &amp; Grand Ave","capacity":"15","popularity":10,"income":"6902","outcome":"6795","latitude":"41.89186000000000000","longitude":"-87.62062000000000000","id":"24"},"25":{"name":"Michigan Ave &amp; Pearson St","capacity":"23","popularity":10,"income":"8513","outcome":"8360","latitude":"41.89766000000000000","longitude":"-87.62351000000000000","id":"25"},"26":{"name":"McClurg Ct &amp; Illinois St","capacity":"23","popularity":10,"income":"11311","outcome":"10670","latitude":"41.89102000000000000","longitude":"-87.61730000000000000","id":"26"},"27":{"name":"Larrabee St &amp; North Ave","capacity":"19","popularity":5,"income":"1451","outcome":"1376","latitude":"41.91021000000000000","longitude":"-87.64350000000000000","id":"27"},"28":{"name":"Larrabee St &amp; Menomonee St","capacity":"15","popularity":7,"income":"2072","outcome":"2056","latitude":"41.91468000000000000","longitude":"-87.64332000000000000","id":"28"},"29":{"name":"Noble St &amp; Milwaukee Ave","capacity":"15","popularity":7,"income":"2742","outcome":"2635","latitude":"41.90068000000000000","longitude":"-87.66260000000000000","id":"29"},"30":{"name":"Ashland Ave &amp; Augusta Blvd","capacity":"15","popularity":7,"income":"2011","outcome":"2055","latitude":"41.89964300000000000","longitude":"-87.66770000000000000","id":"30"},"31":{"name":"Franklin St &amp; Chicago Ave","capacity":"23","popularity":9,"income":"5016","outcome":"5133","latitude":"41.89680204000000000","longitude":"-87.63563839000000000","id":"31"},"32":{"name":"Racine Ave &amp; Congress Pkwy","capacity":"19","popularity":6,"income":"1596","outcome":"1825","latitude":"41.87464000000000000","longitude":"-87.65703000000000000","id":"32"},"33":{"name":"State St &amp; Van Buren St","capacity":"27","popularity":9,"income":"5797","outcome":"5938","latitude":"41.87718100000000000","longitude":"-87.62784400000000000","id":"33"},"34":{"name":"Cannon Dr &amp; Fullerton Ave","capacity":"15","popularity":9,"income":"6485","outcome":"6077","latitude":"41.92675599000000000","longitude":"-87.63442878000000000","id":"34"},"35":{"name":"Streeter Dr &amp; Illinois St","capacity":"35","popularity":10,"income":"18544","outcome":"16710","latitude":"41.89107100000000000","longitude":"-87.61220000000000000","id":"35"},"36":{"name":"Franklin St &amp; Jackson Blvd","capacity":"27","popularity":10,"income":"9128","outcome":"9717","latitude":"41.87770796000000000","longitude":"-87.63532114000000000","id":"36"},"37":{"name":"Dearborn St &amp; Adams St","capacity":"19","popularity":10,"income":"7125","outcome":"8041","latitude":"41.87935636000000000","longitude":"-87.62979104000000000","id":"37"},"42":{"name":"Wabash Ave &amp; Cermak Rd","capacity":"15","popularity":6,"income":"1785","outcome":"1781","latitude":"41.85323876000000000","longitude":"-87.62533709000000000","id":"42"},"43":{"name":"Michigan Ave &amp; Washington St","capacity":"43","popularity":10,"income":"8054","outcome":"8579","latitude":"41.88389277000000000","longitude":"-87.62464914000000000","id":"43"},"44":{"name":"State St &amp; Randolph St","capacity":"27","popularity":10,"income":"6250","outcome":"6819","latitude":"41.88473020000000000","longitude":"-87.62773357000000000","id":"44"},"45":{"name":"Michigan Ave &amp; Congress Pkwy","capacity":"15","popularity":10,"income":"6363","outcome":"6424","latitude":"41.87606560000000000","longitude":"-87.62443336000000000","id":"45"},"46":{"name":"Wells St &amp; Walton St","capacity":"19","popularity":8,"income":"2884","outcome":"3228","latitude":"41.89993001000000000","longitude":"-87.63443007000000000","id":"46"},"47":{"name":"State St &amp; Kinzie St","capacity":"15","popularity":10,"income":"8497","outcome":"7868","latitude":"41.88918000000000000","longitude":"-87.62770000000000000","id":"47"},"48":{"name":"Larrabee St &amp; Kingsbury St","capacity":"27","popularity":10,"income":"6404","outcome":"6313","latitude":"41.89776400000000000","longitude":"-87.64288400000000000","id":"48"},"49":{"name":"Dearborn St &amp; Monroe St","capacity":"23","popularity":10,"income":"7209","outcome":"7963","latitude":"41.88131982000000000","longitude":"-87.62952092000000000","id":"49"},"50":{"name":"Clark St &amp; Congress Pkwy","capacity":"27","popularity":9,"income":"4864","outcome":"5040","latitude":"41.87593267000000000","longitude":"-87.63058454000000000","id":"50"},"51":{"name":"Clark St &amp; Randolph St","capacity":"31","popularity":10,"income":"6939","outcome":"7196","latitude":"41.88457623000000000","longitude":"-87.63188991000000000","id":"51"},"52":{"name":"Michigan Ave &amp; Lake St","capacity":"23","popularity":10,"income":"10354","outcome":"10654","latitude":"41.88605812000000000","longitude":"-87.62428934000000000","id":"52"},"53":{"name":"Wells St &amp; Erie St","capacity":"19","popularity":9,"income":"5551","outcome":"5869","latitude":"41.89383200000000000","longitude":"-87.63419500000000000","id":"53"},"54":{"name":"Ogden Ave &amp; Chicago Ave","capacity":"19","popularity":7,"income":"2534","outcome":"2532","latitude":"41.89636246000000000","longitude":"-87.65406127000000000","id":"54"},"55":{"name":"Halsted St &amp; James M Rochford St","capacity":"15","popularity":6,"income":"1664","outcome":"1783","latitude":"41.86586100000000000","longitude":"-87.64661100000000000","id":"55"},"56":{"name":"Desplaines St &amp; Kinzie St","capacity":"19","popularity":9,"income":"5484","outcome":"5822","latitude":"41.88871604000000000","longitude":"-87.64444785000000000","id":"56"},"57":{"name":"Clinton St &amp; Roosevelt Rd","capacity":"15","popularity":7,"income":"2673","outcome":"2299","latitude":"41.86711778000000000","longitude":"-87.64108796000000000","id":"57"},"58":{"name":"Ashland Ave &amp; Armitage Ave","capacity":"15","popularity":8,"income":"3428","outcome":"3732","latitude":"41.91785887000000000","longitude":"-87.66891900000000000","id":"58"},"59":{"name":"Wabash Ave &amp; Roosevelt Rd","capacity":"19","popularity":10,"income":"8512","outcome":"7946","latitude":"41.86717300000000000","longitude":"-87.62595501000000000","id":"59"},"60":{"name":"Dayton St &amp; North Ave","capacity":"19","popularity":9,"income":"4205","outcome":"4005","latitude":"41.91057803000000000","longitude":"-87.64942193000000000","id":"60"},"61":{"name":"Wood St &amp; Milwaukee Ave","capacity":"15","popularity":7,"income":"2842","outcome":"2565","latitude":"41.90765500000000000","longitude":"-87.67255200000000000","id":"61"},"62":{"name":"McCormick Place","capacity":"15","popularity":8,"income":"3826","outcome":"3990","latitude":"41.85137517000000000","longitude":"-87.61883465000000000","id":"62"},"66":{"name":"Clinton St &amp; Lake St","capacity":"19","popularity":9,"income":"5955","outcome":"6288","latitude":"41.88583274000000000","longitude":"-87.64138231000000000","id":"66"},"67":{"name":"Sheffield Ave &amp; Fullerton Ave","capacity":"15","popularity":9,"income":"6006","outcome":"5905","latitude":"41.92560188000000000","longitude":"-87.65370804000000000","id":"67"},"68":{"name":"Clinton St &amp; Tilden St","capacity":"23","popularity":7,"income":"2057","outcome":"2242","latitude":"41.87588500000000000","longitude":"-87.64079500000000000","id":"68"},"69":{"name":"Damen Ave &amp; Pierce Ave","capacity":"19","popularity":9,"income":"6083","outcome":"5332","latitude":"41.90939601000000000","longitude":"-87.67769193000000000","id":"69"},"71":{"name":"Morgan St &amp; Lake St","capacity":"15","popularity":8,"income":"2882","outcome":"3013","latitude":"41.88548331000000000","longitude":"-87.65230486000000000","id":"71"},"72":{"name":"State St &amp; 16th St","capacity":"15","popularity":8,"income":"3122","outcome":"2809","latitude":"41.86012138000000000","longitude":"-87.62772919000000000","id":"72"},"73":{"name":"Jefferson St &amp; Monroe St","capacity":"19","popularity":9,"income":"3731","outcome":"4226","latitude":"41.88042200000000000","longitude":"-87.64274600000000000","id":"73"},"74":{"name":"Kingsbury St &amp; Erie St","capacity":"23","popularity":9,"income":"5500","outcome":"5929","latitude":"41.89384315000000000","longitude":"-87.64185116000000000","id":"74"},"75":{"name":"Canal St &amp; Jackson Blvd","capacity":"35","popularity":10,"income":"10066","outcome":"10088","latitude":"41.87811421000000000","longitude":"-87.63997112000000000","id":"75"},"76":{"name":"Lake Shore Dr &amp; Monroe St","capacity":"11","popularity":10,"income":"15254","outcome":"15482","latitude":"41.88105000000000000","longitude":"-87.61697000000000000","id":"76"},"77":{"name":"Clinton St &amp; Madison St","capacity":"23","popularity":10,"income":"8093","outcome":"8289","latitude":"41.88158240000000000","longitude":"-87.64127743000000000","id":"77"},"80":{"name":"Aberdeen St &amp; Madison St","capacity":"19","popularity":9,"income":"4493","outcome":"4147","latitude":"41.88148700000000000","longitude":"-87.65475200000000000","id":"80"},"81":{"name":"Daley Center Plaza","capacity":"47","popularity":10,"income":"7928","outcome":"8725","latitude":"41.88433700000000000","longitude":"-87.63018300000000000","id":"81"},"84":{"name":"Green St &amp; Milwaukee Ave","capacity":"19","popularity":7,"income":"2120","outcome":"2234","latitude":"41.89173300000000000","longitude":"-87.64872700000000000","id":"84"},"85":{"name":"Michigan Ave &amp; Oak St","capacity":"15","popularity":10,"income":"14158","outcome":"13088","latitude":"41.90096039000000000","longitude":"-87.62377664000000000","id":"85"},"86":{"name":"Eckhart Park","capacity":"15","popularity":6,"income":"1994","outcome":"1913","latitude":"41.89637337000000000","longitude":"-87.66098386000000000","id":"86"},"87":{"name":"Racine Ave &amp; Fullerton Ave","capacity":"19","popularity":7,"income":"2400","outcome":"2447","latitude":"41.92556258000000000","longitude":"-87.65840426000000000","id":"87"},"88":{"name":"May St &amp; Randolph St","capacity":"15","popularity":8,"income":"2847","outcome":"3013","latitude":"41.88397000000000000","longitude":"-87.65568800000000000","id":"88"},"90":{"name":"Millennium Park","capacity":"35","popularity":10,"income":"18195","outcome":"17065","latitude":"41.88103170000000000","longitude":"-87.62408432000000000","id":"90"},"91":{"name":"Clinton St &amp; Washington Blvd","capacity":"31","popularity":10,"income":"13853","outcome":"14910","latitude":"41.88338000000000000","longitude":"-87.64117000000000000","id":"91"},"92":{"name":"Carpenter St &amp; Huron St","capacity":"19","popularity":6,"income":"1526","outcome":"1547","latitude":"41.89455600000000000","longitude":"-87.65344900000000000","id":"92"},"93":{"name":"Sheffield Ave &amp; Willow St","capacity":"15","popularity":7,"income":"2641","outcome":"2650","latitude":"41.91368800000000000","longitude":"-87.65285500000000000","id":"93"},"94":{"name":"Lincoln Ave &amp; Armitage Ave","capacity":"19","popularity":9,"income":"6280","outcome":"6027","latitude":"41.91827300000000000","longitude":"-87.63811600000000000","id":"94"},"97":{"name":"Museum Campus","capacity":"19","popularity":10,"income":"13549","outcome":"12635","latitude":"41.86521200000000000","longitude":"-87.61775900000000000","id":"97"},"98":{"name":"LaSalle St &amp; Washington St","capacity":"15","popularity":9,"income":"4229","outcome":"5126","latitude":"41.88266400000000000","longitude":"-87.63253000000000000","id":"98"},"99":{"name":"Lake Shore Dr &amp; Ohio St","capacity":"19","popularity":10,"income":"6954","outcome":"6905","latitude":"41.89257000000000000","longitude":"-87.61449200000000000","id":"99"},"100":{"name":"Orleans St &amp; Merchandise Mart Plaza","capacity":"23","popularity":10,"income":"6551","outcome":"6134","latitude":"41.88824300000000000","longitude":"-87.63639000000000000","id":"100"},"106":{"name":"State St &amp; Pearson St","capacity":"27","popularity":7,"income":"2519","outcome":"2391","latitude":"41.89744800000000000","longitude":"-87.62872200000000000","id":"106"},"108":{"name":"Halsted St &amp; Polk St","capacity":"19","popularity":7,"income":"2080","outcome":"2068","latitude":"41.87184000000000000","longitude":"-87.64664000000000000","id":"108"},"109":{"name":"900 W Harrison","capacity":"19","popularity":6,"income":"1500","outcome":"1616","latitude":"41.87450000000000000","longitude":"-87.64980000000000000","id":"109"},"110":{"name":"State St &amp; Erie St","capacity":"23","popularity":10,"income":"6592","outcome":"6229","latitude":"41.89397500000000000","longitude":"-87.62862300000000000","id":"110"},"111":{"name":"Sedgwick St &amp; Huron St","capacity":"19","popularity":7,"income":"2055","outcome":"2275","latitude":"41.89466600000000000","longitude":"-87.63843700000000000","id":"111"},"112":{"name":"Green St &amp; Randolph St","capacity":"15","popularity":8,"income":"2829","outcome":"2726","latitude":"41.88407800000000000","longitude":"-87.64868400000000000","id":"112"},"113":{"name":"Bissell St &amp; Armitage Ave","capacity":"15","popularity":6,"income":"1672","outcome":"1598","latitude":"41.91844000000000000","longitude":"-87.65222000000000000","id":"113"},"114":{"name":"Sheffield Ave &amp; Addison St","capacity":"27","popularity":8,"income":"3478","outcome":"3215","latitude":"41.94688000000000000","longitude":"-87.65445000000000000","id":"114"},"115":{"name":"Sheffield Ave &amp; Wellington Ave","capacity":"23","popularity":8,"income":"3666","outcome":"3440","latitude":"41.93625300000000000","longitude":"-87.65356600000000000","id":"115"},"116":{"name":"Western Ave &amp; Winnebago Ave","capacity":"15","popularity":5,"income":"1212","outcome":"1152","latitude":"41.91553300000000000","longitude":"-87.68705100000000000","id":"116"},"117":{"name":"Wilton Ave &amp; Belmont Ave","capacity":"23","popularity":7,"income":"2530","outcome":"2651","latitude":"41.94018000000000000","longitude":"-87.65304000000000000","id":"117"},"118":{"name":"Sedgwick St &amp; North Ave","capacity":"19","popularity":8,"income":"2850","outcome":"3055","latitude":"41.91057900000000000","longitude":"-87.63861800000000000","id":"118"},"119":{"name":"Ashland Ave &amp; Lake St","capacity":"19","popularity":4,"income":"913","outcome":"877","latitude":"41.88541000000000000","longitude":"-87.66732000000000000","id":"119"},"120":{"name":"Wentworth Ave &amp; Archer Ave","capacity":"15","popularity":5,"income":"1457","outcome":"1302","latitude":"41.85456400000000000","longitude":"-87.63193700000000000","id":"120"},"121":{"name":"Blackstone Ave &amp; Hyde Park Blvd","capacity":"15","popularity":4,"income":"798","outcome":"852","latitude":"41.80256200000000000","longitude":"-87.59036800000000000","id":"121"},"122":{"name":"Congress Pkwy &amp; Ogden Ave","capacity":"15","popularity":4,"income":"959","outcome":"962","latitude":"41.87501000000000000","longitude":"-87.67328000000000000","id":"122"},"123":{"name":"California Ave &amp; Milwaukee Ave","capacity":"15","popularity":8,"income":"2979","outcome":"2730","latitude":"41.92269500000000000","longitude":"-87.69715300000000000","id":"123"},"124":{"name":"Damen Ave &amp; Cullerton St","capacity":"15","popularity":2,"income":"401","outcome":"367","latitude":"41.85504800000000000","longitude":"-87.67572600000000000","id":"124"},"126":{"name":"Clark St &amp; North Ave","capacity":"15","popularity":10,"income":"7126","outcome":"6687","latitude":"41.91179100000000000","longitude":"-87.63184100000000000","id":"126"},"127":{"name":"Lincoln Ave &amp; Fullerton Ave","capacity":"15","popularity":2,"income":"317","outcome":"324","latitude":"41.92590500000000000","longitude":"-87.64926000000000000","id":"127"},"128":{"name":"Damen Ave &amp; Chicago Ave","capacity":"15","popularity":7,"income":"2892","outcome":"2545","latitude":"41.89576900000000000","longitude":"-87.67722000000000000","id":"128"},"129":{"name":"Blue Island Ave &amp; 18th St","capacity":"15","popularity":5,"income":"1073","outcome":"1162","latitude":"41.85755600000000000","longitude":"-87.66153500000000000","id":"129"},"130":{"name":"Damen Ave &amp; Division St","capacity":"15","popularity":8,"income":"3037","outcome":"3187","latitude":"41.90331000000000000","longitude":"-87.67695000000000000","id":"130"},"131":{"name":"Lincoln Ave &amp; Belmont Ave","capacity":"15","popularity":3,"income":"662","outcome":"590","latitude":"41.93936500000000000","longitude":"-87.66838500000000000","id":"131"},"132":{"name":"Wentworth Ave &amp; 24th St","capacity":"15","popularity":1,"income":"178","outcome":"157","latitude":"41.84923700000000000","longitude":"-87.63171500000000000","id":"132"},"134":{"name":"Peoria St &amp; Jackson Blvd","capacity":"19","popularity":8,"income":"3686","outcome":"3801","latitude":"41.87774900000000000","longitude":"-87.64963300000000000","id":"134"},"135":{"name":"Halsted St &amp; 21st St","capacity":"11","popularity":2,"income":"549","outcome":"518","latitude":"41.85378000000000000","longitude":"-87.64665000000000000","id":"135"},"136":{"name":"Racine Ave &amp; 13th St","capacity":"15","popularity":1,"income":"311","outcome":"264","latitude":"41.86505400000000000","longitude":"-87.65695900000000000","id":"136"},"137":{"name":"Morgan Ave &amp; 14th Pl","capacity":"15","popularity":6,"income":"1431","outcome":"1537","latitude":"41.86237800000000000","longitude":"-87.65106200000000000","id":"137"},"138":{"name":"Clybourn Ave &amp; Division St","capacity":"15","popularity":5,"income":"1318","outcome":"1393","latitude":"41.90450900000000000","longitude":"-87.64050000000000000","id":"138"},"140":{"name":"Dearborn Pkwy &amp; Delaware Pl","capacity":"19","popularity":9,"income":"5357","outcome":"4953","latitude":"41.89900700000000000","longitude":"-87.62992800000000000","id":"140"},"141":{"name":"Clark St &amp; Lincoln Ave","capacity":"19","popularity":9,"income":"4857","outcome":"4864","latitude":"41.91568900000000000","longitude":"-87.63460000000000000","id":"141"},"143":{"name":"Sedgwick St &amp; Webster Ave","capacity":"15","popularity":9,"income":"4096","outcome":"3936","latitude":"41.92197000000000000","longitude":"-87.63854000000000000","id":"143"},"144":{"name":"Larrabee St &amp; Webster Ave","capacity":"15","popularity":8,"income":"3227","outcome":"3224","latitude":"41.92175000000000000","longitude":"-87.64401000000000000","id":"144"},"146":{"name":"Loomis St &amp; Jackson Blvd","capacity":"11","popularity":4,"income":"1061","outcome":"985","latitude":"41.87794500000000000","longitude":"-87.66200700000000000","id":"146"},"147":{"name":"Indiana Ave &amp; 26th St","capacity":"15","popularity":3,"income":"614","outcome":"733","latitude":"41.84570000000000000","longitude":"-87.62248000000000000","id":"147"},"148":{"name":"State St &amp; 33rd St","capacity":"11","popularity":3,"income":"585","outcome":"584","latitude":"41.83473400000000000","longitude":"-87.62581300000000000","id":"148"},"149":{"name":"Calumet Ave &amp; 33rd St","capacity":"11","popularity":3,"income":"649","outcome":"759","latitude":"41.83490000000000000","longitude":"-87.61793000000000000","id":"149"},"150":{"name":"Fort Dearborn Dr &amp; 31st St","capacity":"11","popularity":8,"income":"3462","outcome":"3464","latitude":"41.83855600000000000","longitude":"-87.60821800000000000","id":"150"},"152":{"name":"Lincoln Ave &amp; Diversey Pkwy","capacity":"15","popularity":7,"income":"2013","outcome":"2174","latitude":"41.93222500000000000","longitude":"-87.65861700000000000","id":"152"},"153":{"name":"Southport Ave &amp; Wellington Ave","capacity":"19","popularity":8,"income":"3225","outcome":"3197","latitude":"41.93584000000000000","longitude":"-87.66370000000000000","id":"153"},"154":{"name":"Southport Ave &amp; Belmont Ave","capacity":"15","popularity":6,"income":"1920","outcome":"1826","latitude":"41.93949000000000000","longitude":"-87.66378000000000000","id":"154"},"156":{"name":"Clark St &amp; Wellington Ave","capacity":"15","popularity":8,"income":"3355","outcome":"3080","latitude":"41.93649682000000000","longitude":"-87.64753866000000000","id":"156"},"157":{"name":"Lake Shore Dr &amp; Wellington Ave","capacity":"15","popularity":9,"income":"4696","outcome":"4347","latitude":"41.93666900000000000","longitude":"-87.63679400000000000","id":"157"},"158":{"name":"Milwaukee Ave &amp; Wabansia Ave","capacity":"15","popularity":6,"income":"1548","outcome":"1556","latitude":"41.91261600000000000","longitude":"-87.68139100000000000","id":"158"},"159":{"name":"Claremont Ave &amp; Hirsch St","capacity":"11","popularity":2,"income":"479","outcome":"615","latitude":"41.90778100000000000","longitude":"-87.68585400000000000","id":"159"},"160":{"name":"Campbell Ave &amp; North Ave","capacity":"15","popularity":3,"income":"731","outcome":"706","latitude":"41.91053500000000000","longitude":"-87.68955600000000000","id":"160"},"162":{"name":"Damen Ave &amp; Wellington Ave","capacity":"15","popularity":5,"income":"1405","outcome":"1240","latitude":"41.93588000000000000","longitude":"-87.67842000000000000","id":"162"},"163":{"name":"Paulina St &amp; Diversey Pkwy","capacity":"15","popularity":4,"income":"784","outcome":"762","latitude":"41.93186000000000000","longitude":"-87.67079000000000000","id":"163"},"164":{"name":"Franklin St &amp; Lake St","capacity":"23","popularity":9,"income":"3943","outcome":"4799","latitude":"41.88583700000000000","longitude":"-87.63550000000000000","id":"164"},"165":{"name":"Clark St &amp; Waveland Ave","capacity":"19","popularity":7,"income":"2502","outcome":"2490","latitude":"41.94893000000000000","longitude":"-87.65775000000000000","id":"165"},"166":{"name":"Ashland Ave &amp; Wrightwood Ave","capacity":"15","popularity":5,"income":"1116","outcome":"1103","latitude":"41.92883000000000000","longitude":"-87.66850700000000000","id":"166"},"167":{"name":"Damen Ave &amp; Coulter St","capacity":"11","popularity":1,"income":"128","outcome":"100","latitude":"41.84920000000000000","longitude":"-87.67564000000000000","id":"167"},"168":{"name":"Michigan Ave &amp; 14th St","capacity":"19","popularity":8,"income":"3010","outcome":"2875","latitude":"41.86405900000000000","longitude":"-87.62372700000000000","id":"168"},"169":{"name":"Canal St &amp; Harrison St","capacity":"15","popularity":5,"income":"1199","outcome":"1433","latitude":"41.87433700000000000","longitude":"-87.63956600000000000","id":"169"},"170":{"name":"Clinton St &amp; 18th St","capacity":"15","popularity":3,"income":"710","outcome":"718","latitude":"41.85795000000000000","longitude":"-87.64082600000000000","id":"170"},"171":{"name":"May St &amp; Cullerton St","capacity":"11","popularity":1,"income":"211","outcome":"206","latitude":"41.85513600000000000","longitude":"-87.65412700000000000","id":"171"},"173":{"name":"Mies van der Rohe Way &amp; Chicago Ave","capacity":"15","popularity":9,"income":"5515","outcome":"5275","latitude":"41.89691000000000000","longitude":"-87.62174300000000000","id":"173"},"174":{"name":"Canal St &amp; Madison St","capacity":"23","popularity":10,"income":"9008","outcome":"8028","latitude":"41.88209100000000000","longitude":"-87.63983300000000000","id":"174"},"175":{"name":"Wells St &amp; Polk St","capacity":"19","popularity":7,"income":"2230","outcome":"2465","latitude":"41.87237300000000000","longitude":"-87.63352300000000000","id":"175"},"176":{"name":"Clark St &amp; Elm St","capacity":"19","popularity":9,"income":"6064","outcome":"5846","latitude":"41.90323300000000000","longitude":"-87.63125300000000000","id":"176"},"177":{"name":"Theater on the Lake","capacity":"15","popularity":10,"income":"9571","outcome":"9082","latitude":"41.92627700000000000","longitude":"-87.63083400000000000","id":"177"},"178":{"name":"State St &amp; 19th St","capacity":"15","popularity":5,"income":"1151","outcome":"1290","latitude":"41.85659400000000000","longitude":"-87.62754200000000000","id":"178"},"179":{"name":"Martin Luther King Dr &amp; Oakwood Blvd","capacity":"15","popularity":3,"income":"725","outcome":"732","latitude":"41.82256000000000000","longitude":"-87.61615000000000000","id":"179"},"181":{"name":"LaSalle St &amp; Illinois St","capacity":"19","popularity":10,"income":"6730","outcome":"6399","latitude":"41.89074900000000000","longitude":"-87.63206000000000000","id":"181"},"183":{"name":"Damen Ave &amp; Augusta Blvd","capacity":"15","popularity":7,"income":"1940","outcome":"2112","latitude":"41.89971400000000000","longitude":"-87.67723400000000000","id":"183"},"184":{"name":"State St &amp; 35th St","capacity":"19","popularity":3,"income":"650","outcome":"740","latitude":"41.83104000000000000","longitude":"-87.62688000000000000","id":"184"},"185":{"name":"Stave St &amp; Armitage Ave","capacity":"11","popularity":4,"income":"756","outcome":"755","latitude":"41.91774100000000000","longitude":"-87.69139200000000000","id":"185"},"186":{"name":"Ogden Ave &amp; Race Ave","capacity":"15","popularity":6,"income":"1653","outcome":"1580","latitude":"41.89179500000000000","longitude":"-87.65875100000000000","id":"186"},"188":{"name":"Greenview Ave &amp; Fullerton Ave","capacity":"15","popularity":5,"income":"1428","outcome":"1371","latitude":"41.92533000000000000","longitude":"-87.66580000000000000","id":"188"},"190":{"name":"Southport Ave &amp; Wrightwood Ave","capacity":"15","popularity":6,"income":"1823","outcome":"1977","latitude":"41.92888000000000000","longitude":"-87.66317000000000000","id":"190"},"191":{"name":"Canal St &amp; Monroe St","capacity":"23","popularity":8,"income":"2846","outcome":"4190","latitude":"41.88070000000000000","longitude":"-87.63947000000000000","id":"191"},"192":{"name":"Canal St &amp; Adams St","capacity":"27","popularity":9,"income":"6009","outcome":"6435","latitude":"41.87923000000000000","longitude":"-87.64001500000000000","id":"192"},"193":{"name":"State St &amp; 29th St","capacity":"15","popularity":1,"income":"174","outcome":"149","latitude":"41.84170700000000000","longitude":"-87.62693800000000000","id":"193"},"194":{"name":"State St &amp; Wacker Dr","capacity":"11","popularity":8,"income":"3475","outcome":"3789","latitude":"41.88715500000000000","longitude":"-87.62775000000000000","id":"194"},"195":{"name":"Columbus Dr &amp; Randolph St","capacity":"23","popularity":9,"income":"4736","outcome":"6188","latitude":"41.88530000000000000","longitude":"-87.62077000000000000","id":"195"},"196":{"name":"Cityfront Plaza &amp; N Water St","capacity":"19","popularity":8,"income":"3127","outcome":"3258","latitude":"41.88987500000000000","longitude":"-87.62199400000000000","id":"196"},"197":{"name":"Michigan Ave &amp; Madison St","capacity":"19","popularity":8,"income":"2260","outcome":"3264","latitude":"41.88213400000000000","longitude":"-87.62512500000000000","id":"197"},"198":{"name":"Halsted St &amp; Madison St","capacity":"19","popularity":8,"income":"3211","outcome":"2849","latitude":"41.88175000000000000","longitude":"-87.64780000000000000","id":"198"},"199":{"name":"Wabash Ave &amp; Grand Ave","capacity":"15","popularity":9,"income":"6029","outcome":"5858","latitude":"41.89173800000000000","longitude":"-87.62693700000000000","id":"199"},"200":{"name":"King Dr &amp; 47th St","capacity":"11","popularity":1,"income":"207","outcome":"216","latitude":"41.80985100000000000","longitude":"-87.61627900000000000","id":"200"},"201":{"name":"Indiana Ave &amp; 40th St","capacity":"15","popularity":1,"income":"137","outcome":"122","latitude":"41.82168000000000000","longitude":"-87.62160000000000000","id":"201"},"202":{"name":"Halsted St &amp; 18th St","capacity":"15","popularity":3,"income":"631","outcome":"726","latitude":"41.85749900000000000","longitude":"-87.64627700000000000","id":"202"},"203":{"name":"Western Ave &amp; 21st St","capacity":"15","popularity":1,"income":"242","outcome":"218","latitude":"41.85394000000000000","longitude":"-87.68524300000000000","id":"203"},"204":{"name":"Prairie Ave &amp; Garfield Blvd","capacity":"15","popularity":1,"income":"294","outcome":"239","latitude":"41.79510000000000000","longitude":"-87.61936000000000000","id":"204"},"205":{"name":"Paulina St &amp; 18th St","capacity":"15","popularity":3,"income":"657","outcome":"619","latitude":"41.85790100000000000","longitude":"-87.66874500000000000","id":"205"},"206":{"name":"Halsted St &amp; Archer Ave","capacity":"15","popularity":3,"income":"756","outcome":"694","latitude":"41.84720300000000000","longitude":"-87.64679500000000000","id":"206"},"207":{"name":"Emerald Ave &amp; 28th St","capacity":"15","popularity":2,"income":"441","outcome":"416","latitude":"41.84358000000000000","longitude":"-87.64536800000000000","id":"207"},"208":{"name":"Ashland Ave &amp; 21st St","capacity":"15","popularity":1,"income":"165","outcome":"143","latitude":"41.85381000000000000","longitude":"-87.66589700000000000","id":"208"},"209":{"name":"Normal Ave &amp; Archer Ave","capacity":"11","popularity":2,"income":"345","outcome":"425","latitude":"41.84952700000000000","longitude":"-87.64059100000000000","id":"209"},"210":{"name":"Ashland Ave &amp; Division St","capacity":"19","popularity":8,"income":"2811","outcome":"2771","latitude":"41.90345600000000000","longitude":"-87.66777000000000000","id":"210"},"211":{"name":"St Clair St &amp; Erie St","capacity":"19","popularity":9,"income":"4952","outcome":"4476","latitude":"41.89444800000000000","longitude":"-87.62266300000000000","id":"211"},"212":{"name":"Wells St &amp; Ohio St","capacity":"19","popularity":7,"income":"2618","outcome":"2759","latitude":"41.89223800000000000","longitude":"-87.63398500000000000","id":"212"},"213":{"name":"Leavitt St &amp; North Ave","capacity":"11","popularity":3,"income":"677","outcome":"747","latitude":"41.91065200000000000","longitude":"-87.68240000000000000","id":"213"},"214":{"name":"Damen Ave &amp; Grand Ave","capacity":"15","popularity":5,"income":"1260","outcome":"1316","latitude":"41.89122000000000000","longitude":"-87.67686000000000000","id":"214"},"215":{"name":"Damen Ave &amp; Madison St","capacity":"15","popularity":3,"income":"594","outcome":"640","latitude":"41.88137000000000000","longitude":"-87.67493000000000000","id":"215"},"216":{"name":"California Ave &amp; Division St","capacity":"15","popularity":5,"income":"1175","outcome":"980","latitude":"41.90302900000000000","longitude":"-87.69747400000000000","id":"216"},"217":{"name":"May St &amp; Fulton St","capacity":"15","popularity":5,"income":"1347","outcome":"1409","latitude":"41.88677300000000000","longitude":"-87.65600100000000000","id":"217"},"218":{"name":"Wells St &amp; 19th St","capacity":"11","popularity":2,"income":"309","outcome":"360","latitude":"41.85680200000000000","longitude":"-87.63387900000000000","id":"218"},"219":{"name":"Damen Ave &amp; Cortland Ave","capacity":"11","popularity":6,"income":"1683","outcome":"1670","latitude":"41.91602700000000000","longitude":"-87.67741100000000000","id":"219"},"220":{"name":"Hampden Ct &amp; Diversey Pkwy","capacity":"19","popularity":9,"income":"4950","outcome":"4352","latitude":"41.93262000000000000","longitude":"-87.64238500000000000","id":"220"},"222":{"name":"Milwaukee Ave &amp; Rockwell St","capacity":"19","popularity":2,"income":"520","outcome":"503","latitude":"41.92019500000000000","longitude":"-87.69303300000000000","id":"222"},"223":{"name":"Clifton Ave &amp; Armitage Ave","capacity":"15","popularity":6,"income":"1723","outcome":"1702","latitude":"41.91821600000000000","longitude":"-87.65693600000000000","id":"223"},"224":{"name":"Halsted St &amp; Willow St","capacity":"19","popularity":5,"income":"1316","outcome":"1282","latitude":"41.91377800000000000","longitude":"-87.64884000000000000","id":"224"},"225":{"name":"Halsted St &amp; Dickens Ave","capacity":"15","popularity":6,"income":"1643","outcome":"1636","latitude":"41.91993600000000000","longitude":"-87.64883000000000000","id":"225"},"226":{"name":"Racine Ave &amp; Belmont Ave","capacity":"15","popularity":5,"income":"1313","outcome":"1343","latitude":"41.93974300000000000","longitude":"-87.65886500000000000","id":"226"},"227":{"name":"Southport Ave &amp; Waveland Ave","capacity":"15","popularity":7,"income":"2145","outcome":"2011","latitude":"41.94815000000000000","longitude":"-87.66394000000000000","id":"227"},"228":{"name":"Damen Ave &amp; Melrose Ave","capacity":"11","popularity":4,"income":"919","outcome":"892","latitude":"41.94060000000000000","longitude":"-87.67850000000000000","id":"228"},"229":{"name":"Southport Ave &amp; Roscoe St","capacity":"19","popularity":7,"income":"2105","outcome":"1926","latitude":"41.94373900000000000","longitude":"-87.66402000000000000","id":"229"},"230":{"name":"Lincoln Ave &amp; Roscoe St","capacity":"19","popularity":6,"income":"1977","outcome":"1661","latitude":"41.94334000000000000","longitude":"-87.67097000000000000","id":"230"},"231":{"name":"Sheridan Rd &amp; Montrose Ave","capacity":"15","popularity":6,"income":"1883","outcome":"1824","latitude":"41.96167000000000000","longitude":"-87.65464000000000000","id":"231"},"232":{"name":"Pine Grove Ave &amp; Addison St","capacity":"15","popularity":7,"income":"2660","outcome":"2736","latitude":"41.94783600000000000","longitude":"-87.64541600000000000","id":"232"},"233":{"name":"Sangamon St &amp; Washington Blvd","capacity":"15","popularity":6,"income":"1651","outcome":"1797","latitude":"41.88300400000000000","longitude":"-87.65114800000000000","id":"233"},"234":{"name":"Clark St &amp; Montrose Ave","capacity":"19","popularity":4,"income":"974","outcome":"914","latitude":"41.96158800000000000","longitude":"-87.66603600000000000","id":"234"},"236":{"name":"Sedgwick St &amp; Schiller St","capacity":"15","popularity":3,"income":"622","outcome":"576","latitude":"41.90757600000000000","longitude":"-87.63851700000000000","id":"236"},"237":{"name":"Martin Luther King Dr &amp; 29th St","capacity":"15","popularity":3,"income":"623","outcome":"665","latitude":"41.84205200000000000","longitude":"-87.61700000000000000","id":"237"},"238":{"name":"Ravenswood Ave &amp; Montrose Ave","capacity":"15","popularity":4,"income":"820","outcome":"832","latitude":"41.96162600000000000","longitude":"-87.67410100000000000","id":"238"},"239":{"name":"Western Ave &amp; Leland Ave","capacity":"15","popularity":4,"income":"1022","outcome":"970","latitude":"41.96655500000000000","longitude":"-87.68848700000000000","id":"239"},"240":{"name":"Sheridan Rd &amp; Irving Park Rd","capacity":"11","popularity":7,"income":"2164","outcome":"2389","latitude":"41.95434000000000000","longitude":"-87.65460100000000000","id":"240"},"241":{"name":"Morgan St &amp; Polk St","capacity":"15","popularity":6,"income":"1793","outcome":"1749","latitude":"41.87173700000000000","longitude":"-87.65103000000000000","id":"241"},"242":{"name":"Damen Ave &amp; Leland Ave","capacity":"15","popularity":5,"income":"1033","outcome":"1070","latitude":"41.96709400000000000","longitude":"-87.67902800000000000","id":"242"},"243":{"name":"Lincoln Ave &amp; Leavitt St","capacity":"15","popularity":5,"income":"1070","outcome":"1004","latitude":"41.96239100000000000","longitude":"-87.68414600000000000","id":"243"},"244":{"name":"Ravenswood Ave &amp; Irving Park Rd","capacity":"19","popularity":5,"income":"1058","outcome":"1006","latitude":"41.95469000000000000","longitude":"-87.67393000000000000","id":"244"},"245":{"name":"Clarendon Ave &amp; Junior Ter","capacity":"15","popularity":5,"income":"1170","outcome":"1050","latitude":"41.96100400000000000","longitude":"-87.64960300000000000","id":"245"},"246":{"name":"Ashland Ave &amp; Belle Plaine Ave","capacity":"11","popularity":2,"income":"489","outcome":"536","latitude":"41.95606100000000000","longitude":"-87.66886900000000000","id":"246"},"247":{"name":"Shore Drive &amp; 55th St","capacity":"15","popularity":5,"income":"1136","outcome":"1127","latitude":"41.79521200000000000","longitude":"-87.58071500000000000","id":"247"},"248":{"name":"Woodlawn Ave &amp; 55th St","capacity":"15","popularity":4,"income":"822","outcome":"846","latitude":"41.79526400000000000","longitude":"-87.59647100000000000","id":"248"},"249":{"name":"Montrose Harbor","capacity":"15","popularity":7,"income":"2471","outcome":"2459","latitude":"41.96398200000000000","longitude":"-87.63818100000000000","id":"249"},"250":{"name":"Ashland Ave &amp; Wellington Ave","capacity":"19","popularity":5,"income":"1341","outcome":"1351","latitude":"41.93608300000000000","longitude":"-87.66980700000000000","id":"250"},"251":{"name":"Clarendon Ave &amp; Leland Ave","capacity":"15","popularity":4,"income":"1063","outcome":"966","latitude":"41.96796800000000000","longitude":"-87.65000100000000000","id":"251"},"252":{"name":"Greenwood Ave &amp; 47th St","capacity":"15","popularity":4,"income":"834","outcome":"813","latitude":"41.80983500000000000","longitude":"-87.59938300000000000","id":"252"},"253":{"name":"Clifton Ave &amp; Lawrence Ave","capacity":"15","popularity":2,"income":"511","outcome":"464","latitude":"41.96887300000000000","longitude":"-87.65885700000000000","id":"253"},"254":{"name":"Pine Grove Ave &amp; Irving Park Rd","capacity":"15","popularity":5,"income":"1482","outcome":"1392","latitude":"41.95438300000000000","longitude":"-87.64804300000000000","id":"254"},"255":{"name":"Indiana Ave &amp; Roosevelt Rd","capacity":"19","popularity":8,"income":"3868","outcome":"3903","latitude":"41.86788800000000000","longitude":"-87.62304100000000000","id":"255"},"256":{"name":"Broadway &amp; Sheridan Rd","capacity":"15","popularity":4,"income":"752","outcome":"806","latitude":"41.95283300000000000","longitude":"-87.64999300000000000","id":"256"},"257":{"name":"Lincoln Ave &amp; Waveland Ave","capacity":"15","popularity":4,"income":"822","outcome":"710","latitude":"41.94911000000000000","longitude":"-87.67511200000000000","id":"257"},"258":{"name":"Logan Blvd &amp; Elston Ave","capacity":"19","popularity":3,"income":"674","outcome":"645","latitude":"41.93058400000000000","longitude":"-87.68512600000000000","id":"258"},"259":{"name":"California Ave &amp; Francis Pl","capacity":"15","popularity":3,"income":"570","outcome":"527","latitude":"41.91855000000000000","longitude":"-87.69723000000000000","id":"259"},"260":{"name":"Kedzie Ave &amp; Milwaukee Ave","capacity":"19","popularity":4,"income":"1119","outcome":"934","latitude":"41.92956700000000000","longitude":"-87.70785700000000000","id":"260"},"261":{"name":"Hermitage Ave &amp; Polk St","capacity":"15","popularity":4,"income":"1073","outcome":"952","latitude":"41.87151400000000000","longitude":"-87.66988600000000000","id":"261"},"262":{"name":"Halsted St &amp; 37th St","capacity":"11","popularity":1,"income":"84","outcome":"91","latitude":"41.82707100000000000","longitude":"-87.64580100000000000","id":"262"},"263":{"name":"Rhodes Ave &amp; 32nd St","capacity":"11","popularity":1,"income":"256","outcome":"262","latitude":"41.83620800000000000","longitude":"-87.61353300000000000","id":"263"},"264":{"name":"Stetson Ave &amp; South Water St","capacity":"19","popularity":6,"income":"1325","outcome":"1769","latitude":"41.88686100000000000","longitude":"-87.62269400000000000","id":"264"},"265":{"name":"Cottage Grove Ave &amp; Oakwood Blvd","capacity":"15","popularity":1,"income":"259","outcome":"192","latitude":"41.82298500000000000","longitude":"-87.60710000000000000","id":"265"},"267":{"name":"Lake Park Ave &amp; 47th St","capacity":"15","popularity":1,"income":"299","outcome":"295","latitude":"41.80944300000000000","longitude":"-87.59187500000000000","id":"267"},"268":{"name":"Lake Shore Dr &amp; North Blvd","capacity":"15","popularity":8,"income":"3084","outcome":"2984","latitude":"41.91172200000000000","longitude":"-87.62680400000000000","id":"268"},"271":{"name":"Cottage Grove Ave &amp; 43rd St","capacity":"11","popularity":1,"income":"58","outcome":"62","latitude":"41.81649900000000000","longitude":"-87.60658200000000000","id":"271"},"272":{"name":"Indiana Ave &amp; 31st St","capacity":"11","popularity":1,"income":"233","outcome":"249","latitude":"41.83884200000000000","longitude":"-87.62185700000000000","id":"272"},"273":{"name":"Michigan Ave &amp; 18th St","capacity":"15","popularity":6,"income":"1547","outcome":"1546","latitude":"41.85793700000000000","longitude":"-87.62363300000000000","id":"273"},"274":{"name":"Racine Ave &amp; 15th St","capacity":"15","popularity":2,"income":"368","outcome":"406","latitude":"41.86126700000000000","longitude":"-87.65662500000000000","id":"274"},"275":{"name":"Ashland Ave &amp; 13th St","capacity":"15","popularity":1,"income":"185","outcome":"172","latitude":"41.86523400000000000","longitude":"-87.66650700000000000","id":"275"},"276":{"name":"California Ave &amp; North Ave","capacity":"11","popularity":3,"income":"518","outcome":"576","latitude":"41.91044000000000000","longitude":"-87.69720000000000000","id":"276"},"277":{"name":"Ashland Ave &amp; Grand Ave","capacity":"15","popularity":2,"income":"393","outcome":"483","latitude":"41.89107200000000000","longitude":"-87.66661100000000000","id":"277"},"278":{"name":"Wallace Ave &amp; 35th St","capacity":"15","popularity":1,"income":"163","outcome":"133","latitude":"41.83062900000000000","longitude":"-87.64129000000000000","id":"278"},"279":{"name":"Halsted St &amp; 35th St","capacity":"15","popularity":5,"income":"1089","outcome":"989","latitude":"41.83066100000000000","longitude":"-87.64717200000000000","id":"279"},"280":{"name":"Morgan St &amp; 31st St","capacity":"11","popularity":1,"income":"290","outcome":"258","latitude":"41.83780000000000000","longitude":"-87.65114000000000000","id":"280"},"281":{"name":"Western Ave &amp; 24th St","capacity":"15","popularity":1,"income":"51","outcome":"38","latitude":"41.84847000000000000","longitude":"-87.68510900000000000","id":"281"},"282":{"name":"Halsted St &amp; Maxwell St","capacity":"15","popularity":3,"income":"607","outcome":"658","latitude":"41.86458000000000000","longitude":"-87.64693000000000000","id":"282"},"283":{"name":"LaSalle St &amp; Jackson Blvd","capacity":"23","popularity":9,"income":"3879","outcome":"4126","latitude":"41.87817000000000000","longitude":"-87.63198500000000000","id":"283"},"284":{"name":"Michigan Ave &amp; Jackson Blvd","capacity":"23","popularity":8,"income":"2911","outcome":"2968","latitude":"41.87785000000000000","longitude":"-87.62408000000000000","id":"284"},"285":{"name":"Wood St &amp; Grand Ave","capacity":"15","popularity":3,"income":"562","outcome":"563","latitude":"41.89113000000000000","longitude":"-87.67203000000000000","id":"285"},"286":{"name":"Franklin St &amp; Quincy St","capacity":"15","popularity":6,"income":"1677","outcome":"2186","latitude":"41.87872400000000000","longitude":"-87.63479300000000000","id":"286"},"287":{"name":"Franklin St &amp; Arcade Pl","capacity":"23","popularity":8,"income":"3227","outcome":"4042","latitude":"41.88113100000000000","longitude":"-87.63518500000000000","id":"287"},"288":{"name":"Larrabee St &amp; Armitage Ave","capacity":"11","popularity":4,"income":"732","outcome":"795","latitude":"41.91797000000000000","longitude":"-87.64368000000000000","id":"288"},"289":{"name":"Wells St &amp; Concord Ln","capacity":"19","popularity":7,"income":"2636","outcome":"2662","latitude":"41.91220200000000000","longitude":"-87.63466400000000000","id":"289"},"290":{"name":"Kedzie Ave &amp; Palmer Ct","capacity":"15","popularity":2,"income":"400","outcome":"450","latitude":"41.92152500000000000","longitude":"-87.70732200000000000","id":"290"},"291":{"name":"Wells St &amp; Evergreen Ave","capacity":"19","popularity":6,"income":"1640","outcome":"1658","latitude":"41.90672400000000000","longitude":"-87.63483000000000000","id":"291"},"292":{"name":"Southport Ave &amp; Clark St","capacity":"11","popularity":2,"income":"378","outcome":"356","latitude":"41.95708100000000000","longitude":"-87.66419900000000000","id":"292"},"293":{"name":"Broadway &amp; Wilson Ave","capacity":"19","popularity":2,"income":"477","outcome":"496","latitude":"41.96528700000000000","longitude":"-87.65877400000000000","id":"293"},"294":{"name":"Broadway &amp; Berwyn Ave","capacity":"15","popularity":3,"income":"816","outcome":"655","latitude":"41.97835300000000000","longitude":"-87.65975300000000000","id":"294"},"295":{"name":"Broadway &amp; Argyle St","capacity":"15","popularity":2,"income":"533","outcome":"448","latitude":"41.97297200000000000","longitude":"-87.65963700000000000","id":"295"},"296":{"name":"Broadway &amp; Belmont Ave","capacity":"15","popularity":4,"income":"971","outcome":"940","latitude":"41.94010600000000000","longitude":"-87.64545100000000000","id":"296"},"297":{"name":"Paulina St &amp; Montrose Ave","capacity":"15","popularity":2,"income":"312","outcome":"329","latitude":"41.96150700000000000","longitude":"-87.67138700000000000","id":"297"},"298":{"name":"Lincoln Ave &amp; Belle Plaine Ave","capacity":"15","popularity":2,"income":"470","outcome":"414","latitude":"41.95592700000000000","longitude":"-87.67925900000000000","id":"298"},"299":{"name":"Halsted St &amp; Roscoe St","capacity":"15","popularity":4,"income":"981","outcome":"892","latitude":"41.94366200000000000","longitude":"-87.64891700000000000","id":"299"},"300":{"name":"Broadway &amp; Barry Ave","capacity":"15","popularity":6,"income":"1627","outcome":"1596","latitude":"41.93773900000000000","longitude":"-87.64409400000000000","id":"300"},"301":{"name":"Clark St &amp; Schiller St","capacity":"19","popularity":6,"income":"1589","outcome":"1765","latitude":"41.90799300000000000","longitude":"-87.63150100000000000","id":"301"},"302":{"name":"Sheffield Ave &amp; Wrightwood Ave","capacity":"19","popularity":4,"income":"1009","outcome":"1047","latitude":"41.92871200000000000","longitude":"-87.65383300000000000","id":"302"},"303":{"name":"Broadway &amp; Cornelia Ave","capacity":"15","popularity":5,"income":"1170","outcome":"1140","latitude":"41.94551200000000000","longitude":"-87.64598000000000000","id":"303"},"304":{"name":"Halsted St &amp; Waveland Ave","capacity":"15","popularity":5,"income":"1309","outcome":"1402","latitude":"41.94933300000000000","longitude":"-87.64963400000000000","id":"304"},"305":{"name":"Western Ave &amp; Division St","capacity":"15","popularity":3,"income":"582","outcome":"581","latitude":"41.90289300000000000","longitude":"-87.68727500000000000","id":"305"},"306":{"name":"Sheridan Rd &amp; Buena Ave","capacity":"15","popularity":3,"income":"615","outcome":"660","latitude":"41.95840000000000000","longitude":"-87.65423000000000000","id":"306"},"307":{"name":"Southport Ave &amp; Clybourn Ave","capacity":"15","popularity":4,"income":"819","outcome":"743","latitude":"41.92100400000000000","longitude":"-87.66325700000000000","id":"307"},"308":{"name":"Seeley Ave &amp; Roscoe St","capacity":"11","popularity":2,"income":"537","outcome":"434","latitude":"41.94340300000000000","longitude":"-87.67961800000000000","id":"308"},"309":{"name":"Leavitt St &amp; Armitage Ave","capacity":"11","popularity":2,"income":"463","outcome":"505","latitude":"41.91780500000000000","longitude":"-87.68243700000000000","id":"309"},"310":{"name":"Damen Ave &amp; Charleston St","capacity":"11","popularity":3,"income":"657","outcome":"609","latitude":"41.92008200000000000","longitude":"-87.67785500000000000","id":"310"},"311":{"name":"Lincoln Ave &amp; Eastwood Ave","capacity":"15","popularity":4,"income":"974","outcome":"881","latitude":"41.96583000000000000","longitude":"-87.68651000000000000","id":"311"},"312":{"name":"Clarendon Ave &amp; Gordon Ter","capacity":"15","popularity":1,"income":"230","outcome":"217","latitude":"41.95787900000000000","longitude":"-87.64951900000000000","id":"312"},"313":{"name":"Lakeview Ave &amp; Fullerton Pkwy","capacity":"19","popularity":7,"income":"1983","outcome":"1970","latitude":"41.92585800000000000","longitude":"-87.63897300000000000","id":"313"},"314":{"name":"Ravenswood Ave &amp; Berteau Ave","capacity":"15","popularity":2,"income":"393","outcome":"447","latitude":"41.95792100000000000","longitude":"-87.67356700000000000","id":"314"},"315":{"name":"Leavitt St &amp; Hirsch St","capacity":"11","popularity":2,"income":"300","outcome":"299","latitude":"41.90671700000000000","longitude":"-87.68277900000000000","id":"315"},"316":{"name":"Damen Ave &amp; Sunnyside Ave","capacity":"19","popularity":1,"income":"291","outcome":"276","latitude":"41.96325000000000000","longitude":"-87.67925800000000000","id":"316"},"317":{"name":"Wood St &amp; Taylor St","capacity":"15","popularity":2,"income":"533","outcome":"490","latitude":"41.86915400000000000","longitude":"-87.67104500000000000","id":"317"},"318":{"name":"Southport Ave &amp; Irving Park Rd","capacity":"15","popularity":3,"income":"703","outcome":"725","latitude":"41.95417700000000000","longitude":"-87.66435800000000000","id":"318"},"319":{"name":"Greenview Ave &amp; Diversey Pkwy","capacity":"15","popularity":3,"income":"576","outcome":"541","latitude":"41.93259500000000000","longitude":"-87.66593900000000000","id":"319"},"320":{"name":"Loomis St &amp; Lexington St","capacity":"15","popularity":3,"income":"594","outcome":"622","latitude":"41.87218700000000000","longitude":"-87.66150100000000000","id":"320"},"321":{"name":"Wabash Ave &amp; 8th St","capacity":"19","popularity":6,"income":"1917","outcome":"1888","latitude":"41.87196200000000000","longitude":"-87.62610600000000000","id":"321"},"322":{"name":"Kimbark Ave &amp; 53rd St","capacity":"15","popularity":2,"income":"529","outcome":"514","latitude":"41.79956800000000000","longitude":"-87.59474700000000000","id":"322"},"323":{"name":"Sheridan Rd &amp; Lawrence Ave","capacity":"15","popularity":2,"income":"360","outcome":"333","latitude":"41.96951700000000000","longitude":"-87.65469100000000000","id":"323"},"324":{"name":"Stockton Dr &amp; Wrightwood Ave","capacity":"15","popularity":3,"income":"717","outcome":"734","latitude":"41.93132000000000000","longitude":"-87.63874200000000000","id":"324"},"325":{"name":"Clark St &amp; Winnemac Ave","capacity":"15","popularity":4,"income":"846","outcome":"803","latitude":"41.97338500000000000","longitude":"-87.66836500000000000","id":"325"},"326":{"name":"Clark St &amp; Leland Ave","capacity":"11","popularity":2,"income":"473","outcome":"488","latitude":"41.96709600000000000","longitude":"-87.66742900000000000","id":"326"},"327":{"name":"Sheffield Ave &amp; Webster Ave","capacity":"19","popularity":5,"income":"1032","outcome":"1043","latitude":"41.92168700000000000","longitude":"-87.65371400000000000","id":"327"},"328":{"name":"Ellis Ave &amp; 58th St","capacity":"15","popularity":5,"income":"1278","outcome":"1248","latitude":"41.78874600000000000","longitude":"-87.60133400000000000","id":"328"},"329":{"name":"Lake Shore Dr &amp; Diversey Pkwy","capacity":"15","popularity":4,"income":"943","outcome":"856","latitude":"41.93268400000000000","longitude":"-87.63625000000000000","id":"329"},"330":{"name":"Lincoln Ave &amp; Addison St","capacity":"19","popularity":2,"income":"434","outcome":"399","latitude":"41.94617600000000000","longitude":"-87.67330800000000000","id":"330"},"331":{"name":"Halsted St &amp; Blackhawk St","capacity":"19","popularity":4,"income":"723","outcome":"758","latitude":"41.90854000000000000","longitude":"-87.64856800000000000","id":"331"},"332":{"name":"Halsted St &amp; Diversey Pkwy","capacity":"15","popularity":4,"income":"1023","outcome":"987","latitude":"41.93334100000000000","longitude":"-87.64874700000000000","id":"332"},"333":{"name":"Ashland Ave &amp; Blackhawk St","capacity":"15","popularity":2,"income":"563","outcome":"492","latitude":"41.90706600000000000","longitude":"-87.66725200000000000","id":"333"},"334":{"name":"Lake Shore Dr &amp; Belmont Ave","capacity":"19","popularity":5,"income":"1267","outcome":"1185","latitude":"41.94077500000000000","longitude":"-87.63919200000000000","id":"334"},"335":{"name":"Calumet Ave &amp; 35th St","capacity":"15","popularity":1,"income":"33","outcome":"33","latitude":"41.83137900000000000","longitude":"-87.61803400000000000","id":"335"},"336":{"name":"Cottage Grove Ave &amp; 47th St","capacity":"15","popularity":1,"income":"30","outcome":"36","latitude":"41.80985500000000000","longitude":"-87.60675500000000000","id":"336"},"337":{"name":"Clark St &amp; Chicago Ave","capacity":"19","popularity":4,"income":"996","outcome":"1045","latitude":"41.89654400000000000","longitude":"-87.63093100000000000","id":"337"},"338":{"name":"Calumet Ave &amp; 18th St","capacity":"15","popularity":5,"income":"1317","outcome":"1332","latitude":"41.85761100000000000","longitude":"-87.61940700000000000","id":"338"},"339":{"name":"Emerald Ave &amp; 31st St","capacity":"11","popularity":1,"income":"222","outcome":"256","latitude":"41.83819800000000000","longitude":"-87.64514300000000000","id":"339"},"340":{"name":"Clark St &amp; Wrightwood Ave","capacity":"15","popularity":4,"income":"787","outcome":"756","latitude":"41.92954600000000000","longitude":"-87.64311800000000000","id":"340"},"341":{"name":"Adler Planetarium","capacity":"19","popularity":5,"income":"1131","outcome":"1175","latitude":"41.86609500000000000","longitude":"-87.60726700000000000","id":"341"},"342":{"name":"Wolcott Ave &amp; Polk St","capacity":"15","popularity":2,"income":"421","outcome":"481","latitude":"41.87126200000000000","longitude":"-87.67368800000000000","id":"342"},"343":{"name":"Racine Ave &amp; Wrightwood Ave","capacity":"15","popularity":1,"income":"220","outcome":"229","latitude":"41.92888700000000000","longitude":"-87.65897100000000000","id":"343"},"344":{"name":"Wolcott Ave &amp; Lawrence Ave","capacity":"15","popularity":3,"income":"573","outcome":"608","latitude":"41.96864100000000000","longitude":"-87.67633500000000000","id":"344"},"345":{"name":"Lake Park Ave &amp; 56th St","capacity":"15","popularity":1,"income":"276","outcome":"264","latitude":"41.79324200000000000","longitude":"-87.58778200000000000","id":"345"},"346":{"name":"Ada St &amp; Washington Blvd","capacity":"15","popularity":3,"income":"543","outcome":"557","latitude":"41.88283000000000000","longitude":"-87.66120600000000000","id":"346"},"347":{"name":"Ashland Ave &amp; Grace St","capacity":"15","popularity":1,"income":"226","outcome":"244","latitude":"41.95068700000000000","longitude":"-87.66870000000000000","id":"347"},"348":{"name":"California Ave &amp; 21st St","capacity":"15","popularity":1,"income":"298","outcome":"278","latitude":"41.85401600000000000","longitude":"-87.69544500000000000","id":"348"},"349":{"name":"Halsted St &amp; Wrightwood Ave","capacity":"15","popularity":2,"income":"419","outcome":"437","latitude":"41.92914300000000000","longitude":"-87.64907700000000000","id":"349"},"350":{"name":"Ashland Ave &amp; Chicago Ave","capacity":"15","popularity":4,"income":"1053","outcome":"1009","latitude":"41.89596600000000000","longitude":"-87.66774700000000000","id":"350"},"351":{"name":"Cottage Grove Ave &amp; 51st St","capacity":"15","popularity":1,"income":"270","outcome":"286","latitude":"41.80303800000000000","longitude":"-87.60661500000000000","id":"351"}}}
+{
+	"stationsData": {
+		"5": {
+			"name": "State St &amp; Harrison St",
+			"capacity": "19",
+			"popularity": 9,
+			"income": "5071",
+			"outcome": "4988",
+			"latitude": "41.87395806000000000",
+			"longitude": "-87.62773949000000000",
+			"id": "5"
+		},
+		"13": {
+			"name": "Wilton Ave &amp; Diversey Pkwy",
+			"capacity": "19",
+			"popularity": 9,
+			"income": "4271",
+			"outcome": "3684",
+			"latitude": "41.93250008000000000",
+			"longitude": "-87.65268082000000000",
+			"id": "13"
+		},
+		"14": {
+			"name": "Morgan St &amp; 18th St",
+			"capacity": "15",
+			"popularity": 6,
+			"income": "1428",
+			"outcome": "1500",
+			"latitude": "41.85808600000000000",
+			"longitude": "-87.65107300000000000",
+			"id": "14"
+		},
+		"15": {
+			"name": "Racine Ave &amp; 18th St",
+			"capacity": "15",
+			"popularity": 6,
+			"income": "1612",
+			"outcome": "1656",
+			"latitude": "41.85818061000000000",
+			"longitude": "-87.65648665000000000",
+			"id": "15"
+		},
+		"16": {
+			"name": "Wood St &amp; North Ave",
+			"capacity": "15",
+			"popularity": 6,
+			"income": "1612",
+			"outcome": "1724",
+			"latitude": "41.91032900000000000",
+			"longitude": "-87.67251600000000000",
+			"id": "16"
+		},
+		"17": {
+			"name": "Wood St &amp; Division St",
+			"capacity": "15",
+			"popularity": 8,
+			"income": "2813",
+			"outcome": "2677",
+			"latitude": "41.90332000000000000",
+			"longitude": "-87.67273000000000000",
+			"id": "17"
+		},
+		"19": {
+			"name": "Loomis St &amp; Taylor St",
+			"capacity": "15",
+			"popularity": 6,
+			"income": "1862",
+			"outcome": "1809",
+			"latitude": "41.86941700000000000",
+			"longitude": "-87.66099600000000000",
+			"id": "19"
+		},
+		"20": {
+			"name": "Sheffield Ave &amp; Kingsbury St",
+			"capacity": "15",
+			"popularity": 8,
+			"income": "3002",
+			"outcome": "2727",
+			"latitude": "41.90959193000000000",
+			"longitude": "-87.65349723000000000",
+			"id": "20"
+		},
+		"21": {
+			"name": "Aberdeen St &amp; Jackson Blvd",
+			"capacity": "15",
+			"popularity": 7,
+			"income": "2548",
+			"outcome": "2746",
+			"latitude": "41.87772613000000000",
+			"longitude": "-87.65478743000000000",
+			"id": "21"
+		},
+		"22": {
+			"name": "May St &amp; Taylor St",
+			"capacity": "15",
+			"popularity": 7,
+			"income": "2249",
+			"outcome": "2174",
+			"latitude": "41.86948210000000000",
+			"longitude": "-87.65548640000000000",
+			"id": "22"
+		},
+		"23": {
+			"name": "Orleans St &amp; Elm St",
+			"capacity": "15",
+			"popularity": 7,
+			"income": "2002",
+			"outcome": "1987",
+			"latitude": "41.90292400000000000",
+			"longitude": "-87.63771500000000000",
+			"id": "23"
+		},
+		"24": {
+			"name": "Fairbanks Ct &amp; Grand Ave",
+			"capacity": "15",
+			"popularity": 10,
+			"income": "6902",
+			"outcome": "6795",
+			"latitude": "41.89186000000000000",
+			"longitude": "-87.62062000000000000",
+			"id": "24"
+		},
+		"25": {
+			"name": "Michigan Ave &amp; Pearson St",
+			"capacity": "23",
+			"popularity": 10,
+			"income": "8513",
+			"outcome": "8360",
+			"latitude": "41.89766000000000000",
+			"longitude": "-87.62351000000000000",
+			"id": "25"
+		},
+		"26": {
+			"name": "McClurg Ct &amp; Illinois St",
+			"capacity": "23",
+			"popularity": 10,
+			"income": "11311",
+			"outcome": "10670",
+			"latitude": "41.89102000000000000",
+			"longitude": "-87.61730000000000000",
+			"id": "26"
+		},
+		"27": {
+			"name": "Larrabee St &amp; North Ave",
+			"capacity": "19",
+			"popularity": 5,
+			"income": "1451",
+			"outcome": "1376",
+			"latitude": "41.91021000000000000",
+			"longitude": "-87.64350000000000000",
+			"id": "27"
+		},
+		"28": {
+			"name": "Larrabee St &amp; Menomonee St",
+			"capacity": "15",
+			"popularity": 7,
+			"income": "2072",
+			"outcome": "2056",
+			"latitude": "41.91468000000000000",
+			"longitude": "-87.64332000000000000",
+			"id": "28"
+		},
+		"29": {
+			"name": "Noble St &amp; Milwaukee Ave",
+			"capacity": "15",
+			"popularity": 7,
+			"income": "2742",
+			"outcome": "2635",
+			"latitude": "41.90068000000000000",
+			"longitude": "-87.66260000000000000",
+			"id": "29"
+		},
+		"30": {
+			"name": "Ashland Ave &amp; Augusta Blvd",
+			"capacity": "15",
+			"popularity": 7,
+			"income": "2011",
+			"outcome": "2055",
+			"latitude": "41.89964300000000000",
+			"longitude": "-87.66770000000000000",
+			"id": "30"
+		},
+		"31": {
+			"name": "Franklin St &amp; Chicago Ave",
+			"capacity": "23",
+			"popularity": 9,
+			"income": "5016",
+			"outcome": "5133",
+			"latitude": "41.89680204000000000",
+			"longitude": "-87.63563839000000000",
+			"id": "31"
+		},
+		"32": {
+			"name": "Racine Ave &amp; Congress Pkwy",
+			"capacity": "19",
+			"popularity": 6,
+			"income": "1596",
+			"outcome": "1825",
+			"latitude": "41.87464000000000000",
+			"longitude": "-87.65703000000000000",
+			"id": "32"
+		},
+		"33": {
+			"name": "State St &amp; Van Buren St",
+			"capacity": "27",
+			"popularity": 9,
+			"income": "5797",
+			"outcome": "5938",
+			"latitude": "41.87718100000000000",
+			"longitude": "-87.62784400000000000",
+			"id": "33"
+		},
+		"34": {
+			"name": "Cannon Dr &amp; Fullerton Ave",
+			"capacity": "15",
+			"popularity": 9,
+			"income": "6485",
+			"outcome": "6077",
+			"latitude": "41.92675599000000000",
+			"longitude": "-87.63442878000000000",
+			"id": "34"
+		},
+		"35": {
+			"name": "Streeter Dr &amp; Illinois St",
+			"capacity": "35",
+			"popularity": 10,
+			"income": "18544",
+			"outcome": "16710",
+			"latitude": "41.89107100000000000",
+			"longitude": "-87.61220000000000000",
+			"id": "35"
+		},
+		"36": {
+			"name": "Franklin St &amp; Jackson Blvd",
+			"capacity": "27",
+			"popularity": 10,
+			"income": "9128",
+			"outcome": "9717",
+			"latitude": "41.87770796000000000",
+			"longitude": "-87.63532114000000000",
+			"id": "36"
+		},
+		"37": {
+			"name": "Dearborn St &amp; Adams St",
+			"capacity": "19",
+			"popularity": 10,
+			"income": "7125",
+			"outcome": "8041",
+			"latitude": "41.87935636000000000",
+			"longitude": "-87.62979104000000000",
+			"id": "37"
+		},
+		"42": {
+			"name": "Wabash Ave &amp; Cermak Rd",
+			"capacity": "15",
+			"popularity": 6,
+			"income": "1785",
+			"outcome": "1781",
+			"latitude": "41.85323876000000000",
+			"longitude": "-87.62533709000000000",
+			"id": "42"
+		},
+		"43": {
+			"name": "Michigan Ave &amp; Washington St",
+			"capacity": "43",
+			"popularity": 10,
+			"income": "8054",
+			"outcome": "8579",
+			"latitude": "41.88389277000000000",
+			"longitude": "-87.62464914000000000",
+			"id": "43"
+		},
+		"44": {
+			"name": "State St &amp; Randolph St",
+			"capacity": "27",
+			"popularity": 10,
+			"income": "6250",
+			"outcome": "6819",
+			"latitude": "41.88473020000000000",
+			"longitude": "-87.62773357000000000",
+			"id": "44"
+		},
+		"45": {
+			"name": "Michigan Ave &amp; Congress Pkwy",
+			"capacity": "15",
+			"popularity": 10,
+			"income": "6363",
+			"outcome": "6424",
+			"latitude": "41.87606560000000000",
+			"longitude": "-87.62443336000000000",
+			"id": "45"
+		},
+		"46": {
+			"name": "Wells St &amp; Walton St",
+			"capacity": "19",
+			"popularity": 8,
+			"income": "2884",
+			"outcome": "3228",
+			"latitude": "41.89993001000000000",
+			"longitude": "-87.63443007000000000",
+			"id": "46"
+		},
+		"47": {
+			"name": "State St &amp; Kinzie St",
+			"capacity": "15",
+			"popularity": 10,
+			"income": "8497",
+			"outcome": "7868",
+			"latitude": "41.88918000000000000",
+			"longitude": "-87.62770000000000000",
+			"id": "47"
+		},
+		"48": {
+			"name": "Larrabee St &amp; Kingsbury St",
+			"capacity": "27",
+			"popularity": 10,
+			"income": "6404",
+			"outcome": "6313",
+			"latitude": "41.89776400000000000",
+			"longitude": "-87.64288400000000000",
+			"id": "48"
+		},
+		"49": {
+			"name": "Dearborn St &amp; Monroe St",
+			"capacity": "23",
+			"popularity": 10,
+			"income": "7209",
+			"outcome": "7963",
+			"latitude": "41.88131982000000000",
+			"longitude": "-87.62952092000000000",
+			"id": "49"
+		},
+		"50": {
+			"name": "Clark St &amp; Congress Pkwy",
+			"capacity": "27",
+			"popularity": 9,
+			"income": "4864",
+			"outcome": "5040",
+			"latitude": "41.87593267000000000",
+			"longitude": "-87.63058454000000000",
+			"id": "50"
+		},
+		"51": {
+			"name": "Clark St &amp; Randolph St",
+			"capacity": "31",
+			"popularity": 10,
+			"income": "6939",
+			"outcome": "7196",
+			"latitude": "41.88457623000000000",
+			"longitude": "-87.63188991000000000",
+			"id": "51"
+		},
+		"52": {
+			"name": "Michigan Ave &amp; Lake St",
+			"capacity": "23",
+			"popularity": 10,
+			"income": "10354",
+			"outcome": "10654",
+			"latitude": "41.88605812000000000",
+			"longitude": "-87.62428934000000000",
+			"id": "52"
+		},
+		"53": {
+			"name": "Wells St &amp; Erie St",
+			"capacity": "19",
+			"popularity": 9,
+			"income": "5551",
+			"outcome": "5869",
+			"latitude": "41.89383200000000000",
+			"longitude": "-87.63419500000000000",
+			"id": "53"
+		},
+		"54": {
+			"name": "Ogden Ave &amp; Chicago Ave",
+			"capacity": "19",
+			"popularity": 7,
+			"income": "2534",
+			"outcome": "2532",
+			"latitude": "41.89636246000000000",
+			"longitude": "-87.65406127000000000",
+			"id": "54"
+		},
+		"55": {
+			"name": "Halsted St &amp; James M Rochford St",
+			"capacity": "15",
+			"popularity": 6,
+			"income": "1664",
+			"outcome": "1783",
+			"latitude": "41.86586100000000000",
+			"longitude": "-87.64661100000000000",
+			"id": "55"
+		},
+		"56": {
+			"name": "Desplaines St &amp; Kinzie St",
+			"capacity": "19",
+			"popularity": 9,
+			"income": "5484",
+			"outcome": "5822",
+			"latitude": "41.88871604000000000",
+			"longitude": "-87.64444785000000000",
+			"id": "56"
+		},
+		"57": {
+			"name": "Clinton St &amp; Roosevelt Rd",
+			"capacity": "15",
+			"popularity": 7,
+			"income": "2673",
+			"outcome": "2299",
+			"latitude": "41.86711778000000000",
+			"longitude": "-87.64108796000000000",
+			"id": "57"
+		},
+		"58": {
+			"name": "Ashland Ave &amp; Armitage Ave",
+			"capacity": "15",
+			"popularity": 8,
+			"income": "3428",
+			"outcome": "3732",
+			"latitude": "41.91785887000000000",
+			"longitude": "-87.66891900000000000",
+			"id": "58"
+		},
+		"59": {
+			"name": "Wabash Ave &amp; Roosevelt Rd",
+			"capacity": "19",
+			"popularity": 10,
+			"income": "8512",
+			"outcome": "7946",
+			"latitude": "41.86717300000000000",
+			"longitude": "-87.62595501000000000",
+			"id": "59"
+		},
+		"60": {
+			"name": "Dayton St &amp; North Ave",
+			"capacity": "19",
+			"popularity": 9,
+			"income": "4205",
+			"outcome": "4005",
+			"latitude": "41.91057803000000000",
+			"longitude": "-87.64942193000000000",
+			"id": "60"
+		},
+		"61": {
+			"name": "Wood St &amp; Milwaukee Ave",
+			"capacity": "15",
+			"popularity": 7,
+			"income": "2842",
+			"outcome": "2565",
+			"latitude": "41.90765500000000000",
+			"longitude": "-87.67255200000000000",
+			"id": "61"
+		},
+		"62": {
+			"name": "McCormick Place",
+			"capacity": "15",
+			"popularity": 8,
+			"income": "3826",
+			"outcome": "3990",
+			"latitude": "41.85137517000000000",
+			"longitude": "-87.61883465000000000",
+			"id": "62"
+		},
+		"66": {
+			"name": "Clinton St &amp; Lake St",
+			"capacity": "19",
+			"popularity": 9,
+			"income": "5955",
+			"outcome": "6288",
+			"latitude": "41.88583274000000000",
+			"longitude": "-87.64138231000000000",
+			"id": "66"
+		},
+		"67": {
+			"name": "Sheffield Ave &amp; Fullerton Ave",
+			"capacity": "15",
+			"popularity": 9,
+			"income": "6006",
+			"outcome": "5905",
+			"latitude": "41.92560188000000000",
+			"longitude": "-87.65370804000000000",
+			"id": "67"
+		},
+		"68": {
+			"name": "Clinton St &amp; Tilden St",
+			"capacity": "23",
+			"popularity": 7,
+			"income": "2057",
+			"outcome": "2242",
+			"latitude": "41.87588500000000000",
+			"longitude": "-87.64079500000000000",
+			"id": "68"
+		},
+		"69": {
+			"name": "Damen Ave &amp; Pierce Ave",
+			"capacity": "19",
+			"popularity": 9,
+			"income": "6083",
+			"outcome": "5332",
+			"latitude": "41.90939601000000000",
+			"longitude": "-87.67769193000000000",
+			"id": "69"
+		},
+		"71": {
+			"name": "Morgan St &amp; Lake St",
+			"capacity": "15",
+			"popularity": 8,
+			"income": "2882",
+			"outcome": "3013",
+			"latitude": "41.88548331000000000",
+			"longitude": "-87.65230486000000000",
+			"id": "71"
+		},
+		"72": {
+			"name": "State St &amp; 16th St",
+			"capacity": "15",
+			"popularity": 8,
+			"income": "3122",
+			"outcome": "2809",
+			"latitude": "41.86012138000000000",
+			"longitude": "-87.62772919000000000",
+			"id": "72"
+		},
+		"73": {
+			"name": "Jefferson St &amp; Monroe St",
+			"capacity": "19",
+			"popularity": 9,
+			"income": "3731",
+			"outcome": "4226",
+			"latitude": "41.88042200000000000",
+			"longitude": "-87.64274600000000000",
+			"id": "73"
+		},
+		"74": {
+			"name": "Kingsbury St &amp; Erie St",
+			"capacity": "23",
+			"popularity": 9,
+			"income": "5500",
+			"outcome": "5929",
+			"latitude": "41.89384315000000000",
+			"longitude": "-87.64185116000000000",
+			"id": "74"
+		},
+		"75": {
+			"name": "Canal St &amp; Jackson Blvd",
+			"capacity": "35",
+			"popularity": 10,
+			"income": "10066",
+			"outcome": "10088",
+			"latitude": "41.87811421000000000",
+			"longitude": "-87.63997112000000000",
+			"id": "75"
+		},
+		"76": {
+			"name": "Lake Shore Dr &amp; Monroe St",
+			"capacity": "11",
+			"popularity": 10,
+			"income": "15254",
+			"outcome": "15482",
+			"latitude": "41.88105000000000000",
+			"longitude": "-87.61697000000000000",
+			"id": "76"
+		},
+		"77": {
+			"name": "Clinton St &amp; Madison St",
+			"capacity": "23",
+			"popularity": 10,
+			"income": "8093",
+			"outcome": "8289",
+			"latitude": "41.88158240000000000",
+			"longitude": "-87.64127743000000000",
+			"id": "77"
+		},
+		"80": {
+			"name": "Aberdeen St &amp; Madison St",
+			"capacity": "19",
+			"popularity": 9,
+			"income": "4493",
+			"outcome": "4147",
+			"latitude": "41.88148700000000000",
+			"longitude": "-87.65475200000000000",
+			"id": "80"
+		},
+		"81": {
+			"name": "Daley Center Plaza",
+			"capacity": "47",
+			"popularity": 10,
+			"income": "7928",
+			"outcome": "8725",
+			"latitude": "41.88433700000000000",
+			"longitude": "-87.63018300000000000",
+			"id": "81"
+		},
+		"84": {
+			"name": "Green St &amp; Milwaukee Ave",
+			"capacity": "19",
+			"popularity": 7,
+			"income": "2120",
+			"outcome": "2234",
+			"latitude": "41.89173300000000000",
+			"longitude": "-87.64872700000000000",
+			"id": "84"
+		},
+		"85": {
+			"name": "Michigan Ave &amp; Oak St",
+			"capacity": "15",
+			"popularity": 10,
+			"income": "14158",
+			"outcome": "13088",
+			"latitude": "41.90096039000000000",
+			"longitude": "-87.62377664000000000",
+			"id": "85"
+		},
+		"86": {
+			"name": "Eckhart Park",
+			"capacity": "15",
+			"popularity": 6,
+			"income": "1994",
+			"outcome": "1913",
+			"latitude": "41.89637337000000000",
+			"longitude": "-87.66098386000000000",
+			"id": "86"
+		},
+		"87": {
+			"name": "Racine Ave &amp; Fullerton Ave",
+			"capacity": "19",
+			"popularity": 7,
+			"income": "2400",
+			"outcome": "2447",
+			"latitude": "41.92556258000000000",
+			"longitude": "-87.65840426000000000",
+			"id": "87"
+		},
+		"88": {
+			"name": "May St &amp; Randolph St",
+			"capacity": "15",
+			"popularity": 8,
+			"income": "2847",
+			"outcome": "3013",
+			"latitude": "41.88397000000000000",
+			"longitude": "-87.65568800000000000",
+			"id": "88"
+		},
+		"90": {
+			"name": "Millennium Park",
+			"capacity": "35",
+			"popularity": 10,
+			"income": "18195",
+			"outcome": "17065",
+			"latitude": "41.88103170000000000",
+			"longitude": "-87.62408432000000000",
+			"id": "90"
+		},
+		"91": {
+			"name": "Clinton St &amp; Washington Blvd",
+			"capacity": "31",
+			"popularity": 10,
+			"income": "13853",
+			"outcome": "14910",
+			"latitude": "41.88338000000000000",
+			"longitude": "-87.64117000000000000",
+			"id": "91"
+		},
+		"92": {
+			"name": "Carpenter St &amp; Huron St",
+			"capacity": "19",
+			"popularity": 6,
+			"income": "1526",
+			"outcome": "1547",
+			"latitude": "41.89455600000000000",
+			"longitude": "-87.65344900000000000",
+			"id": "92"
+		},
+		"93": {
+			"name": "Sheffield Ave &amp; Willow St",
+			"capacity": "15",
+			"popularity": 7,
+			"income": "2641",
+			"outcome": "2650",
+			"latitude": "41.91368800000000000",
+			"longitude": "-87.65285500000000000",
+			"id": "93"
+		},
+		"94": {
+			"name": "Lincoln Ave &amp; Armitage Ave",
+			"capacity": "19",
+			"popularity": 9,
+			"income": "6280",
+			"outcome": "6027",
+			"latitude": "41.91827300000000000",
+			"longitude": "-87.63811600000000000",
+			"id": "94"
+		},
+		"97": {
+			"name": "Museum Campus",
+			"capacity": "19",
+			"popularity": 10,
+			"income": "13549",
+			"outcome": "12635",
+			"latitude": "41.86521200000000000",
+			"longitude": "-87.61775900000000000",
+			"id": "97"
+		},
+		"98": {
+			"name": "LaSalle St &amp; Washington St",
+			"capacity": "15",
+			"popularity": 9,
+			"income": "4229",
+			"outcome": "5126",
+			"latitude": "41.88266400000000000",
+			"longitude": "-87.63253000000000000",
+			"id": "98"
+		},
+		"99": {
+			"name": "Lake Shore Dr &amp; Ohio St",
+			"capacity": "19",
+			"popularity": 10,
+			"income": "6954",
+			"outcome": "6905",
+			"latitude": "41.89257000000000000",
+			"longitude": "-87.61449200000000000",
+			"id": "99"
+		},
+		"100": {
+			"name": "Orleans St &amp; Merchandise Mart Plaza",
+			"capacity": "23",
+			"popularity": 10,
+			"income": "6551",
+			"outcome": "6134",
+			"latitude": "41.88824300000000000",
+			"longitude": "-87.63639000000000000",
+			"id": "100"
+		},
+		"106": {
+			"name": "State St &amp; Pearson St",
+			"capacity": "27",
+			"popularity": 7,
+			"income": "2519",
+			"outcome": "2391",
+			"latitude": "41.89744800000000000",
+			"longitude": "-87.62872200000000000",
+			"id": "106"
+		},
+		"108": {
+			"name": "Halsted St &amp; Polk St",
+			"capacity": "19",
+			"popularity": 7,
+			"income": "2080",
+			"outcome": "2068",
+			"latitude": "41.87184000000000000",
+			"longitude": "-87.64664000000000000",
+			"id": "108"
+		},
+		"109": {
+			"name": "900 W Harrison",
+			"capacity": "19",
+			"popularity": 6,
+			"income": "1500",
+			"outcome": "1616",
+			"latitude": "41.87450000000000000",
+			"longitude": "-87.64980000000000000",
+			"id": "109"
+		},
+		"110": {
+			"name": "State St &amp; Erie St",
+			"capacity": "23",
+			"popularity": 10,
+			"income": "6592",
+			"outcome": "6229",
+			"latitude": "41.89397500000000000",
+			"longitude": "-87.62862300000000000",
+			"id": "110"
+		},
+		"111": {
+			"name": "Sedgwick St &amp; Huron St",
+			"capacity": "19",
+			"popularity": 7,
+			"income": "2055",
+			"outcome": "2275",
+			"latitude": "41.89466600000000000",
+			"longitude": "-87.63843700000000000",
+			"id": "111"
+		},
+		"112": {
+			"name": "Green St &amp; Randolph St",
+			"capacity": "15",
+			"popularity": 8,
+			"income": "2829",
+			"outcome": "2726",
+			"latitude": "41.88407800000000000",
+			"longitude": "-87.64868400000000000",
+			"id": "112"
+		},
+		"113": {
+			"name": "Bissell St &amp; Armitage Ave",
+			"capacity": "15",
+			"popularity": 6,
+			"income": "1672",
+			"outcome": "1598",
+			"latitude": "41.91844000000000000",
+			"longitude": "-87.65222000000000000",
+			"id": "113"
+		},
+		"114": {
+			"name": "Sheffield Ave &amp; Addison St",
+			"capacity": "27",
+			"popularity": 8,
+			"income": "3478",
+			"outcome": "3215",
+			"latitude": "41.94688000000000000",
+			"longitude": "-87.65445000000000000",
+			"id": "114"
+		},
+		"115": {
+			"name": "Sheffield Ave &amp; Wellington Ave",
+			"capacity": "23",
+			"popularity": 8,
+			"income": "3666",
+			"outcome": "3440",
+			"latitude": "41.93625300000000000",
+			"longitude": "-87.65356600000000000",
+			"id": "115"
+		},
+		"116": {
+			"name": "Western Ave &amp; Winnebago Ave",
+			"capacity": "15",
+			"popularity": 5,
+			"income": "1212",
+			"outcome": "1152",
+			"latitude": "41.91553300000000000",
+			"longitude": "-87.68705100000000000",
+			"id": "116"
+		},
+		"117": {
+			"name": "Wilton Ave &amp; Belmont Ave",
+			"capacity": "23",
+			"popularity": 7,
+			"income": "2530",
+			"outcome": "2651",
+			"latitude": "41.94018000000000000",
+			"longitude": "-87.65304000000000000",
+			"id": "117"
+		},
+		"118": {
+			"name": "Sedgwick St &amp; North Ave",
+			"capacity": "19",
+			"popularity": 8,
+			"income": "2850",
+			"outcome": "3055",
+			"latitude": "41.91057900000000000",
+			"longitude": "-87.63861800000000000",
+			"id": "118"
+		},
+		"119": {
+			"name": "Ashland Ave &amp; Lake St",
+			"capacity": "19",
+			"popularity": 4,
+			"income": "913",
+			"outcome": "877",
+			"latitude": "41.88541000000000000",
+			"longitude": "-87.66732000000000000",
+			"id": "119"
+		},
+		"120": {
+			"name": "Wentworth Ave &amp; Archer Ave",
+			"capacity": "15",
+			"popularity": 5,
+			"income": "1457",
+			"outcome": "1302",
+			"latitude": "41.85456400000000000",
+			"longitude": "-87.63193700000000000",
+			"id": "120"
+		},
+		"121": {
+			"name": "Blackstone Ave &amp; Hyde Park Blvd",
+			"capacity": "15",
+			"popularity": 4,
+			"income": "798",
+			"outcome": "852",
+			"latitude": "41.80256200000000000",
+			"longitude": "-87.59036800000000000",
+			"id": "121"
+		},
+		"122": {
+			"name": "Congress Pkwy &amp; Ogden Ave",
+			"capacity": "15",
+			"popularity": 4,
+			"income": "959",
+			"outcome": "962",
+			"latitude": "41.87501000000000000",
+			"longitude": "-87.67328000000000000",
+			"id": "122"
+		},
+		"123": {
+			"name": "California Ave &amp; Milwaukee Ave",
+			"capacity": "15",
+			"popularity": 8,
+			"income": "2979",
+			"outcome": "2730",
+			"latitude": "41.92269500000000000",
+			"longitude": "-87.69715300000000000",
+			"id": "123"
+		},
+		"124": {
+			"name": "Damen Ave &amp; Cullerton St",
+			"capacity": "15",
+			"popularity": 2,
+			"income": "401",
+			"outcome": "367",
+			"latitude": "41.85504800000000000",
+			"longitude": "-87.67572600000000000",
+			"id": "124"
+		},
+		"126": {
+			"name": "Clark St &amp; North Ave",
+			"capacity": "15",
+			"popularity": 10,
+			"income": "7126",
+			"outcome": "6687",
+			"latitude": "41.91179100000000000",
+			"longitude": "-87.63184100000000000",
+			"id": "126"
+		},
+		"127": {
+			"name": "Lincoln Ave &amp; Fullerton Ave",
+			"capacity": "15",
+			"popularity": 2,
+			"income": "317",
+			"outcome": "324",
+			"latitude": "41.92590500000000000",
+			"longitude": "-87.64926000000000000",
+			"id": "127"
+		},
+		"128": {
+			"name": "Damen Ave &amp; Chicago Ave",
+			"capacity": "15",
+			"popularity": 7,
+			"income": "2892",
+			"outcome": "2545",
+			"latitude": "41.89576900000000000",
+			"longitude": "-87.67722000000000000",
+			"id": "128"
+		},
+		"129": {
+			"name": "Blue Island Ave &amp; 18th St",
+			"capacity": "15",
+			"popularity": 5,
+			"income": "1073",
+			"outcome": "1162",
+			"latitude": "41.85755600000000000",
+			"longitude": "-87.66153500000000000",
+			"id": "129"
+		},
+		"130": {
+			"name": "Damen Ave &amp; Division St",
+			"capacity": "15",
+			"popularity": 8,
+			"income": "3037",
+			"outcome": "3187",
+			"latitude": "41.90331000000000000",
+			"longitude": "-87.67695000000000000",
+			"id": "130"
+		},
+		"131": {
+			"name": "Lincoln Ave &amp; Belmont Ave",
+			"capacity": "15",
+			"popularity": 3,
+			"income": "662",
+			"outcome": "590",
+			"latitude": "41.93936500000000000",
+			"longitude": "-87.66838500000000000",
+			"id": "131"
+		},
+		"132": {
+			"name": "Wentworth Ave &amp; 24th St",
+			"capacity": "15",
+			"popularity": 1,
+			"income": "178",
+			"outcome": "157",
+			"latitude": "41.84923700000000000",
+			"longitude": "-87.63171500000000000",
+			"id": "132"
+		},
+		"134": {
+			"name": "Peoria St &amp; Jackson Blvd",
+			"capacity": "19",
+			"popularity": 8,
+			"income": "3686",
+			"outcome": "3801",
+			"latitude": "41.87774900000000000",
+			"longitude": "-87.64963300000000000",
+			"id": "134"
+		},
+		"135": {
+			"name": "Halsted St &amp; 21st St",
+			"capacity": "11",
+			"popularity": 2,
+			"income": "549",
+			"outcome": "518",
+			"latitude": "41.85378000000000000",
+			"longitude": "-87.64665000000000000",
+			"id": "135"
+		},
+		"136": {
+			"name": "Racine Ave &amp; 13th St",
+			"capacity": "15",
+			"popularity": 1,
+			"income": "311",
+			"outcome": "264",
+			"latitude": "41.86505400000000000",
+			"longitude": "-87.65695900000000000",
+			"id": "136"
+		},
+		"137": {
+			"name": "Morgan Ave &amp; 14th Pl",
+			"capacity": "15",
+			"popularity": 6,
+			"income": "1431",
+			"outcome": "1537",
+			"latitude": "41.86237800000000000",
+			"longitude": "-87.65106200000000000",
+			"id": "137"
+		},
+		"138": {
+			"name": "Clybourn Ave &amp; Division St",
+			"capacity": "15",
+			"popularity": 5,
+			"income": "1318",
+			"outcome": "1393",
+			"latitude": "41.90450900000000000",
+			"longitude": "-87.64050000000000000",
+			"id": "138"
+		},
+		"140": {
+			"name": "Dearborn Pkwy &amp; Delaware Pl",
+			"capacity": "19",
+			"popularity": 9,
+			"income": "5357",
+			"outcome": "4953",
+			"latitude": "41.89900700000000000",
+			"longitude": "-87.62992800000000000",
+			"id": "140"
+		},
+		"141": {
+			"name": "Clark St &amp; Lincoln Ave",
+			"capacity": "19",
+			"popularity": 9,
+			"income": "4857",
+			"outcome": "4864",
+			"latitude": "41.91568900000000000",
+			"longitude": "-87.63460000000000000",
+			"id": "141"
+		},
+		"143": {
+			"name": "Sedgwick St &amp; Webster Ave",
+			"capacity": "15",
+			"popularity": 9,
+			"income": "4096",
+			"outcome": "3936",
+			"latitude": "41.92197000000000000",
+			"longitude": "-87.63854000000000000",
+			"id": "143"
+		},
+		"144": {
+			"name": "Larrabee St &amp; Webster Ave",
+			"capacity": "15",
+			"popularity": 8,
+			"income": "3227",
+			"outcome": "3224",
+			"latitude": "41.92175000000000000",
+			"longitude": "-87.64401000000000000",
+			"id": "144"
+		},
+		"146": {
+			"name": "Loomis St &amp; Jackson Blvd",
+			"capacity": "11",
+			"popularity": 4,
+			"income": "1061",
+			"outcome": "985",
+			"latitude": "41.87794500000000000",
+			"longitude": "-87.66200700000000000",
+			"id": "146"
+		},
+		"147": {
+			"name": "Indiana Ave &amp; 26th St",
+			"capacity": "15",
+			"popularity": 3,
+			"income": "614",
+			"outcome": "733",
+			"latitude": "41.84570000000000000",
+			"longitude": "-87.62248000000000000",
+			"id": "147"
+		},
+		"148": {
+			"name": "State St &amp; 33rd St",
+			"capacity": "11",
+			"popularity": 3,
+			"income": "585",
+			"outcome": "584",
+			"latitude": "41.83473400000000000",
+			"longitude": "-87.62581300000000000",
+			"id": "148"
+		},
+		"149": {
+			"name": "Calumet Ave &amp; 33rd St",
+			"capacity": "11",
+			"popularity": 3,
+			"income": "649",
+			"outcome": "759",
+			"latitude": "41.83490000000000000",
+			"longitude": "-87.61793000000000000",
+			"id": "149"
+		},
+		"150": {
+			"name": "Fort Dearborn Dr &amp; 31st St",
+			"capacity": "11",
+			"popularity": 8,
+			"income": "3462",
+			"outcome": "3464",
+			"latitude": "41.83855600000000000",
+			"longitude": "-87.60821800000000000",
+			"id": "150"
+		},
+		"152": {
+			"name": "Lincoln Ave &amp; Diversey Pkwy",
+			"capacity": "15",
+			"popularity": 7,
+			"income": "2013",
+			"outcome": "2174",
+			"latitude": "41.93222500000000000",
+			"longitude": "-87.65861700000000000",
+			"id": "152"
+		},
+		"153": {
+			"name": "Southport Ave &amp; Wellington Ave",
+			"capacity": "19",
+			"popularity": 8,
+			"income": "3225",
+			"outcome": "3197",
+			"latitude": "41.93584000000000000",
+			"longitude": "-87.66370000000000000",
+			"id": "153"
+		},
+		"154": {
+			"name": "Southport Ave &amp; Belmont Ave",
+			"capacity": "15",
+			"popularity": 6,
+			"income": "1920",
+			"outcome": "1826",
+			"latitude": "41.93949000000000000",
+			"longitude": "-87.66378000000000000",
+			"id": "154"
+		},
+		"156": {
+			"name": "Clark St &amp; Wellington Ave",
+			"capacity": "15",
+			"popularity": 8,
+			"income": "3355",
+			"outcome": "3080",
+			"latitude": "41.93649682000000000",
+			"longitude": "-87.64753866000000000",
+			"id": "156"
+		},
+		"157": {
+			"name": "Lake Shore Dr &amp; Wellington Ave",
+			"capacity": "15",
+			"popularity": 9,
+			"income": "4696",
+			"outcome": "4347",
+			"latitude": "41.93666900000000000",
+			"longitude": "-87.63679400000000000",
+			"id": "157"
+		},
+		"158": {
+			"name": "Milwaukee Ave &amp; Wabansia Ave",
+			"capacity": "15",
+			"popularity": 6,
+			"income": "1548",
+			"outcome": "1556",
+			"latitude": "41.91261600000000000",
+			"longitude": "-87.68139100000000000",
+			"id": "158"
+		},
+		"159": {
+			"name": "Claremont Ave &amp; Hirsch St",
+			"capacity": "11",
+			"popularity": 2,
+			"income": "479",
+			"outcome": "615",
+			"latitude": "41.90778100000000000",
+			"longitude": "-87.68585400000000000",
+			"id": "159"
+		},
+		"160": {
+			"name": "Campbell Ave &amp; North Ave",
+			"capacity": "15",
+			"popularity": 3,
+			"income": "731",
+			"outcome": "706",
+			"latitude": "41.91053500000000000",
+			"longitude": "-87.68955600000000000",
+			"id": "160"
+		},
+		"162": {
+			"name": "Damen Ave &amp; Wellington Ave",
+			"capacity": "15",
+			"popularity": 5,
+			"income": "1405",
+			"outcome": "1240",
+			"latitude": "41.93588000000000000",
+			"longitude": "-87.67842000000000000",
+			"id": "162"
+		},
+		"163": {
+			"name": "Paulina St &amp; Diversey Pkwy",
+			"capacity": "15",
+			"popularity": 4,
+			"income": "784",
+			"outcome": "762",
+			"latitude": "41.93186000000000000",
+			"longitude": "-87.67079000000000000",
+			"id": "163"
+		},
+		"164": {
+			"name": "Franklin St &amp; Lake St",
+			"capacity": "23",
+			"popularity": 9,
+			"income": "3943",
+			"outcome": "4799",
+			"latitude": "41.88583700000000000",
+			"longitude": "-87.63550000000000000",
+			"id": "164"
+		},
+		"165": {
+			"name": "Clark St &amp; Waveland Ave",
+			"capacity": "19",
+			"popularity": 7,
+			"income": "2502",
+			"outcome": "2490",
+			"latitude": "41.94893000000000000",
+			"longitude": "-87.65775000000000000",
+			"id": "165"
+		},
+		"166": {
+			"name": "Ashland Ave &amp; Wrightwood Ave",
+			"capacity": "15",
+			"popularity": 5,
+			"income": "1116",
+			"outcome": "1103",
+			"latitude": "41.92883000000000000",
+			"longitude": "-87.66850700000000000",
+			"id": "166"
+		},
+		"167": {
+			"name": "Damen Ave &amp; Coulter St",
+			"capacity": "11",
+			"popularity": 1,
+			"income": "128",
+			"outcome": "100",
+			"latitude": "41.84920000000000000",
+			"longitude": "-87.67564000000000000",
+			"id": "167"
+		},
+		"168": {
+			"name": "Michigan Ave &amp; 14th St",
+			"capacity": "19",
+			"popularity": 8,
+			"income": "3010",
+			"outcome": "2875",
+			"latitude": "41.86405900000000000",
+			"longitude": "-87.62372700000000000",
+			"id": "168"
+		},
+		"169": {
+			"name": "Canal St &amp; Harrison St",
+			"capacity": "15",
+			"popularity": 5,
+			"income": "1199",
+			"outcome": "1433",
+			"latitude": "41.87433700000000000",
+			"longitude": "-87.63956600000000000",
+			"id": "169"
+		},
+		"170": {
+			"name": "Clinton St &amp; 18th St",
+			"capacity": "15",
+			"popularity": 3,
+			"income": "710",
+			"outcome": "718",
+			"latitude": "41.85795000000000000",
+			"longitude": "-87.64082600000000000",
+			"id": "170"
+		},
+		"171": {
+			"name": "May St &amp; Cullerton St",
+			"capacity": "11",
+			"popularity": 1,
+			"income": "211",
+			"outcome": "206",
+			"latitude": "41.85513600000000000",
+			"longitude": "-87.65412700000000000",
+			"id": "171"
+		},
+		"173": {
+			"name": "Mies van der Rohe Way &amp; Chicago Ave",
+			"capacity": "15",
+			"popularity": 9,
+			"income": "5515",
+			"outcome": "5275",
+			"latitude": "41.89691000000000000",
+			"longitude": "-87.62174300000000000",
+			"id": "173"
+		},
+		"174": {
+			"name": "Canal St &amp; Madison St",
+			"capacity": "23",
+			"popularity": 10,
+			"income": "9008",
+			"outcome": "8028",
+			"latitude": "41.88209100000000000",
+			"longitude": "-87.63983300000000000",
+			"id": "174"
+		},
+		"175": {
+			"name": "Wells St &amp; Polk St",
+			"capacity": "19",
+			"popularity": 7,
+			"income": "2230",
+			"outcome": "2465",
+			"latitude": "41.87237300000000000",
+			"longitude": "-87.63352300000000000",
+			"id": "175"
+		},
+		"176": {
+			"name": "Clark St &amp; Elm St",
+			"capacity": "19",
+			"popularity": 9,
+			"income": "6064",
+			"outcome": "5846",
+			"latitude": "41.90323300000000000",
+			"longitude": "-87.63125300000000000",
+			"id": "176"
+		},
+		"177": {
+			"name": "Theater on the Lake",
+			"capacity": "15",
+			"popularity": 10,
+			"income": "9571",
+			"outcome": "9082",
+			"latitude": "41.92627700000000000",
+			"longitude": "-87.63083400000000000",
+			"id": "177"
+		},
+		"178": {
+			"name": "State St &amp; 19th St",
+			"capacity": "15",
+			"popularity": 5,
+			"income": "1151",
+			"outcome": "1290",
+			"latitude": "41.85659400000000000",
+			"longitude": "-87.62754200000000000",
+			"id": "178"
+		},
+		"179": {
+			"name": "Martin Luther King Dr &amp; Oakwood Blvd",
+			"capacity": "15",
+			"popularity": 3,
+			"income": "725",
+			"outcome": "732",
+			"latitude": "41.82256000000000000",
+			"longitude": "-87.61615000000000000",
+			"id": "179"
+		},
+		"181": {
+			"name": "LaSalle St &amp; Illinois St",
+			"capacity": "19",
+			"popularity": 10,
+			"income": "6730",
+			"outcome": "6399",
+			"latitude": "41.89074900000000000",
+			"longitude": "-87.63206000000000000",
+			"id": "181"
+		},
+		"183": {
+			"name": "Damen Ave &amp; Augusta Blvd",
+			"capacity": "15",
+			"popularity": 7,
+			"income": "1940",
+			"outcome": "2112",
+			"latitude": "41.89971400000000000",
+			"longitude": "-87.67723400000000000",
+			"id": "183"
+		},
+		"184": {
+			"name": "State St &amp; 35th St",
+			"capacity": "19",
+			"popularity": 3,
+			"income": "650",
+			"outcome": "740",
+			"latitude": "41.83104000000000000",
+			"longitude": "-87.62688000000000000",
+			"id": "184"
+		},
+		"185": {
+			"name": "Stave St &amp; Armitage Ave",
+			"capacity": "11",
+			"popularity": 4,
+			"income": "756",
+			"outcome": "755",
+			"latitude": "41.91774100000000000",
+			"longitude": "-87.69139200000000000",
+			"id": "185"
+		},
+		"186": {
+			"name": "Ogden Ave &amp; Race Ave",
+			"capacity": "15",
+			"popularity": 6,
+			"income": "1653",
+			"outcome": "1580",
+			"latitude": "41.89179500000000000",
+			"longitude": "-87.65875100000000000",
+			"id": "186"
+		},
+		"188": {
+			"name": "Greenview Ave &amp; Fullerton Ave",
+			"capacity": "15",
+			"popularity": 5,
+			"income": "1428",
+			"outcome": "1371",
+			"latitude": "41.92533000000000000",
+			"longitude": "-87.66580000000000000",
+			"id": "188"
+		},
+		"190": {
+			"name": "Southport Ave &amp; Wrightwood Ave",
+			"capacity": "15",
+			"popularity": 6,
+			"income": "1823",
+			"outcome": "1977",
+			"latitude": "41.92888000000000000",
+			"longitude": "-87.66317000000000000",
+			"id": "190"
+		},
+		"191": {
+			"name": "Canal St &amp; Monroe St",
+			"capacity": "23",
+			"popularity": 8,
+			"income": "2846",
+			"outcome": "4190",
+			"latitude": "41.88070000000000000",
+			"longitude": "-87.63947000000000000",
+			"id": "191"
+		},
+		"192": {
+			"name": "Canal St &amp; Adams St",
+			"capacity": "27",
+			"popularity": 9,
+			"income": "6009",
+			"outcome": "6435",
+			"latitude": "41.87923000000000000",
+			"longitude": "-87.64001500000000000",
+			"id": "192"
+		},
+		"193": {
+			"name": "State St &amp; 29th St",
+			"capacity": "15",
+			"popularity": 1,
+			"income": "174",
+			"outcome": "149",
+			"latitude": "41.84170700000000000",
+			"longitude": "-87.62693800000000000",
+			"id": "193"
+		},
+		"194": {
+			"name": "State St &amp; Wacker Dr",
+			"capacity": "11",
+			"popularity": 8,
+			"income": "3475",
+			"outcome": "3789",
+			"latitude": "41.88715500000000000",
+			"longitude": "-87.62775000000000000",
+			"id": "194"
+		},
+		"195": {
+			"name": "Columbus Dr &amp; Randolph St",
+			"capacity": "23",
+			"popularity": 9,
+			"income": "4736",
+			"outcome": "6188",
+			"latitude": "41.88530000000000000",
+			"longitude": "-87.62077000000000000",
+			"id": "195"
+		},
+		"196": {
+			"name": "Cityfront Plaza &amp; N Water St",
+			"capacity": "19",
+			"popularity": 8,
+			"income": "3127",
+			"outcome": "3258",
+			"latitude": "41.88987500000000000",
+			"longitude": "-87.62199400000000000",
+			"id": "196"
+		},
+		"197": {
+			"name": "Michigan Ave &amp; Madison St",
+			"capacity": "19",
+			"popularity": 8,
+			"income": "2260",
+			"outcome": "3264",
+			"latitude": "41.88213400000000000",
+			"longitude": "-87.62512500000000000",
+			"id": "197"
+		},
+		"198": {
+			"name": "Halsted St &amp; Madison St",
+			"capacity": "19",
+			"popularity": 8,
+			"income": "3211",
+			"outcome": "2849",
+			"latitude": "41.88175000000000000",
+			"longitude": "-87.64780000000000000",
+			"id": "198"
+		},
+		"199": {
+			"name": "Wabash Ave &amp; Grand Ave",
+			"capacity": "15",
+			"popularity": 9,
+			"income": "6029",
+			"outcome": "5858",
+			"latitude": "41.89173800000000000",
+			"longitude": "-87.62693700000000000",
+			"id": "199"
+		},
+		"200": {
+			"name": "King Dr &amp; 47th St",
+			"capacity": "11",
+			"popularity": 1,
+			"income": "207",
+			"outcome": "216",
+			"latitude": "41.80985100000000000",
+			"longitude": "-87.61627900000000000",
+			"id": "200"
+		},
+		"201": {
+			"name": "Indiana Ave &amp; 40th St",
+			"capacity": "15",
+			"popularity": 1,
+			"income": "137",
+			"outcome": "122",
+			"latitude": "41.82168000000000000",
+			"longitude": "-87.62160000000000000",
+			"id": "201"
+		},
+		"202": {
+			"name": "Halsted St &amp; 18th St",
+			"capacity": "15",
+			"popularity": 3,
+			"income": "631",
+			"outcome": "726",
+			"latitude": "41.85749900000000000",
+			"longitude": "-87.64627700000000000",
+			"id": "202"
+		},
+		"203": {
+			"name": "Western Ave &amp; 21st St",
+			"capacity": "15",
+			"popularity": 1,
+			"income": "242",
+			"outcome": "218",
+			"latitude": "41.85394000000000000",
+			"longitude": "-87.68524300000000000",
+			"id": "203"
+		},
+		"204": {
+			"name": "Prairie Ave &amp; Garfield Blvd",
+			"capacity": "15",
+			"popularity": 1,
+			"income": "294",
+			"outcome": "239",
+			"latitude": "41.79510000000000000",
+			"longitude": "-87.61936000000000000",
+			"id": "204"
+		},
+		"205": {
+			"name": "Paulina St &amp; 18th St",
+			"capacity": "15",
+			"popularity": 3,
+			"income": "657",
+			"outcome": "619",
+			"latitude": "41.85790100000000000",
+			"longitude": "-87.66874500000000000",
+			"id": "205"
+		},
+		"206": {
+			"name": "Halsted St &amp; Archer Ave",
+			"capacity": "15",
+			"popularity": 3,
+			"income": "756",
+			"outcome": "694",
+			"latitude": "41.84720300000000000",
+			"longitude": "-87.64679500000000000",
+			"id": "206"
+		},
+		"207": {
+			"name": "Emerald Ave &amp; 28th St",
+			"capacity": "15",
+			"popularity": 2,
+			"income": "441",
+			"outcome": "416",
+			"latitude": "41.84358000000000000",
+			"longitude": "-87.64536800000000000",
+			"id": "207"
+		},
+		"208": {
+			"name": "Ashland Ave &amp; 21st St",
+			"capacity": "15",
+			"popularity": 1,
+			"income": "165",
+			"outcome": "143",
+			"latitude": "41.85381000000000000",
+			"longitude": "-87.66589700000000000",
+			"id": "208"
+		},
+		"209": {
+			"name": "Normal Ave &amp; Archer Ave",
+			"capacity": "11",
+			"popularity": 2,
+			"income": "345",
+			"outcome": "425",
+			"latitude": "41.84952700000000000",
+			"longitude": "-87.64059100000000000",
+			"id": "209"
+		},
+		"210": {
+			"name": "Ashland Ave &amp; Division St",
+			"capacity": "19",
+			"popularity": 8,
+			"income": "2811",
+			"outcome": "2771",
+			"latitude": "41.90345600000000000",
+			"longitude": "-87.66777000000000000",
+			"id": "210"
+		},
+		"211": {
+			"name": "St Clair St &amp; Erie St",
+			"capacity": "19",
+			"popularity": 9,
+			"income": "4952",
+			"outcome": "4476",
+			"latitude": "41.89444800000000000",
+			"longitude": "-87.62266300000000000",
+			"id": "211"
+		},
+		"212": {
+			"name": "Wells St &amp; Ohio St",
+			"capacity": "19",
+			"popularity": 7,
+			"income": "2618",
+			"outcome": "2759",
+			"latitude": "41.89223800000000000",
+			"longitude": "-87.63398500000000000",
+			"id": "212"
+		},
+		"213": {
+			"name": "Leavitt St &amp; North Ave",
+			"capacity": "11",
+			"popularity": 3,
+			"income": "677",
+			"outcome": "747",
+			"latitude": "41.91065200000000000",
+			"longitude": "-87.68240000000000000",
+			"id": "213"
+		},
+		"214": {
+			"name": "Damen Ave &amp; Grand Ave",
+			"capacity": "15",
+			"popularity": 5,
+			"income": "1260",
+			"outcome": "1316",
+			"latitude": "41.89122000000000000",
+			"longitude": "-87.67686000000000000",
+			"id": "214"
+		},
+		"215": {
+			"name": "Damen Ave &amp; Madison St",
+			"capacity": "15",
+			"popularity": 3,
+			"income": "594",
+			"outcome": "640",
+			"latitude": "41.88137000000000000",
+			"longitude": "-87.67493000000000000",
+			"id": "215"
+		},
+		"216": {
+			"name": "California Ave &amp; Division St",
+			"capacity": "15",
+			"popularity": 5,
+			"income": "1175",
+			"outcome": "980",
+			"latitude": "41.90302900000000000",
+			"longitude": "-87.69747400000000000",
+			"id": "216"
+		},
+		"217": {
+			"name": "May St &amp; Fulton St",
+			"capacity": "15",
+			"popularity": 5,
+			"income": "1347",
+			"outcome": "1409",
+			"latitude": "41.88677300000000000",
+			"longitude": "-87.65600100000000000",
+			"id": "217"
+		},
+		"218": {
+			"name": "Wells St &amp; 19th St",
+			"capacity": "11",
+			"popularity": 2,
+			"income": "309",
+			"outcome": "360",
+			"latitude": "41.85680200000000000",
+			"longitude": "-87.63387900000000000",
+			"id": "218"
+		},
+		"219": {
+			"name": "Damen Ave &amp; Cortland Ave",
+			"capacity": "11",
+			"popularity": 6,
+			"income": "1683",
+			"outcome": "1670",
+			"latitude": "41.91602700000000000",
+			"longitude": "-87.67741100000000000",
+			"id": "219"
+		},
+		"220": {
+			"name": "Hampden Ct &amp; Diversey Pkwy",
+			"capacity": "19",
+			"popularity": 9,
+			"income": "4950",
+			"outcome": "4352",
+			"latitude": "41.93262000000000000",
+			"longitude": "-87.64238500000000000",
+			"id": "220"
+		},
+		"222": {
+			"name": "Milwaukee Ave &amp; Rockwell St",
+			"capacity": "19",
+			"popularity": 2,
+			"income": "520",
+			"outcome": "503",
+			"latitude": "41.92019500000000000",
+			"longitude": "-87.69303300000000000",
+			"id": "222"
+		},
+		"223": {
+			"name": "Clifton Ave &amp; Armitage Ave",
+			"capacity": "15",
+			"popularity": 6,
+			"income": "1723",
+			"outcome": "1702",
+			"latitude": "41.91821600000000000",
+			"longitude": "-87.65693600000000000",
+			"id": "223"
+		},
+		"224": {
+			"name": "Halsted St &amp; Willow St",
+			"capacity": "19",
+			"popularity": 5,
+			"income": "1316",
+			"outcome": "1282",
+			"latitude": "41.91377800000000000",
+			"longitude": "-87.64884000000000000",
+			"id": "224"
+		},
+		"225": {
+			"name": "Halsted St &amp; Dickens Ave",
+			"capacity": "15",
+			"popularity": 6,
+			"income": "1643",
+			"outcome": "1636",
+			"latitude": "41.91993600000000000",
+			"longitude": "-87.64883000000000000",
+			"id": "225"
+		},
+		"226": {
+			"name": "Racine Ave &amp; Belmont Ave",
+			"capacity": "15",
+			"popularity": 5,
+			"income": "1313",
+			"outcome": "1343",
+			"latitude": "41.93974300000000000",
+			"longitude": "-87.65886500000000000",
+			"id": "226"
+		},
+		"227": {
+			"name": "Southport Ave &amp; Waveland Ave",
+			"capacity": "15",
+			"popularity": 7,
+			"income": "2145",
+			"outcome": "2011",
+			"latitude": "41.94815000000000000",
+			"longitude": "-87.66394000000000000",
+			"id": "227"
+		},
+		"228": {
+			"name": "Damen Ave &amp; Melrose Ave",
+			"capacity": "11",
+			"popularity": 4,
+			"income": "919",
+			"outcome": "892",
+			"latitude": "41.94060000000000000",
+			"longitude": "-87.67850000000000000",
+			"id": "228"
+		},
+		"229": {
+			"name": "Southport Ave &amp; Roscoe St",
+			"capacity": "19",
+			"popularity": 7,
+			"income": "2105",
+			"outcome": "1926",
+			"latitude": "41.94373900000000000",
+			"longitude": "-87.66402000000000000",
+			"id": "229"
+		},
+		"230": {
+			"name": "Lincoln Ave &amp; Roscoe St",
+			"capacity": "19",
+			"popularity": 6,
+			"income": "1977",
+			"outcome": "1661",
+			"latitude": "41.94334000000000000",
+			"longitude": "-87.67097000000000000",
+			"id": "230"
+		},
+		"231": {
+			"name": "Sheridan Rd &amp; Montrose Ave",
+			"capacity": "15",
+			"popularity": 6,
+			"income": "1883",
+			"outcome": "1824",
+			"latitude": "41.96167000000000000",
+			"longitude": "-87.65464000000000000",
+			"id": "231"
+		},
+		"232": {
+			"name": "Pine Grove Ave &amp; Addison St",
+			"capacity": "15",
+			"popularity": 7,
+			"income": "2660",
+			"outcome": "2736",
+			"latitude": "41.94783600000000000",
+			"longitude": "-87.64541600000000000",
+			"id": "232"
+		},
+		"233": {
+			"name": "Sangamon St &amp; Washington Blvd",
+			"capacity": "15",
+			"popularity": 6,
+			"income": "1651",
+			"outcome": "1797",
+			"latitude": "41.88300400000000000",
+			"longitude": "-87.65114800000000000",
+			"id": "233"
+		},
+		"234": {
+			"name": "Clark St &amp; Montrose Ave",
+			"capacity": "19",
+			"popularity": 4,
+			"income": "974",
+			"outcome": "914",
+			"latitude": "41.96158800000000000",
+			"longitude": "-87.66603600000000000",
+			"id": "234"
+		},
+		"236": {
+			"name": "Sedgwick St &amp; Schiller St",
+			"capacity": "15",
+			"popularity": 3,
+			"income": "622",
+			"outcome": "576",
+			"latitude": "41.90757600000000000",
+			"longitude": "-87.63851700000000000",
+			"id": "236"
+		},
+		"237": {
+			"name": "Martin Luther King Dr &amp; 29th St",
+			"capacity": "15",
+			"popularity": 3,
+			"income": "623",
+			"outcome": "665",
+			"latitude": "41.84205200000000000",
+			"longitude": "-87.61700000000000000",
+			"id": "237"
+		},
+		"238": {
+			"name": "Ravenswood Ave &amp; Montrose Ave",
+			"capacity": "15",
+			"popularity": 4,
+			"income": "820",
+			"outcome": "832",
+			"latitude": "41.96162600000000000",
+			"longitude": "-87.67410100000000000",
+			"id": "238"
+		},
+		"239": {
+			"name": "Western Ave &amp; Leland Ave",
+			"capacity": "15",
+			"popularity": 4,
+			"income": "1022",
+			"outcome": "970",
+			"latitude": "41.96655500000000000",
+			"longitude": "-87.68848700000000000",
+			"id": "239"
+		},
+		"240": {
+			"name": "Sheridan Rd &amp; Irving Park Rd",
+			"capacity": "11",
+			"popularity": 7,
+			"income": "2164",
+			"outcome": "2389",
+			"latitude": "41.95434000000000000",
+			"longitude": "-87.65460100000000000",
+			"id": "240"
+		},
+		"241": {
+			"name": "Morgan St &amp; Polk St",
+			"capacity": "15",
+			"popularity": 6,
+			"income": "1793",
+			"outcome": "1749",
+			"latitude": "41.87173700000000000",
+			"longitude": "-87.65103000000000000",
+			"id": "241"
+		},
+		"242": {
+			"name": "Damen Ave &amp; Leland Ave",
+			"capacity": "15",
+			"popularity": 5,
+			"income": "1033",
+			"outcome": "1070",
+			"latitude": "41.96709400000000000",
+			"longitude": "-87.67902800000000000",
+			"id": "242"
+		},
+		"243": {
+			"name": "Lincoln Ave &amp; Leavitt St",
+			"capacity": "15",
+			"popularity": 5,
+			"income": "1070",
+			"outcome": "1004",
+			"latitude": "41.96239100000000000",
+			"longitude": "-87.68414600000000000",
+			"id": "243"
+		},
+		"244": {
+			"name": "Ravenswood Ave &amp; Irving Park Rd",
+			"capacity": "19",
+			"popularity": 5,
+			"income": "1058",
+			"outcome": "1006",
+			"latitude": "41.95469000000000000",
+			"longitude": "-87.67393000000000000",
+			"id": "244"
+		},
+		"245": {
+			"name": "Clarendon Ave &amp; Junior Ter",
+			"capacity": "15",
+			"popularity": 5,
+			"income": "1170",
+			"outcome": "1050",
+			"latitude": "41.96100400000000000",
+			"longitude": "-87.64960300000000000",
+			"id": "245"
+		},
+		"246": {
+			"name": "Ashland Ave &amp; Belle Plaine Ave",
+			"capacity": "11",
+			"popularity": 2,
+			"income": "489",
+			"outcome": "536",
+			"latitude": "41.95606100000000000",
+			"longitude": "-87.66886900000000000",
+			"id": "246"
+		},
+		"247": {
+			"name": "Shore Drive &amp; 55th St",
+			"capacity": "15",
+			"popularity": 5,
+			"income": "1136",
+			"outcome": "1127",
+			"latitude": "41.79521200000000000",
+			"longitude": "-87.58071500000000000",
+			"id": "247"
+		},
+		"248": {
+			"name": "Woodlawn Ave &amp; 55th St",
+			"capacity": "15",
+			"popularity": 4,
+			"income": "822",
+			"outcome": "846",
+			"latitude": "41.79526400000000000",
+			"longitude": "-87.59647100000000000",
+			"id": "248"
+		},
+		"249": {
+			"name": "Montrose Harbor",
+			"capacity": "15",
+			"popularity": 7,
+			"income": "2471",
+			"outcome": "2459",
+			"latitude": "41.96398200000000000",
+			"longitude": "-87.63818100000000000",
+			"id": "249"
+		},
+		"250": {
+			"name": "Ashland Ave &amp; Wellington Ave",
+			"capacity": "19",
+			"popularity": 5,
+			"income": "1341",
+			"outcome": "1351",
+			"latitude": "41.93608300000000000",
+			"longitude": "-87.66980700000000000",
+			"id": "250"
+		},
+		"251": {
+			"name": "Clarendon Ave &amp; Leland Ave",
+			"capacity": "15",
+			"popularity": 4,
+			"income": "1063",
+			"outcome": "966",
+			"latitude": "41.96796800000000000",
+			"longitude": "-87.65000100000000000",
+			"id": "251"
+		},
+		"252": {
+			"name": "Greenwood Ave &amp; 47th St",
+			"capacity": "15",
+			"popularity": 4,
+			"income": "834",
+			"outcome": "813",
+			"latitude": "41.80983500000000000",
+			"longitude": "-87.59938300000000000",
+			"id": "252"
+		},
+		"253": {
+			"name": "Clifton Ave &amp; Lawrence Ave",
+			"capacity": "15",
+			"popularity": 2,
+			"income": "511",
+			"outcome": "464",
+			"latitude": "41.96887300000000000",
+			"longitude": "-87.65885700000000000",
+			"id": "253"
+		},
+		"254": {
+			"name": "Pine Grove Ave &amp; Irving Park Rd",
+			"capacity": "15",
+			"popularity": 5,
+			"income": "1482",
+			"outcome": "1392",
+			"latitude": "41.95438300000000000",
+			"longitude": "-87.64804300000000000",
+			"id": "254"
+		},
+		"255": {
+			"name": "Indiana Ave &amp; Roosevelt Rd",
+			"capacity": "19",
+			"popularity": 8,
+			"income": "3868",
+			"outcome": "3903",
+			"latitude": "41.86788800000000000",
+			"longitude": "-87.62304100000000000",
+			"id": "255"
+		},
+		"256": {
+			"name": "Broadway &amp; Sheridan Rd",
+			"capacity": "15",
+			"popularity": 4,
+			"income": "752",
+			"outcome": "806",
+			"latitude": "41.95283300000000000",
+			"longitude": "-87.64999300000000000",
+			"id": "256"
+		},
+		"257": {
+			"name": "Lincoln Ave &amp; Waveland Ave",
+			"capacity": "15",
+			"popularity": 4,
+			"income": "822",
+			"outcome": "710",
+			"latitude": "41.94911000000000000",
+			"longitude": "-87.67511200000000000",
+			"id": "257"
+		},
+		"258": {
+			"name": "Logan Blvd &amp; Elston Ave",
+			"capacity": "19",
+			"popularity": 3,
+			"income": "674",
+			"outcome": "645",
+			"latitude": "41.93058400000000000",
+			"longitude": "-87.68512600000000000",
+			"id": "258"
+		},
+		"259": {
+			"name": "California Ave &amp; Francis Pl",
+			"capacity": "15",
+			"popularity": 3,
+			"income": "570",
+			"outcome": "527",
+			"latitude": "41.91855000000000000",
+			"longitude": "-87.69723000000000000",
+			"id": "259"
+		},
+		"260": {
+			"name": "Kedzie Ave &amp; Milwaukee Ave",
+			"capacity": "19",
+			"popularity": 4,
+			"income": "1119",
+			"outcome": "934",
+			"latitude": "41.92956700000000000",
+			"longitude": "-87.70785700000000000",
+			"id": "260"
+		},
+		"261": {
+			"name": "Hermitage Ave &amp; Polk St",
+			"capacity": "15",
+			"popularity": 4,
+			"income": "1073",
+			"outcome": "952",
+			"latitude": "41.87151400000000000",
+			"longitude": "-87.66988600000000000",
+			"id": "261"
+		},
+		"262": {
+			"name": "Halsted St &amp; 37th St",
+			"capacity": "11",
+			"popularity": 1,
+			"income": "84",
+			"outcome": "91",
+			"latitude": "41.82707100000000000",
+			"longitude": "-87.64580100000000000",
+			"id": "262"
+		},
+		"263": {
+			"name": "Rhodes Ave &amp; 32nd St",
+			"capacity": "11",
+			"popularity": 1,
+			"income": "256",
+			"outcome": "262",
+			"latitude": "41.83620800000000000",
+			"longitude": "-87.61353300000000000",
+			"id": "263"
+		},
+		"264": {
+			"name": "Stetson Ave &amp; South Water St",
+			"capacity": "19",
+			"popularity": 6,
+			"income": "1325",
+			"outcome": "1769",
+			"latitude": "41.88686100000000000",
+			"longitude": "-87.62269400000000000",
+			"id": "264"
+		},
+		"265": {
+			"name": "Cottage Grove Ave &amp; Oakwood Blvd",
+			"capacity": "15",
+			"popularity": 1,
+			"income": "259",
+			"outcome": "192",
+			"latitude": "41.82298500000000000",
+			"longitude": "-87.60710000000000000",
+			"id": "265"
+		},
+		"267": {
+			"name": "Lake Park Ave &amp; 47th St",
+			"capacity": "15",
+			"popularity": 1,
+			"income": "299",
+			"outcome": "295",
+			"latitude": "41.80944300000000000",
+			"longitude": "-87.59187500000000000",
+			"id": "267"
+		},
+		"268": {
+			"name": "Lake Shore Dr &amp; North Blvd",
+			"capacity": "15",
+			"popularity": 8,
+			"income": "3084",
+			"outcome": "2984",
+			"latitude": "41.91172200000000000",
+			"longitude": "-87.62680400000000000",
+			"id": "268"
+		},
+		"271": {
+			"name": "Cottage Grove Ave &amp; 43rd St",
+			"capacity": "11",
+			"popularity": 1,
+			"income": "58",
+			"outcome": "62",
+			"latitude": "41.81649900000000000",
+			"longitude": "-87.60658200000000000",
+			"id": "271"
+		},
+		"272": {
+			"name": "Indiana Ave &amp; 31st St",
+			"capacity": "11",
+			"popularity": 1,
+			"income": "233",
+			"outcome": "249",
+			"latitude": "41.83884200000000000",
+			"longitude": "-87.62185700000000000",
+			"id": "272"
+		},
+		"273": {
+			"name": "Michigan Ave &amp; 18th St",
+			"capacity": "15",
+			"popularity": 6,
+			"income": "1547",
+			"outcome": "1546",
+			"latitude": "41.85793700000000000",
+			"longitude": "-87.62363300000000000",
+			"id": "273"
+		},
+		"274": {
+			"name": "Racine Ave &amp; 15th St",
+			"capacity": "15",
+			"popularity": 2,
+			"income": "368",
+			"outcome": "406",
+			"latitude": "41.86126700000000000",
+			"longitude": "-87.65662500000000000",
+			"id": "274"
+		},
+		"275": {
+			"name": "Ashland Ave &amp; 13th St",
+			"capacity": "15",
+			"popularity": 1,
+			"income": "185",
+			"outcome": "172",
+			"latitude": "41.86523400000000000",
+			"longitude": "-87.66650700000000000",
+			"id": "275"
+		},
+		"276": {
+			"name": "California Ave &amp; North Ave",
+			"capacity": "11",
+			"popularity": 3,
+			"income": "518",
+			"outcome": "576",
+			"latitude": "41.91044000000000000",
+			"longitude": "-87.69720000000000000",
+			"id": "276"
+		},
+		"277": {
+			"name": "Ashland Ave &amp; Grand Ave",
+			"capacity": "15",
+			"popularity": 2,
+			"income": "393",
+			"outcome": "483",
+			"latitude": "41.89107200000000000",
+			"longitude": "-87.66661100000000000",
+			"id": "277"
+		},
+		"278": {
+			"name": "Wallace Ave &amp; 35th St",
+			"capacity": "15",
+			"popularity": 1,
+			"income": "163",
+			"outcome": "133",
+			"latitude": "41.83062900000000000",
+			"longitude": "-87.64129000000000000",
+			"id": "278"
+		},
+		"279": {
+			"name": "Halsted St &amp; 35th St",
+			"capacity": "15",
+			"popularity": 5,
+			"income": "1089",
+			"outcome": "989",
+			"latitude": "41.83066100000000000",
+			"longitude": "-87.64717200000000000",
+			"id": "279"
+		},
+		"280": {
+			"name": "Morgan St &amp; 31st St",
+			"capacity": "11",
+			"popularity": 1,
+			"income": "290",
+			"outcome": "258",
+			"latitude": "41.83780000000000000",
+			"longitude": "-87.65114000000000000",
+			"id": "280"
+		},
+		"281": {
+			"name": "Western Ave &amp; 24th St",
+			"capacity": "15",
+			"popularity": 1,
+			"income": "51",
+			"outcome": "38",
+			"latitude": "41.84847000000000000",
+			"longitude": "-87.68510900000000000",
+			"id": "281"
+		},
+		"282": {
+			"name": "Halsted St &amp; Maxwell St",
+			"capacity": "15",
+			"popularity": 3,
+			"income": "607",
+			"outcome": "658",
+			"latitude": "41.86458000000000000",
+			"longitude": "-87.64693000000000000",
+			"id": "282"
+		},
+		"283": {
+			"name": "LaSalle St &amp; Jackson Blvd",
+			"capacity": "23",
+			"popularity": 9,
+			"income": "3879",
+			"outcome": "4126",
+			"latitude": "41.87817000000000000",
+			"longitude": "-87.63198500000000000",
+			"id": "283"
+		},
+		"284": {
+			"name": "Michigan Ave &amp; Jackson Blvd",
+			"capacity": "23",
+			"popularity": 8,
+			"income": "2911",
+			"outcome": "2968",
+			"latitude": "41.87785000000000000",
+			"longitude": "-87.62408000000000000",
+			"id": "284"
+		},
+		"285": {
+			"name": "Wood St &amp; Grand Ave",
+			"capacity": "15",
+			"popularity": 3,
+			"income": "562",
+			"outcome": "563",
+			"latitude": "41.89113000000000000",
+			"longitude": "-87.67203000000000000",
+			"id": "285"
+		},
+		"286": {
+			"name": "Franklin St &amp; Quincy St",
+			"capacity": "15",
+			"popularity": 6,
+			"income": "1677",
+			"outcome": "2186",
+			"latitude": "41.87872400000000000",
+			"longitude": "-87.63479300000000000",
+			"id": "286"
+		},
+		"287": {
+			"name": "Franklin St &amp; Arcade Pl",
+			"capacity": "23",
+			"popularity": 8,
+			"income": "3227",
+			"outcome": "4042",
+			"latitude": "41.88113100000000000",
+			"longitude": "-87.63518500000000000",
+			"id": "287"
+		},
+		"288": {
+			"name": "Larrabee St &amp; Armitage Ave",
+			"capacity": "11",
+			"popularity": 4,
+			"income": "732",
+			"outcome": "795",
+			"latitude": "41.91797000000000000",
+			"longitude": "-87.64368000000000000",
+			"id": "288"
+		},
+		"289": {
+			"name": "Wells St &amp; Concord Ln",
+			"capacity": "19",
+			"popularity": 7,
+			"income": "2636",
+			"outcome": "2662",
+			"latitude": "41.91220200000000000",
+			"longitude": "-87.63466400000000000",
+			"id": "289"
+		},
+		"290": {
+			"name": "Kedzie Ave &amp; Palmer Ct",
+			"capacity": "15",
+			"popularity": 2,
+			"income": "400",
+			"outcome": "450",
+			"latitude": "41.92152500000000000",
+			"longitude": "-87.70732200000000000",
+			"id": "290"
+		},
+		"291": {
+			"name": "Wells St &amp; Evergreen Ave",
+			"capacity": "19",
+			"popularity": 6,
+			"income": "1640",
+			"outcome": "1658",
+			"latitude": "41.90672400000000000",
+			"longitude": "-87.63483000000000000",
+			"id": "291"
+		},
+		"292": {
+			"name": "Southport Ave &amp; Clark St",
+			"capacity": "11",
+			"popularity": 2,
+			"income": "378",
+			"outcome": "356",
+			"latitude": "41.95708100000000000",
+			"longitude": "-87.66419900000000000",
+			"id": "292"
+		},
+		"293": {
+			"name": "Broadway &amp; Wilson Ave",
+			"capacity": "19",
+			"popularity": 2,
+			"income": "477",
+			"outcome": "496",
+			"latitude": "41.96528700000000000",
+			"longitude": "-87.65877400000000000",
+			"id": "293"
+		},
+		"294": {
+			"name": "Broadway &amp; Berwyn Ave",
+			"capacity": "15",
+			"popularity": 3,
+			"income": "816",
+			"outcome": "655",
+			"latitude": "41.97835300000000000",
+			"longitude": "-87.65975300000000000",
+			"id": "294",
+			"communityArea": "77"
+		},
+		"295": {
+			"name": "Broadway &amp; Argyle St",
+			"capacity": "15",
+			"popularity": 2,
+			"income": "533",
+			"outcome": "448",
+			"latitude": "41.97297200000000000",
+			"longitude": "-87.65963700000000000",
+			"id": "295"
+		},
+		"296": {
+			"name": "Broadway &amp; Belmont Ave",
+			"capacity": "15",
+			"popularity": 4,
+			"income": "971",
+			"outcome": "940",
+			"latitude": "41.94010600000000000",
+			"longitude": "-87.64545100000000000",
+			"id": "296"
+		},
+		"297": {
+			"name": "Paulina St &amp; Montrose Ave",
+			"capacity": "15",
+			"popularity": 2,
+			"income": "312",
+			"outcome": "329",
+			"latitude": "41.96150700000000000",
+			"longitude": "-87.67138700000000000",
+			"id": "297"
+		},
+		"298": {
+			"name": "Lincoln Ave &amp; Belle Plaine Ave",
+			"capacity": "15",
+			"popularity": 2,
+			"income": "470",
+			"outcome": "414",
+			"latitude": "41.95592700000000000",
+			"longitude": "-87.67925900000000000",
+			"id": "298"
+		},
+		"299": {
+			"name": "Halsted St &amp; Roscoe St",
+			"capacity": "15",
+			"popularity": 4,
+			"income": "981",
+			"outcome": "892",
+			"latitude": "41.94366200000000000",
+			"longitude": "-87.64891700000000000",
+			"id": "299"
+		},
+		"300": {
+			"name": "Broadway &amp; Barry Ave",
+			"capacity": "15",
+			"popularity": 6,
+			"income": "1627",
+			"outcome": "1596",
+			"latitude": "41.93773900000000000",
+			"longitude": "-87.64409400000000000",
+			"id": "300"
+		},
+		"301": {
+			"name": "Clark St &amp; Schiller St",
+			"capacity": "19",
+			"popularity": 6,
+			"income": "1589",
+			"outcome": "1765",
+			"latitude": "41.90799300000000000",
+			"longitude": "-87.63150100000000000",
+			"id": "301"
+		},
+		"302": {
+			"name": "Sheffield Ave &amp; Wrightwood Ave",
+			"capacity": "19",
+			"popularity": 4,
+			"income": "1009",
+			"outcome": "1047",
+			"latitude": "41.92871200000000000",
+			"longitude": "-87.65383300000000000",
+			"id": "302"
+		},
+		"303": {
+			"name": "Broadway &amp; Cornelia Ave",
+			"capacity": "15",
+			"popularity": 5,
+			"income": "1170",
+			"outcome": "1140",
+			"latitude": "41.94551200000000000",
+			"longitude": "-87.64598000000000000",
+			"id": "303"
+		},
+		"304": {
+			"name": "Halsted St &amp; Waveland Ave",
+			"capacity": "15",
+			"popularity": 5,
+			"income": "1309",
+			"outcome": "1402",
+			"latitude": "41.94933300000000000",
+			"longitude": "-87.64963400000000000",
+			"id": "304"
+		},
+		"305": {
+			"name": "Western Ave &amp; Division St",
+			"capacity": "15",
+			"popularity": 3,
+			"income": "582",
+			"outcome": "581",
+			"latitude": "41.90289300000000000",
+			"longitude": "-87.68727500000000000",
+			"id": "305"
+		},
+		"306": {
+			"name": "Sheridan Rd &amp; Buena Ave",
+			"capacity": "15",
+			"popularity": 3,
+			"income": "615",
+			"outcome": "660",
+			"latitude": "41.95840000000000000",
+			"longitude": "-87.65423000000000000",
+			"id": "306"
+		},
+		"307": {
+			"name": "Southport Ave &amp; Clybourn Ave",
+			"capacity": "15",
+			"popularity": 4,
+			"income": "819",
+			"outcome": "743",
+			"latitude": "41.92100400000000000",
+			"longitude": "-87.66325700000000000",
+			"id": "307"
+		},
+		"308": {
+			"name": "Seeley Ave &amp; Roscoe St",
+			"capacity": "11",
+			"popularity": 2,
+			"income": "537",
+			"outcome": "434",
+			"latitude": "41.94340300000000000",
+			"longitude": "-87.67961800000000000",
+			"id": "308"
+		},
+		"309": {
+			"name": "Leavitt St &amp; Armitage Ave",
+			"capacity": "11",
+			"popularity": 2,
+			"income": "463",
+			"outcome": "505",
+			"latitude": "41.91780500000000000",
+			"longitude": "-87.68243700000000000",
+			"id": "309"
+		},
+		"310": {
+			"name": "Damen Ave &amp; Charleston St",
+			"capacity": "11",
+			"popularity": 3,
+			"income": "657",
+			"outcome": "609",
+			"latitude": "41.92008200000000000",
+			"longitude": "-87.67785500000000000",
+			"id": "310"
+		},
+		"311": {
+			"name": "Lincoln Ave &amp; Eastwood Ave",
+			"capacity": "15",
+			"popularity": 4,
+			"income": "974",
+			"outcome": "881",
+			"latitude": "41.96583000000000000",
+			"longitude": "-87.68651000000000000",
+			"id": "311"
+		},
+		"312": {
+			"name": "Clarendon Ave &amp; Gordon Ter",
+			"capacity": "15",
+			"popularity": 1,
+			"income": "230",
+			"outcome": "217",
+			"latitude": "41.95787900000000000",
+			"longitude": "-87.64951900000000000",
+			"id": "312"
+		},
+		"313": {
+			"name": "Lakeview Ave &amp; Fullerton Pkwy",
+			"capacity": "19",
+			"popularity": 7,
+			"income": "1983",
+			"outcome": "1970",
+			"latitude": "41.92585800000000000",
+			"longitude": "-87.63897300000000000",
+			"id": "313"
+		},
+		"314": {
+			"name": "Ravenswood Ave &amp; Berteau Ave",
+			"capacity": "15",
+			"popularity": 2,
+			"income": "393",
+			"outcome": "447",
+			"latitude": "41.95792100000000000",
+			"longitude": "-87.67356700000000000",
+			"id": "314"
+		},
+		"315": {
+			"name": "Leavitt St &amp; Hirsch St",
+			"capacity": "11",
+			"popularity": 2,
+			"income": "300",
+			"outcome": "299",
+			"latitude": "41.90671700000000000",
+			"longitude": "-87.68277900000000000",
+			"id": "315"
+		},
+		"316": {
+			"name": "Damen Ave &amp; Sunnyside Ave",
+			"capacity": "19",
+			"popularity": 1,
+			"income": "291",
+			"outcome": "276",
+			"latitude": "41.96325000000000000",
+			"longitude": "-87.67925800000000000",
+			"id": "316"
+		},
+		"317": {
+			"name": "Wood St &amp; Taylor St",
+			"capacity": "15",
+			"popularity": 2,
+			"income": "533",
+			"outcome": "490",
+			"latitude": "41.86915400000000000",
+			"longitude": "-87.67104500000000000",
+			"id": "317"
+		},
+		"318": {
+			"name": "Southport Ave &amp; Irving Park Rd",
+			"capacity": "15",
+			"popularity": 3,
+			"income": "703",
+			"outcome": "725",
+			"latitude": "41.95417700000000000",
+			"longitude": "-87.66435800000000000",
+			"id": "318"
+		},
+		"319": {
+			"name": "Greenview Ave &amp; Diversey Pkwy",
+			"capacity": "15",
+			"popularity": 3,
+			"income": "576",
+			"outcome": "541",
+			"latitude": "41.93259500000000000",
+			"longitude": "-87.66593900000000000",
+			"id": "319"
+		},
+		"320": {
+			"name": "Loomis St &amp; Lexington St",
+			"capacity": "15",
+			"popularity": 3,
+			"income": "594",
+			"outcome": "622",
+			"latitude": "41.87218700000000000",
+			"longitude": "-87.66150100000000000",
+			"id": "320"
+		},
+		"321": {
+			"name": "Wabash Ave &amp; 8th St",
+			"capacity": "19",
+			"popularity": 6,
+			"income": "1917",
+			"outcome": "1888",
+			"latitude": "41.87196200000000000",
+			"longitude": "-87.62610600000000000",
+			"id": "321"
+		},
+		"322": {
+			"name": "Kimbark Ave &amp; 53rd St",
+			"capacity": "15",
+			"popularity": 2,
+			"income": "529",
+			"outcome": "514",
+			"latitude": "41.79956800000000000",
+			"longitude": "-87.59474700000000000",
+			"id": "322"
+		},
+		"323": {
+			"name": "Sheridan Rd &amp; Lawrence Ave",
+			"capacity": "15",
+			"popularity": 2,
+			"income": "360",
+			"outcome": "333",
+			"latitude": "41.96951700000000000",
+			"longitude": "-87.65469100000000000",
+			"id": "323"
+		},
+		"324": {
+			"name": "Stockton Dr &amp; Wrightwood Ave",
+			"capacity": "15",
+			"popularity": 3,
+			"income": "717",
+			"outcome": "734",
+			"latitude": "41.93132000000000000",
+			"longitude": "-87.63874200000000000",
+			"id": "324"
+		},
+		"325": {
+			"name": "Clark St &amp; Winnemac Ave",
+			"capacity": "15",
+			"popularity": 4,
+			"income": "846",
+			"outcome": "803",
+			"latitude": "41.97338500000000000",
+			"longitude": "-87.66836500000000000",
+			"id": "325"
+		},
+		"326": {
+			"name": "Clark St &amp; Leland Ave",
+			"capacity": "11",
+			"popularity": 2,
+			"income": "473",
+			"outcome": "488",
+			"latitude": "41.96709600000000000",
+			"longitude": "-87.66742900000000000",
+			"id": "326"
+		},
+		"327": {
+			"name": "Sheffield Ave &amp; Webster Ave",
+			"capacity": "19",
+			"popularity": 5,
+			"income": "1032",
+			"outcome": "1043",
+			"latitude": "41.92168700000000000",
+			"longitude": "-87.65371400000000000",
+			"id": "327"
+		},
+		"328": {
+			"name": "Ellis Ave &amp; 58th St",
+			"capacity": "15",
+			"popularity": 5,
+			"income": "1278",
+			"outcome": "1248",
+			"latitude": "41.78874600000000000",
+			"longitude": "-87.60133400000000000",
+			"id": "328"
+		},
+		"329": {
+			"name": "Lake Shore Dr &amp; Diversey Pkwy",
+			"capacity": "15",
+			"popularity": 4,
+			"income": "943",
+			"outcome": "856",
+			"latitude": "41.93268400000000000",
+			"longitude": "-87.63625000000000000",
+			"id": "329"
+		},
+		"330": {
+			"name": "Lincoln Ave &amp; Addison St",
+			"capacity": "19",
+			"popularity": 2,
+			"income": "434",
+			"outcome": "399",
+			"latitude": "41.94617600000000000",
+			"longitude": "-87.67330800000000000",
+			"id": "330"
+		},
+		"331": {
+			"name": "Halsted St &amp; Blackhawk St",
+			"capacity": "19",
+			"popularity": 4,
+			"income": "723",
+			"outcome": "758",
+			"latitude": "41.90854000000000000",
+			"longitude": "-87.64856800000000000",
+			"id": "331"
+		},
+		"332": {
+			"name": "Halsted St &amp; Diversey Pkwy",
+			"capacity": "15",
+			"popularity": 4,
+			"income": "1023",
+			"outcome": "987",
+			"latitude": "41.93334100000000000",
+			"longitude": "-87.64874700000000000",
+			"id": "332"
+		},
+		"333": {
+			"name": "Ashland Ave &amp; Blackhawk St",
+			"capacity": "15",
+			"popularity": 2,
+			"income": "563",
+			"outcome": "492",
+			"latitude": "41.90706600000000000",
+			"longitude": "-87.66725200000000000",
+			"id": "333"
+		},
+		"334": {
+			"name": "Lake Shore Dr &amp; Belmont Ave",
+			"capacity": "19",
+			"popularity": 5,
+			"income": "1267",
+			"outcome": "1185",
+			"latitude": "41.94077500000000000",
+			"longitude": "-87.63919200000000000",
+			"id": "334"
+		},
+		"335": {
+			"name": "Calumet Ave &amp; 35th St",
+			"capacity": "15",
+			"popularity": 1,
+			"income": "33",
+			"outcome": "33",
+			"latitude": "41.83137900000000000",
+			"longitude": "-87.61803400000000000",
+			"id": "335"
+		},
+		"336": {
+			"name": "Cottage Grove Ave &amp; 47th St",
+			"capacity": "15",
+			"popularity": 1,
+			"income": "30",
+			"outcome": "36",
+			"latitude": "41.80985500000000000",
+			"longitude": "-87.60675500000000000",
+			"id": "336"
+		},
+		"337": {
+			"name": "Clark St &amp; Chicago Ave",
+			"capacity": "19",
+			"popularity": 4,
+			"income": "996",
+			"outcome": "1045",
+			"latitude": "41.89654400000000000",
+			"longitude": "-87.63093100000000000",
+			"id": "337"
+		},
+		"338": {
+			"name": "Calumet Ave &amp; 18th St",
+			"capacity": "15",
+			"popularity": 5,
+			"income": "1317",
+			"outcome": "1332",
+			"latitude": "41.85761100000000000",
+			"longitude": "-87.61940700000000000",
+			"id": "338"
+		},
+		"339": {
+			"name": "Emerald Ave &amp; 31st St",
+			"capacity": "11",
+			"popularity": 1,
+			"income": "222",
+			"outcome": "256",
+			"latitude": "41.83819800000000000",
+			"longitude": "-87.64514300000000000",
+			"id": "339"
+		},
+		"340": {
+			"name": "Clark St &amp; Wrightwood Ave",
+			"capacity": "15",
+			"popularity": 4,
+			"income": "787",
+			"outcome": "756",
+			"latitude": "41.92954600000000000",
+			"longitude": "-87.64311800000000000",
+			"id": "340"
+		},
+		"341": {
+			"name": "Adler Planetarium",
+			"capacity": "19",
+			"popularity": 5,
+			"income": "1131",
+			"outcome": "1175",
+			"latitude": "41.86609500000000000",
+			"longitude": "-87.60726700000000000",
+			"id": "341"
+		},
+		"342": {
+			"name": "Wolcott Ave &amp; Polk St",
+			"capacity": "15",
+			"popularity": 2,
+			"income": "421",
+			"outcome": "481",
+			"latitude": "41.87126200000000000",
+			"longitude": "-87.67368800000000000",
+			"id": "342"
+		},
+		"343": {
+			"name": "Racine Ave &amp; Wrightwood Ave",
+			"capacity": "15",
+			"popularity": 1,
+			"income": "220",
+			"outcome": "229",
+			"latitude": "41.92888700000000000",
+			"longitude": "-87.65897100000000000",
+			"id": "343"
+		},
+		"344": {
+			"name": "Wolcott Ave &amp; Lawrence Ave",
+			"capacity": "15",
+			"popularity": 3,
+			"income": "573",
+			"outcome": "608",
+			"latitude": "41.96864100000000000",
+			"longitude": "-87.67633500000000000",
+			"id": "344"
+		},
+		"345": {
+			"name": "Lake Park Ave &amp; 56th St",
+			"capacity": "15",
+			"popularity": 1,
+			"income": "276",
+			"outcome": "264",
+			"latitude": "41.79324200000000000",
+			"longitude": "-87.58778200000000000",
+			"id": "345"
+		},
+		"346": {
+			"name": "Ada St &amp; Washington Blvd",
+			"capacity": "15",
+			"popularity": 3,
+			"income": "543",
+			"outcome": "557",
+			"latitude": "41.88283000000000000",
+			"longitude": "-87.66120600000000000",
+			"id": "346"
+		},
+		"347": {
+			"name": "Ashland Ave &amp; Grace St",
+			"capacity": "15",
+			"popularity": 1,
+			"income": "226",
+			"outcome": "244",
+			"latitude": "41.95068700000000000",
+			"longitude": "-87.66870000000000000",
+			"id": "347"
+		},
+		"348": {
+			"name": "California Ave &amp; 21st St",
+			"capacity": "15",
+			"popularity": 1,
+			"income": "298",
+			"outcome": "278",
+			"latitude": "41.85401600000000000",
+			"longitude": "-87.69544500000000000",
+			"id": "348"
+		},
+		"349": {
+			"name": "Halsted St &amp; Wrightwood Ave",
+			"capacity": "15",
+			"popularity": 2,
+			"income": "419",
+			"outcome": "437",
+			"latitude": "41.92914300000000000",
+			"longitude": "-87.64907700000000000",
+			"id": "349"
+		},
+		"350": {
+			"name": "Ashland Ave &amp; Chicago Ave",
+			"capacity": "15",
+			"popularity": 4,
+			"income": "1053",
+			"outcome": "1009",
+			"latitude": "41.89596600000000000",
+			"longitude": "-87.66774700000000000",
+			"id": "350"
+		},
+		"351": {
+			"name": "Cottage Grove Ave &amp; 51st St",
+			"capacity": "15",
+			"popularity": 1,
+			"income": "270",
+			"outcome": "286",
+			"latitude": "41.80303800000000000",
+			"longitude": "-87.60661500000000000",
+			"id": "351"
+		}
+	}
+}

@@ -167,7 +167,7 @@ Map.prototype.loadStations = function(json) {
 		var id = parseInt(s.id);
 
 		var station = L.marker([latitude, longitude]) //.addTo(map);
-		var content = "<h3 class='popup-title'>" + s.name + "</h3>" +
+		var content = "<h3 class='popup-title'>" + s.id + " - " + s.name + "</h3>" +
 			"<text class=popup-text> Capacity: " + s.capacity + "</text>" +
 			"<br>" +
 			"<div id='stars-container' class=popup-text>Popularity</div>" +
@@ -219,8 +219,10 @@ Map.prototype.loadStations = function(json) {
 			income: s.income,
 			outcome: s.outcome,
 			latitude: latitude,
-			longitude: longitude
+			longitude: longitude,
+			communityArea: s.communityArea
 		};
+
 	}
 
 	// COMMUNITY AREAS LAYERS
@@ -230,7 +232,6 @@ Map.prototype.loadStations = function(json) {
 		var communityAreasLabels = this.communityAreasLabels;
 
 		var data = json.features;
-
 		// var polygon
 
 		for (var i = 0; i < data.length; i++) {
@@ -257,14 +258,14 @@ Map.prototype.loadStations = function(json) {
 			var polygon = L.multiPolygon([edges]) //.addTo(map);
 
 			// Double closure for the known loop problem.
-			polygon.on('click', function(poly, n, lat, long) {
+			polygon.on('click', function(id, poly, n, lat, long) {
 				return function() {
-					var content = "<h3 class=popup-text-big>" + n + "</h3>" +
+					var content = "<h3 class=popup-text-big>" + id + " - " + n + "</h3>" +
 						"<br>" +
 						"<button id='select_stations_btn' class=popup-text>SELECT STATIONS</button>";
-					that.showPopup(poly, content, lat, long);
+					that.showPopup(id, content, lat, long);
 				};
-			}(polygon, name, centerLat, centerLong));
+			}(data[i].id, polygon, name, centerLat, centerLong));
 
 			// Community areas labels
 			var content = "<i class='community_area_text'>" + name + "</i>"
@@ -377,7 +378,7 @@ Map.prototype.removeLines = function() {
 	}
 }
 
-Map.prototype.showPopup = function(polygon, content, lat, long) {
+Map.prototype.showPopup = function(id, content, lat, long) {
 	var that = this;
 
 	var coordinates = L.latLng(lat, long);
@@ -388,7 +389,7 @@ Map.prototype.showPopup = function(polygon, content, lat, long) {
 
 	d3.select("#select_stations_btn")
 		.on("click", function()  {
-			that.selectStations(polygon);
+			that.selectStations(id);
 		});
 }
 
@@ -553,7 +554,7 @@ Map.prototype.switchPopupContent = function(mode) {
 	for (i in this.stationsAttributes) {
 		var s = this.stationsAttributes[i]
 
-		var content = "<h3 class='popup-title'>" + s.name + "</h3>" +
+		var content = "<h3 class='popup-title'>" + i + " - " + s.name + "</h3>" +
 			"<text class=popup-text> Capacity: " + s.capacity + "</text>" +
 			"<br>" +
 			"<div id='stars-container' class=popup-text>Popularity</div>" +
@@ -615,16 +616,16 @@ Map.prototype.switchPopupContent = function(mode) {
 	}
 }
 
-Map.prototype.selectStations = function(polygon)  {
-	console.log(polygon)
+Map.prototype.selectStations = function(id)  {
+	console.log(id)
 
 	this.resetStations("unselected");
 	for (i in this.stationsAttributes) {
-		var latitude = this.stationsAttributes[i].latitude;
-		var longitude = this.stationsAttributes[i].longitude;
+		// var latitude = this.stationsAttributes[i].latitude;
+		// var longitude = this.stationsAttributes[i].longitude;
 
-		var contained = polygon.getBounds().contains(L.latLng(latitude, longitude))
-
+		// var contained = polygon.getBounds().contains(L.latLng(latitude, longitude))
+		var contained = this.stationsAttributes[i].communityArea == id;
 		this.stationsMarkers[i].type = contained ? "default" : "unselected";
 	}
 	this.showStations();
