@@ -14,7 +14,7 @@ function Map(container, initialCoord, controller, mapPrefix) {
 	this.zoomThreshold = 14;
 
 	//TODO mettere apposto i colori
-	this.lineColors = ["red", "green", "blue", "black", "orange"];
+	this.lineColors = ["#121AB2", "#FF6A26", "#4AB21E"];
 
 	this.mapLayer = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg', {
 		subdomains: '1234',
@@ -33,101 +33,20 @@ function Map(container, initialCoord, controller, mapPrefix) {
 	this.sat = false;
 	this.farView = initialZoom < this.zoomThreshold;
 
-	this.map = L.map(container, {inertia: true, zoomControl: false})
-				.setView(initialCoord, initialZoom);
+	this.map = L.map(container, {
+		inertia: true,
+		zoomControl: false
+	})
+		.setView(initialCoord, initialZoom);
 
-	this.iconSmall = L.icon({
-		iconUrl: 'app/graphics/res/icon_small.png',
-		//shadowUrl: 'graphics/leaf-shadow.png',
+	this.icons = [];
 
-		iconSize: [10, 10], // size of the icon
-		//shadowSize:   [50, 64], // size of the shadow
-		iconAnchor: [5, 10], // point of the icon which will correspond to marker's location
-		// shadowAnchor: [4, 62],  // the same for the shadow
-		popupAnchor: [0, -10] // point from which the popup should open r
-	});
-	this.startIconSmall = L.icon({
-		iconUrl: 'app/graphics/res/icon_small_start.png',
-		//shadowUrl: 'graphics/leaf-shadow.png',
-
-		iconSize: [10, 10], // size of the icon
-		//shadowSize:   [50, 64], // size of the shadow
-		iconAnchor: [5, 10], // point of the icon which will correspond to marker's location
-		// shadowAnchor: [4, 62],  // the same for the shadow
-		popupAnchor: [0, -10] // point from which the popup should open r
-	});
-	this.endIconSmall = L.icon({
-		iconUrl: 'app/graphics/res/icon_small_end.png',
-		//shadowUrl: 'graphics/leaf-shadow.png',
-
-		iconSize: [10, 10], // size of the icon
-		//shadowSize:   [50, 64], // size of the shadow
-		iconAnchor: [5, 10], // point of the icon which will correspond to marker's location
-		// shadowAnchor: [4, 62],  // the same for the shadow
-		popupAnchor: [0, -10] // point from which the popup should open r
-	});
-	this.unselectedIconSmall = L.icon({
-		iconUrl: 'app/graphics/res/icon_small_unselected.png',
-		//shadowUrl: 'graphics/leaf-shadow.png',
-
-		iconSize: [10, 10], // size of the icon
-		//shadowSize:   [50, 64], // size of the shadow
-		iconAnchor: [5, 10], // point of the icon which will correspond to marker's location
-		// shadowAnchor: [4, 62],  // the same for the shadow
-		popupAnchor: [0, -10] // point from which the popup should open r
-	});
-
-	this.iconLarge = L.icon({
-		iconUrl: 'app/graphics/res/icon_large.png',
-		//shadowUrl: 'graphics/leaf-shadow.png',
-
-		iconSize: [48, 48], // size of the icon
-		//shadowSize:   [50, 64], // size of the shadow
-		iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
-		// shadowAnchor: [4, 62],  // the same for the shadow
-		popupAnchor: [0, -48] // point from which the popup should open rpen r
-	});
-	this.startIconLarge = L.icon({
-		iconUrl: 'app/graphics/res/icon_large_start.png',
-		//shadowUrl: 'graphics/leaf-shadow.png',
-
-		iconSize: [48, 48], // size of the icon
-		//shadowSize:   [50, 64], // size of the shadow
-		iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
-		// shadowAnchor: [4, 62],  // the same for the shadow
-		popupAnchor: [0, -48] // point from which the popup should open r
-	});
-	this.endIconLarge = L.icon({
-		iconUrl: 'app/graphics/res/icon_large_end.png',
-		//shadowUrl: 'graphics/leaf-shadow.png',
-
-		iconSize: [48, 48], // size of the icon
-		//shadowSize:   [50, 64], // size of the shadow
-		iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
-		// shadowAnchor: [4, 62],  // the same for the shadow
-		popupAnchor: [0, -48] // point from which the popup should open r
-	});
-	this.unselectedIconLarge = L.icon({
-		iconUrl: 'app/graphics/res/icon_large_unselected.png',
-		//shadowUrl: 'graphics/leaf-shadow.png',
-
-		iconSize: [48, 48], // size of the icon
-		//shadowSize:   [50, 64], // size of the shadow
-		iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
-		// shadowAnchor: [4, 62],  // the same for the shadow
-		popupAnchor: [0, -48] // point from which the popup should open r
-	});
-
-	// this.iconLarge = L.icon({
-	//    iconUrl: 'app/graphics/res/ertura.png',
-	//    //shadowUrl: 'graphics/leaf-shadow.png',
-
-	//    iconSize:     [50, 87], // size of the icon
-	//    //shadowSize:   [50, 64], // size of the shadow
-	//    iconAnchor:   [25, 87], // point of the icon which will correspond to marker's location
-	//    // shadowAnchor: [4, 62],  // the same for the shadow
-	//    popupAnchor:  [0, -87] // point from which the popup should open r
-	// });
+	if(window.screen.availHeight < 1200) {
+		this.loadLaptopIcons();
+	}
+	else {
+		this.loadWallIcons();
+	}
 
 	var map = this.map
 	var stationsMarkers = this.stationsMarkers
@@ -265,83 +184,83 @@ Map.prototype.loadStations = function(json) {
 		};
 	}
 
-// COMMUNITY AREAS LAYERS
-Map.prototype.loadCommunityAreas = function(json) {
-	var that = this;
-	var communityAreas = this.communityAreas;
-	var communityAreasLabels = this.communityAreasLabels;
+	// COMMUNITY AREAS LAYERS
+	Map.prototype.loadCommunityAreas = function(json) {
+		var that = this;
+		var communityAreas = this.communityAreas;
+		var communityAreasLabels = this.communityAreasLabels;
 
-	var data = json.features;
+		var data = json.features;
 
-	// var polygon
+		// var polygon
 
-	for (var i = 0; i < data.length; i++) {
-		var name = data[i].properties.name;
-		var coordinates = data[i].geometry.coordinates[0][0];
-		var edges = []
+		for (var i = 0; i < data.length; i++) {
+			var name = data[i].properties.name;
+			var coordinates = data[i].geometry.coordinates[0][0];
+			var edges = []
 
-		var centerLat = 0,
-			centerLong = 0;
+			var centerLat = 0,
+				centerLong = 0;
 
-		for (var j = 0; j < coordinates.length; j++) {
-			var latitude = parseFloat(coordinates[j][1]);
-			var longitude = parseFloat(coordinates[j][0]);
-			edges.push([latitude, longitude]);
+			for (var j = 0; j < coordinates.length; j++) {
+				var latitude = parseFloat(coordinates[j][1]);
+				var longitude = parseFloat(coordinates[j][0]);
+				edges.push([latitude, longitude]);
 
-			centerLat += latitude;
-			centerLong += longitude;
+				centerLat += latitude;
+				centerLong += longitude;
+			}
+
+			centerLat /= coordinates.length;
+			centerLong /= coordinates.length;
+
+
+			var polygon = L.multiPolygon([edges]) //.addTo(map);
+
+			// Double closure for the known loop problem.
+			polygon.on('click', function(poly, n, lat, long) {
+				return function() {
+					var content = "<h3 class=popup-text-big>" + n + "</h3>" +
+						"<br>" +
+						"<button id='select_stations_btn' class=popup-text>SELECT STATIONS</button>";
+					that.showPopup(poly, content, lat, long);
+				};
+			}(polygon, name, centerLat, centerLong));
+
+			// Community areas labels
+			var content = "<i class='community_area_text'>" + name + "</i>"
+			var myIcon = L.divIcon({
+				className: 'my-div-icon',
+				html: content
+			});
+
+			var label = L.marker([centerLat, centerLong], {
+				icon: myIcon
+			});
+
+			communityAreas.push(polygon)
+			communityAreasLabels.push(label)
+
 		}
 
-		centerLat /= coordinates.length;
-		centerLong /= coordinates.length;
+		// Community Areas Layes
+		var ca_list = L.layerGroup(communityAreas);
+		var ca_labels = L.layerGroup(communityAreasLabels);
 
+		var mapLayers = {
+			Map: this.mapLayer,
+			Satellite: that.satLayer
+		}
 
-		var polygon = L.multiPolygon([edges]) //.addTo(map);
+		var layers = {
+			CommunityAreas: ca_list,
+			CommunityAreasLabels: ca_labels
+		}
 
-		// Double closure for the known loop problem.
-		polygon.on('click', function(poly, n, lat, long) {
-			return function() {
-				var content = "<h3 class=popup-text-big>" + n + "</h3>" + 
-							"<br>" +
-							"<button id='select_stations_btn' class=popup-text>SELECT STATIONS</button>";
-				that.showPopup(poly, content, lat, long);
-			};
-		}(polygon, name, centerLat, centerLong));
-
-		// Community areas labels
-		var content = "<i class='community_area_text'>" + name + "</i>"
-		var myIcon = L.divIcon({
-			className: 'my-div-icon',
-			html: content
-		});
-
-		var label = L.marker([centerLat, centerLong], {
-			icon: myIcon
-		});
-
-		communityAreas.push(polygon)
-		communityAreasLabels.push(label)
-
+		L.control.layers(mapLayers, layers, {
+			position: 'bottomright'
+		}).addTo(this.map);
 	}
-
-	// Community Areas Layes
-	var ca_list = L.layerGroup(communityAreas);
-	var ca_labels = L.layerGroup(communityAreasLabels);
-
-	var mapLayers = {
-		Map: this.mapLayer,
-		Satellite: that.satLayer
-	}
-
-	var layers = {
-		CommunityAreas: ca_list,
-		CommunityAreasLabels: ca_labels 
-	}
-
-	L.control.layers(mapLayers, layers,{
-		position: 'bottomright'
-	}).addTo(this.map);
-}
 }
 
 /****************** GRAPHIC LAYERS ********************/
@@ -377,15 +296,16 @@ Map.prototype.showStations = function() {
 
 	for (s in stationsMarkers) {
 		if (stationsMarkers[s].type === "unselected") {
-			icon = large ? this.unselectedIconLarge : this.unselectedIconSmall
-		} else if (stationsMarkers[s].type === "start") {
-			icon = large ? this.startIconLarge : this.startIconSmall
-		} else if (stationsMarkers[s].type === "end") {
-			icon = large ? this.endIconLarge : this.endIconSmall
+			icon = large ? this.icons["icon_large_unselected"] : this.icons["icon_small_unselected"]
+		} else if (stationsMarkers[s].type === "0") {
+			icon = large ? this.icons["icon_large_a"] : this.icons["icon_small_a"]
+		} else if (stationsMarkers[s].type === "1") {
+			icon = large ? this.icons["icon_large_b"] : this.icons["icon_small_b"]
+		} else if (stationsMarkers[s].type === "2") {
+			icon = large ? this.icons["icon_large_c"] : this.icons["icon_small_c"]
 		} else {
-			icon = large ? this.iconLarge : this.iconSmall
+			icon = large ? this.icons["icon_large"] : this.icons["icon_small"]
 		}
-
 
 		stationsMarkers[s].marker.setIcon(icon).addTo(map);
 	}
@@ -498,13 +418,13 @@ Map.prototype.showStationPopup = function(id, station) {
 	d3.select("#add_btn")
 		.on("click", function()  {
 			console.log("ADD_TEST")
-			that.controller.addSelectStation(""+id, that.myPrefix);
+			that.controller.addSelectStation("" + id, that.myPrefix);
 		});
 
 	d3.select("#detail_btn")
 		.on("click", function()  {
 			console.log("DETAIL_TEST")
-			that.controller.exec("changeMode","stationDetails");
+			that.controller.exec("changeMode", "stationDetails");
 			// that.controller.removeSelectStation(id, that.myPrefix);
 		});
 }
@@ -523,22 +443,22 @@ Map.prototype.drawTrip = function(fromID, toID, quantity, fromLabel, toLabel, co
 
 	var line = this.drawLine(start, end, parseInt(quantity, 10), col);
 
-	var content = 
-			"<text class=popup-text-big>" + this.stationsAttributes[fromID].name + " - " +
-			this.stationsAttributes[toID].name + "</text>" + 
-			"<br>" +
-			"<text class=popup-text> Trips: " + quantity + "</text>";
+	var content =
+		"<text class=popup-text-big>" + this.stationsAttributes[fromID].name + " - " +
+		this.stationsAttributes[toID].name + "</text>" +
+		"<br>" +
+		"<text class=popup-text> Trips: " + quantity + "</text>";
 
 	var popup = L.popup({
-				maxWidth: '10000',
-				// minWidth: '250',
-				maxHeight: '10000',
-				autoPan: true,
-				closeButton: true,
-				autoPanPadding: [5, 5]
-			})
-			.setContent(content)
-		line.bindPopup(popup);
+			maxWidth: '10000',
+			// minWidth: '250',
+			maxHeight: '10000',
+			autoPan: true,
+			closeButton: true,
+			autoPanPadding: [5, 5]
+		})
+		.setContent(content)
+	line.bindPopup(popup);
 
 
 	this.stationsMarkers[fromID].type = fromLabel
@@ -556,11 +476,23 @@ Map.prototype.drawTrips = function(trips, fromLabel, toLabel, col) {
 }
 
 Map.prototype.drawGroupTrips = function(array) {
+	var ids = [];
+
 	this.removeLines();
 	this.resetStations();
 	for (var i = 0; i < array.length; i++) {
-		this.drawTrips(array[i].data, "", "", this.lineColors[i]);
+		this.drawTrips(array[i].data, "default", "default", this.lineColors[i]);
+		if(array[i].id !== "chicago") {
+			ids[i] = array[i].id
+		}
 	};
+
+	for(var i = 0; i < ids.length; i++) {
+		this.stationsMarkers[ids[i]].type = ""+i;
+	}
+	this.showStations();
+
+
 }
 
 Map.prototype.switchPopupContent = function(mode) {
@@ -601,7 +533,7 @@ Map.prototype.switchPopupContent = function(mode) {
 
 
 		var station = this.stationsMarkers[i].marker;
-		
+
 		var popup = L.popup({
 				className: 'station-info',
 				maxWidth: '10000',
@@ -616,11 +548,11 @@ Map.prototype.switchPopupContent = function(mode) {
 	}
 }
 
-Map.prototype.selectStations = function(polygon) {
-			console.log(polygon)
+Map.prototype.selectStations = function(polygon)  {
+	console.log(polygon)
 
 	this.resetStations();
-	for(i in this.stationsAttributes) {
+	for (i in this.stationsAttributes) {
 		var latitude = this.stationsAttributes[i].latitude;
 		var longitude = this.stationsAttributes[i].longitude;
 
@@ -711,3 +643,166 @@ Map.prototype.flowCallback = function(data, info) {
 	that.drawTrips(trips, "start", "end");
 }
 /***************** END DATA FUNCTIONS *****************/
+
+
+/**********************  ICONS  ***********************/
+Map.prototype.loadLaptopIcons = function() {
+	this.loadIcons("laptop");
+}
+
+Map.prototype.loadWallIcons = function() {
+	this.loadIcons("wall");
+}
+
+Map.prototype.loadIcons = function(screen) {
+	var smallSide, largeSide;
+	if(screen === "laptop") {
+		smallSide = 10;
+		largeSide = 48;
+	}
+	else if(screen === "wall") {
+		smallSide = 30;
+		largeSide = 120;
+	}
+
+	this.loadIcon(screen, "icon_small", smallSide);
+	this.loadIcon(screen, "icon_small_a", smallSide);
+	this.loadIcon(screen, "icon_small_b", smallSide);
+	this.loadIcon(screen, "icon_small_c", smallSide);
+	this.loadIcon(screen, "icon_small_unselected", smallSide);
+	
+	this.loadIcon(screen, "icon_large", largeSide);
+	this.loadIcon(screen, "icon_large_a", largeSide);
+	this.loadIcon(screen, "icon_large_b", largeSide);
+	this.loadIcon(screen, "icon_large_c", largeSide);
+	this.loadIcon(screen, "icon_large_unselected", largeSide);
+
+	// this.icons["ertura"] = L.icon({
+	//    iconUrl: 'app/graphics/res/laptop/ertura.png',
+	//    //shadowUrl: 'graphics/leaf-shadow.png',
+
+	//    iconSize:     [50, 87], // size of the icon
+	//    //shadowSize:   [50, 64], // size of the shadow
+	//    iconAnchor:   [25, 87], // point of the icon which will correspond to marker's location
+	//    // shadowAnchor: [4, 62],  // the same for the shadow
+	//    popupAnchor:  [0, -87] // point from which the popup should open r
+	// });
+}
+
+Map.prototype.loadIcon = function(screen, fileName, side) {
+	this.icons[fileName] = L.icon({
+		iconUrl: 'app/graphics/res/'+ screen + "/" +  fileName + '.png',
+		//shadowUrl: 'graphics/leaf-shadow.png',
+
+		iconSize: [side, side], // size of the icon
+		//shadowSize:   [50, 64], // size of the shadow
+		iconAnchor: [side/2, side], // point of the icon which will correspond to marker's location
+		// shadowAnchor: [4, 62],  // the same for the shadow
+		popupAnchor: [0, -side] // point from which the popup should open r
+	});
+}
+/********************  END ICONS  **********************/
+
+// this.iconSmall = L.icon({
+// 		iconUrl: 'app/graphics/res/icon_small.png',
+// 		//shadowUrl: 'graphics/leaf-shadow.png',
+
+// 		iconSize: [10, 10], // size of the icon
+// 		//shadowSize:   [50, 64], // size of the shadow
+// 		iconAnchor: [5, 10], // point of the icon which will correspond to marker's location
+// 		// shadowAnchor: [4, 62],  // the same for the shadow
+// 		popupAnchor: [0, -10] // point from which the popup should open r
+// 	});
+// 	this.startIconSmall = L.icon({
+// 		iconUrl: 'app/graphics/res/icon_small_start.png',
+// 		//shadowUrl: 'graphics/leaf-shadow.png',
+
+// 		iconSize: [10, 10], // size of the icon
+// 		//shadowSize:   [50, 64], // size of the shadow
+// 		iconAnchor: [5, 10], // point of the icon which will correspond to marker's location
+// 		// shadowAnchor: [4, 62],  // the same for the shadow
+// 		popupAnchor: [0, -10] // point from which the popup should open r
+// 	});
+// 	this.endIconSmall = L.icon({
+// 		iconUrl: 'app/graphics/res/icon_small_end.png',
+// 		//shadowUrl: 'graphics/leaf-shadow.png',
+
+// 		iconSize: [10, 10], // size of the icon
+// 		//shadowSize:   [50, 64], // size of the shadow
+// 		iconAnchor: [5, 10], // point of the icon which will correspond to marker's location
+// 		// shadowAnchor: [4, 62],  // the same for the shadow
+// 		popupAnchor: [0, -10] // point from which the popup should open r
+// 	});
+// 	this.unselectedIconSmall = L.icon({
+// 		iconUrl: 'app/graphics/res/icon_small_unselected.png',
+// 		//shadowUrl: 'graphics/leaf-shadow.png',
+
+// 		iconSize: [10, 10], // size of the icon
+// 		//shadowSize:   [50, 64], // size of the shadow
+// 		iconAnchor: [5, 10], // point of the icon which will correspond to marker's location
+// 		// shadowAnchor: [4, 62],  // the same for the shadow
+// 		popupAnchor: [0, -10] // point from which the popup should open r
+// 	});
+
+
+
+// 	// this.iconLarge = L.divIcon({
+// 	//     className: 'svg-marker',
+// 	//     html: '<div>Hello World heree i ammmmmm</div>',
+// 	//     iconSize: null,
+// 	//     iconAnchor: null
+// 	// });
+
+
+
+// 	this.iconLarge = L.icon({
+// 		iconUrl: 'app/graphics/res/icon_large.png',
+// 		//shadowUrl: 'graphics/leaf-shadow.png',
+
+// 		iconSize: [48, 48], // size of the icon
+// 		//shadowSize:   [50, 64], // size of the shadow
+// 		iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
+// 		// shadowAnchor: [4, 62],  // the same for the shadow
+// 		popupAnchor: [0, -48] // point from which the popup should open rpen r
+// 	});
+// 	this.startIconLarge = L.icon({
+// 		iconUrl: 'app/graphics/res/icon_large_start.png',
+// 		//shadowUrl: 'graphics/leaf-shadow.png',
+
+// 		iconSize: [48, 48], // size of the icon
+// 		//shadowSize:   [50, 64], // size of the shadow
+// 		iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
+// 		// shadowAnchor: [4, 62],  // the same for the shadow
+// 		popupAnchor: [0, -48] // point from which the popup should open r
+// 	});
+// 	this.endIconLarge = L.icon({
+// 		iconUrl: 'app/graphics/res/icon_large_end.png',
+// 		//shadowUrl: 'graphics/leaf-shadow.png',
+
+// 		iconSize: [48, 48], // size of the icon
+// 		//shadowSize:   [50, 64], // size of the shadow
+// 		iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
+// 		// shadowAnchor: [4, 62],  // the same for the shadow
+// 		popupAnchor: [0, -48] // point from which the popup should open r
+// 	});
+// 	this.unselectedIconLarge = L.icon({
+// 		iconUrl: 'app/graphics/res/icon_large_unselected.png',
+// 		//shadowUrl: 'graphics/leaf-shadow.png',
+
+// 		iconSize: [48, 48], // size of the icon
+// 		//shadowSize:   [50, 64], // size of the shadow
+// 		iconAnchor: [24, 48], // point of the icon which will correspond to marker's location
+// 		// shadowAnchor: [4, 62],  // the same for the shadow
+// 		popupAnchor: [0, -48] // point from which the popup should open r
+// 	});
+
+// 	// this.iconLarge = L.icon({
+// 	//    iconUrl: 'app/graphics/res/ertura.png',
+// 	//    //shadowUrl: 'graphics/leaf-shadow.png',
+
+// 	//    iconSize:     [50, 87], // size of the icon
+// 	//    //shadowSize:   [50, 64], // size of the shadow
+// 	//    iconAnchor:   [25, 87], // point of the icon which will correspond to marker's location
+// 	//    // shadowAnchor: [4, 62],  // the same for the shadow
+// 	//    popupAnchor:  [0, -87] // point from which the popup should open r
+// 	// });
