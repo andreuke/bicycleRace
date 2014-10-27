@@ -128,12 +128,31 @@
           <h1>Findings <small>Sunrise Sunset Related</small></h1>
         </div>
         <div class="col-md-12">
-          <ul>
             <!--<li> Bike usage drastically decreases after the sun sets. </li>
             <li> Sunrise time is not as influent as expected. Trips in the early morning, most of the times, start to increase at 5. -->
             <p>The first thing noticeable is that bike usage usually decreases after the sun sets. The influence of the sunrise is not as high as expected. <br>
               There are a lot of trips, in fact, starting before the sunrise. The overall trend, however, shows that the majority of trips is made during the day, while, when the sun sets people tend to not use the bike. <br>
-              </p>
+            </p>
+          <div class="col-md-6">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Ininfluent Sunrise</h3>
+              </div>
+              <div class="panel-body">
+                 <img class="img-responsive" src="resources/sunrise_13sept.png"/> 
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Sunset on a weekend</h3>
+              </div>
+              <div class="panel-body">
+                 <img class="img-responsive" src="resources/sunset_21sept.png"/> 
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
