@@ -39,31 +39,92 @@
         </div>
         <div class="col-md-12">
         <p>
-          Here we focus on 6 Divvy stations and we analyze the patterns we find. <br>
-          The stations we are considering are:
+          Here we focus on the findings and patterns related to six Divvy stations close to the University of Illinois at Chicago West Campus. <br>
+          The stations we considered are:
           <ul>
-            <li>Loomis & Taylor </li>
-            <li>May st & Taylor </li>
-            <li>Racine & Congress </li>
-            <li>Morgan & Polk </li>
-            <li>900 Harrison </li>
-            <li>Halsted & Polk</li>
+            <li><b>Loomis & Taylor</b></li>
+            <li><b>May & Taylor</b></li>
+            <li><b>Racine & Congress</b></li>
+            <li><b>Morgan & Polk</b></li>
+            <li><b>900 Harrison</b></li>
+            <li><b>Halsted & Polk</b></li>
           </ul>
-          The first feature, shared among all the stations is the age range. As observable from the picture below, (IMMAGINE MORGAN&POLK) the majority of people
-          that uses bikes in theese stations is between 18 and 28. Notice that this is the age range of graduate and undergraduate students and as we are considering 
-          stations near University of Illinois at Chicago, this means that theese stations are used mainly by students.<br>
-
-          <br>
-          The second thing observable, is that the majority of people are subscribers, and not customer. So, they are paying for the entire year and not only for a day.<br>
-          This is explainable by the fact that theese station are used mainly by students and they need a transport for the entire year, not only for some days.<br>
-          By the way, is known that there is a student discount for the annual membership. This is clearly related to the fact that the majority of people in theese stations are Subscribers, 
-          as they are frequented mainly by students.
-          <br>
-          <br>
-          If we focus on the gender, we can notice that it follows the general flow. The majority of people who uses bikes in theese stations are Male.<br>
-
+          The first feature, shared among all the stations is the age range, as observable from one of the pictures below.
         </p>
         </div>
+        <div class="col-md-3">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Subscribers</h3>
+            </div>
+            <div class="panel-body">
+               <img class="img-responsive" style="max-height: 70%" src="resources/subscribers_morgan.PNG"/> 
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Gender</h3>
+            </div>
+            <div class="panel-body">
+               <img class="img-responsive" style="max-height: 70%" src="resources/gender_morgan.PNG"/> 
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Age</h3>
+            </div>
+            <div class="panel-body">
+               <img class="img-responsive" style="max-height: 70%" src="resources/age_morgan.PNG"/> 
+            </div>
+          </div>
+        </div>
+        <p>
+          The majority of people that uses bikes in these stations is between 18 and 28 years old. 
+          Notice that this is the age range of graduate and undergraduate students and, as we are considering 
+          stations near University of Illinois at Chicago (UIC), this means that these stations are mainly used by students.<br>
+        </p>
+        <p>
+        The second observable thing is that the majority of people are subscribers, not customers. Subscribers pay a subscription for an entire year.<br>
+        This is explainable by the fact that these station are used mainly by students as they need a means of transportation over a long period of time, not only for some days.<br>
+        By the way, it is also known that there is a student discount for the annual membership, and this surely influences the number of student subscribers.
+        </p>
+        <p>        
+        If we focus on the gender, we can notice that it follows the general flow. The majority of people who uses bikes in these stations are males.<br>
+        </p>
+        <p>
+          Circled in red we show the stations we considered. The following map pictures show the inflow and outflow of one of those six stations.
+        </p>
+        <div class="col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Morgan & Polk : Outflow</h3>
+            </div>
+            <div class="panel-body ">
+               <img class="img-responsive center-block" align ="center" style="max-height: 70%" src="resources/outflow_morgan.PNG"/> 
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Morgan & Polk : Inflow</h3>
+            </div>
+            <div class="panel-body ">
+               <img class="img-responsive center-block" align ="center" style="max-height: 70%" src="resources/inflow_morgan.PNG"/> 
+            </div>
+          </div>
+        </div>
+        <p>
+            The ticker the line is the more trips happen between the two connected stations. 
+            We can infer that those Divvy users move to and from places really close to the University campus. 
+            Those Subscribers basically have their place in the area and work or study in the same area. 
+        </p>
+
+
       </div>
       <div class="row">
         <div class="page-header">
@@ -180,11 +241,11 @@
           </div>
           
           <p>
-            In the linecharts above, is noticeable that sometimes, usually in weekdays, the sunset is not very relevant. In fact, the number of trips starts growing before it.
-            What we can observe from the second line chart, that shows trips in a weekend day, is that no one is using bike before the sun sets.
+            In the linecharts above, is noticeable that sometimes, usually in weekdays, the sunrise is not very relevant. In fact, the number of trips starts growing before the sun rises.
+            What we can observe from the line chart on the left that, during weekends, almost no one uses the bikes before the sun rises  .
             <br>
-            One conclusion, that can be derived from theese considerations, is that bikes usage is related to work hours. This is derivable from the fact that, during weekdays,
-            number of bikes start growing before the sun rises, period when usually people go working.
+            One conclusion, that can be derived from these considerations, is that bikes usage is related to work hours. This is derivable from the fact that, during weekdays,
+            number of bikes start growing before the sun rises, hence when people usually go to work.
           </p>
         </div>
       </div>
