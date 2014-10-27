@@ -180,7 +180,10 @@
 						break;
 				case '1'://age
 						//update this...
-						$result = genericQuery('birthyear,sum(total) as total', 'demographics_data_a', 'total!=0 and stationFrom = "'.$fromStation.'" and stationTo = "'.$toStation.'"',' group by birthyear',$connessione);
+
+						//select birthyear, count(*) from divvy_trips_distances where from_station_id = 283 and to_station_id = 175 group by birthyear
+						$result = genericQuery('birthyear, count(*) as total','divvy_trips_distances', 'from_station_id = "'.$fromStation.'" and to_station_id = "'.$toStation.'"', 'group by birthyear', $connessione);
+						//$result = genericQuery('birthyear,sum(total) as total', 'demographics_data_a', 'total!=0 and stationFrom = "'.$fromStation.'" and stationTo = "'.$toStation.'"',' group by birthyear',$connessione);
 						$variables = array('0' => "birthyear",
 											'1' => "total");
 
