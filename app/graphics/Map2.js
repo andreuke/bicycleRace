@@ -430,10 +430,11 @@ Map.prototype.showStationPopup = function(id, station) {
 	d3.select("#detail_btn")
 		.on("click", function()  {
 			that.controller.exec("changeMode", "stationDetails");
+			that.controller.changeDetailStation(id);
 		});
 	d3.select("#show_btn")
 		.on("click", function()  {
-			//AGGIUNGI BUGATTI
+			that.controller.changeDetailStation(id);
 		});
 }
 

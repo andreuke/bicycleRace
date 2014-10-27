@@ -100,7 +100,8 @@ var mainController = function() {
   that.addState("map1-showComunAreas", []);
   that.addState("map1-mapType", []);
 
-  that.addState("detailStation", []);
+  that.addState("detailStation", []); //stazione selezionata per dettagli
+  that.addState("compareStation", []);
 
   that.addState("divvyStations", {});
   that.addState("communityAreas", {});
@@ -873,7 +874,7 @@ var filterSelector = function(container, controller) {
   var boxHour = hourDiv.append("select").classed("box-filter", true);
 
   boxHour.on("change", function() {
-    _controller.set("hour", boxHour.property("value"));
+    _controller.changeHourSelection(boxHour.property("value"));
   });
 
 
@@ -935,16 +936,18 @@ var filterSelector = function(container, controller) {
 
 var stationDetailsController = function(parent) {
   var that = abstractController(parent);
-  that.addState("det-gender-data", []);
-  that.addState("det-age-data", []);
-  that.addState("det-age-labels", []);
-  that.addState("det-type-data", []);
-  that.addState("det-name-station", "");
+  that.addState("det-gender-data", []); //dati grafico sesso
+  that.addState("det-age-data", []); // dati grafico età
+  that.addState("det-age-labels", []); 
+  that.addState("det-type-data", []); // dati grafico Subscriber
+  that.addState("title","");//Titolo
 
+  //Invocato quando cambia selezione della stazione
   var handleChange = function(idStation) {
     db.demographicInflowOutflow(idStation, 0, callBack, "det-gender");
     db.demographicInflowOutflow(idStation, 1, callBack, "det-age");
     db.demographicInflowOutflow(idStation, 2, callBack, "det-type");
+    that.set("title",dataElaboration.stationsAttributes[idStation].name)
   }
 
   var callBack = function(json, id) {
@@ -971,6 +974,8 @@ var stationDetailsView = function(container, controller) {
     .attr("class", "flex-horizontal")
     .attr("id", "detail-main-div");
 
+  var title = mainDiv.append("text").attr("class","flex-item").attr("min-width","100%");
+
   var divGender = mainDiv.append("div").attr("class", "detail-pie-div");
   divGender.append("text").text("Gender").attr("class", "det-title-graphs");
   var divGenderSvg = divGender.append("div").attr("class", "flex-item").attr("id", "div-svg-pp3");
@@ -988,6 +993,7 @@ var stationDetailsView = function(container, controller) {
 
   _controller.onChange("det-gender-data", function(data) {
     if (!alreadyDrawGender) {
+      alreadyDrawGender = true;
       graphGender = new PieChart("#" + divGenderSvg.attr("id"), data, ["Male", "Female", "Unknown"]);
       graphGender.draw();
     } else {
@@ -997,6 +1003,7 @@ var stationDetailsView = function(container, controller) {
 
   _controller.onChange("det-age-data", function(data) {
     if (!alreadyDrawAge) {
+      alreadyDrawAge = true;
       graphAge = new LineChart("#" + divAgeSvg.attr("id"), data, _controller.get("det-age-labels"), "num trips", "Age", "year");
       graphAge.draw();
     } else {
@@ -1006,6 +1013,7 @@ var stationDetailsView = function(container, controller) {
 
   _controller.onChange("det-type-data", function(data) {
     if (!alreadyDrawType) {
+      alreadyDrawType = true;
       graphType = new PieChart("#" + divTypeSvg.attr("id"), data, ["Customers", "Subscribers"]);
       graphType.draw();
     } else {
@@ -1021,6 +1029,10 @@ var stationDetailsView = function(container, controller) {
     }
   })
 
-  _controller.exec("changeDetailStation", "55");
+  _controller.onChange("title",function(tit){
+    title.text(tit);
+  })
+
+  //_controller.exec("changeDetailStation", "55");
 
 }
