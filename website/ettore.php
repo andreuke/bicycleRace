@@ -32,7 +32,7 @@
           <h1>Week 1 <small> September 23rd - September 28th </small></h1>
         </div>
           <ul>
-              <li>SQL Database Local Import attempt</li>
+              <li>SQL Database Local Import</li>
               <li>FTP Accounts set up</li>
               <li>UIC MySQL Database Request</li>
           </ul>

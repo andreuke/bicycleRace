@@ -78,7 +78,7 @@
               <h3 class="panel-title">Age</h3>
             </div>
             <div class="panel-body">
-               <img class="img-responsive" style="max-height: 70%" src="resources/age_morgan.PNG"/> 
+               <img class="img-responsive" style="max-height: 70%" src="resources/age_morgan.png"/> 
             </div>
           </div>
         </div>
@@ -131,10 +131,65 @@
           <h1>Findings <small>Event Related</small></h1>
         </div>
         <div class="col-md-12">
-          <ul>
-            <li> During Thanksgiving the number of trips is particularly low</li>
-            <li> During Christmas there are </li>
-          </ul>
+          <p>We have checked bike usage during the following holidays and events of 2013 : </p>
+          <div class="col-md-6">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Holidays</h3>
+              </div>
+              <div class="panel-body ">
+                <ul>
+                  <li><b>July 4th </b>: Indipendence day</li>
+                  <li><b>September 2nd </b>: Labor Day</li>
+                  <li><b>October 14th </b>: Columbus Day</li>
+                  <li><b>November 11th </b>: Veterans Day</li>
+                  <li><b>November 28th </b>: Thanksgiving</li>
+                  <li><b>December 25th </b>:  Christmas</li>
+                </ul>
+              </div>
+            </div>
+          </div>  
+          <div class="col-md-6">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Events</h3>
+              </div>
+              <div class="panel-body ">
+                <ul>
+                  <li><b>August 4th </b>: Lollapalooza</li>
+                  <li><b>August 26th </b>: First Day of School</li>
+                  <li><b>October 31st </b>:  Halloween</li>
+                  <li><b>November 3rd </b>: End of Daylight Saving Time</li>
+                  <li><b>November 23rd </b>:  Magnificent Mile Lights Festival</li>
+                  <li><b>November 29th </b>:  Black friday</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p> The pattern that we noticed is that when the weather is warm, during holidays, people tend to bike around the city more opposed to when the weather is cold. 
+              When the weather is cold and there's holiday people don't bike, as expected.</p>
+          <p> Given particular events, like Loolapalooza, the overall number of trips during the day doesn't increase but the stations surrounding the event have higher inflow and outflow.</p>
+          <div class="col-md-6">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Lollapalooza at Grant Park</h3>
+              </div>
+              <div class="panel-body ">
+                 <img class="img-responsive center-block" align ="center" style="max-height: 70%" src="resources/aug4_palooza.png"/> 
+              </div>
+            </div>
+         </div>
+          <div class="col-md-6">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Divvy Ad for Lollapalooza</h3>
+              </div>
+              <div class="panel-body ">
+                 <img class="img-responsive center-block" align ="center" style="max-height: 70%" src="resources/palooza_ad.png"/> 
+              </div>
+            </div>
+         </div>
+         <p> The image of the left clearly show the massive flow to the three divvy stations close to the sample event we have just considered</p>
         </div>
       </div>
       <div class="row">
