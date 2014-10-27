@@ -53,14 +53,67 @@
           <h1>Findings <small>Weather Related</small></h1>
         </div>
         <div class="col-md-12">
-          <li> Thunderstorms and heavy rains decreases the number of trips drastically</li>
-          <li> During cold days the number of trips during the weekend is substantially lower than during the week</li>
-          <li> Average number of trips decrease with temperature. </li>
-          The usage of divvy bikes is obviously affected by the weather, but the major factor that affects usage is not the temperature, it's weather conditions. <br>
-          Using the applications, the line charts clearly shows how, as instance, thunderstorms, heavy rains and snow highly affects the number of trips by decreasing them. <br>
-          However, also the temperature has a big influence on bikes' usage: the average number of trips decreases with the diminishing of the temperature. One example of this could be seen <br>
-          by looking at weekends. When the temperature is low, people prefer not to use bikes and the usage collapse. For what concern week days, there is a completely different behavior. <br>
-          Also when temperature is low, people use divvy bikes in their everyday trips.
+          <ul>
+            <!--<li> Thunderstorms and heavy rains decreases the number of trips drastically</li>
+            <li> During cold days the number of trips during the weekend is substantially lower than during the week</li>
+            <li> Average number of trips decrease with temperature. </li>-->
+            <p>The usage of divvy bikes is obviously affected by the weather, but the major factor that affects usage is not the temperature, it's weather conditions. <br>
+            Using the applications, the line charts clearly shows how, as instance, thunderstorms, heavy rains and snow highly affects the number of trips by decreasing them. <br>
+            However, also the temperature has a big influence on bikes' usage: the average number of trips decreases with the diminishing of the temperature. <br>
+            One example of this could be seen by looking at weekends. When the temperature is low, people prefer not to use bikes and the usage collapse. For what concern week days, 
+            there is a completely different behavior. 
+            Also even when temperature is low, people use divvy bikes in their everyday trips.</p>
+          </ul>
+          <div class="col-md-4">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Thunderstorm</h3>
+              </div>
+              <div class="panel-body">
+                 <img class="img-responsive" src="resources/thunder_31ago.png"/> 
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Snow</h3>
+              </div>
+              <div class="panel-body">
+                 <img class="img-responsive" src="resources/snow_31dec.png"/> 
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Rain</h3>
+              </div>
+              <div class="panel-body">
+                 <img class="img-responsive" src="resources/rain_22ago.png"/> 
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Temperature : -3°C / 27°F</h3>
+              </div>
+              <div class="panel-body">
+                 <img class="img-responsive" src="resources/temp_5dec.png"/> 
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Temperature : -8°C / 18°F</h3>
+              </div>
+              <div class="panel-body">
+                 <img class="img-responsive" src="resources/temp_9dec.png"/> 
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="row">
@@ -69,10 +122,10 @@
         </div>
         <div class="col-md-12">
           <ul>
-            <li> Bike usage drastically decreases after the sun sets. </li>
-            <li> Sunrise time is not as influent as expected. Trips in the early morning, most of the times, start to increase at 5. </li>
-            The first thing noticeable is that bike usage drastically decreases after the sun sets. The influence of the sunrise, is not high as expected <br>
-            There are a lot of trips, in fact, starting from before the sunrise. 
+            <!--<li> Bike usage drastically decreases after the sun sets. </li>
+            <li> Sunrise time is not as influent as expected. Trips in the early morning, most of the times, start to increase at 5. -->
+            <p>The first thing noticeable is that bike usage drastically decreases after the sun sets. The influence of the sunrise is not high as expected. <br>
+            There are a lot of trips, in fact, starting from before the sunrise. </p>
         </div>
       </div>
     </div>
