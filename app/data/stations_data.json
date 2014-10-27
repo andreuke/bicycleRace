@@ -8,7 +8,8 @@
 			"outcome": "4988",
 			"latitude": "41.87395806000000000",
 			"longitude": "-87.62773949000000000",
-			"id": "5"
+			"id": "5",
+			"communityArea": "32"
 		},
 		"13": {
 			"name": "Wilton Ave &amp; Diversey Pkwy",
@@ -18,7 +19,8 @@
 			"outcome": "3684",
 			"latitude": "41.93250008000000000",
 			"longitude": "-87.65268082000000000",
-			"id": "13"
+			"id": "13",
+			"communityArea": "7"
 		},
 		"14": {
 			"name": "Morgan St &amp; 18th St",
@@ -28,7 +30,8 @@
 			"outcome": "1500",
 			"latitude": "41.85808600000000000",
 			"longitude": "-87.65107300000000000",
-			"id": "14"
+			"id": "14",
+			"communityArea": "31"
 		},
 		"15": {
 			"name": "Racine Ave &amp; 18th St",
@@ -38,7 +41,8 @@
 			"outcome": "1656",
 			"latitude": "41.85818061000000000",
 			"longitude": "-87.65648665000000000",
-			"id": "15"
+			"id": "15",
+			"communityArea": "31"
 		},
 		"16": {
 			"name": "Wood St &amp; North Ave",
@@ -48,7 +52,8 @@
 			"outcome": "1724",
 			"latitude": "41.91032900000000000",
 			"longitude": "-87.67251600000000000",
-			"id": "16"
+			"id": "16",
+			"communityArea": "24"
 		},
 		"17": {
 			"name": "Wood St &amp; Division St",
@@ -58,7 +63,8 @@
 			"outcome": "2677",
 			"latitude": "41.90332000000000000",
 			"longitude": "-87.67273000000000000",
-			"id": "17"
+			"id": "17",
+			"communityArea": "24"
 		},
 		"19": {
 			"name": "Loomis St &amp; Taylor St",
@@ -68,7 +74,8 @@
 			"outcome": "1809",
 			"latitude": "41.86941700000000000",
 			"longitude": "-87.66099600000000000",
-			"id": "19"
+			"id": "19",
+			"communityArea": "28"
 		},
 		"20": {
 			"name": "Sheffield Ave &amp; Kingsbury St",
@@ -78,7 +85,8 @@
 			"outcome": "2727",
 			"latitude": "41.90959193000000000",
 			"longitude": "-87.65349723000000000",
-			"id": "20"
+			"id": "20",
+			"communityArea": "8"
 		},
 		"21": {
 			"name": "Aberdeen St &amp; Jackson Blvd",
@@ -88,7 +96,8 @@
 			"outcome": "2746",
 			"latitude": "41.87772613000000000",
 			"longitude": "-87.65478743000000000",
-			"id": "21"
+			"id": "21",
+			"communityArea": "28"
 		},
 		"22": {
 			"name": "May St &amp; Taylor St",
@@ -98,7 +107,8 @@
 			"outcome": "2174",
 			"latitude": "41.86948210000000000",
 			"longitude": "-87.65548640000000000",
-			"id": "22"
+			"id": "22",
+			"communityArea": "28"
 		},
 		"23": {
 			"name": "Orleans St &amp; Elm St",
@@ -108,7 +118,8 @@
 			"outcome": "1987",
 			"latitude": "41.90292400000000000",
 			"longitude": "-87.63771500000000000",
-			"id": "23"
+			"id": "23",
+			"communityArea": "8"
 		},
 		"24": {
 			"name": "Fairbanks Ct &amp; Grand Ave",
@@ -118,7 +129,8 @@
 			"outcome": "6795",
 			"latitude": "41.89186000000000000",
 			"longitude": "-87.62062000000000000",
-			"id": "24"
+			"id": "24",
+			"communityArea": "8"
 		},
 		"25": {
 			"name": "Michigan Ave &amp; Pearson St",
@@ -128,7 +140,8 @@
 			"outcome": "8360",
 			"latitude": "41.89766000000000000",
 			"longitude": "-87.62351000000000000",
-			"id": "25"
+			"id": "25",
+			"communityArea": "8"
 		},
 		"26": {
 			"name": "McClurg Ct &amp; Illinois St",
@@ -138,7 +151,8 @@
 			"outcome": "10670",
 			"latitude": "41.89102000000000000",
 			"longitude": "-87.61730000000000000",
-			"id": "26"
+			"id": "26",
+			"communityArea": "8"
 		},
 		"27": {
 			"name": "Larrabee St &amp; North Ave",
@@ -148,7 +162,8 @@
 			"outcome": "1376",
 			"latitude": "41.91021000000000000",
 			"longitude": "-87.64350000000000000",
-			"id": "27"
+			"id": "27",
+			"communityArea": "8"
 		},
 		"28": {
 			"name": "Larrabee St &amp; Menomonee St",
@@ -158,7 +173,8 @@
 			"outcome": "2056",
 			"latitude": "41.91468000000000000",
 			"longitude": "-87.64332000000000000",
-			"id": "28"
+			"id": "28",
+			"communityArea": "7"
 		},
 		"29": {
 			"name": "Noble St &amp; Milwaukee Ave",
@@ -168,7 +184,8 @@
 			"outcome": "2635",
 			"latitude": "41.90068000000000000",
 			"longitude": "-87.66260000000000000",
-			"id": "29"
+			"id": "29",
+			"communityArea": "24"
 		},
 		"30": {
 			"name": "Ashland Ave &amp; Augusta Blvd",
@@ -178,7 +195,8 @@
 			"outcome": "2055",
 			"latitude": "41.89964300000000000",
 			"longitude": "-87.66770000000000000",
-			"id": "30"
+			"id": "30",
+			"communityArea": "24"
 		},
 		"31": {
 			"name": "Franklin St &amp; Chicago Ave",
@@ -188,7 +206,8 @@
 			"outcome": "5133",
 			"latitude": "41.89680204000000000",
 			"longitude": "-87.63563839000000000",
-			"id": "31"
+			"id": "31",
+			"communityArea": "8"
 		},
 		"32": {
 			"name": "Racine Ave &amp; Congress Pkwy",
@@ -198,7 +217,8 @@
 			"outcome": "1825",
 			"latitude": "41.87464000000000000",
 			"longitude": "-87.65703000000000000",
-			"id": "32"
+			"id": "32",
+			"communityArea": "28"
 		},
 		"33": {
 			"name": "State St &amp; Van Buren St",
@@ -208,7 +228,8 @@
 			"outcome": "5938",
 			"latitude": "41.87718100000000000",
 			"longitude": "-87.62784400000000000",
-			"id": "33"
+			"id": "33",
+			"communityArea": "32"
 		},
 		"34": {
 			"name": "Cannon Dr &amp; Fullerton Ave",
@@ -218,7 +239,8 @@
 			"outcome": "6077",
 			"latitude": "41.92675599000000000",
 			"longitude": "-87.63442878000000000",
-			"id": "34"
+			"id": "34",
+			"communityArea": "7"
 		},
 		"35": {
 			"name": "Streeter Dr &amp; Illinois St",
@@ -228,7 +250,8 @@
 			"outcome": "16710",
 			"latitude": "41.89107100000000000",
 			"longitude": "-87.61220000000000000",
-			"id": "35"
+			"id": "35",
+			"communityArea": "8"
 		},
 		"36": {
 			"name": "Franklin St &amp; Jackson Blvd",
@@ -238,7 +261,8 @@
 			"outcome": "9717",
 			"latitude": "41.87770796000000000",
 			"longitude": "-87.63532114000000000",
-			"id": "36"
+			"id": "36",
+			"communityArea": "32"
 		},
 		"37": {
 			"name": "Dearborn St &amp; Adams St",
@@ -248,7 +272,8 @@
 			"outcome": "8041",
 			"latitude": "41.87935636000000000",
 			"longitude": "-87.62979104000000000",
-			"id": "37"
+			"id": "37",
+			"communityArea": "32"
 		},
 		"42": {
 			"name": "Wabash Ave &amp; Cermak Rd",
@@ -258,7 +283,8 @@
 			"outcome": "1781",
 			"latitude": "41.85323876000000000",
 			"longitude": "-87.62533709000000000",
-			"id": "42"
+			"id": "42",
+			"communityArea": "33"
 		},
 		"43": {
 			"name": "Michigan Ave &amp; Washington St",
@@ -268,7 +294,8 @@
 			"outcome": "8579",
 			"latitude": "41.88389277000000000",
 			"longitude": "-87.62464914000000000",
-			"id": "43"
+			"id": "43",
+			"communityArea": "32"
 		},
 		"44": {
 			"name": "State St &amp; Randolph St",
@@ -278,7 +305,8 @@
 			"outcome": "6819",
 			"latitude": "41.88473020000000000",
 			"longitude": "-87.62773357000000000",
-			"id": "44"
+			"id": "44",
+			"communityArea": "32"
 		},
 		"45": {
 			"name": "Michigan Ave &amp; Congress Pkwy",
@@ -288,7 +316,8 @@
 			"outcome": "6424",
 			"latitude": "41.87606560000000000",
 			"longitude": "-87.62443336000000000",
-			"id": "45"
+			"id": "45",
+			"communityArea": "32"
 		},
 		"46": {
 			"name": "Wells St &amp; Walton St",
@@ -298,7 +327,8 @@
 			"outcome": "3228",
 			"latitude": "41.89993001000000000",
 			"longitude": "-87.63443007000000000",
-			"id": "46"
+			"id": "46",
+			"communityArea": "8"
 		},
 		"47": {
 			"name": "State St &amp; Kinzie St",
@@ -308,7 +338,8 @@
 			"outcome": "7868",
 			"latitude": "41.88918000000000000",
 			"longitude": "-87.62770000000000000",
-			"id": "47"
+			"id": "47",
+			"communityArea": "8"
 		},
 		"48": {
 			"name": "Larrabee St &amp; Kingsbury St",
@@ -318,7 +349,8 @@
 			"outcome": "6313",
 			"latitude": "41.89776400000000000",
 			"longitude": "-87.64288400000000000",
-			"id": "48"
+			"id": "48",
+			"communityArea": "8"
 		},
 		"49": {
 			"name": "Dearborn St &amp; Monroe St",
@@ -328,7 +360,8 @@
 			"outcome": "7963",
 			"latitude": "41.88131982000000000",
 			"longitude": "-87.62952092000000000",
-			"id": "49"
+			"id": "49",
+			"communityArea": "32"
 		},
 		"50": {
 			"name": "Clark St &amp; Congress Pkwy",
@@ -338,7 +371,8 @@
 			"outcome": "5040",
 			"latitude": "41.87593267000000000",
 			"longitude": "-87.63058454000000000",
-			"id": "50"
+			"id": "50",
+			"communityArea": "32"
 		},
 		"51": {
 			"name": "Clark St &amp; Randolph St",
@@ -348,7 +382,8 @@
 			"outcome": "7196",
 			"latitude": "41.88457623000000000",
 			"longitude": "-87.63188991000000000",
-			"id": "51"
+			"id": "51",
+			"communityArea": "32"
 		},
 		"52": {
 			"name": "Michigan Ave &amp; Lake St",
@@ -358,7 +393,8 @@
 			"outcome": "10654",
 			"latitude": "41.88605812000000000",
 			"longitude": "-87.62428934000000000",
-			"id": "52"
+			"id": "52",
+			"communityArea": "32"
 		},
 		"53": {
 			"name": "Wells St &amp; Erie St",
@@ -368,7 +404,8 @@
 			"outcome": "5869",
 			"latitude": "41.89383200000000000",
 			"longitude": "-87.63419500000000000",
-			"id": "53"
+			"id": "53",
+			"communityArea": "8"
 		},
 		"54": {
 			"name": "Ogden Ave &amp; Chicago Ave",
@@ -378,7 +415,8 @@
 			"outcome": "2532",
 			"latitude": "41.89636246000000000",
 			"longitude": "-87.65406127000000000",
-			"id": "54"
+			"id": "54",
+			"communityArea": "24"
 		},
 		"55": {
 			"name": "Halsted St &amp; James M Rochford St",
@@ -388,7 +426,8 @@
 			"outcome": "1783",
 			"latitude": "41.86586100000000000",
 			"longitude": "-87.64661100000000000",
-			"id": "55"
+			"id": "55",
+			"communityArea": "28"
 		},
 		"56": {
 			"name": "Desplaines St &amp; Kinzie St",
@@ -398,7 +437,8 @@
 			"outcome": "5822",
 			"latitude": "41.88871604000000000",
 			"longitude": "-87.64444785000000000",
-			"id": "56"
+			"id": "56",
+			"communityArea": "24"
 		},
 		"57": {
 			"name": "Clinton St &amp; Roosevelt Rd",
@@ -408,7 +448,8 @@
 			"outcome": "2299",
 			"latitude": "41.86711778000000000",
 			"longitude": "-87.64108796000000000",
-			"id": "57"
+			"id": "57",
+			"communityArea": "28"
 		},
 		"58": {
 			"name": "Ashland Ave &amp; Armitage Ave",
@@ -418,7 +459,8 @@
 			"outcome": "3732",
 			"latitude": "41.91785887000000000",
 			"longitude": "-87.66891900000000000",
-			"id": "58"
+			"id": "58",
+			"communityArea": "22"
 		},
 		"59": {
 			"name": "Wabash Ave &amp; Roosevelt Rd",
@@ -428,7 +470,8 @@
 			"outcome": "7946",
 			"latitude": "41.86717300000000000",
 			"longitude": "-87.62595501000000000",
-			"id": "59"
+			"id": "59",
+			"communityArea": "33"
 		},
 		"60": {
 			"name": "Dayton St &amp; North Ave",
@@ -438,7 +481,8 @@
 			"outcome": "4005",
 			"latitude": "41.91057803000000000",
 			"longitude": "-87.64942193000000000",
-			"id": "60"
+			"id": "60",
+			"communityArea": "8"
 		},
 		"61": {
 			"name": "Wood St &amp; Milwaukee Ave",
@@ -448,7 +492,8 @@
 			"outcome": "2565",
 			"latitude": "41.90765500000000000",
 			"longitude": "-87.67255200000000000",
-			"id": "61"
+			"id": "61",
+			"communityArea": "24"
 		},
 		"62": {
 			"name": "McCormick Place",
@@ -458,7 +503,8 @@
 			"outcome": "3990",
 			"latitude": "41.85137517000000000",
 			"longitude": "-87.61883465000000000",
-			"id": "62"
+			"id": "62",
+			"communityArea": "33"
 		},
 		"66": {
 			"name": "Clinton St &amp; Lake St",
@@ -468,7 +514,8 @@
 			"outcome": "6288",
 			"latitude": "41.88583274000000000",
 			"longitude": "-87.64138231000000000",
-			"id": "66"
+			"id": "66",
+			"communityArea": "28"
 		},
 		"67": {
 			"name": "Sheffield Ave &amp; Fullerton Ave",
@@ -478,7 +525,8 @@
 			"outcome": "5905",
 			"latitude": "41.92560188000000000",
 			"longitude": "-87.65370804000000000",
-			"id": "67"
+			"id": "67",
+			"communityArea": "7"
 		},
 		"68": {
 			"name": "Clinton St &amp; Tilden St",
@@ -488,7 +536,8 @@
 			"outcome": "2242",
 			"latitude": "41.87588500000000000",
 			"longitude": "-87.64079500000000000",
-			"id": "68"
+			"id": "68",
+			"communityArea": "28"
 		},
 		"69": {
 			"name": "Damen Ave &amp; Pierce Ave",
@@ -498,7 +547,8 @@
 			"outcome": "5332",
 			"latitude": "41.90939601000000000",
 			"longitude": "-87.67769193000000000",
-			"id": "69"
+			"id": "69",
+			"communityArea": "24"
 		},
 		"71": {
 			"name": "Morgan St &amp; Lake St",
@@ -508,7 +558,8 @@
 			"outcome": "3013",
 			"latitude": "41.88548331000000000",
 			"longitude": "-87.65230486000000000",
-			"id": "71"
+			"id": "71",
+			"communityArea": "28"
 		},
 		"72": {
 			"name": "State St &amp; 16th St",
@@ -518,7 +569,8 @@
 			"outcome": "2809",
 			"latitude": "41.86012138000000000",
 			"longitude": "-87.62772919000000000",
-			"id": "72"
+			"id": "72",
+			"communityArea": "33"
 		},
 		"73": {
 			"name": "Jefferson St &amp; Monroe St",
@@ -528,7 +580,8 @@
 			"outcome": "4226",
 			"latitude": "41.88042200000000000",
 			"longitude": "-87.64274600000000000",
-			"id": "73"
+			"id": "73",
+			"communityArea": "28"
 		},
 		"74": {
 			"name": "Kingsbury St &amp; Erie St",
@@ -538,7 +591,8 @@
 			"outcome": "5929",
 			"latitude": "41.89384315000000000",
 			"longitude": "-87.64185116000000000",
-			"id": "74"
+			"id": "74",
+			"communityArea": "8"
 		},
 		"75": {
 			"name": "Canal St &amp; Jackson Blvd",
@@ -548,7 +602,8 @@
 			"outcome": "10088",
 			"latitude": "41.87811421000000000",
 			"longitude": "-87.63997112000000000",
-			"id": "75"
+			"id": "75",
+			"communityArea": "28"
 		},
 		"76": {
 			"name": "Lake Shore Dr &amp; Monroe St",
@@ -558,7 +613,8 @@
 			"outcome": "15482",
 			"latitude": "41.88105000000000000",
 			"longitude": "-87.61697000000000000",
-			"id": "76"
+			"id": "76",
+			"communityArea": "32"
 		},
 		"77": {
 			"name": "Clinton St &amp; Madison St",
@@ -568,7 +624,8 @@
 			"outcome": "8289",
 			"latitude": "41.88158240000000000",
 			"longitude": "-87.64127743000000000",
-			"id": "77"
+			"id": "77",
+			"communityArea": "28"
 		},
 		"80": {
 			"name": "Aberdeen St &amp; Madison St",
@@ -578,7 +635,8 @@
 			"outcome": "4147",
 			"latitude": "41.88148700000000000",
 			"longitude": "-87.65475200000000000",
-			"id": "80"
+			"id": "80",
+			"communityArea": "28"
 		},
 		"81": {
 			"name": "Daley Center Plaza",
@@ -588,7 +646,8 @@
 			"outcome": "8725",
 			"latitude": "41.88433700000000000",
 			"longitude": "-87.63018300000000000",
-			"id": "81"
+			"id": "81",
+			"communityArea": "32"
 		},
 		"84": {
 			"name": "Green St &amp; Milwaukee Ave",
@@ -598,7 +657,8 @@
 			"outcome": "2234",
 			"latitude": "41.89173300000000000",
 			"longitude": "-87.64872700000000000",
-			"id": "84"
+			"id": "84",
+			"communityArea": "24"
 		},
 		"85": {
 			"name": "Michigan Ave &amp; Oak St",
@@ -608,7 +668,8 @@
 			"outcome": "13088",
 			"latitude": "41.90096039000000000",
 			"longitude": "-87.62377664000000000",
-			"id": "85"
+			"id": "85",
+			"communityArea": "8"
 		},
 		"86": {
 			"name": "Eckhart Park",
@@ -618,7 +679,8 @@
 			"outcome": "1913",
 			"latitude": "41.89637337000000000",
 			"longitude": "-87.66098386000000000",
-			"id": "86"
+			"id": "86",
+			"communityArea": "24"
 		},
 		"87": {
 			"name": "Racine Ave &amp; Fullerton Ave",
@@ -628,7 +690,8 @@
 			"outcome": "2447",
 			"latitude": "41.92556258000000000",
 			"longitude": "-87.65840426000000000",
-			"id": "87"
+			"id": "87",
+			"communityArea": "7"
 		},
 		"88": {
 			"name": "May St &amp; Randolph St",
@@ -638,7 +701,8 @@
 			"outcome": "3013",
 			"latitude": "41.88397000000000000",
 			"longitude": "-87.65568800000000000",
-			"id": "88"
+			"id": "88",
+			"communityArea": "28"
 		},
 		"90": {
 			"name": "Millennium Park",
@@ -648,7 +712,8 @@
 			"outcome": "17065",
 			"latitude": "41.88103170000000000",
 			"longitude": "-87.62408432000000000",
-			"id": "90"
+			"id": "90",
+			"communityArea": "32"
 		},
 		"91": {
 			"name": "Clinton St &amp; Washington Blvd",
@@ -658,7 +723,8 @@
 			"outcome": "14910",
 			"latitude": "41.88338000000000000",
 			"longitude": "-87.64117000000000000",
-			"id": "91"
+			"id": "91",
+			"communityArea": "28"
 		},
 		"92": {
 			"name": "Carpenter St &amp; Huron St",
@@ -668,7 +734,8 @@
 			"outcome": "1547",
 			"latitude": "41.89455600000000000",
 			"longitude": "-87.65344900000000000",
-			"id": "92"
+			"id": "92",
+			"communityArea": "24"
 		},
 		"93": {
 			"name": "Sheffield Ave &amp; Willow St",
@@ -678,7 +745,8 @@
 			"outcome": "2650",
 			"latitude": "41.91368800000000000",
 			"longitude": "-87.65285500000000000",
-			"id": "93"
+			"id": "93",
+			"communityArea": "7"
 		},
 		"94": {
 			"name": "Lincoln Ave &amp; Armitage Ave",
@@ -688,7 +756,8 @@
 			"outcome": "6027",
 			"latitude": "41.91827300000000000",
 			"longitude": "-87.63811600000000000",
-			"id": "94"
+			"id": "94",
+			"communityArea": "7"
 		},
 		"97": {
 			"name": "Museum Campus",
@@ -698,7 +767,8 @@
 			"outcome": "12635",
 			"latitude": "41.86521200000000000",
 			"longitude": "-87.61775900000000000",
-			"id": "97"
+			"id": "97",
+			"communityArea": "33"
 		},
 		"98": {
 			"name": "LaSalle St &amp; Washington St",
@@ -708,7 +778,8 @@
 			"outcome": "5126",
 			"latitude": "41.88266400000000000",
 			"longitude": "-87.63253000000000000",
-			"id": "98"
+			"id": "98",
+			"communityArea": "32"
 		},
 		"99": {
 			"name": "Lake Shore Dr &amp; Ohio St",
@@ -718,7 +789,8 @@
 			"outcome": "6905",
 			"latitude": "41.89257000000000000",
 			"longitude": "-87.61449200000000000",
-			"id": "99"
+			"id": "99",
+			"communityArea": "8"
 		},
 		"100": {
 			"name": "Orleans St &amp; Merchandise Mart Plaza",
@@ -728,7 +800,8 @@
 			"outcome": "6134",
 			"latitude": "41.88824300000000000",
 			"longitude": "-87.63639000000000000",
-			"id": "100"
+			"id": "100",
+			"communityArea": "8"
 		},
 		"106": {
 			"name": "State St &amp; Pearson St",
@@ -738,7 +811,8 @@
 			"outcome": "2391",
 			"latitude": "41.89744800000000000",
 			"longitude": "-87.62872200000000000",
-			"id": "106"
+			"id": "106",
+			"communityArea": "8"
 		},
 		"108": {
 			"name": "Halsted St &amp; Polk St",
@@ -748,7 +822,8 @@
 			"outcome": "2068",
 			"latitude": "41.87184000000000000",
 			"longitude": "-87.64664000000000000",
-			"id": "108"
+			"id": "108",
+			"communityArea": "28"
 		},
 		"109": {
 			"name": "900 W Harrison",
@@ -758,7 +833,8 @@
 			"outcome": "1616",
 			"latitude": "41.87450000000000000",
 			"longitude": "-87.64980000000000000",
-			"id": "109"
+			"id": "109",
+			"communityArea": "28"
 		},
 		"110": {
 			"name": "State St &amp; Erie St",
@@ -768,7 +844,8 @@
 			"outcome": "6229",
 			"latitude": "41.89397500000000000",
 			"longitude": "-87.62862300000000000",
-			"id": "110"
+			"id": "110",
+			"communityArea": "8"
 		},
 		"111": {
 			"name": "Sedgwick St &amp; Huron St",
@@ -778,7 +855,8 @@
 			"outcome": "2275",
 			"latitude": "41.89466600000000000",
 			"longitude": "-87.63843700000000000",
-			"id": "111"
+			"id": "111",
+			"communityArea": "8"
 		},
 		"112": {
 			"name": "Green St &amp; Randolph St",
@@ -788,7 +866,8 @@
 			"outcome": "2726",
 			"latitude": "41.88407800000000000",
 			"longitude": "-87.64868400000000000",
-			"id": "112"
+			"id": "112",
+			"communityArea": "28"
 		},
 		"113": {
 			"name": "Bissell St &amp; Armitage Ave",
@@ -798,7 +877,8 @@
 			"outcome": "1598",
 			"latitude": "41.91844000000000000",
 			"longitude": "-87.65222000000000000",
-			"id": "113"
+			"id": "113",
+			"communityArea": "7"
 		},
 		"114": {
 			"name": "Sheffield Ave &amp; Addison St",
@@ -808,7 +888,8 @@
 			"outcome": "3215",
 			"latitude": "41.94688000000000000",
 			"longitude": "-87.65445000000000000",
-			"id": "114"
+			"id": "114",
+			"communityArea": "6"
 		},
 		"115": {
 			"name": "Sheffield Ave &amp; Wellington Ave",
@@ -818,7 +899,8 @@
 			"outcome": "3440",
 			"latitude": "41.93625300000000000",
 			"longitude": "-87.65356600000000000",
-			"id": "115"
+			"id": "115",
+			"communityArea": "6"
 		},
 		"116": {
 			"name": "Western Ave &amp; Winnebago Ave",
@@ -828,7 +910,8 @@
 			"outcome": "1152",
 			"latitude": "41.91553300000000000",
 			"longitude": "-87.68705100000000000",
-			"id": "116"
+			"id": "116",
+			"communityArea": "22"
 		},
 		"117": {
 			"name": "Wilton Ave &amp; Belmont Ave",
@@ -838,7 +921,8 @@
 			"outcome": "2651",
 			"latitude": "41.94018000000000000",
 			"longitude": "-87.65304000000000000",
-			"id": "117"
+			"id": "117",
+			"communityArea": "6"
 		},
 		"118": {
 			"name": "Sedgwick St &amp; North Ave",
@@ -848,7 +932,8 @@
 			"outcome": "3055",
 			"latitude": "41.91057900000000000",
 			"longitude": "-87.63861800000000000",
-			"id": "118"
+			"id": "118",
+			"communityArea": "8"
 		},
 		"119": {
 			"name": "Ashland Ave &amp; Lake St",
@@ -858,7 +943,8 @@
 			"outcome": "877",
 			"latitude": "41.88541000000000000",
 			"longitude": "-87.66732000000000000",
-			"id": "119"
+			"id": "119",
+			"communityArea": "28"
 		},
 		"120": {
 			"name": "Wentworth Ave &amp; Archer Ave",
@@ -868,7 +954,8 @@
 			"outcome": "1302",
 			"latitude": "41.85456400000000000",
 			"longitude": "-87.63193700000000000",
-			"id": "120"
+			"id": "120",
+			"communityArea": "34"
 		},
 		"121": {
 			"name": "Blackstone Ave &amp; Hyde Park Blvd",
@@ -878,7 +965,8 @@
 			"outcome": "852",
 			"latitude": "41.80256200000000000",
 			"longitude": "-87.59036800000000000",
-			"id": "121"
+			"id": "121",
+			"communityArea": "39"
 		},
 		"122": {
 			"name": "Congress Pkwy &amp; Ogden Ave",
@@ -888,7 +976,8 @@
 			"outcome": "962",
 			"latitude": "41.87501000000000000",
 			"longitude": "-87.67328000000000000",
-			"id": "122"
+			"id": "122",
+			"communityArea": "28"
 		},
 		"123": {
 			"name": "California Ave &amp; Milwaukee Ave",
@@ -898,7 +987,8 @@
 			"outcome": "2730",
 			"latitude": "41.92269500000000000",
 			"longitude": "-87.69715300000000000",
-			"id": "123"
+			"id": "123",
+			"communityArea": "22"
 		},
 		"124": {
 			"name": "Damen Ave &amp; Cullerton St",
@@ -908,7 +998,8 @@
 			"outcome": "367",
 			"latitude": "41.85504800000000000",
 			"longitude": "-87.67572600000000000",
-			"id": "124"
+			"id": "124",
+			"communityArea": "31"
 		},
 		"126": {
 			"name": "Clark St &amp; North Ave",
@@ -918,7 +1009,8 @@
 			"outcome": "6687",
 			"latitude": "41.91179100000000000",
 			"longitude": "-87.63184100000000000",
-			"id": "126"
+			"id": "126",
+			"communityArea": "7"
 		},
 		"127": {
 			"name": "Lincoln Ave &amp; Fullerton Ave",
@@ -928,7 +1020,8 @@
 			"outcome": "324",
 			"latitude": "41.92590500000000000",
 			"longitude": "-87.64926000000000000",
-			"id": "127"
+			"id": "127",
+			"communityArea": "7"
 		},
 		"128": {
 			"name": "Damen Ave &amp; Chicago Ave",
@@ -938,7 +1031,8 @@
 			"outcome": "2545",
 			"latitude": "41.89576900000000000",
 			"longitude": "-87.67722000000000000",
-			"id": "128"
+			"id": "128",
+			"communityArea": "24"
 		},
 		"129": {
 			"name": "Blue Island Ave &amp; 18th St",
@@ -948,7 +1042,8 @@
 			"outcome": "1162",
 			"latitude": "41.85755600000000000",
 			"longitude": "-87.66153500000000000",
-			"id": "129"
+			"id": "129",
+			"communityArea": "31"
 		},
 		"130": {
 			"name": "Damen Ave &amp; Division St",
@@ -958,7 +1053,8 @@
 			"outcome": "3187",
 			"latitude": "41.90331000000000000",
 			"longitude": "-87.67695000000000000",
-			"id": "130"
+			"id": "130",
+			"communityArea": "24"
 		},
 		"131": {
 			"name": "Lincoln Ave &amp; Belmont Ave",
@@ -968,7 +1064,8 @@
 			"outcome": "590",
 			"latitude": "41.93936500000000000",
 			"longitude": "-87.66838500000000000",
-			"id": "131"
+			"id": "131",
+			"communityArea": "6"
 		},
 		"132": {
 			"name": "Wentworth Ave &amp; 24th St",
@@ -978,7 +1075,8 @@
 			"outcome": "157",
 			"latitude": "41.84923700000000000",
 			"longitude": "-87.63171500000000000",
-			"id": "132"
+			"id": "132",
+			"communityArea": "34"
 		},
 		"134": {
 			"name": "Peoria St &amp; Jackson Blvd",
@@ -988,7 +1086,8 @@
 			"outcome": "3801",
 			"latitude": "41.87774900000000000",
 			"longitude": "-87.64963300000000000",
-			"id": "134"
+			"id": "134",
+			"communityArea": "28"
 		},
 		"135": {
 			"name": "Halsted St &amp; 21st St",
@@ -998,7 +1097,8 @@
 			"outcome": "518",
 			"latitude": "41.85378000000000000",
 			"longitude": "-87.64665000000000000",
-			"id": "135"
+			"id": "135",
+			"communityArea": "31"
 		},
 		"136": {
 			"name": "Racine Ave &amp; 13th St",
@@ -1008,7 +1108,8 @@
 			"outcome": "264",
 			"latitude": "41.86505400000000000",
 			"longitude": "-87.65695900000000000",
-			"id": "136"
+			"id": "136",
+			"communityArea": "28"
 		},
 		"137": {
 			"name": "Morgan Ave &amp; 14th Pl",
@@ -1018,7 +1119,8 @@
 			"outcome": "1537",
 			"latitude": "41.86237800000000000",
 			"longitude": "-87.65106200000000000",
-			"id": "137"
+			"id": "137",
+			"communityArea": "28"
 		},
 		"138": {
 			"name": "Clybourn Ave &amp; Division St",
@@ -1028,7 +1130,8 @@
 			"outcome": "1393",
 			"latitude": "41.90450900000000000",
 			"longitude": "-87.64050000000000000",
-			"id": "138"
+			"id": "138",
+			"communityArea": "8"
 		},
 		"140": {
 			"name": "Dearborn Pkwy &amp; Delaware Pl",
@@ -1038,7 +1141,8 @@
 			"outcome": "4953",
 			"latitude": "41.89900700000000000",
 			"longitude": "-87.62992800000000000",
-			"id": "140"
+			"id": "140",
+			"communityArea": "8"
 		},
 		"141": {
 			"name": "Clark St &amp; Lincoln Ave",
@@ -1048,7 +1152,8 @@
 			"outcome": "4864",
 			"latitude": "41.91568900000000000",
 			"longitude": "-87.63460000000000000",
-			"id": "141"
+			"id": "141",
+			"communityArea": "7"
 		},
 		"143": {
 			"name": "Sedgwick St &amp; Webster Ave",
@@ -1058,7 +1163,8 @@
 			"outcome": "3936",
 			"latitude": "41.92197000000000000",
 			"longitude": "-87.63854000000000000",
-			"id": "143"
+			"id": "143",
+			"communityArea": "7"
 		},
 		"144": {
 			"name": "Larrabee St &amp; Webster Ave",
@@ -1068,7 +1174,8 @@
 			"outcome": "3224",
 			"latitude": "41.92175000000000000",
 			"longitude": "-87.64401000000000000",
-			"id": "144"
+			"id": "144",
+			"communityArea": "7"
 		},
 		"146": {
 			"name": "Loomis St &amp; Jackson Blvd",
@@ -1078,7 +1185,8 @@
 			"outcome": "985",
 			"latitude": "41.87794500000000000",
 			"longitude": "-87.66200700000000000",
-			"id": "146"
+			"id": "146",
+			"communityArea": "28"
 		},
 		"147": {
 			"name": "Indiana Ave &amp; 26th St",
@@ -1088,7 +1196,8 @@
 			"outcome": "733",
 			"latitude": "41.84570000000000000",
 			"longitude": "-87.62248000000000000",
-			"id": "147"
+			"id": "147",
+			"communityArea": "33"
 		},
 		"148": {
 			"name": "State St &amp; 33rd St",
@@ -1098,7 +1207,8 @@
 			"outcome": "584",
 			"latitude": "41.83473400000000000",
 			"longitude": "-87.62581300000000000",
-			"id": "148"
+			"id": "148",
+			"communityArea": "35"
 		},
 		"149": {
 			"name": "Calumet Ave &amp; 33rd St",
@@ -1108,7 +1218,8 @@
 			"outcome": "759",
 			"latitude": "41.83490000000000000",
 			"longitude": "-87.61793000000000000",
-			"id": "149"
+			"id": "149",
+			"communityArea": "35"
 		},
 		"150": {
 			"name": "Fort Dearborn Dr &amp; 31st St",
@@ -1118,7 +1229,8 @@
 			"outcome": "3464",
 			"latitude": "41.83855600000000000",
 			"longitude": "-87.60821800000000000",
-			"id": "150"
+			"id": "150",
+			"communityArea": "35"
 		},
 		"152": {
 			"name": "Lincoln Ave &amp; Diversey Pkwy",
@@ -1128,7 +1240,8 @@
 			"outcome": "2174",
 			"latitude": "41.93222500000000000",
 			"longitude": "-87.65861700000000000",
-			"id": "152"
+			"id": "152",
+			"communityArea": "7"
 		},
 		"153": {
 			"name": "Southport Ave &amp; Wellington Ave",
@@ -1138,7 +1251,8 @@
 			"outcome": "3197",
 			"latitude": "41.93584000000000000",
 			"longitude": "-87.66370000000000000",
-			"id": "153"
+			"id": "153",
+			"communityArea": "6"
 		},
 		"154": {
 			"name": "Southport Ave &amp; Belmont Ave",
@@ -1148,7 +1262,8 @@
 			"outcome": "1826",
 			"latitude": "41.93949000000000000",
 			"longitude": "-87.66378000000000000",
-			"id": "154"
+			"id": "154",
+			"communityArea": "6"
 		},
 		"156": {
 			"name": "Clark St &amp; Wellington Ave",
@@ -1158,7 +1273,8 @@
 			"outcome": "3080",
 			"latitude": "41.93649682000000000",
 			"longitude": "-87.64753866000000000",
-			"id": "156"
+			"id": "156",
+			"communityArea": "6"
 		},
 		"157": {
 			"name": "Lake Shore Dr &amp; Wellington Ave",
@@ -1168,7 +1284,8 @@
 			"outcome": "4347",
 			"latitude": "41.93666900000000000",
 			"longitude": "-87.63679400000000000",
-			"id": "157"
+			"id": "157",
+			"communityArea": "6"
 		},
 		"158": {
 			"name": "Milwaukee Ave &amp; Wabansia Ave",
@@ -1178,7 +1295,8 @@
 			"outcome": "1556",
 			"latitude": "41.91261600000000000",
 			"longitude": "-87.68139100000000000",
-			"id": "158"
+			"id": "158",
+			"communityArea": "24"
 		},
 		"159": {
 			"name": "Claremont Ave &amp; Hirsch St",
@@ -1188,7 +1306,8 @@
 			"outcome": "615",
 			"latitude": "41.90778100000000000",
 			"longitude": "-87.68585400000000000",
-			"id": "159"
+			"id": "159",
+			"communityArea": "24"
 		},
 		"160": {
 			"name": "Campbell Ave &amp; North Ave",
@@ -1198,7 +1317,8 @@
 			"outcome": "706",
 			"latitude": "41.91053500000000000",
 			"longitude": "-87.68955600000000000",
-			"id": "160"
+			"id": "160",
+			"communityArea": "24"
 		},
 		"162": {
 			"name": "Damen Ave &amp; Wellington Ave",
@@ -1208,7 +1328,8 @@
 			"outcome": "1240",
 			"latitude": "41.93588000000000000",
 			"longitude": "-87.67842000000000000",
-			"id": "162"
+			"id": "162",
+			"communityArea": "5"
 		},
 		"163": {
 			"name": "Paulina St &amp; Diversey Pkwy",
@@ -1218,7 +1339,8 @@
 			"outcome": "762",
 			"latitude": "41.93186000000000000",
 			"longitude": "-87.67079000000000000",
-			"id": "163"
+			"id": "163",
+			"communityArea": "7"
 		},
 		"164": {
 			"name": "Franklin St &amp; Lake St",
@@ -1228,7 +1350,8 @@
 			"outcome": "4799",
 			"latitude": "41.88583700000000000",
 			"longitude": "-87.63550000000000000",
-			"id": "164"
+			"id": "164",
+			"communityArea": "32"
 		},
 		"165": {
 			"name": "Clark St &amp; Waveland Ave",
@@ -1238,7 +1361,8 @@
 			"outcome": "2490",
 			"latitude": "41.94893000000000000",
 			"longitude": "-87.65775000000000000",
-			"id": "165"
+			"id": "165",
+			"communityArea": "6"
 		},
 		"166": {
 			"name": "Ashland Ave &amp; Wrightwood Ave",
@@ -1248,7 +1372,8 @@
 			"outcome": "1103",
 			"latitude": "41.92883000000000000",
 			"longitude": "-87.66850700000000000",
-			"id": "166"
+			"id": "166",
+			"communityArea": "7"
 		},
 		"167": {
 			"name": "Damen Ave &amp; Coulter St",
@@ -1258,7 +1383,8 @@
 			"outcome": "100",
 			"latitude": "41.84920000000000000",
 			"longitude": "-87.67564000000000000",
-			"id": "167"
+			"id": "167",
+			"communityArea": "31"
 		},
 		"168": {
 			"name": "Michigan Ave &amp; 14th St",
@@ -1268,7 +1394,8 @@
 			"outcome": "2875",
 			"latitude": "41.86405900000000000",
 			"longitude": "-87.62372700000000000",
-			"id": "168"
+			"id": "168",
+			"communityArea": "33"
 		},
 		"169": {
 			"name": "Canal St &amp; Harrison St",
@@ -1278,7 +1405,8 @@
 			"outcome": "1433",
 			"latitude": "41.87433700000000000",
 			"longitude": "-87.63956600000000000",
-			"id": "169"
+			"id": "169",
+			"communityArea": "28"
 		},
 		"170": {
 			"name": "Clinton St &amp; 18th St",
@@ -1288,7 +1416,8 @@
 			"outcome": "718",
 			"latitude": "41.85795000000000000",
 			"longitude": "-87.64082600000000000",
-			"id": "170"
+			"id": "170",
+			"communityArea": "31"
 		},
 		"171": {
 			"name": "May St &amp; Cullerton St",
@@ -1298,7 +1427,8 @@
 			"outcome": "206",
 			"latitude": "41.85513600000000000",
 			"longitude": "-87.65412700000000000",
-			"id": "171"
+			"id": "171",
+			"communityArea": "31"
 		},
 		"173": {
 			"name": "Mies van der Rohe Way &amp; Chicago Ave",
@@ -1308,7 +1438,8 @@
 			"outcome": "5275",
 			"latitude": "41.89691000000000000",
 			"longitude": "-87.62174300000000000",
-			"id": "173"
+			"id": "173",
+			"communityArea": "8"
 		},
 		"174": {
 			"name": "Canal St &amp; Madison St",
@@ -1318,7 +1449,8 @@
 			"outcome": "8028",
 			"latitude": "41.88209100000000000",
 			"longitude": "-87.63983300000000000",
-			"id": "174"
+			"id": "174",
+			"communityArea": "28"
 		},
 		"175": {
 			"name": "Wells St &amp; Polk St",
@@ -1328,7 +1460,8 @@
 			"outcome": "2465",
 			"latitude": "41.87237300000000000",
 			"longitude": "-87.63352300000000000",
-			"id": "175"
+			"id": "175",
+			"communityArea": "32"
 		},
 		"176": {
 			"name": "Clark St &amp; Elm St",
@@ -1338,7 +1471,8 @@
 			"outcome": "5846",
 			"latitude": "41.90323300000000000",
 			"longitude": "-87.63125300000000000",
-			"id": "176"
+			"id": "176",
+			"communityArea": "8"
 		},
 		"177": {
 			"name": "Theater on the Lake",
@@ -1348,7 +1482,8 @@
 			"outcome": "9082",
 			"latitude": "41.92627700000000000",
 			"longitude": "-87.63083400000000000",
-			"id": "177"
+			"id": "177",
+			"communityArea": "7"
 		},
 		"178": {
 			"name": "State St &amp; 19th St",
@@ -1358,7 +1493,8 @@
 			"outcome": "1290",
 			"latitude": "41.85659400000000000",
 			"longitude": "-87.62754200000000000",
-			"id": "178"
+			"id": "178",
+			"communityArea": "33"
 		},
 		"179": {
 			"name": "Martin Luther King Dr &amp; Oakwood Blvd",
@@ -1368,7 +1504,8 @@
 			"outcome": "732",
 			"latitude": "41.82256000000000000",
 			"longitude": "-87.61615000000000000",
-			"id": "179"
+			"id": "179",
+			"communityArea": "38"
 		},
 		"181": {
 			"name": "LaSalle St &amp; Illinois St",
@@ -1378,7 +1515,8 @@
 			"outcome": "6399",
 			"latitude": "41.89074900000000000",
 			"longitude": "-87.63206000000000000",
-			"id": "181"
+			"id": "181",
+			"communityArea": "8"
 		},
 		"183": {
 			"name": "Damen Ave &amp; Augusta Blvd",
@@ -1388,7 +1526,8 @@
 			"outcome": "2112",
 			"latitude": "41.89971400000000000",
 			"longitude": "-87.67723400000000000",
-			"id": "183"
+			"id": "183",
+			"communityArea": "24"
 		},
 		"184": {
 			"name": "State St &amp; 35th St",
@@ -1398,7 +1537,8 @@
 			"outcome": "740",
 			"latitude": "41.83104000000000000",
 			"longitude": "-87.62688000000000000",
-			"id": "184"
+			"id": "184",
+			"communityArea": "35"
 		},
 		"185": {
 			"name": "Stave St &amp; Armitage Ave",
@@ -1408,7 +1548,8 @@
 			"outcome": "755",
 			"latitude": "41.91774100000000000",
 			"longitude": "-87.69139200000000000",
-			"id": "185"
+			"id": "185",
+			"communityArea": "22"
 		},
 		"186": {
 			"name": "Ogden Ave &amp; Race Ave",
@@ -1418,7 +1559,8 @@
 			"outcome": "1580",
 			"latitude": "41.89179500000000000",
 			"longitude": "-87.65875100000000000",
-			"id": "186"
+			"id": "186",
+			"communityArea": "24"
 		},
 		"188": {
 			"name": "Greenview Ave &amp; Fullerton Ave",
@@ -1428,7 +1570,8 @@
 			"outcome": "1371",
 			"latitude": "41.92533000000000000",
 			"longitude": "-87.66580000000000000",
-			"id": "188"
+			"id": "188",
+			"communityArea": "7"
 		},
 		"190": {
 			"name": "Southport Ave &amp; Wrightwood Ave",
@@ -1438,7 +1581,8 @@
 			"outcome": "1977",
 			"latitude": "41.92888000000000000",
 			"longitude": "-87.66317000000000000",
-			"id": "190"
+			"id": "190",
+			"communityArea": "7"
 		},
 		"191": {
 			"name": "Canal St &amp; Monroe St",
@@ -1448,7 +1592,8 @@
 			"outcome": "4190",
 			"latitude": "41.88070000000000000",
 			"longitude": "-87.63947000000000000",
-			"id": "191"
+			"id": "191",
+			"communityArea": "28"
 		},
 		"192": {
 			"name": "Canal St &amp; Adams St",
@@ -1458,7 +1603,8 @@
 			"outcome": "6435",
 			"latitude": "41.87923000000000000",
 			"longitude": "-87.64001500000000000",
-			"id": "192"
+			"id": "192",
+			"communityArea": "28"
 		},
 		"193": {
 			"name": "State St &amp; 29th St",
@@ -1468,7 +1614,8 @@
 			"outcome": "149",
 			"latitude": "41.84170700000000000",
 			"longitude": "-87.62693800000000000",
-			"id": "193"
+			"id": "193",
+			"communityArea": "35"
 		},
 		"194": {
 			"name": "State St &amp; Wacker Dr",
@@ -1478,7 +1625,8 @@
 			"outcome": "3789",
 			"latitude": "41.88715500000000000",
 			"longitude": "-87.62775000000000000",
-			"id": "194"
+			"id": "194",
+			"communityArea": "32"
 		},
 		"195": {
 			"name": "Columbus Dr &amp; Randolph St",
@@ -1488,7 +1636,8 @@
 			"outcome": "6188",
 			"latitude": "41.88530000000000000",
 			"longitude": "-87.62077000000000000",
-			"id": "195"
+			"id": "195",
+			"communityArea": "32"
 		},
 		"196": {
 			"name": "Cityfront Plaza &amp; N Water St",
@@ -1498,7 +1647,8 @@
 			"outcome": "3258",
 			"latitude": "41.88987500000000000",
 			"longitude": "-87.62199400000000000",
-			"id": "196"
+			"id": "196",
+			"communityArea": "8"
 		},
 		"197": {
 			"name": "Michigan Ave &amp; Madison St",
@@ -1508,7 +1658,8 @@
 			"outcome": "3264",
 			"latitude": "41.88213400000000000",
 			"longitude": "-87.62512500000000000",
-			"id": "197"
+			"id": "197",
+			"communityArea": "32"
 		},
 		"198": {
 			"name": "Halsted St &amp; Madison St",
@@ -1518,7 +1669,8 @@
 			"outcome": "2849",
 			"latitude": "41.88175000000000000",
 			"longitude": "-87.64780000000000000",
-			"id": "198"
+			"id": "198",
+			"communityArea": "28"
 		},
 		"199": {
 			"name": "Wabash Ave &amp; Grand Ave",
@@ -1528,7 +1680,8 @@
 			"outcome": "5858",
 			"latitude": "41.89173800000000000",
 			"longitude": "-87.62693700000000000",
-			"id": "199"
+			"id": "199",
+			"communityArea": "8"
 		},
 		"200": {
 			"name": "King Dr &amp; 47th St",
@@ -1538,7 +1691,8 @@
 			"outcome": "216",
 			"latitude": "41.80985100000000000",
 			"longitude": "-87.61627900000000000",
-			"id": "200"
+			"id": "200",
+			"communityArea": "38"
 		},
 		"201": {
 			"name": "Indiana Ave &amp; 40th St",
@@ -1548,7 +1702,8 @@
 			"outcome": "122",
 			"latitude": "41.82168000000000000",
 			"longitude": "-87.62160000000000000",
-			"id": "201"
+			"id": "201",
+			"communityArea": "38"
 		},
 		"202": {
 			"name": "Halsted St &amp; 18th St",
@@ -1558,7 +1713,8 @@
 			"outcome": "726",
 			"latitude": "41.85749900000000000",
 			"longitude": "-87.64627700000000000",
-			"id": "202"
+			"id": "202",
+			"communityArea": "31"
 		},
 		"203": {
 			"name": "Western Ave &amp; 21st St",
@@ -1568,7 +1724,8 @@
 			"outcome": "218",
 			"latitude": "41.85394000000000000",
 			"longitude": "-87.68524300000000000",
-			"id": "203"
+			"id": "203",
+			"communityArea": "31"
 		},
 		"204": {
 			"name": "Prairie Ave &amp; Garfield Blvd",
@@ -1578,7 +1735,8 @@
 			"outcome": "239",
 			"latitude": "41.79510000000000000",
 			"longitude": "-87.61936000000000000",
-			"id": "204"
+			"id": "204",
+			"communityArea": "40"
 		},
 		"205": {
 			"name": "Paulina St &amp; 18th St",
@@ -1588,7 +1746,8 @@
 			"outcome": "619",
 			"latitude": "41.85790100000000000",
 			"longitude": "-87.66874500000000000",
-			"id": "205"
+			"id": "205",
+			"communityArea": "31"
 		},
 		"206": {
 			"name": "Halsted St &amp; Archer Ave",
@@ -1598,7 +1757,8 @@
 			"outcome": "694",
 			"latitude": "41.84720300000000000",
 			"longitude": "-87.64679500000000000",
-			"id": "206"
+			"id": "206",
+			"communityArea": "60"
 		},
 		"207": {
 			"name": "Emerald Ave &amp; 28th St",
@@ -1608,7 +1768,8 @@
 			"outcome": "416",
 			"latitude": "41.84358000000000000",
 			"longitude": "-87.64536800000000000",
-			"id": "207"
+			"id": "207",
+			"communityArea": "60"
 		},
 		"208": {
 			"name": "Ashland Ave &amp; 21st St",
@@ -1618,7 +1779,8 @@
 			"outcome": "143",
 			"latitude": "41.85381000000000000",
 			"longitude": "-87.66589700000000000",
-			"id": "208"
+			"id": "208",
+			"communityArea": "31"
 		},
 		"209": {
 			"name": "Normal Ave &amp; Archer Ave",
@@ -1628,7 +1790,8 @@
 			"outcome": "425",
 			"latitude": "41.84952700000000000",
 			"longitude": "-87.64059100000000000",
-			"id": "209"
+			"id": "209",
+			"communityArea": "34"
 		},
 		"210": {
 			"name": "Ashland Ave &amp; Division St",
@@ -1638,7 +1801,8 @@
 			"outcome": "2771",
 			"latitude": "41.90345600000000000",
 			"longitude": "-87.66777000000000000",
-			"id": "210"
+			"id": "210",
+			"communityArea": "24"
 		},
 		"211": {
 			"name": "St Clair St &amp; Erie St",
@@ -1648,7 +1812,8 @@
 			"outcome": "4476",
 			"latitude": "41.89444800000000000",
 			"longitude": "-87.62266300000000000",
-			"id": "211"
+			"id": "211",
+			"communityArea": "8"
 		},
 		"212": {
 			"name": "Wells St &amp; Ohio St",
@@ -1658,7 +1823,8 @@
 			"outcome": "2759",
 			"latitude": "41.89223800000000000",
 			"longitude": "-87.63398500000000000",
-			"id": "212"
+			"id": "212",
+			"communityArea": "8"
 		},
 		"213": {
 			"name": "Leavitt St &amp; North Ave",
@@ -1668,7 +1834,8 @@
 			"outcome": "747",
 			"latitude": "41.91065200000000000",
 			"longitude": "-87.68240000000000000",
-			"id": "213"
+			"id": "213",
+			"communityArea": "24"
 		},
 		"214": {
 			"name": "Damen Ave &amp; Grand Ave",
@@ -1678,7 +1845,8 @@
 			"outcome": "1316",
 			"latitude": "41.89122000000000000",
 			"longitude": "-87.67686000000000000",
-			"id": "214"
+			"id": "214",
+			"communityArea": "24"
 		},
 		"215": {
 			"name": "Damen Ave &amp; Madison St",
@@ -1688,7 +1856,8 @@
 			"outcome": "640",
 			"latitude": "41.88137000000000000",
 			"longitude": "-87.67493000000000000",
-			"id": "215"
+			"id": "215",
+			"communityArea": "28"
 		},
 		"216": {
 			"name": "California Ave &amp; Division St",
@@ -1698,7 +1867,8 @@
 			"outcome": "980",
 			"latitude": "41.90302900000000000",
 			"longitude": "-87.69747400000000000",
-			"id": "216"
+			"id": "216",
+			"communityArea": "24"
 		},
 		"217": {
 			"name": "May St &amp; Fulton St",
@@ -1708,7 +1878,8 @@
 			"outcome": "1409",
 			"latitude": "41.88677300000000000",
 			"longitude": "-87.65600100000000000",
-			"id": "217"
+			"id": "217",
+			"communityArea": "28"
 		},
 		"218": {
 			"name": "Wells St &amp; 19th St",
@@ -1718,7 +1889,8 @@
 			"outcome": "360",
 			"latitude": "41.85680200000000000",
 			"longitude": "-87.63387900000000000",
-			"id": "218"
+			"id": "218",
+			"communityArea": "34"
 		},
 		"219": {
 			"name": "Damen Ave &amp; Cortland Ave",
@@ -1728,7 +1900,8 @@
 			"outcome": "1670",
 			"latitude": "41.91602700000000000",
 			"longitude": "-87.67741100000000000",
-			"id": "219"
+			"id": "219",
+			"communityArea": "22"
 		},
 		"220": {
 			"name": "Hampden Ct &amp; Diversey Pkwy",
@@ -1738,7 +1911,8 @@
 			"outcome": "4352",
 			"latitude": "41.93262000000000000",
 			"longitude": "-87.64238500000000000",
-			"id": "220"
+			"id": "220",
+			"communityArea": "7"
 		},
 		"222": {
 			"name": "Milwaukee Ave &amp; Rockwell St",
@@ -1748,7 +1922,8 @@
 			"outcome": "503",
 			"latitude": "41.92019500000000000",
 			"longitude": "-87.69303300000000000",
-			"id": "222"
+			"id": "222",
+			"communityArea": "22"
 		},
 		"223": {
 			"name": "Clifton Ave &amp; Armitage Ave",
@@ -1758,7 +1933,8 @@
 			"outcome": "1702",
 			"latitude": "41.91821600000000000",
 			"longitude": "-87.65693600000000000",
-			"id": "223"
+			"id": "223",
+			"communityArea": "7"
 		},
 		"224": {
 			"name": "Halsted St &amp; Willow St",
@@ -1768,7 +1944,8 @@
 			"outcome": "1282",
 			"latitude": "41.91377800000000000",
 			"longitude": "-87.64884000000000000",
-			"id": "224"
+			"id": "224",
+			"communityArea": "7"
 		},
 		"225": {
 			"name": "Halsted St &amp; Dickens Ave",
@@ -1778,7 +1955,8 @@
 			"outcome": "1636",
 			"latitude": "41.91993600000000000",
 			"longitude": "-87.64883000000000000",
-			"id": "225"
+			"id": "225",
+			"communityArea": "7"
 		},
 		"226": {
 			"name": "Racine Ave &amp; Belmont Ave",
@@ -1788,7 +1966,8 @@
 			"outcome": "1343",
 			"latitude": "41.93974300000000000",
 			"longitude": "-87.65886500000000000",
-			"id": "226"
+			"id": "226",
+			"communityArea": "6"
 		},
 		"227": {
 			"name": "Southport Ave &amp; Waveland Ave",
@@ -1798,7 +1977,8 @@
 			"outcome": "2011",
 			"latitude": "41.94815000000000000",
 			"longitude": "-87.66394000000000000",
-			"id": "227"
+			"id": "227",
+			"communityArea": "6"
 		},
 		"228": {
 			"name": "Damen Ave &amp; Melrose Ave",
@@ -1808,7 +1988,8 @@
 			"outcome": "892",
 			"latitude": "41.94060000000000000",
 			"longitude": "-87.67850000000000000",
-			"id": "228"
+			"id": "228",
+			"communityArea": "5"
 		},
 		"229": {
 			"name": "Southport Ave &amp; Roscoe St",
@@ -1818,7 +1999,8 @@
 			"outcome": "1926",
 			"latitude": "41.94373900000000000",
 			"longitude": "-87.66402000000000000",
-			"id": "229"
+			"id": "229",
+			"communityArea": "6"
 		},
 		"230": {
 			"name": "Lincoln Ave &amp; Roscoe St",
@@ -1828,7 +2010,8 @@
 			"outcome": "1661",
 			"latitude": "41.94334000000000000",
 			"longitude": "-87.67097000000000000",
-			"id": "230"
+			"id": "230",
+			"communityArea": "6"
 		},
 		"231": {
 			"name": "Sheridan Rd &amp; Montrose Ave",
@@ -1838,7 +2021,8 @@
 			"outcome": "1824",
 			"latitude": "41.96167000000000000",
 			"longitude": "-87.65464000000000000",
-			"id": "231"
+			"id": "231",
+			"communityArea": "3"
 		},
 		"232": {
 			"name": "Pine Grove Ave &amp; Addison St",
@@ -1848,7 +2032,8 @@
 			"outcome": "2736",
 			"latitude": "41.94783600000000000",
 			"longitude": "-87.64541600000000000",
-			"id": "232"
+			"id": "232",
+			"communityArea": "6"
 		},
 		"233": {
 			"name": "Sangamon St &amp; Washington Blvd",
@@ -1858,7 +2043,8 @@
 			"outcome": "1797",
 			"latitude": "41.88300400000000000",
 			"longitude": "-87.65114800000000000",
-			"id": "233"
+			"id": "233",
+			"communityArea": "28"
 		},
 		"234": {
 			"name": "Clark St &amp; Montrose Ave",
@@ -1878,7 +2064,8 @@
 			"outcome": "576",
 			"latitude": "41.90757600000000000",
 			"longitude": "-87.63851700000000000",
-			"id": "236"
+			"id": "236",
+			"communityArea": "8"
 		},
 		"237": {
 			"name": "Martin Luther King Dr &amp; 29th St",
@@ -1888,7 +2075,8 @@
 			"outcome": "665",
 			"latitude": "41.84205200000000000",
 			"longitude": "-87.61700000000000000",
-			"id": "237"
+			"id": "237",
+			"communityArea": "35"
 		},
 		"238": {
 			"name": "Ravenswood Ave &amp; Montrose Ave",
@@ -1898,7 +2086,8 @@
 			"outcome": "832",
 			"latitude": "41.96162600000000000",
 			"longitude": "-87.67410100000000000",
-			"id": "238"
+			"id": "238",
+			"communityArea": "4"
 		},
 		"239": {
 			"name": "Western Ave &amp; Leland Ave",
@@ -1908,7 +2097,8 @@
 			"outcome": "970",
 			"latitude": "41.96655500000000000",
 			"longitude": "-87.68848700000000000",
-			"id": "239"
+			"id": "239",
+			"communityArea": "4"
 		},
 		"240": {
 			"name": "Sheridan Rd &amp; Irving Park Rd",
@@ -1918,7 +2108,8 @@
 			"outcome": "2389",
 			"latitude": "41.95434000000000000",
 			"longitude": "-87.65460100000000000",
-			"id": "240"
+			"id": "240",
+			"communityArea": "6"
 		},
 		"241": {
 			"name": "Morgan St &amp; Polk St",
@@ -1928,7 +2119,8 @@
 			"outcome": "1749",
 			"latitude": "41.87173700000000000",
 			"longitude": "-87.65103000000000000",
-			"id": "241"
+			"id": "241",
+			"communityArea": "28"
 		},
 		"242": {
 			"name": "Damen Ave &amp; Leland Ave",
@@ -1938,7 +2130,8 @@
 			"outcome": "1070",
 			"latitude": "41.96709400000000000",
 			"longitude": "-87.67902800000000000",
-			"id": "242"
+			"id": "242",
+			"communityArea": "4"
 		},
 		"243": {
 			"name": "Lincoln Ave &amp; Leavitt St",
@@ -1948,7 +2141,8 @@
 			"outcome": "1004",
 			"latitude": "41.96239100000000000",
 			"longitude": "-87.68414600000000000",
-			"id": "243"
+			"id": "243",
+			"communityArea": "4"
 		},
 		"244": {
 			"name": "Ravenswood Ave &amp; Irving Park Rd",
@@ -1958,7 +2152,8 @@
 			"outcome": "1006",
 			"latitude": "41.95469000000000000",
 			"longitude": "-87.67393000000000000",
-			"id": "244"
+			"id": "244",
+			"communityArea": "5"
 		},
 		"245": {
 			"name": "Clarendon Ave &amp; Junior Ter",
@@ -1968,7 +2163,8 @@
 			"outcome": "1050",
 			"latitude": "41.96100400000000000",
 			"longitude": "-87.64960300000000000",
-			"id": "245"
+			"id": "245",
+			"communityArea": "3"
 		},
 		"246": {
 			"name": "Ashland Ave &amp; Belle Plaine Ave",
@@ -1978,7 +2174,8 @@
 			"outcome": "536",
 			"latitude": "41.95606100000000000",
 			"longitude": "-87.66886900000000000",
-			"id": "246"
+			"id": "246",
+			"communityArea": "6"
 		},
 		"247": {
 			"name": "Shore Drive &amp; 55th St",
@@ -1988,7 +2185,8 @@
 			"outcome": "1127",
 			"latitude": "41.79521200000000000",
 			"longitude": "-87.58071500000000000",
-			"id": "247"
+			"id": "247",
+			"communityArea": "41"
 		},
 		"248": {
 			"name": "Woodlawn Ave &amp; 55th St",
@@ -1998,7 +2196,8 @@
 			"outcome": "846",
 			"latitude": "41.79526400000000000",
 			"longitude": "-87.59647100000000000",
-			"id": "248"
+			"id": "248",
+			"communityArea": "41"
 		},
 		"249": {
 			"name": "Montrose Harbor",
@@ -2008,7 +2207,8 @@
 			"outcome": "2459",
 			"latitude": "41.96398200000000000",
 			"longitude": "-87.63818100000000000",
-			"id": "249"
+			"id": "249",
+			"communityArea": "3"
 		},
 		"250": {
 			"name": "Ashland Ave &amp; Wellington Ave",
@@ -2018,7 +2218,8 @@
 			"outcome": "1351",
 			"latitude": "41.93608300000000000",
 			"longitude": "-87.66980700000000000",
-			"id": "250"
+			"id": "250",
+			"communityArea": "6"
 		},
 		"251": {
 			"name": "Clarendon Ave &amp; Leland Ave",
@@ -2028,7 +2229,8 @@
 			"outcome": "966",
 			"latitude": "41.96796800000000000",
 			"longitude": "-87.65000100000000000",
-			"id": "251"
+			"id": "251",
+			"communityArea": "3"
 		},
 		"252": {
 			"name": "Greenwood Ave &amp; 47th St",
@@ -2038,7 +2240,8 @@
 			"outcome": "813",
 			"latitude": "41.80983500000000000",
 			"longitude": "-87.59938300000000000",
-			"id": "252"
+			"id": "252",
+			"communityArea": "39"
 		},
 		"253": {
 			"name": "Clifton Ave &amp; Lawrence Ave",
@@ -2048,7 +2251,8 @@
 			"outcome": "464",
 			"latitude": "41.96887300000000000",
 			"longitude": "-87.65885700000000000",
-			"id": "253"
+			"id": "253",
+			"communityArea": "3"
 		},
 		"254": {
 			"name": "Pine Grove Ave &amp; Irving Park Rd",
@@ -2058,7 +2262,8 @@
 			"outcome": "1392",
 			"latitude": "41.95438300000000000",
 			"longitude": "-87.64804300000000000",
-			"id": "254"
+			"id": "254",
+			"communityArea": "6"
 		},
 		"255": {
 			"name": "Indiana Ave &amp; Roosevelt Rd",
@@ -2068,7 +2273,8 @@
 			"outcome": "3903",
 			"latitude": "41.86788800000000000",
 			"longitude": "-87.62304100000000000",
-			"id": "255"
+			"id": "255",
+			"communityArea": "32"
 		},
 		"256": {
 			"name": "Broadway &amp; Sheridan Rd",
@@ -2078,7 +2284,8 @@
 			"outcome": "806",
 			"latitude": "41.95283300000000000",
 			"longitude": "-87.64999300000000000",
-			"id": "256"
+			"id": "256",
+			"communityArea": "6"
 		},
 		"257": {
 			"name": "Lincoln Ave &amp; Waveland Ave",
@@ -2088,7 +2295,8 @@
 			"outcome": "710",
 			"latitude": "41.94911000000000000",
 			"longitude": "-87.67511200000000000",
-			"id": "257"
+			"id": "257",
+			"communityArea": "5"
 		},
 		"258": {
 			"name": "Logan Blvd &amp; Elston Ave",
@@ -2098,7 +2306,8 @@
 			"outcome": "645",
 			"latitude": "41.93058400000000000",
 			"longitude": "-87.68512600000000000",
-			"id": "258"
+			"id": "258",
+			"communityArea": "22"
 		},
 		"259": {
 			"name": "California Ave &amp; Francis Pl",
@@ -2108,7 +2317,8 @@
 			"outcome": "527",
 			"latitude": "41.91855000000000000",
 			"longitude": "-87.69723000000000000",
-			"id": "259"
+			"id": "259",
+			"communityArea": "22"
 		},
 		"260": {
 			"name": "Kedzie Ave &amp; Milwaukee Ave",
@@ -2118,7 +2328,8 @@
 			"outcome": "934",
 			"latitude": "41.92956700000000000",
 			"longitude": "-87.70785700000000000",
-			"id": "260"
+			"id": "260",
+			"communityArea": "22"
 		},
 		"261": {
 			"name": "Hermitage Ave &amp; Polk St",
@@ -2128,7 +2339,8 @@
 			"outcome": "952",
 			"latitude": "41.87151400000000000",
 			"longitude": "-87.66988600000000000",
-			"id": "261"
+			"id": "261",
+			"communityArea": "28"
 		},
 		"262": {
 			"name": "Halsted St &amp; 37th St",
@@ -2138,7 +2350,8 @@
 			"outcome": "91",
 			"latitude": "41.82707100000000000",
 			"longitude": "-87.64580100000000000",
-			"id": "262"
+			"id": "262",
+			"communityArea": "60"
 		},
 		"263": {
 			"name": "Rhodes Ave &amp; 32nd St",
@@ -2148,7 +2361,8 @@
 			"outcome": "262",
 			"latitude": "41.83620800000000000",
 			"longitude": "-87.61353300000000000",
-			"id": "263"
+			"id": "263",
+			"communityArea": "35"
 		},
 		"264": {
 			"name": "Stetson Ave &amp; South Water St",
@@ -2158,7 +2372,8 @@
 			"outcome": "1769",
 			"latitude": "41.88686100000000000",
 			"longitude": "-87.62269400000000000",
-			"id": "264"
+			"id": "264",
+			"communityArea": "32"
 		},
 		"265": {
 			"name": "Cottage Grove Ave &amp; Oakwood Blvd",
@@ -2168,7 +2383,8 @@
 			"outcome": "192",
 			"latitude": "41.82298500000000000",
 			"longitude": "-87.60710000000000000",
-			"id": "265"
+			"id": "265",
+			"communityArea": "38"
 		},
 		"267": {
 			"name": "Lake Park Ave &amp; 47th St",
@@ -2178,7 +2394,8 @@
 			"outcome": "295",
 			"latitude": "41.80944300000000000",
 			"longitude": "-87.59187500000000000",
-			"id": "267"
+			"id": "267",
+			"communityArea": "39"
 		},
 		"268": {
 			"name": "Lake Shore Dr &amp; North Blvd",
@@ -2188,7 +2405,8 @@
 			"outcome": "2984",
 			"latitude": "41.91172200000000000",
 			"longitude": "-87.62680400000000000",
-			"id": "268"
+			"id": "268",
+			"communityArea": "7"
 		},
 		"271": {
 			"name": "Cottage Grove Ave &amp; 43rd St",
@@ -2198,7 +2416,8 @@
 			"outcome": "62",
 			"latitude": "41.81649900000000000",
 			"longitude": "-87.60658200000000000",
-			"id": "271"
+			"id": "271",
+			"communityArea": "39"
 		},
 		"272": {
 			"name": "Indiana Ave &amp; 31st St",
@@ -2208,7 +2427,8 @@
 			"outcome": "249",
 			"latitude": "41.83884200000000000",
 			"longitude": "-87.62185700000000000",
-			"id": "272"
+			"id": "272",
+			"communityArea": "35"
 		},
 		"273": {
 			"name": "Michigan Ave &amp; 18th St",
@@ -2218,7 +2438,8 @@
 			"outcome": "1546",
 			"latitude": "41.85793700000000000",
 			"longitude": "-87.62363300000000000",
-			"id": "273"
+			"id": "273",
+			"communityArea": "33"
 		},
 		"274": {
 			"name": "Racine Ave &amp; 15th St",
@@ -2228,7 +2449,8 @@
 			"outcome": "406",
 			"latitude": "41.86126700000000000",
 			"longitude": "-87.65662500000000000",
-			"id": "274"
+			"id": "274",
+			"communityArea": "28"
 		},
 		"275": {
 			"name": "Ashland Ave &amp; 13th St",
@@ -2238,7 +2460,8 @@
 			"outcome": "172",
 			"latitude": "41.86523400000000000",
 			"longitude": "-87.66650700000000000",
-			"id": "275"
+			"id": "275",
+			"communityArea": "28"
 		},
 		"276": {
 			"name": "California Ave &amp; North Ave",
@@ -2248,7 +2471,8 @@
 			"outcome": "576",
 			"latitude": "41.91044000000000000",
 			"longitude": "-87.69720000000000000",
-			"id": "276"
+			"id": "276",
+			"communityArea": "24"
 		},
 		"277": {
 			"name": "Ashland Ave &amp; Grand Ave",
@@ -2258,7 +2482,8 @@
 			"outcome": "483",
 			"latitude": "41.89107200000000000",
 			"longitude": "-87.66661100000000000",
-			"id": "277"
+			"id": "277",
+			"communityArea": "24"
 		},
 		"278": {
 			"name": "Wallace Ave &amp; 35th St",
@@ -2268,7 +2493,8 @@
 			"outcome": "133",
 			"latitude": "41.83062900000000000",
 			"longitude": "-87.64129000000000000",
-			"id": "278"
+			"id": "278",
+			"communityArea": "60"
 		},
 		"279": {
 			"name": "Halsted St &amp; 35th St",
@@ -2278,7 +2504,8 @@
 			"outcome": "989",
 			"latitude": "41.83066100000000000",
 			"longitude": "-87.64717200000000000",
-			"id": "279"
+			"id": "279",
+			"communityArea": "60"
 		},
 		"280": {
 			"name": "Morgan St &amp; 31st St",
@@ -2288,7 +2515,8 @@
 			"outcome": "258",
 			"latitude": "41.83780000000000000",
 			"longitude": "-87.65114000000000000",
-			"id": "280"
+			"id": "280",
+			"communityArea": "60"
 		},
 		"281": {
 			"name": "Western Ave &amp; 24th St",
@@ -2298,7 +2526,8 @@
 			"outcome": "38",
 			"latitude": "41.84847000000000000",
 			"longitude": "-87.68510900000000000",
-			"id": "281"
+			"id": "281",
+			"communityArea": "31"
 		},
 		"282": {
 			"name": "Halsted St &amp; Maxwell St",
@@ -2308,7 +2537,8 @@
 			"outcome": "658",
 			"latitude": "41.86458000000000000",
 			"longitude": "-87.64693000000000000",
-			"id": "282"
+			"id": "282",
+			"communityArea": "28"
 		},
 		"283": {
 			"name": "LaSalle St &amp; Jackson Blvd",
@@ -2318,7 +2548,8 @@
 			"outcome": "4126",
 			"latitude": "41.87817000000000000",
 			"longitude": "-87.63198500000000000",
-			"id": "283"
+			"id": "283",
+			"communityArea": "32"
 		},
 		"284": {
 			"name": "Michigan Ave &amp; Jackson Blvd",
@@ -2328,7 +2559,8 @@
 			"outcome": "2968",
 			"latitude": "41.87785000000000000",
 			"longitude": "-87.62408000000000000",
-			"id": "284"
+			"id": "284",
+			"communityArea": "32"
 		},
 		"285": {
 			"name": "Wood St &amp; Grand Ave",
@@ -2338,7 +2570,8 @@
 			"outcome": "563",
 			"latitude": "41.89113000000000000",
 			"longitude": "-87.67203000000000000",
-			"id": "285"
+			"id": "285",
+			"communityArea": "24"
 		},
 		"286": {
 			"name": "Franklin St &amp; Quincy St",
@@ -2348,7 +2581,8 @@
 			"outcome": "2186",
 			"latitude": "41.87872400000000000",
 			"longitude": "-87.63479300000000000",
-			"id": "286"
+			"id": "286",
+			"communityArea": "32"
 		},
 		"287": {
 			"name": "Franklin St &amp; Arcade Pl",
@@ -2358,7 +2592,8 @@
 			"outcome": "4042",
 			"latitude": "41.88113100000000000",
 			"longitude": "-87.63518500000000000",
-			"id": "287"
+			"id": "287",
+			"communityArea": "32"
 		},
 		"288": {
 			"name": "Larrabee St &amp; Armitage Ave",
@@ -2368,7 +2603,8 @@
 			"outcome": "795",
 			"latitude": "41.91797000000000000",
 			"longitude": "-87.64368000000000000",
-			"id": "288"
+			"id": "288",
+			"communityArea": "7"
 		},
 		"289": {
 			"name": "Wells St &amp; Concord Ln",
@@ -2378,7 +2614,8 @@
 			"outcome": "2662",
 			"latitude": "41.91220200000000000",
 			"longitude": "-87.63466400000000000",
-			"id": "289"
+			"id": "289",
+			"communityArea": "7"
 		},
 		"290": {
 			"name": "Kedzie Ave &amp; Palmer Ct",
@@ -2388,7 +2625,8 @@
 			"outcome": "450",
 			"latitude": "41.92152500000000000",
 			"longitude": "-87.70732200000000000",
-			"id": "290"
+			"id": "290",
+			"communityArea": "22"
 		},
 		"291": {
 			"name": "Wells St &amp; Evergreen Ave",
@@ -2398,7 +2636,8 @@
 			"outcome": "1658",
 			"latitude": "41.90672400000000000",
 			"longitude": "-87.63483000000000000",
-			"id": "291"
+			"id": "291",
+			"communityArea": "8"
 		},
 		"292": {
 			"name": "Southport Ave &amp; Clark St",
@@ -2408,7 +2647,8 @@
 			"outcome": "356",
 			"latitude": "41.95708100000000000",
 			"longitude": "-87.66419900000000000",
-			"id": "292"
+			"id": "292",
+			"communityArea": "6"
 		},
 		"293": {
 			"name": "Broadway &amp; Wilson Ave",
@@ -2418,7 +2658,8 @@
 			"outcome": "496",
 			"latitude": "41.96528700000000000",
 			"longitude": "-87.65877400000000000",
-			"id": "293"
+			"id": "293",
+			"communityArea": "3"
 		},
 		"294": {
 			"name": "Broadway &amp; Berwyn Ave",
@@ -2439,7 +2680,8 @@
 			"outcome": "448",
 			"latitude": "41.97297200000000000",
 			"longitude": "-87.65963700000000000",
-			"id": "295"
+			"id": "295",
+			"communityArea": "3"
 		},
 		"296": {
 			"name": "Broadway &amp; Belmont Ave",
@@ -2449,7 +2691,8 @@
 			"outcome": "940",
 			"latitude": "41.94010600000000000",
 			"longitude": "-87.64545100000000000",
-			"id": "296"
+			"id": "296",
+			"communityArea": "6"
 		},
 		"297": {
 			"name": "Paulina St &amp; Montrose Ave",
@@ -2469,7 +2712,8 @@
 			"outcome": "414",
 			"latitude": "41.95592700000000000",
 			"longitude": "-87.67925900000000000",
-			"id": "298"
+			"id": "298",
+			"communityArea": "5"
 		},
 		"299": {
 			"name": "Halsted St &amp; Roscoe St",
@@ -2479,7 +2723,8 @@
 			"outcome": "892",
 			"latitude": "41.94366200000000000",
 			"longitude": "-87.64891700000000000",
-			"id": "299"
+			"id": "299",
+			"communityArea": "6"
 		},
 		"300": {
 			"name": "Broadway &amp; Barry Ave",
@@ -2489,7 +2734,8 @@
 			"outcome": "1596",
 			"latitude": "41.93773900000000000",
 			"longitude": "-87.64409400000000000",
-			"id": "300"
+			"id": "300",
+			"communityArea": "6"
 		},
 		"301": {
 			"name": "Clark St &amp; Schiller St",
@@ -2499,7 +2745,8 @@
 			"outcome": "1765",
 			"latitude": "41.90799300000000000",
 			"longitude": "-87.63150100000000000",
-			"id": "301"
+			"id": "301",
+			"communityArea": "8"
 		},
 		"302": {
 			"name": "Sheffield Ave &amp; Wrightwood Ave",
@@ -2509,7 +2756,8 @@
 			"outcome": "1047",
 			"latitude": "41.92871200000000000",
 			"longitude": "-87.65383300000000000",
-			"id": "302"
+			"id": "302",
+			"communityArea": "7"
 		},
 		"303": {
 			"name": "Broadway &amp; Cornelia Ave",
@@ -2519,7 +2767,8 @@
 			"outcome": "1140",
 			"latitude": "41.94551200000000000",
 			"longitude": "-87.64598000000000000",
-			"id": "303"
+			"id": "303",
+			"communityArea": "6"
 		},
 		"304": {
 			"name": "Halsted St &amp; Waveland Ave",
@@ -2529,7 +2778,8 @@
 			"outcome": "1402",
 			"latitude": "41.94933300000000000",
 			"longitude": "-87.64963400000000000",
-			"id": "304"
+			"id": "304",
+			"communityArea": "6"
 		},
 		"305": {
 			"name": "Western Ave &amp; Division St",
@@ -2539,7 +2789,8 @@
 			"outcome": "581",
 			"latitude": "41.90289300000000000",
 			"longitude": "-87.68727500000000000",
-			"id": "305"
+			"id": "305",
+			"communityArea": "24"
 		},
 		"306": {
 			"name": "Sheridan Rd &amp; Buena Ave",
@@ -2549,7 +2800,8 @@
 			"outcome": "660",
 			"latitude": "41.95840000000000000",
 			"longitude": "-87.65423000000000000",
-			"id": "306"
+			"id": "306",
+			"communityArea": "3"
 		},
 		"307": {
 			"name": "Southport Ave &amp; Clybourn Ave",
@@ -2559,7 +2811,8 @@
 			"outcome": "743",
 			"latitude": "41.92100400000000000",
 			"longitude": "-87.66325700000000000",
-			"id": "307"
+			"id": "307",
+			"communityArea": "7"
 		},
 		"308": {
 			"name": "Seeley Ave &amp; Roscoe St",
@@ -2569,7 +2822,8 @@
 			"outcome": "434",
 			"latitude": "41.94340300000000000",
 			"longitude": "-87.67961800000000000",
-			"id": "308"
+			"id": "308",
+			"communityArea": "5"
 		},
 		"309": {
 			"name": "Leavitt St &amp; Armitage Ave",
@@ -2579,7 +2833,8 @@
 			"outcome": "505",
 			"latitude": "41.91780500000000000",
 			"longitude": "-87.68243700000000000",
-			"id": "309"
+			"id": "309",
+			"communityArea": "22"
 		},
 		"310": {
 			"name": "Damen Ave &amp; Charleston St",
@@ -2589,7 +2844,8 @@
 			"outcome": "609",
 			"latitude": "41.92008200000000000",
 			"longitude": "-87.67785500000000000",
-			"id": "310"
+			"id": "310",
+			"communityArea": "22"
 		},
 		"311": {
 			"name": "Lincoln Ave &amp; Eastwood Ave",
@@ -2599,7 +2855,8 @@
 			"outcome": "881",
 			"latitude": "41.96583000000000000",
 			"longitude": "-87.68651000000000000",
-			"id": "311"
+			"id": "311",
+			"communityArea": "4"
 		},
 		"312": {
 			"name": "Clarendon Ave &amp; Gordon Ter",
@@ -2609,7 +2866,8 @@
 			"outcome": "217",
 			"latitude": "41.95787900000000000",
 			"longitude": "-87.64951900000000000",
-			"id": "312"
+			"id": "312",
+			"communityArea": "3"
 		},
 		"313": {
 			"name": "Lakeview Ave &amp; Fullerton Pkwy",
@@ -2619,7 +2877,8 @@
 			"outcome": "1970",
 			"latitude": "41.92585800000000000",
 			"longitude": "-87.63897300000000000",
-			"id": "313"
+			"id": "313",
+			"communityArea": "7"
 		},
 		"314": {
 			"name": "Ravenswood Ave &amp; Berteau Ave",
@@ -2629,7 +2888,8 @@
 			"outcome": "447",
 			"latitude": "41.95792100000000000",
 			"longitude": "-87.67356700000000000",
-			"id": "314"
+			"id": "314",
+			"communityArea": "6"
 		},
 		"315": {
 			"name": "Leavitt St &amp; Hirsch St",
@@ -2639,7 +2899,8 @@
 			"outcome": "299",
 			"latitude": "41.90671700000000000",
 			"longitude": "-87.68277900000000000",
-			"id": "315"
+			"id": "315",
+			"communityArea": "24"
 		},
 		"316": {
 			"name": "Damen Ave &amp; Sunnyside Ave",
@@ -2649,7 +2910,8 @@
 			"outcome": "276",
 			"latitude": "41.96325000000000000",
 			"longitude": "-87.67925800000000000",
-			"id": "316"
+			"id": "316",
+			"communityArea": "4"
 		},
 		"317": {
 			"name": "Wood St &amp; Taylor St",
@@ -2659,7 +2921,8 @@
 			"outcome": "490",
 			"latitude": "41.86915400000000000",
 			"longitude": "-87.67104500000000000",
-			"id": "317"
+			"id": "317",
+			"communityArea": "28"
 		},
 		"318": {
 			"name": "Southport Ave &amp; Irving Park Rd",
@@ -2669,7 +2932,8 @@
 			"outcome": "725",
 			"latitude": "41.95417700000000000",
 			"longitude": "-87.66435800000000000",
-			"id": "318"
+			"id": "318",
+			"communityArea": "6"
 		},
 		"319": {
 			"name": "Greenview Ave &amp; Diversey Pkwy",
@@ -2679,7 +2943,8 @@
 			"outcome": "541",
 			"latitude": "41.93259500000000000",
 			"longitude": "-87.66593900000000000",
-			"id": "319"
+			"id": "319",
+			"communityArea": "6"
 		},
 		"320": {
 			"name": "Loomis St &amp; Lexington St",
@@ -2689,7 +2954,8 @@
 			"outcome": "622",
 			"latitude": "41.87218700000000000",
 			"longitude": "-87.66150100000000000",
-			"id": "320"
+			"id": "320",
+			"communityArea": "28"
 		},
 		"321": {
 			"name": "Wabash Ave &amp; 8th St",
@@ -2699,7 +2965,8 @@
 			"outcome": "1888",
 			"latitude": "41.87196200000000000",
 			"longitude": "-87.62610600000000000",
-			"id": "321"
+			"id": "321",
+			"communityArea": "32"
 		},
 		"322": {
 			"name": "Kimbark Ave &amp; 53rd St",
@@ -2709,7 +2976,8 @@
 			"outcome": "514",
 			"latitude": "41.79956800000000000",
 			"longitude": "-87.59474700000000000",
-			"id": "322"
+			"id": "322",
+			"communityArea": "41"
 		},
 		"323": {
 			"name": "Sheridan Rd &amp; Lawrence Ave",
@@ -2719,7 +2987,8 @@
 			"outcome": "333",
 			"latitude": "41.96951700000000000",
 			"longitude": "-87.65469100000000000",
-			"id": "323"
+			"id": "323",
+			"communityArea": "3"
 		},
 		"324": {
 			"name": "Stockton Dr &amp; Wrightwood Ave",
@@ -2729,7 +2998,8 @@
 			"outcome": "734",
 			"latitude": "41.93132000000000000",
 			"longitude": "-87.63874200000000000",
-			"id": "324"
+			"id": "324",
+			"communityArea": "7"
 		},
 		"325": {
 			"name": "Clark St &amp; Winnemac Ave",
@@ -2739,7 +3009,8 @@
 			"outcome": "803",
 			"latitude": "41.97338500000000000",
 			"longitude": "-87.66836500000000000",
-			"id": "325"
+			"id": "325",
+			"communityArea": "3"
 		},
 		"326": {
 			"name": "Clark St &amp; Leland Ave",
@@ -2749,7 +3020,8 @@
 			"outcome": "488",
 			"latitude": "41.96709600000000000",
 			"longitude": "-87.66742900000000000",
-			"id": "326"
+			"id": "326",
+			"communityArea": "3"
 		},
 		"327": {
 			"name": "Sheffield Ave &amp; Webster Ave",
@@ -2759,7 +3031,8 @@
 			"outcome": "1043",
 			"latitude": "41.92168700000000000",
 			"longitude": "-87.65371400000000000",
-			"id": "327"
+			"id": "327",
+			"communityArea": "7"
 		},
 		"328": {
 			"name": "Ellis Ave &amp; 58th St",
@@ -2769,7 +3042,8 @@
 			"outcome": "1248",
 			"latitude": "41.78874600000000000",
 			"longitude": "-87.60133400000000000",
-			"id": "328"
+			"id": "328",
+			"communityArea": "41"
 		},
 		"329": {
 			"name": "Lake Shore Dr &amp; Diversey Pkwy",
@@ -2779,7 +3053,8 @@
 			"outcome": "856",
 			"latitude": "41.93268400000000000",
 			"longitude": "-87.63625000000000000",
-			"id": "329"
+			"id": "329",
+			"communityArea": "7"
 		},
 		"330": {
 			"name": "Lincoln Ave &amp; Addison St",
@@ -2789,7 +3064,8 @@
 			"outcome": "399",
 			"latitude": "41.94617600000000000",
 			"longitude": "-87.67330800000000000",
-			"id": "330"
+			"id": "330",
+			"communityArea": "6"
 		},
 		"331": {
 			"name": "Halsted St &amp; Blackhawk St",
@@ -2799,7 +3075,8 @@
 			"outcome": "758",
 			"latitude": "41.90854000000000000",
 			"longitude": "-87.64856800000000000",
-			"id": "331"
+			"id": "331",
+			"communityArea": "8"
 		},
 		"332": {
 			"name": "Halsted St &amp; Diversey Pkwy",
@@ -2809,7 +3086,8 @@
 			"outcome": "987",
 			"latitude": "41.93334100000000000",
 			"longitude": "-87.64874700000000000",
-			"id": "332"
+			"id": "332",
+			"communityArea": "6"
 		},
 		"333": {
 			"name": "Ashland Ave &amp; Blackhawk St",
@@ -2819,7 +3097,8 @@
 			"outcome": "492",
 			"latitude": "41.90706600000000000",
 			"longitude": "-87.66725200000000000",
-			"id": "333"
+			"id": "333",
+			"communityArea": "24"
 		},
 		"334": {
 			"name": "Lake Shore Dr &amp; Belmont Ave",
@@ -2829,7 +3108,8 @@
 			"outcome": "1185",
 			"latitude": "41.94077500000000000",
 			"longitude": "-87.63919200000000000",
-			"id": "334"
+			"id": "334",
+			"communityArea": "6"
 		},
 		"335": {
 			"name": "Calumet Ave &amp; 35th St",
@@ -2839,7 +3119,8 @@
 			"outcome": "33",
 			"latitude": "41.83137900000000000",
 			"longitude": "-87.61803400000000000",
-			"id": "335"
+			"id": "335",
+			"communityArea": "35"
 		},
 		"336": {
 			"name": "Cottage Grove Ave &amp; 47th St",
@@ -2849,7 +3130,8 @@
 			"outcome": "36",
 			"latitude": "41.80985500000000000",
 			"longitude": "-87.60675500000000000",
-			"id": "336"
+			"id": "336",
+			"communityArea": "38"
 		},
 		"337": {
 			"name": "Clark St &amp; Chicago Ave",
@@ -2859,7 +3141,8 @@
 			"outcome": "1045",
 			"latitude": "41.89654400000000000",
 			"longitude": "-87.63093100000000000",
-			"id": "337"
+			"id": "337",
+			"communityArea": "8"
 		},
 		"338": {
 			"name": "Calumet Ave &amp; 18th St",
@@ -2869,7 +3152,8 @@
 			"outcome": "1332",
 			"latitude": "41.85761100000000000",
 			"longitude": "-87.61940700000000000",
-			"id": "338"
+			"id": "338",
+			"communityArea": "33"
 		},
 		"339": {
 			"name": "Emerald Ave &amp; 31st St",
@@ -2879,7 +3163,8 @@
 			"outcome": "256",
 			"latitude": "41.83819800000000000",
 			"longitude": "-87.64514300000000000",
-			"id": "339"
+			"id": "339",
+			"communityArea": "60"
 		},
 		"340": {
 			"name": "Clark St &amp; Wrightwood Ave",
@@ -2889,7 +3174,8 @@
 			"outcome": "756",
 			"latitude": "41.92954600000000000",
 			"longitude": "-87.64311800000000000",
-			"id": "340"
+			"id": "340",
+			"communityArea": "7"
 		},
 		"341": {
 			"name": "Adler Planetarium",
@@ -2899,7 +3185,8 @@
 			"outcome": "1175",
 			"latitude": "41.86609500000000000",
 			"longitude": "-87.60726700000000000",
-			"id": "341"
+			"id": "341",
+			"communityArea": "33"
 		},
 		"342": {
 			"name": "Wolcott Ave &amp; Polk St",
@@ -2909,7 +3196,8 @@
 			"outcome": "481",
 			"latitude": "41.87126200000000000",
 			"longitude": "-87.67368800000000000",
-			"id": "342"
+			"id": "342",
+			"communityArea": "28"
 		},
 		"343": {
 			"name": "Racine Ave &amp; Wrightwood Ave",
@@ -2919,7 +3207,8 @@
 			"outcome": "229",
 			"latitude": "41.92888700000000000",
 			"longitude": "-87.65897100000000000",
-			"id": "343"
+			"id": "343",
+			"communityArea": "7"
 		},
 		"344": {
 			"name": "Wolcott Ave &amp; Lawrence Ave",
@@ -2929,7 +3218,8 @@
 			"outcome": "608",
 			"latitude": "41.96864100000000000",
 			"longitude": "-87.67633500000000000",
-			"id": "344"
+			"id": "344",
+			"communityArea": "4"
 		},
 		"345": {
 			"name": "Lake Park Ave &amp; 56th St",
@@ -2939,7 +3229,8 @@
 			"outcome": "264",
 			"latitude": "41.79324200000000000",
 			"longitude": "-87.58778200000000000",
-			"id": "345"
+			"id": "345",
+			"communityArea": "41"
 		},
 		"346": {
 			"name": "Ada St &amp; Washington Blvd",
@@ -2949,7 +3240,8 @@
 			"outcome": "557",
 			"latitude": "41.88283000000000000",
 			"longitude": "-87.66120600000000000",
-			"id": "346"
+			"id": "346",
+			"communityArea": "28"
 		},
 		"347": {
 			"name": "Ashland Ave &amp; Grace St",
@@ -2959,7 +3251,8 @@
 			"outcome": "244",
 			"latitude": "41.95068700000000000",
 			"longitude": "-87.66870000000000000",
-			"id": "347"
+			"id": "347",
+			"communityArea": "6"
 		},
 		"348": {
 			"name": "California Ave &amp; 21st St",
@@ -2969,7 +3262,8 @@
 			"outcome": "278",
 			"latitude": "41.85401600000000000",
 			"longitude": "-87.69544500000000000",
-			"id": "348"
+			"id": "348",
+			"communityArea": "30"
 		},
 		"349": {
 			"name": "Halsted St &amp; Wrightwood Ave",
@@ -2979,7 +3273,8 @@
 			"outcome": "437",
 			"latitude": "41.92914300000000000",
 			"longitude": "-87.64907700000000000",
-			"id": "349"
+			"id": "349",
+			"communityArea": "7"
 		},
 		"350": {
 			"name": "Ashland Ave &amp; Chicago Ave",
@@ -2989,7 +3284,8 @@
 			"outcome": "1009",
 			"latitude": "41.89596600000000000",
 			"longitude": "-87.66774700000000000",
-			"id": "350"
+			"id": "350",
+			"communityArea": "24"
 		},
 		"351": {
 			"name": "Cottage Grove Ave &amp; 51st St",
@@ -2999,7 +3295,8 @@
 			"outcome": "286",
 			"latitude": "41.80303800000000000",
 			"longitude": "-87.60661500000000000",
-			"id": "351"
+			"id": "351",
+			"communityArea": "38"
 		}
 	}
 }
