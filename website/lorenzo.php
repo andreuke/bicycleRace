@@ -37,24 +37,53 @@
         <div class="page-header">
           <h1>Week 2 <small>September 29th -October 5th </small></h1>
         </div>
+        <ul>
+          <li>Database Setup</li>
+          <li>Creation of some function in order to allow the creation of dynamic query from javascript</li>
+          <li>Cleaning of the database with creation of table regarding</li>
+          <li>Average number of bikes out by day of the week (dinstinc values of bike)</li>
+          <li>Average number of bikes out by hour of the day and night (distinct values of bike)</li>
+          <li>Number of bikes out by day of the year</li>
+          <li>Rider demographics</li>
+          <li>Creation of function that, directly from javascript allow to query on the database</li>
+        </ul>
       </div>
 
       <div class="row">
         <div class="page-header">
           <h1>Week 3 <small>October 6th - October 12th </small></h1>
         </div>
+          <ul>
+            <li>Added function that works on the data of point C</li>
+            <li>Distribution of distance travelled by each bike</li>
+            <li>All trips taken accross the city filtered by one day of the year</li>
+            <li>Implementation of final queries of point C and creation of function that allow to manage data outside of the callback function</li>
+            <li>Creation class database</li>
+            <li>Creation of class calendar and implementation of all the relative functions</li>
+            <li>Modification in db</li>
+            <li>Added functions to calendar</li>
+            <li>Added functions to class calendar</li>
+          </ul>
       </div>
 
       <div class="row">
         <div class="page-header">
           <h1>Week 4 <small>October 13th - October 19th </small></h1>
         </div>
+          <ul>
+            <li>Changed structure of some tables of the database</li>
+            <li>Changed some queries of class database</li>
+            <li>Updated queries regarding number of bikes, it was number of trips</li>
+          </ul>
       </div>
 
       <div class="row">
         <div class="page-header">
           <h1>Week 5 <small>October 20th - October 26th </small></h1>
         </div>
+          <ul>
+            <li>Creation 5 queries regarding point B</li>
+          </ul>
       </div>
 
     </div>
