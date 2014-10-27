@@ -56,17 +56,15 @@
           <h1>Findings <small>Weather Related</small></h1>
         </div>
         <div class="col-md-12">
-          <ul>
+          
             <!--<li> Thunderstorms and heavy rains decreases the number of trips drastically</li>
             <li> During cold days the number of trips during the weekend is substantially lower than during the week</li>
             <li> Average number of trips decrease with temperature. </li>-->
             <p>The usage of divvy bikes is obviously affected by the weather, but the major factor that affects usage is not the temperature, it's weather conditions. <br>
             Using the applications, the line charts clearly shows how, as instance, thunderstorms, heavy rains and snow highly affects the number of trips by decreasing them. <br>
-            However, also the temperature has a big influence on bikes' usage: the average number of trips decreases with the diminishing of the temperature. <br>
-            One example of this could be seen by looking at weekends. When the temperature is low, people prefer not to use bikes and the usage collapse. For what concern week days, 
-            there is a completely different behavior. 
-            Also even when temperature is low, people use divvy bikes in their everyday trips.</p>
-          </ul>
+            This behavoir is observable from the line charts below. Notiche that whenever the weather get worse the number of bike decreases, while when the weather gets better the usage goes up.<br>
+           </p>
+          
           <div class="col-md-4">
             <div class="panel panel-default">
               <div class="panel-heading">
@@ -97,6 +95,12 @@
               </div>
             </div>
           </div>
+          <p>
+          However, also the temperature has a big influence on bikes' usage: the average number of trips decreases with the diminishing of the temperature. <br>
+            One example of this could be seen by looking at weekends. When the temperature is low, people prefer not to use bikes and the usage collapse. For what concern week days, 
+            there is a completely different behavior. 
+            Also even when temperature is low, people use divvy bikes in their everyday trips.
+          </p>
           <div class="col-md-6">
             <div class="panel panel-default">
               <div class="panel-heading">
@@ -127,8 +131,9 @@
           <ul>
             <!--<li> Bike usage drastically decreases after the sun sets. </li>
             <li> Sunrise time is not as influent as expected. Trips in the early morning, most of the times, start to increase at 5. -->
-            <p>The first thing noticeable is that bike usage drastically decreases after the sun sets. The influence of the sunrise is not high as expected. <br>
-            There are a lot of trips, in fact, starting from before the sunrise.</p>
+            <p>The first thing noticeable is that bike usage usually decreases after the sun sets. The influence of the sunrise is not as high as expected. <br>
+              There are a lot of trips, in fact, starting before the sunrise. The overall trend, however, shows that the majority of trips is made during the day, while, when the sun sets people tend to not use the bike. <br>
+              </p>
         </div>
       </div>
     </div>
