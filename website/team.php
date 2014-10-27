@@ -23,6 +23,7 @@
           <ul class="list-group">
               <li class="list-group-item disabled">Contributions</li>
               <li class="list-group-item">Leaflet</li>
+              <li class="list-group-item">Station Popularity</li>
               <li class="list-group-item">Bar Chart</li>
               <li class="list-group-item">Pie Chart</li>
           </ul>

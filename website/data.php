@@ -47,7 +47,7 @@
             <p> To speed up even further our database, we have setted up table views, multiple seconday indexes and removed the dirty data</p>
             <p> Some attributes were redundant like age and year of birth. For each station there were two ids, for each trip there were two start times. 
                 We removed all the redundant attributes and gained in speed. </p>
-            <p> We have used PHP scripting language to query the database and generate JSON data to feed out Javascript application.</p>
+            <p> We have used PHP scripting language to query the database and generate JSON data to feed our Javascript application.</p>
           </div>
         </div>
       </div>
