@@ -45,8 +45,11 @@
           <h1>Findings <small>Event Related</small></h1>
         </div>
         <div class="col-md-12">
-          <li> During Thanksgiving the number of trips is particularly low</li>
-          <li> During Christmas there are 
+          <ul>
+            <li> During Thanksgiving the number of trips is particularly low</li>
+            <li> During Christmas there are </li>
+          </ul>
+        </div>
       </div>
       <div class="row">
         <div class="page-header">
@@ -125,7 +128,7 @@
             <!--<li> Bike usage drastically decreases after the sun sets. </li>
             <li> Sunrise time is not as influent as expected. Trips in the early morning, most of the times, start to increase at 5. -->
             <p>The first thing noticeable is that bike usage drastically decreases after the sun sets. The influence of the sunrise is not high as expected. <br>
-            There are a lot of trips, in fact, starting from before the sunrise. </p>
+            There are a lot of trips, in fact, starting from before the sunrise.</p>
         </div>
       </div>
     </div>
