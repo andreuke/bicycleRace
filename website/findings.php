@@ -15,7 +15,7 @@
     <div class="container">
       <div class="row">
         <div class="page-header">
-          <h1>Findings <small>Discovers through the app</small></h1>
+          <h1>Findings <small>Discovers through the App Overview</small></h1>
         </div>
         <div class="col-md-12">
           <p> While analyzing and visualizing the data we noticed serveral things, some curious some others quite strange </p>
@@ -26,7 +26,7 @@
             <li><b> Mean Trip Distance </b> : Most of the trips are between 1'000 and 4'000 meters </li>
             <li><b> Day Usage </b> : There are more rides during the weekend </li>
             <li><b> Busiest Day </b> : Most of the trips happen on Saturday </li>
-            <li><b> Busiest period of the year</b> : The busiest period is between August and mid October. However we have to consider that the service was launched in July so July's data is not relevant</li>
+            <li><b> Busiest period of the year</b> : Most trips happen between August and mid October. However we have to consider that the service was launched in July so July's data is not relevant</li>
             <li><b> Customer VS Subscriber </b> : There are more subscribers than customers </li>
             <li><b> Subscriber Gender </b> : Male subscribers are three times more than female subscriber </li>
             <li><b> Busiest period of the day </b> : Bikes are used principally from 6:30am to 7pm, but the peak is from 3pm to 7pm </li>
@@ -38,7 +38,35 @@
           <h1>Findings <small>Near UIC</small></h1>
         </div>
         <div class="col-md-12">
-
+        </div>
+      </div>
+      <div class="row">
+        <div class="page-header">
+          <h1>Findings <small>Event Related</small></h1>
+        </div>
+        <div class="col-md-12">
+          <li> During Thanksgiving the number of trips is particularly low</li>
+          <li> During Christmas there are 
+      </div>
+      <div class="row">
+        <div class="page-header">
+          <h1>Findings <small>Weather Related</small></h1>
+        </div>
+        <div class="col-md-12">
+          <li> Thunderstorms and heavy rains decreases the number of trips drastically</li>
+          <li> During cold days the number of trips during the weekend is substantially lower than during the week</li>
+          <li> Average number of trips decrease with temperature. </li>
+        </div>
+      </div>
+      <div class="row">
+        <div class="page-header">
+          <h1>Findings <small>Sunrise Sunset Related</small></h1>
+        </div>
+        <div class="col-md-12">
+          <ul>
+            <li> Bike usage drastically decreases after the sun sets. </li>
+            <li> Sunrise time is not as influent as expected. Trips in the early morning, most of the times, start to increase at 5. </li>
+          </ul> 
         </div>
       </div>
     </div>
