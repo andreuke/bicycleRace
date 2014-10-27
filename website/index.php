@@ -16,7 +16,7 @@
     <div class="jumbotron">
       <h1>Your Trip begins here!</h1>
       <p>
-        <img align="middle" src="resources/divvy_logo.svg" width="90%"/>
+        <img class="center-block" align="middle" src="resources/divvy_logo.svg" width="90%"/>
       </p>
       <p>This is Group5 website for CS424 Project : Bycicle Race</p>
     </div>

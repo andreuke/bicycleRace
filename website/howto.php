@@ -12,6 +12,15 @@
 
   <body>
     <?php include("navbar.php") ?>
+      <div class="container">
+        <div class="row">
+          <div class="page-header">
+            <h1>How to <small>use the app?</small></h1>
+          </div>
+          <div class="col-md-12">
+          </div>
+        </div>
+      </div>
     <?php include("footer.php") ?>
 
 
