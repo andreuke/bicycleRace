@@ -26,9 +26,10 @@
             <li><b> Mean Trip Distance </b> : Most of the trips are between 1'000 and 4'000 meters </li>
             <li><b> Day Usage </b> : There are more rides during the weekend </li>
             <li><b> Busiest Day </b> : Most of the trips happen on Saturday </li>
-            <li><b> Busiest period </b> : The busiest period is between August and mid October. However we have to consider that the service was launched in July so July's data is not relevant</li>
+            <li><b> Busiest period of the year</b> : The busiest period is between August and mid October. However we have to consider that the service was launched in July so July's data is not relevant</li>
             <li><b> Customer VS Subscriber </b> : There are more subscribers than customers </li>
             <li><b> Subscriber Gender </b> : Male subscribers are three times more than female subscriber </li>
+            <li><b> Busiest period of the day </b> : Bikes are used principally from 6:30am to 7pm, but the peak is from 3pm to 7pm </li>
           </ul> 
         </div>
       </div>
