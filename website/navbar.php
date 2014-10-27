@@ -4,9 +4,9 @@
       <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-home">&nbsp</span>Home</a>
     </div>
     <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
+       <ul class="nav navbar-nav">
         
-        <li class="dropdown">
+     <!--   <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Team <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="#">Andrea</a></li>
@@ -14,8 +14,8 @@
             <li><a href="#">Lorenzo</a></li>
             <li><a href="#">Luca</a></li>
           </ul>
-        </li>
-
+        </li>-->
+        <li><a href="team.php">Team</a></li>
         <li><a href="#">App</a></li>
         <li><a href="data.php">Data</a></li>
         <li><a href="source.php">Source</a></li>
