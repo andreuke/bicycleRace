@@ -155,11 +155,103 @@
 
 						tripsDataBetweenStations(2,$fromStation, $toStation, $connessione);
 						break;
+				case '3':
+						$stationsId = $_GET['stations'];
+						dataAggregatedStations(0, $stationsId, $connessione);
+						break;
+				case '4':
+						$stationsId = $_GET['stations'];
+						dataAggregatedStations(1, $stationsId, $connessione);
+						break;
+				case '5':
+						$stationsId = $_GET['stations'];
+						dataAggregatedStations(2, $stationsId, $connessione);
+						break;
 				default:echo "DB:Error";
 						break;
 			}
 		}
 		//switch to labelled data if you wants labels....
+
+		function dataAggregatedStations($filter, $stationsId, $connessione){
+			switch($filter){
+				case '0': //MaleVsFemaleVsUnknown
+						// $numMale=0;
+						// $numFemale=0;
+						// $numUnknown = 0;
+						$whereMale = '(from_station_id = "'.$stationsId[0].'" OR to_station_id = "'.$stationsId[0].'"';
+						$whereFemale = '(from_station_id = "'.$stationsId[0].'" OR to_station_id = "'.$stationsId[0].'"';
+						$whereUnknown = '(from_station_id = "'.$stationsId[0].'" OR to_station_id = "'.$stationsId[0].'" ';
+
+						for($i=1; $i < count($stationsId); $i++){
+							$whereMale .= 'OR from_station_id = "'.$stationsId[$i].'" OR to_station_id = "'.$stationsId[$i].'"';
+							$whereFemale .= 'OR from_station_id = "'.$stationsId[$i].'" OR to_station_id = "'.$stationsId[$i].'"';				
+							$whereUnknown .= 'OR from_station_id = "'.$stationsId[$i].'" OR to_station_id = "'.$stationsId[$i].'"';		
+						}
+						$whereMale .= ') and gender = "Male"';
+						$whereFemale .= ') and gender = "Female"';
+						$whereUnknown .= ') and gender = ""';
+
+						// for($i = 0; $i < count($stationsId); $i++){
+						// 	$result = genericQuery('count(*) as numOfMale','divvy_trips_distances','gender = "Male" and from_station_id = "'.$stationsId[$i].'" OR to_station_id = "'.$stationsId[$i].'"','',$connessione);
+						// 	$male = mysql_fetch_array($result);
+						// 	$male = $male['numOfMale'];
+
+						// 	$numMale += $male;
+
+						// 	$result = genericQuery('count(*) as numOfFemale','divvy_trips_distances','gender = "Female" and from_station_id = "'.$stationsId[$i].'" OR to_station_id = "'.$stationsId[$i].'"','',$connessione);
+						// 	$female = mysql_fetch_array($result);
+						// 	$female = $female['numOfFemale'];
+
+						// 	$numFemale += $female;
+
+						// 	$result = genericQuery('count(*) as numOfUnknown','divvy_trips_distances','gender = "" and from_station_id = "'.$stationsId[$i].'" OR to_station_id = "'.$stationsId[$i].'"','',$connessione);
+						// 	$unknown = mysql_fetch_array($result);
+						// 	$unknown = $unknown['numOfUnknown'];
+
+						// 	$numUnknown += $unknown;
+						// }
+
+							$result = genericQuery('count(*) as numOfMale','divvy_trips_distances',$whereMale,'',$connessione);
+							$male = mysql_fetch_array($result);
+							$male = $male['numOfMale'];
+
+
+							$result = genericQuery('count(*) as numOfFemale','divvy_trips_distances',$whereFemale,'',$connessione);
+							$female = mysql_fetch_array($result);
+							$female = $female['numOfFemale'];
+
+
+							$result = genericQuery('count(*) as numOfUnknown','divvy_trips_distances',$whereUnknown,'',$connessione);
+							$unknown = mysql_fetch_array($result);
+							$unknown = $unknown['numOfUnknown'];
+
+						displayData($male,$female,$unknown);
+						break;
+				case '1'://age
+						$where = 'from_station_id = "'.$stationsId[0].'" OR to_station_id = "'.$stationsId[0].'"';
+						for($i=1; $i < count($stationsId); $i++){
+							$where .= 'OR from_station_id = "'.$stationsId[$i].'" OR to_station_id = "'.$stationsId[$i].'"';	
+						}
+						$result = genericQuery('birthyear, count(*) as total','divvy_trips_distances', $where, 'group by birthyear having birthyear >0', $connessione);
+						
+
+						$variables = array('0' => "birthyear",
+											'1' => "total");
+						genericDisplayData($result, $variables);
+						break;
+				case '2'://subscriber vs customer
+						$where = 'from_station_id = "'.$stationsId[0].'" OR to_station_id = "'.$stationsId[0].'"';
+						for($i=1; $i < count($stationsId); $i++){
+							$where .= 'OR from_station_id = "'.$stationsId[$i].'" OR to_station_id = "'.$stationsId[$i].'"';	
+						}
+						$result =  genericQuery('usertype, count(*) as total', 'divvy_trips_distances', $where, ' group by usertype', $connessione);
+						$variables = array('0' => 'usertype',
+											'1' => 'total' );
+						genericDisplayData($result, $variables);
+						break;
+			}
+		}
 
 		function tripsDataBetweenStations($filter,$fromStation, $toStation, $connessione){
 			switch($filter){

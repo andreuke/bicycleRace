@@ -398,3 +398,46 @@ database.prototype.tripsDataBetweenStations = function(filter, fromStation, toSt
 		default: console.log("DB:error!");
 	}
 }
+
+database.prototype.dataAggregatedStations = function(filter, stations, callback, iden){
+	var return_value;
+	var address = "";
+	for(var i = 0; i<stations.length; i++){
+		address += "&stations[]="+ "" +stations[i];
+	}
+
+
+	switch(filter){
+		case 0: return_value = $.ajax({
+				url: this.queryUrl,
+				//data: "mark=2&query=3&stations="+ "" +stations,
+				data: "mark=2&query=3" + "" + address,
+				dataType: "json",
+				success: function(data) {
+					callback(data,iden);
+					}
+				});
+				break;
+		case 1: return_value = $.ajax({
+				url: this.queryUrl,
+				//data: "mark=2&query=4&stations="+ "" +stations,
+				data: "mark=2&query=4" + "" + address,
+				dataType: "json",
+				success: function(data) {
+					callback(data,iden);
+					}
+				});
+				break;
+		case 2: return_value = $.ajax({
+				url: this.queryUrl,
+				//data: "mark=2&query=5&stations="+ "" +stations,
+				data: "mark=2&query=5" + "" + address,
+				dataType: "json",
+				success: function(data) {
+					callback(data,iden);
+					}
+				});
+				break;
+		default: console.log("DB:error!");
+	}
+}
