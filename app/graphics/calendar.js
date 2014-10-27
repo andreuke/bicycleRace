@@ -49,8 +49,8 @@ calendar.prototype.draw = function() {
     var svg;
 
     //dimensions..
-    var width = 400;
-    var height = 400;
+    var width = 350;
+    var height = 350;
 
 
     // index of the month.
@@ -60,10 +60,10 @@ calendar.prototype.draw = function() {
     svg = d3.select(this.cont)
         .append("svg")
         .attr("viewBox", "0 0 " + width + " " + height)
-        .attr("preserveAspectRatio", "xMinYMin meet")
+        .attr("preserveAspectRatio", "xMidYMid meet")
         .attr("width", "100%")
         .attr("height", "")
-        //.attr("class","flex-item")
+        .attr("class","flex-item");
 
     this.init(svg, index);
 }
