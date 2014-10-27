@@ -104,6 +104,7 @@ var mainController = function() {
   that.addState("compareStation", []);
   that.addState("comparison", []);
   that.addState("breakTrips", []); // For break 24 hours in parts
+  that.addState("imbalance", [])
 
 
   that.addState("divvyStations", {});
@@ -164,8 +165,8 @@ var mainController = function() {
       stationIDs[0] = that.get("detailStation")
       stationIDs[1] = idStation
       that.set("compareStation", stationIDs);
-      }
     }
+  }
 
   return that;
 }
@@ -202,7 +203,7 @@ var mainView = function(controller) {
     .append("text")
     .text("Select day");
 
-    //Switch to station details view button
+  //Switch to station details view button
   listButtons.detailsButton = divButtons.append("div")
     .attr("id", "button-stationDetails")
     .attr("class", "main-buttons")
@@ -760,7 +761,7 @@ var pickAdayController = function(parent, prefixMap) {
   that.onChange("filter-age-min", handleChangeFilter);
   that.onChange("filter-age-max", handleChangeFilter);
   that.onChange("filter-gender", handleChangeFilter);
-  that.set("date","2013-07-01");
+  that.set("date", "2013-07-01");
   return that;
 }
 
@@ -797,7 +798,7 @@ var pickAdayView = function(controller, calendarContainer, graphsContainer) {
   var cale = new calendar("#" + caleDiv.attr("id"), _controller);
   cale.draw();
 
-  
+
   /*
   var sliderDiv = leftDiv.append("div").attr("id", "slide-div")
     .attr("class", "flex-item");
@@ -901,8 +902,8 @@ var filterSelector = function(container, controller) {
   var _controller = controller;
   var mainDiv = d3.select(container).append("div")
     .attr("class", "filter-div");
-  
-  var hourDiv = mainDiv.append("div").attr("class","hourSelector");
+
+  var hourDiv = mainDiv.append("div").attr("class", "hourSelector");
   hourDiv.append("text").attr("class", "flex-item").text("Select Hour");
   var boxHour = hourDiv.append("select").classed("box-filter", true);
 
@@ -971,16 +972,16 @@ var stationDetailsController = function(parent) {
   var that = abstractController(parent);
   that.addState("det-gender-data", []); //dati grafico sesso
   that.addState("det-age-data", []); // dati grafico età
-  that.addState("det-age-labels", []); 
+  that.addState("det-age-labels", []);
   that.addState("det-type-data", []); // dati grafico Subscriber
-  that.addState("title","");//Titolo
+  that.addState("title", ""); //Titolo
 
   //Invocato quando cambia selezione della stazione
   var handleChange = function(idStation) {
     db.demographicInflowOutflow(idStation, 0, callBack, "det-gender");
     db.demographicInflowOutflow(idStation, 1, callBack, "det-age");
     db.demographicInflowOutflow(idStation, 2, callBack, "det-type");
-    that.set("title",dataElaboration.stationsAttributes[idStation].name)
+    that.set("title", dataElaboration.stationsAttributes[idStation].name)
   }
 
   var handleChangeCompare = function(stationIDs) {
@@ -989,8 +990,8 @@ var stationDetailsController = function(parent) {
     db.tripsDataBetweenStations(0, stationA, stationB, callBack, "det-gender");
     db.tripsDataBetweenStations(1, stationA, stationB, callBack, "det-age");
     db.tripsDataBetweenStations(2, stationA, stationB, callBack, "det-type-couple");
-    that.set("title",dataElaboration.stationsAttributes[stationA].name +
-     " - " + dataElaboration.stationsAttributes[stationB].name);
+    that.set("title", dataElaboration.stationsAttributes[stationA].name +
+      " - " + dataElaboration.stationsAttributes[stationB].name);
   }
 
 
@@ -1004,16 +1005,17 @@ var stationDetailsController = function(parent) {
     if (id === "det-age") {
       var labl = dataElaboration.getFromJSON(json, "label", false);
       that.set("det-age-labels", labl);
-    }
-    else if(id === "det-type-couple") {
+    } else if (id === "det-type-couple") {
       idtunnel = "det-type"
       var trips = 0;
-      for(var i = 0; i < json.data.length; i++) {
+      for (var i = 0; i < json.data.length; i++)  {
         trips += parseInt(json.data[i].value)
       }
 
-      var info = {stationIDs: that.get("compareStation"),
-                  trips: trips}
+      var info = {
+        stationIDs: that.get("compareStation"),
+        trips: trips
+      }
       that.set("comparison", info)
     }
     var d = dataElaboration.getFromJSON(json, "value", true);
@@ -1022,7 +1024,7 @@ var stationDetailsController = function(parent) {
 
   that.onChange("detailStation", handleChange);
   that.onChange("compareStation", handleChangeCompare);
-  
+
 
   return that;
 }
@@ -1038,7 +1040,7 @@ var stationDetailsView = function(container, controller) {
     .attr("class", "flex-horizontal")
     .attr("id", "detail-main-div");
 
-  var title = mainDiv.append("text").attr("class","flex-item").attr("min-width","100%");
+  var title = mainDiv.append("text").attr("class", "flex-item").attr("min-width", "100%");
 
   var divGender = mainDiv.append("div").attr("class", "detail-pie-div");
   divGender.append("text").text("Gender").attr("class", "det-title-graphs");
@@ -1093,7 +1095,7 @@ var stationDetailsView = function(container, controller) {
     }
   })
 
-  _controller.onChange("title",function(tit){
+  _controller.onChange("title", function(tit) {
     title.text(tit);
   })
 
@@ -1107,23 +1109,43 @@ var patternController = function(parent) {
 
 
   that.changeHourSelection = function(hour) {
-    console.log(hour)
-    that.set("hour", parseInt(hour, 10))
+    if(hour !== "") {
+      db.biggestImbalanceInflowOutflowBetween(0, hour, hour + 1, 8, imbalanceCallBack, "");
+    }
   }
 
-  var handleChange = function(hour) {
-    console.log("HANDLE: " + hour)
-    db.overallBetweenHour(hour, hour+1, patternCallBack, "");
-    console.log("FINITO")
+  that.changePeriodSelection = function(period) {
+    var start, end;
+    if (period !== "") {
+      if (period === "Morning") {
+        start = 6;
+        end = 9;
+      } else if (period === "Lunch") {
+        start = 12;
+        end = 14;
+      } else if (period === "Afterwork") {
+        start = 16;
+        end = 20;
+      } else if (period === "Evening") {
+        start = 20;
+        end = 23;
+      } else if (period === "Night") {
+        start = 0;
+        end = 4;
+      }
+      db.overallBetweenHour(start, end, patternCallBack, "");
+    }
   }
 
   var patternCallBack = function(json, iden) {
-    console.log(json)
     that.set("breakTrips", json);
-
   }
 
-  that.onChange("hour", handleChange);
+  var imbalanceCallBack = function(json, iden) {
+    console.log(json)
+    that.set("imbalance", json);
+  }
+
 
 
   return that;
@@ -1140,7 +1162,7 @@ var patternView = function(container, controller) {
     .attr("class", "flex-horizontal")
     .attr("id", "other-main-div");
 
-  var title = mainDiv.append("text").attr("class","flex-item").attr("min-width","100%");
+  var title = mainDiv.append("text").attr("class", "flex-item").attr("min-width", "100%");
 
   var divGender = mainDiv.append("div").attr("class", "detail-pie-div");
   divGender.append("text").text("Gender").attr("class", "det-title-graphs");
@@ -1192,11 +1214,27 @@ var patternView = function(container, controller) {
 
   boxHour.on("change", function() {
     _controller.changeHourSelection(boxHour.property("value"));
-  });
 
+  });
+  boxHour.append("option").text("");
   for (var i = 0; i < 24; i++) {
     boxHour.append("option").text(i);
   };
+
+
+  var boxPeriod = divGender.append("select").classed("box-filter", true);
+
+  boxPeriod.on("change", function() {
+    _controller.changePeriodSelection(boxPeriod.property("value"));
+
+  });
+
+  boxPeriod.append("option").text("");
+  boxPeriod.append("option").text("Morning");
+  boxPeriod.append("option").text("Lunch");
+  boxPeriod.append("option").text("Afterwork");
+  boxPeriod.append("option").text("Evening");
+  boxPeriod.append("option").text("Night");
 
 
 

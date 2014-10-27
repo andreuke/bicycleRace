@@ -120,9 +120,22 @@ function Map(container, initialCoord, controller, mapPrefix) {
 		that.removeLines();
 		that.resetStations("unselected");
 		
-		that.drawTrips(data.data, "default", "default", that.lineColors[0], 0.0001);
+		that.drawTrips(data.data, "default", "default", that.lineColors[0], 0.02);
 
 		// that.showStations();
+	});
+
+
+	this.controller.onChange("imbalance", function(data) {
+		that.removeLines();
+		that.resetStations("unselected");
+		var stations = data.data.map(function(element) {
+			return element.station_id;
+		});
+
+		that.highlightStations(stations)
+		// that.drawTrips(data.data, "default", "default", that.lineColors[0], 0.02);
+
 	});
 	/***************** END CONTROLLER SUBSRCIPTIONS *****************/
 }
@@ -573,8 +586,8 @@ Map.prototype.switchPopupContent = function(mode) {
 				"<button id='inflow_btn' class=popup-text>INFLOW</button>" +
 				"<button id='outflow_btn' class=popup-text>OUTFLOW</button>"+
 				"<br>" +
-				"<button id='detail_btn' class=popup-text>SELECT</button>" +
-				"<button id='compare_btn' class=popup-text>COMPARE</button>";
+				"<button id='detail_btn' class=popup-text>STATION A</button>" +
+				"<button id='compare_btn' class=popup-text>STATION B</button>";
 		}
 
 
