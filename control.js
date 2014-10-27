@@ -102,6 +102,8 @@ var mainController = function() {
 
   that.addState("detailStation", []); //stazione selezionata per dettagli
   that.addState("compareStation", []);
+  that.addState("comparison", []);
+
 
   that.addState("divvyStations", {});
   that.addState("communityAreas", {});
@@ -154,6 +156,15 @@ var mainController = function() {
       that.set("detailStation", idStation);
     }
   }
+
+  that.changeCompareStation = function(idStation) {
+    if (idStation !== that.get("compareStation")) {
+      var stationIDs = [];
+      stationIDs[0] = that.get("detailStation")
+      stationIDs[1] = idStation
+      that.set("compareStation", stationIDs);
+      }
+    }
 
   return that;
 }
@@ -950,16 +961,47 @@ var stationDetailsController = function(parent) {
     that.set("title",dataElaboration.stationsAttributes[idStation].name)
   }
 
+  var handleChangeCompare = function(stationIDs) {
+    var stationA = stationIDs[0];
+    var stationB = stationIDs[1];
+    db.tripsDataBetweenStations(0, stationA, stationB, callBack, "det-gender");
+    db.tripsDataBetweenStations(1, stationA, stationB, callBack, "det-age");
+    db.tripsDataBetweenStations(2, stationA, stationB, callBack, "det-type-couple");
+    that.set("title",dataElaboration.stationsAttributes[stationA].name +
+     " - " + dataElaboration.stationsAttributes[stationB].name);
+  }
+
+
+
   var callBack = function(json, id) {
+    console.log(id)
+    console.log(json)
+
+    var idtunnel = id;
+
     if (id === "det-age") {
       var labl = dataElaboration.getFromJSON(json, "label", false);
       that.set("det-age-labels", labl);
     }
+    else if(id === "det-type-couple") {
+      idtunnel = "det-type"
+      var trips = 0;
+      for(var i = 0; i < json.data.length; i++) {
+        trips += parseInt(json.data[i].value)
+      }
+
+      var info = {stationIDs: that.get("compareStation"),
+                  trips: trips}
+      that.set("comparison", info)
+    }
     var d = dataElaboration.getFromJSON(json, "value", true);
-    that.set(id + "-data", d);
+    that.set(idtunnel + "-data", d);
   }
 
   that.onChange("detailStation", handleChange);
+  that.onChange("compareStation", handleChangeCompare);
+  
+
   return that;
 }
 

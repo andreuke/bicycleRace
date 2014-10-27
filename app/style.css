@@ -26,3 +26,11 @@
 .popup-text-big {
 	font-size: 2vh;
 }
+
+.button-disabled {
+	disabled: true;
+}
+
+.button-enabled {
+	disabled: false;
+}

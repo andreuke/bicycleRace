@@ -87,8 +87,19 @@ function Map(container, initialCoord, controller, mapPrefix) {
 
 	this.controller.onChange(myPrefix + "-tripsDisplayed", function(data) {
 		that.drawGroupTrips(data);
+	});
+	this.controller.onChange("detailStation", function(data) {
+		that.resetLayers("unselected");
+		var station = [data]
+		that.highlightStations(station);
+	});
+	this.controller.onChange("comparison", function(data) {
+		that.resetLayers("unselected");
+		var quantity  = data.trips;
+		that.drawTrip(data.stationIDs[0], data.stationIDs[1], quantity, "default", "default", that.lineColors[0], 0.1);
+		that.showStations();
+	});
 
-	})
 	// this.controller.onChange(myPrefix + "-showComunAreas", function(data) {
 	// 	if (data === true) {
 	// 		that.showCommunityAreas();
@@ -105,6 +116,16 @@ function Map(container, initialCoord, controller, mapPrefix) {
 	// });
 	this.controller.onChange("mode", function(mode) {
 		that.switchPopupContent(mode);
+		var type;
+		if(mode === "stationDetails") {
+			type = "unselected"
+		}
+		else {
+			type = "default"
+		}
+		that.resetLayers(type);
+
+		that.showStations();
 
 	})
 	/***************** END CONTROLLER SUBSRCIPTIONS *****************/
@@ -359,10 +380,10 @@ Map.prototype.showPopup = function(polygon, content, lat, long) {
 		});
 }
 
-Map.prototype.resetStations = function() {
+Map.prototype.resetStations = function(mode) {
 	this.hideStations();
 	for (s in this.stationsMarkers) {
-		this.stationsMarkers[s].type = "unselected"
+		this.stationsMarkers[s].type = mode
 	}
 }
 /**************** END GRAPHIC LAYERS *******************/
@@ -383,6 +404,11 @@ Map.prototype.centerMap = function(id) {
 
 	// Leaves enough space for the popup
 	this.map.setView([latitude + 0.005, longitude], 15)
+}
+
+Map.prototype.resetLayers = function(mode) {
+	this.removeLines();
+	this.resetStations(mode);
 }
 /**************** END UTILITY FUNCTIONS ****************/
 
@@ -432,9 +458,9 @@ Map.prototype.showStationPopup = function(id, station) {
 			that.controller.exec("changeMode", "stationDetails");
 			that.controller.changeDetailStation(id);
 		});
-	d3.select("#show_btn")
+	d3.select("#compare_btn")
 		.on("click", function()  {
-			that.controller.changeDetailStation(id);
+			that.controller.changeCompareStation(id);
 		});
 }
 
@@ -489,7 +515,7 @@ Map.prototype.drawGroupTrips = function(array) {
 	var scale;
 
 	this.removeLines();
-	this.resetStations();
+	this.resetStations("unselected");
 	for (var i = 0; i < array.length; i++) {
 		if(array[i].id !== "chicago") {
 			ids[i] = array[i].id
@@ -551,7 +577,8 @@ Map.prototype.switchPopupContent = function(mode) {
 				"<button id='inflow_btn' class=popup-text>INFLOW</button>" +
 				"<button id='outflow_btn' class=popup-text>OUTFLOW</button>"+
 				"<br>" +
-				"<button id='show_btn' class=popup-text>SELECT</button>";
+				"<button id='detail_btn' class=popup-text>SELECT</button>" +
+				"<button id='compare_btn' class=popup-text>COMPARE</button>";
 		}
 
 
@@ -574,7 +601,7 @@ Map.prototype.switchPopupContent = function(mode) {
 Map.prototype.selectStations = function(polygon)  {
 	console.log(polygon)
 
-	this.resetStations();
+	this.resetStations("unselected");
 	for (i in this.stationsAttributes) {
 		var latitude = this.stationsAttributes[i].latitude;
 		var longitude = this.stationsAttributes[i].longitude;
@@ -582,6 +609,13 @@ Map.prototype.selectStations = function(polygon)  {
 		var contained = polygon.getBounds().contains(L.latLng(latitude, longitude))
 
 		this.stationsMarkers[i].type = contained ? "default" : "unselected";
+	}
+	this.showStations();
+}
+
+Map.prototype.highlightStations = function(stations) {
+	for(var i in stations) {
+		this.stationsMarkers[stations[i]].type = "default";
 	}
 	this.showStations();
 }
@@ -627,7 +661,7 @@ Map.prototype.dataCallback = function(data, graphType) {
 	} else if (graphType === "bar") {
 		graph = new BarChart(container, values, labels, false);
 	} else if (graphType === "line") {
-		graph = new LineChart(container, values, labels, false);
+		graph = new LineChart(container, values, labels, "Age", "Trips", "year");
 	}
 
 	graph.draw();
@@ -636,7 +670,7 @@ Map.prototype.dataCallback = function(data, graphType) {
 Map.prototype.flowCallback = function(data, info) {
 	var baseStation = info.id;
 	var that = info.mapObject;
-	var color = info.direction==="in" ? 2 : 1; 
+	var color = info.direction==="in" ? 0 : 1; 
 
 	var values = dataElaboration.getFromJSON(data, "label", true)
 	var quantities = dataElaboration.getFromJSON(data, "value", true)
@@ -663,8 +697,8 @@ Map.prototype.flowCallback = function(data, info) {
 		}
 	}
 	that.removeLines();
-	that.resetStations();
-	that.drawTrips(trips, "2", "1", that.lineColors[color], 0.05);
+	that.resetStations("unselected");
+	that.drawTrips(trips, "0", "1", that.lineColors[color], 0.05);
 }
 /***************** END DATA FUNCTIONS *****************/
 
