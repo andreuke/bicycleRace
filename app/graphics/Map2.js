@@ -176,9 +176,12 @@ Map.prototype.loadStations = function(json) {
 			" (In: " + s.income + " Out: " + s.outcome + ")" + "</text>" +
 			"<br>" +
 			"<div id='popup-graph-container'></div>" +
+			"<br>" +
+			"Preview: " +
 			"<button id='age_btn' class=popup-text>AGE</button>" +
-				"<button id='gender_btn' class=popup-text>GENDER</button>" +
-				"<button id='type_btn' class=popup-text>TYPE</button>" +
+			"<button id='gender_btn' class=popup-text>GENDER</button>" +
+			"<button id='type_btn' class=popup-text>TYPE</button>" +
+			"<br>" +
 			"<br>" +
 			"<button id='detail_btn' class=popup-text>SHOW DETAILS</button>";
 
@@ -562,21 +565,26 @@ Map.prototype.switchPopupContent = function(mode) {
 			content +=
 				"<br>" +
 				"<div id='popup-graph-container'></div>" +
+				"<br>"
+				"Preview: " +
 				"<button id='age_btn' class=popup-text>AGE</button>" +
 				"<button id='gender_btn' class=popup-text>GENDER</button>" +
 				"<button id='type_btn' class=popup-text>TYPE</button>" +
+				"<br>" +
 				"<br>" +
 				"<button id='detail_btn' class=popup-text>SHOW DETAILS</button>";
 
 		} else if (mode === "pickAday")  {
 			content +=
 				"<div id='popup-graph-container'></div>" +
+				"<button id='add_btn' class=popup-text>ADD STATION</button>" +
+				"<br>" +
+				"<br>" +
+				"Preview: " +
 				"<button id='age_btn' class=popup-text>AGE</button>" +
 				"<button id='gender_btn' class=popup-text>GENDER</button>" +
 				"<button id='type_btn' class=popup-text>TYPE</button>" +
 				"<br>" +
-				"<br>" +
-				"<button id='add_btn' class=popup-text>ADD STATION</button>" +
 				"<br>" +
 				"<button id='detail_btn' class=popup-text>SHOW DETAILS</button>";
 
