@@ -158,6 +158,16 @@
             <p>The first thing noticeable is that bike usage usually decreases after the sun sets. The influence of the sunrise is not as high as expected. <br>
               There are a lot of trips, in fact, starting before the sunrise. The overall trend, however, shows that the majority of trips is made during the day, while, when the sun sets people tend to not use the bike. <br>
             </p>
+            <div class="col-md-6">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Sunset on a weekend</h3>
+              </div>
+              <div class="panel-body">
+                 <img class="img-responsive" src="resources/sunset_21sept.png"/> 
+              </div>
+            </div>
+          </div>
           <div class="col-md-6">
             <div class="panel panel-default">
               <div class="panel-heading">
@@ -168,16 +178,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">Sunset on a weekend</h3>
-              </div>
-              <div class="panel-body">
-                 <img class="img-responsive" src="resources/sunset_21sept.png"/> 
-              </div>
-            </div>
-          </div>
+          
           <p>
             In the linecharts above, is noticeable that sometimes, usually in weekdays, the sunset is not very relevant. In fact, the number of trips starts growing before it.
             What we can observe from the second line chart, that shows trips in a weekend day, is that no one is using bike before the sun sets.
