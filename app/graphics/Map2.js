@@ -430,6 +430,10 @@ Map.prototype.showStationPopup = function(id, station) {
 		.on("click", function()  {
 			that.controller.exec("changeMode", "stationDetails");
 		});
+	d3.select("#show_btn")
+		.on("click", function()  {
+			//AGGIUNGI BUGATTI
+		});
 }
 
 Map.prototype.drawStars = function(popularity) {
@@ -543,7 +547,9 @@ Map.prototype.switchPopupContent = function(mode) {
 			content +=
 				"<br>" +
 				"<button id='inflow_btn' class=popup-text>INFLOW</button>" +
-				"<button id='outflow_btn' class=popup-text>OUTFLOW</button>";
+				"<button id='outflow_btn' class=popup-text>OUTFLOW</button>"+
+				"<br>" +
+				"<button id='show_btn' class=popup-text>SELECT</button>";
 		}
 
 
@@ -628,6 +634,7 @@ Map.prototype.dataCallback = function(data, graphType) {
 Map.prototype.flowCallback = function(data, info) {
 	var baseStation = info.id;
 	var that = info.mapObject;
+	var color = info.direction==="in" ? 2 : 1; 
 
 	var values = dataElaboration.getFromJSON(data, "label", true)
 	var quantities = dataElaboration.getFromJSON(data, "value", true)
@@ -655,7 +662,7 @@ Map.prototype.flowCallback = function(data, info) {
 	}
 	that.removeLines();
 	that.resetStations();
-	that.drawTrips(trips, "start", "end", that.lineColors[i], 0.05);
+	that.drawTrips(trips, "2", "1", that.lineColors[color], 0.05);
 }
 /***************** END DATA FUNCTIONS *****************/
 
