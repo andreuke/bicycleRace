@@ -277,7 +277,7 @@
 			$where = 'a.startdate = "'.$day.'"';
 
 			if($ageFrom == ""){
-				$where .= ' and a.age_in_2014 >= "1"';
+				$where .= ' and a.age_in_2014 >= "0"';
 			}else{
 				$where .= ' and a.age_in_2014 >= "'.$ageFrom.'"';
 			}
@@ -328,8 +328,8 @@
 
 			$where = 'a.startdate = "'.$day.'" and b.hour = "'.$hour.'"';
 
-			if($ageFrom == ""){
-				$where .= ' and a.age_in_2014 >= "1"';
+			if($ageFrom == ""){ 
+				$where .= ' and a.age_in_2014 >= "0"';
 			}else{
 				$where .= ' and a.age_in_2014 >= "'.$ageFrom.'"';
 			}
