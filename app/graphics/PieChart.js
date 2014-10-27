@@ -98,7 +98,7 @@ PieChart.prototype.draw = function(){
 	//Labels
 	arcs	.append("text")
 	    	.attr("transform", function(d) {
-	    		return "translate(" + arc.centroid(d)[0] + ", " + arc.centroid(d)[1]*1.7 + ")";
+	    		return "translate(" + arc.centroid(d)[0]*1.5 + ", " + arc.centroid(d)[1]*1.5 + ")";
 	    	})
 		    .attr("text-anchor", "middle")
 		    .attr("class","text")
