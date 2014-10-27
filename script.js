@@ -16,4 +16,10 @@
 
  var detView = stationDetailsView("#div4", detControl);
 
+ var patternControl = patternController(control, "map1");
+
+ var patternView = patternView("#div4", patternControl);
+
+
+
  control.exec("changeMode", "initial");

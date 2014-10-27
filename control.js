@@ -103,6 +103,7 @@ var mainController = function() {
   that.addState("detailStation", []); //stazione selezionata per dettagli
   that.addState("compareStation", []);
   that.addState("comparison", []);
+  that.addState("breakTrips", []); // For break 24 hours in parts
 
 
   that.addState("divvyStations", {});
@@ -201,6 +202,26 @@ var mainView = function(controller) {
     .append("text")
     .text("Select day");
 
+    //Switch to station details view button
+  listButtons.detailsButton = divButtons.append("div")
+    .attr("id", "button-stationDetails")
+    .attr("class", "main-buttons")
+    .on("click", function() {
+      _controller.changeMode("stationDetails")
+    })
+    .append("text")
+    .text("Station Details");
+
+
+  //Switch to pattern view button
+  listButtons.patternButton = divButtons.append("div")
+    .attr("id", "button-pattern")
+    .attr("class", "main-buttons")
+    .on("click", function() {
+      _controller.changeMode("pattern")
+    })
+    .append("text")
+    .text("Pattern");
 
   /*
   listButtons.comAreasButton = divButtons.append("div")
@@ -260,6 +281,7 @@ var mainView = function(controller) {
         slots[3].attr("class", "invisible");
         break;
       case "stationDetails": //FINIRE
+      case "pattern":
         divMap.classed("left", false);
         divMap.classed("left-center forty", true);
         map.redraw();
@@ -1046,7 +1068,7 @@ var stationDetailsView = function(container, controller) {
   _controller.onChange("det-age-data", function(data) {
     if (!alreadyDrawAge) {
       alreadyDrawAge = true;
-      graphAge = new LineChart("#" + divAgeSvg.attr("id"), data, _controller.get("det-age-labels"), "num trips", "Age", "year");
+      graphAge = new LineChart("#" + divAgeSvg.attr("id"), data, _controller.get("det-age-labels"), "Age", "Trips", "year");
       graphAge.draw();
     } else {
       graphAge.update(data, _controller.get("det-age-labels"));
@@ -1074,6 +1096,121 @@ var stationDetailsView = function(container, controller) {
   _controller.onChange("title",function(tit){
     title.text(tit);
   })
+
+  //_controller.exec("changeDetailStation", "55");
+
+}
+
+var patternController = function(parent) {
+  var that = abstractController(parent);
+  that.addState("hour", "0");
+
+
+  that.changeHourSelection = function(hour) {
+    console.log(hour)
+    that.set("hour", parseInt(hour, 10))
+  }
+
+  var handleChange = function(hour) {
+    console.log("HANDLE: " + hour)
+    db.overallBetweenHour(hour, hour+1, patternCallBack, "");
+    console.log("FINITO")
+  }
+
+  var patternCallBack = function(json, iden) {
+    console.log(json)
+    that.set("breakTrips", json);
+
+  }
+
+  that.onChange("hour", handleChange);
+
+
+  return that;
+}
+
+var patternView = function(container, controller) {
+  var that = {};
+  var _controller = controller;
+  var alreadyDrawGender = false;
+  var alreadyDrawType = false;
+  var alreadyDrawAge = false;
+
+  var mainDiv = d3.select(container).append("div")
+    .attr("class", "flex-horizontal")
+    .attr("id", "other-main-div");
+
+  var title = mainDiv.append("text").attr("class","flex-item").attr("min-width","100%");
+
+  var divGender = mainDiv.append("div").attr("class", "detail-pie-div");
+  divGender.append("text").text("Gender").attr("class", "det-title-graphs");
+  var divGenderSvg = divGender.append("div").attr("class", "flex-item").attr("id", "div-svg-pp3");
+  var graphGender = {};
+
+  var divType = mainDiv.append("div").attr("class", "detail-pie-div");
+  divType.append("text").text("Type").attr("class", "det-title-graphs");
+  var divTypeSvg = divType.append("div").attr("class", "flex-item").attr("id", "div-svg-pp1");
+  var graphType = {};
+
+  var divAge = mainDiv.append("div").attr("class", "detail-line-div");
+  divAge.append("text").text("Age").attr("class", "det-title-graphs");
+  var divAgeSvg = divAge.append("div").attr("class", "flex-item").attr("id", "div-svg-pp2");
+  var graphAge = {};
+
+  // _controller.onChange("det-gender-data", function(data) {
+  //   if (!alreadyDrawGender) {
+  //     alreadyDrawGender = true;
+  //     graphGender = new PieChart("#" + divGenderSvg.attr("id"), data, ["Male", "Female", "Unknown"]);
+  //     graphGender.draw();
+  //   } else {
+  //     graphGender.update(data, ["Male", "Female", "Unknown"]);
+  //   }
+  // });
+
+  // _controller.onChange("det-age-data", function(data) {
+  //   if (!alreadyDrawAge) {
+  //     alreadyDrawAge = true;
+  //     graphAge = new LineChart("#" + divAgeSvg.attr("id"), data, _controller.get("det-age-labels"), "Age", "Trips", "year");
+  //     graphAge.draw();
+  //   } else {
+  //     graphAge.update(data, _controller.get("det-age-labels"));
+  //   }
+  // });
+
+  // _controller.onChange("det-type-data", function(data) {
+  //   if (!alreadyDrawType) {
+  //     alreadyDrawType = true;
+  //     graphType = new PieChart("#" + divTypeSvg.attr("id"), data, ["Customers", "Subscribers"]);
+  //     graphType.draw();
+  //   } else {
+  //     graphType.update(data, ["Customers", "Subscribers"]);
+  //   }
+  // });
+
+
+  var boxHour = divGender.append("select").classed("box-filter", true);
+
+  boxHour.on("change", function() {
+    _controller.changeHourSelection(boxHour.property("value"));
+  });
+
+  for (var i = 0; i < 24; i++) {
+    boxHour.append("option").text(i);
+  };
+
+
+
+  _controller.onChange("mode", function(mode) {
+    if (mode === "pattern") {
+      mainDiv.attr("class", "pattern-main-div");
+    } else {
+      mainDiv.attr("class", "invisible");
+    }
+  })
+
+  // _controller.onChange("title",function(tit){
+  //   title.text(tit);
+  // })
 
   //_controller.exec("changeDetailStation", "55");
 

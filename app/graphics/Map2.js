@@ -114,7 +114,16 @@ function Map(container, initialCoord, controller, mapPrefix) {
 		that.showStations();
 		that.map.closePopup();
 
-	})
+	});
+
+	this.controller.onChange("breakTrips", function(data) {
+		that.removeLines();
+		that.resetStations("unselected");
+		
+		that.drawTrips(data.data, "default", "default", that.lineColors[0], 0.0001);
+
+		// that.showStations();
+	});
 	/***************** END CONTROLLER SUBSRCIPTIONS *****************/
 }
 
