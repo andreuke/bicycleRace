@@ -1,5 +1,3 @@
-
-
   function BarChart(container,data,labels,flexBox){
     this.flexBox = flexBox !== false
 
@@ -70,14 +68,15 @@
        .attr("height", function(d) {
           return yScale(d);
        })
-       .attr("fill", function(d) {
-          var percent = parseFloat(d)/parseFloat(d3.max(data));
-          var low = 70;
-          var high = 200;
-          var col = parseInt(low + percent * (high-low));
-          var col2 = parseInt(col/2.68);
-          // console.log("Col: "+ col);
-          return "rgb(0,"+col+","+col+")";
+       .attr("fill", function(d, i) {
+          // var percent = parseFloat(d)/parseFloat(d3.max(data));
+          // var low = 70;
+          // var high = 200;
+          // var col = parseInt(low + percent * (high-low));
+          // var col2 = parseInt(col/2.68);
+          // // console.log("Col: "+ col);
+          // return "rgb(0,"+col+","+col+")";
+          return pieColor[i]
        });
 
 
