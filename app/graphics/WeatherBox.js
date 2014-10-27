@@ -25,9 +25,11 @@ WeatherBox.prototype.setDate = function(date){
 
 }
 
-WeatherBox.prototype.setSun = function(sunrise,sunset){
+WeatherBox.prototype.setSunrise = function(sunrise){
   d3  .select("#sunrise_text")
       .text(sunrise);
+}
+WeatherBox.prototype.setSunset = function(sunset){
 
   d3  .select("#sunset_text")
       .text(sunset);
@@ -53,7 +55,7 @@ WeatherBox.prototype.draw = function(){
   var container = this.container;
   var temp_c=this.temp_c;
   var temp_f=this.temp_f;
-  var font_size = 4;
+  var font_size = "25px";
 	var something = 10;
 	var margin = 0.80;
 	var label_margin = 0.03;
@@ -75,7 +77,7 @@ WeatherBox.prototype.draw = function(){
 	var svg = d3 	.select(container)
                  	.append("svg")
                   	.attr("viewBox","0 0 " + width + " " + height)
-                  	.attr("preserveAspectRatio", "xMinYMin meet")
+                  	.attr("preserveAspectRatio", "xMidYMid meet")
                   	.attr("width", "100%")
                   	//.attr("height", "100%")
              	
@@ -87,7 +89,7 @@ WeatherBox.prototype.draw = function(){
         .attr("text-anchor","middle")
         .attr("id","day_text")
         .text("Day : " + day)
-        .style("font-size", font_size + "vh")
+        .style("font-size", font_size)
         .attr("transform", "translate(" + width/2 + "," + row1 + ")" );
 
   svg .append("svg:image")
@@ -107,21 +109,21 @@ WeatherBox.prototype.draw = function(){
       .attr("text-anchor","middle")
       .attr("id", "sunrise_text")
       .text(sunrise)
-       .style("font-size", font_size + "vh")
+       .style("font-size", font_size)
       .attr("transform", "translate(" + column2 + "," + (row2+icon_width/2+20) + ")" )
 
   svg .append("text")
       .attr("text-anchor","middle")
       .attr("id", "sunset_text")
       .text(sunset)
-       .style("font-size", font_size + "vh")
+       .style("font-size", font_size)
       .attr("transform", "translate(" + column4 + "," + (row2+icon_width/2+20) + ")" )
 
     svg .append("text")
       .attr("text-anchor","middle")
     	.attr("id", "hour_text")
     	.text("Selected Hour : " + hour)
-      .style("font-size", font_size + "vh")
+      .style("font-size", font_size)
     	.attr("transform", "translate(" + width/2 + "," + row3 + ")" );
 
   svg .append("svg:image")
@@ -134,7 +136,7 @@ WeatherBox.prototype.draw = function(){
       .attr("text-anchor","middle")
       .attr("id", "temp_c_text")
       .text(temp_c)
-      .style("font-size", font_size + "vh")
+      .style("font-size", font_size)
       .attr("transform", "translate(" + column2 + "," + (row4+icon_width/2+10) + ")" )
 
   svg .append("svg:image")
@@ -147,7 +149,7 @@ WeatherBox.prototype.draw = function(){
       .attr("text-anchor","middle")
       .attr("id", "temp_f_text")
       .text(temp_f)
-      .style("font-size", font_size + "vh")
+      .style("font-size", font_size)
       .attr("transform", "translate(" + column4 + "," + (row4+icon_width/2+10) + ")" )
 
 

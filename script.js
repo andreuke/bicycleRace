@@ -12,4 +12,8 @@
 
  var pickView = pickAdayView(pickControl, "#div3","#div1");
 
+ var detControl = stationDetailsController(control);
+
+ var detView = stationDetailsView("#div4", detControl);
+
  control.exec("changeMode", "initial");

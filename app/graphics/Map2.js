@@ -2,6 +2,7 @@ function Map(container, initialCoord, controller, mapPrefix) {
 	var that = this;
 
 	this.stationsAttributes = {}
+	dataElaboration.stationsAttributes = this.stationsAttributes;
 	this.database = new database("app/data/query.php");
 
 	var myPrefix = mapPrefix;
