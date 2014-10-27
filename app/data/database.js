@@ -314,12 +314,12 @@ hourTo <
 ratio: number used for calculate the imbalance. example: ratio = 8 -> the function return the values
 that satify inflow > 8 * outflow || outflow > 8 * inflow
 */
-database.prototype.biggestImbalanceInflowOutflowBetween = function (hourFrom, hourTo, ratio, callback, iden){
+database.prototype.biggestImbalanceInflowOutflowBetween = function (filter,hourFrom, hourTo, ratio, callback, iden){
 	var return_value;
 
 	return_value = $.ajax({
 		url: this.queryUrl,
-		data: "mark=1&query=8&hourFrom="+ "" +hourFrom+ "" + "&hourTo="+ "" +hourTo+ "" +"&ratio="+ "" + ratio,
+		data: "mark=1&query=8&hourFrom="+ "" +hourFrom+ "" + "&hourTo="+ "" +hourTo+ "" +"&ratio="+ "" + ratio+ "" +"&filter="+ "" + filter,
 		dataType: "json",
 		success: function(data) {
 			callback(data,iden);
