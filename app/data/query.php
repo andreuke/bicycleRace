@@ -371,11 +371,11 @@
 		}
 
 		function overallBetweenHour($fromHour, $toHour, $connessione){
-			$result = genericQuery('from_station_id,to_station_id, count(*) as totalTripsMade', 'divvy_trips_distances_skinny', 'hour >= '.$fromHour.' and hour < '.$toHour, 'group by from_station_id,to_station_id order by total DESC LIMIT 100', $connessione);
+			$result = genericQuery('from_station_id,to_station_id, count(*) as totalTripsMade', 'divvy_trips_distances_skinny', 'hour >= '.$fromHour.' and hour < '.$toHour, 'group by from_station_id,to_station_id order by totalTripsMade DESC LIMIT 100', $connessione);
 			$variables = array ('0' => 'from_station_id',
 								'1' => 'to_station_id',
 								'2' => 'totalTripsMade');
-			
+
 			labelledDisplayData($result, $variables);
 		}
 
