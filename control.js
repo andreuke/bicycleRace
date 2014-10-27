@@ -1040,7 +1040,7 @@ var stationDetailsView = function(container, controller) {
     .attr("class", "flex-horizontal")
     .attr("id", "detail-main-div");
 
-  var title = mainDiv.append("text").attr("class", "flex-item").attr("min-width", "100%");
+  var title = mainDiv.append("text").attr("class", "det-title");
 
   var divGender = mainDiv.append("div").attr("class", "detail-pie-div");
   divGender.append("text").text("Gender").attr("class", "det-title-graphs");
@@ -1096,7 +1096,7 @@ var stationDetailsView = function(container, controller) {
   })
 
   _controller.onChange("title", function(tit) {
-    title.text(tit);
+    title.text("Demographic details: " + tit);
   })
 
   //_controller.exec("changeDetailStation", "55");
