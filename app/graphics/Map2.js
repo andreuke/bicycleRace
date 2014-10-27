@@ -29,6 +29,8 @@ function Map(container, initialCoord, controller, mapPrefix) {
 	this.stationsMarkers = [];
 	this.communityAreas = [];
 	this.communityAreasLabels = [];
+	this.communityAreasNames = [];
+
 
 	this.sat = false;
 	this.farView = initialZoom < this.zoomThreshold;
@@ -281,6 +283,7 @@ Map.prototype.loadStations = function(json) {
 
 			communityAreas.push(polygon)
 			communityAreasLabels.push(label)
+			this.communityAreasNames.push(name)
 
 		}
 
@@ -390,6 +393,7 @@ Map.prototype.showPopup = function(id, content, lat, long) {
 
 	d3.select("#select_stations_btn")
 		.on("click", function()  {
+			that.controller.exec("changeMode", "stationDetails");
 			that.selectStations(id);
 		});
 }
@@ -616,7 +620,7 @@ Map.prototype.switchPopupContent = function(mode) {
 }
 
 Map.prototype.selectStations = function(id)  {
-	console.log(id)
+	var stations = [];
 
 	this.resetStations("unselected");
 	for (i in this.stationsAttributes) {
@@ -626,8 +630,18 @@ Map.prototype.selectStations = function(id)  {
 		// var contained = polygon.getBounds().contains(L.latLng(latitude, longitude))
 		var contained = this.stationsAttributes[i].communityArea == id;
 		this.stationsMarkers[i].type = contained ? "default" : "unselected";
+		if (contained) {
+			stations.push(i)
+		}
 	}
 	this.showStations();
+
+	console.log(this.communityAreasLabels)
+
+	var object =  {list: stations,
+					name: this.communityAreasNames[id-1]}
+	this.controller.set("stationList", object)
+	// TODO query
 }
 
 Map.prototype.highlightStations = function(stations) {
