@@ -24,7 +24,7 @@
             <li><b> Strange Trips </b> : There is a total 278 trips made by people older than 100 years</li>
             <li><b> Typical Trip Time </b> : A Typical trip lasts less than 15 minutes </li>
             <li><b> Mean Trip Distance </b> : Most of the trips are between 1'000 and 4'000 meters </li>
-            <li><b> Day Usage </b> : There are more rides during the weekend </li>
+            <li><b> Weekly Usage </b> : There are more rides during the weekend </li>
             <li><b> Busiest Day </b> : Most of the trips happen on Saturday </li>
             <li><b> Busiest period of the year</b> : Most trips happen between August and mid October. However we have to consider that the service was launched in July so July's data is not relevant</li>
             <li><b> Customer VS Subscriber </b> : There are more subscribers than customers </li>
@@ -38,6 +38,31 @@
           <h1>Findings <small>Near UIC</small></h1>
         </div>
         <div class="col-md-12">
+        <p>
+          Here we focus on 6 Divvy stations and we analyze the patterns we find. <br>
+          The stations we are considering are:
+          <ul>
+            <li>Loomis & Taylor </li>
+            <li>May st & Taylor </li>
+            <li>Racine & Congress </li>
+            <li>Morgan & Polk </li>
+            <li>900 Harrison </li>
+            <li>Halsted & Polk</li>
+          </ul>
+          The first feature, shared among all the stations is the age range. As observable from the picture below, (IMMAGINE MORGAN&POLK) the majority of people
+          that uses bikes in theese stations is between 18 and 28. Notice that this is the age range of graduate and undergraduate students and as we are considering 
+          stations near University of Illinois at Chicago, this means that theese stations are used mainly by students.<br>
+
+          <br>
+          The second thing observable, is that the majority of people are subscribers, and not customer. So, they are paying for the entire year and not only for a day.<br>
+          This is explainable by the fact that theese station are used mainly by students and they need a transport for the entire year, not only for some days.<br>
+          By the way, is known that there is a student discount for the annual membership. This is clearly related to the fact that the majority of people in theese stations are Subscribers, 
+          as they are frequented mainly by students.
+          <br>
+          <br>
+          If we focus on the gender, we can notice that it follows the general flow. The majority of people who uses bikes in theese stations are Male.<br>
+
+        </p>
         </div>
       </div>
       <div class="row">
@@ -153,6 +178,13 @@
               </div>
             </div>
           </div>
+          <p>
+            In the linecharts above, is noticeable that sometimes, usually in weekdays, the sunset is not very relevant. In fact, the number of trips starts growing before it.
+            What we can observe from the second line chart, that shows trips in a weekend day, is that no one is using bike before the sun sets.
+            <br>
+            One conclusion, that can be derived from theese considerations, is that bikes usage is related to work hours. This is derivable from the fact that, during weekdays,
+            number of bikes start growing before the sun rises, period when usually people go working.
+          </p>
         </div>
       </div>
     </div>
