@@ -164,15 +164,15 @@
 		function tripsDataBetweenStations($filter,$fromStation, $toStation, $connessione){
 			switch($filter){
 				case '0'://MaleVsFemaleVsUnknown
-						$result = genericQuery('count(*) as numOfMale','divvy_trips_distances','gender = "Male" and (from_station_id = "'.$fromStation.'" and to_station_id = "'.$toStation.'") OR (from_station_id = "'.$toStation.'" and to_station_id = "'.$fromStation.'")','',$connessione);
+						$result = genericQuery('count(*) as numOfMale','divvy_trips_distances','gender = "Male" and ((from_station_id = "'.$fromStation.'" and to_station_id = "'.$toStation.'") OR (from_station_id = "'.$toStation.'" and to_station_id = "'.$fromStation.'"))','',$connessione);
 						$male = mysql_fetch_array($result);
 						$male = $male['numOfMale'];
 
-						$result = genericQuery('count(*) as numOfFemale','divvy_trips_distances','gender = "Female" and (from_station_id = "'.$fromStation.'" and to_station_id = "'.$toStation.'") OR (from_station_id = "'.$toStation.'" and to_station_id = "'.$fromStation.'")','',$connessione);
+						$result = genericQuery('count(*) as numOfFemale','divvy_trips_distances','gender = "Female" and ((from_station_id = "'.$fromStation.'" and to_station_id = "'.$toStation.'") OR (from_station_id = "'.$toStation.'" and to_station_id = "'.$fromStation.'"))','',$connessione);
 						$female = mysql_fetch_array($result);
 						$female = $female['numOfFemale'];
 
-						$result = genericQuery('count(*) as numOfUnknown','divvy_trips_distances','gender = "" and (from_station_id = "'.$fromStation.'" and to_station_id = "'.$toStation.'") OR (from_station_id = "'.$toStation.'" and to_station_id = "'.$fromStation.'")','',$connessione);
+						$result = genericQuery('count(*) as numOfUnknown','divvy_trips_distances','gender = "" and ((from_station_id = "'.$fromStation.'" and to_station_id = "'.$toStation.'") OR (from_station_id = "'.$toStation.'" and to_station_id = "'.$fromStation.'"))','',$connessione);
 						$unknown = mysql_fetch_array($result);
 						$unknown = $unknown['numOfUnknown'];
 
@@ -182,7 +182,7 @@
 						//update this...
 
 						//select birthyear, count(*) from divvy_trips_distances where from_station_id = 283 and to_station_id = 175 group by birthyear
-						$result = genericQuery('birthyear, count(*) as total','divvy_trips_distances', ' (from_station_id = "'.$fromStation.'" and to_station_id = "'.$toStation.'") OR (from_station_id = "'.$toStation.'" and to_station_id = "'.$fromStation.'")', 'group by birthyear having birthyear >0', $connessione);
+						$result = genericQuery('birthyear, count(*) as total','divvy_trips_distances', ' ((from_station_id = "'.$fromStation.'" and to_station_id = "'.$toStation.'") OR (from_station_id = "'.$toStation.'" and to_station_id = "'.$fromStation.'"))', 'group by birthyear having birthyear >0', $connessione);
 						//$result = genericQuery('birthyear,sum(total) as total', 'demographics_data_a', 'total!=0 and stationFrom = "'.$fromStation.'" and stationTo = "'.$toStation.'"',' group by birthyear',$connessione);
 						$variables = array('0' => "birthyear",
 											'1' => "total");
@@ -190,7 +190,7 @@
 						genericDisplayData($result, $variables);
 						break;
 				case '2'://subscriber vs customer
-						$result =  genericQuery('usertype, count(*) as total', 'divvy_trips_distances', '(from_station_id = "'.$fromStation.'" and to_station_id = "'.$toStation.'") OR (from_station_id = "'.$toStation.'" and to_station_id = "'.$fromStation.'")', ' group by usertype', $connessione);
+						$result =  genericQuery('usertype, count(*) as total', 'divvy_trips_distances', '((from_station_id = "'.$fromStation.'" and to_station_id = "'.$toStation.'") OR (from_station_id = "'.$toStation.'" and to_station_id = "'.$fromStation.'"))', ' group by usertype', $connessione);
 						$variables = array('0' => 'usertype',
 											'1' => 'total' );
 						genericDisplayData($result, $variables);
@@ -371,7 +371,7 @@
 		}
 
 		function overallBetweenHour($fromHour, $toHour, $connessione){
-			$result = genericQuery('from_station_id,to_station_id, count(*) as total', 'divvy_trips_distances_skinny', 'hour >= '.$fromHour.' and hour < '.$toHour, 'group by from_station_id,to_station_id', $connessione);
+			$result = genericQuery('from_station_id,to_station_id, count(*) as total', 'divvy_trips_distances_skinny', 'hour >= '.$fromHour.' and hour < '.$toHour, 'group by from_station_id,to_station_id order by total DESC LIMIT 100', $connessione);
 			$variables = array ('0' => 'from_station_id',
 								'1' => 'to_station_id',
 								'2' => 'total');
