@@ -30,7 +30,7 @@
         </div>
         <div class="col-md-4">
           <a href="#" class="thumbnail">
-            <img data-src="holder.js/250%x250" src="resources/andrea_250.jpg">
+            <img class="img-rounded" data-src="holder.js/250%x250" src="resources/andrea_250.jpg">
           </a>
         </div>
       </div>
@@ -51,7 +51,7 @@
         </div>
         <div class="col-md-4">
           <a href="#" class="thumbnail">
-            <img data-src="holder.js/250%x250" src="resources/ettore_250.jpg">
+            <img class="img-rounded" data-src="holder.js/250%x250" src="resources/ettore_250.jpg">
           </a>
         </div>
       </div>
@@ -72,7 +72,7 @@
         </div>
         <div class="col-md-4">
           <a href="#" class="thumbnail">
-            <img data-src="holder.js/250%x250" src="resources/lorenzo_250.jpg">
+            <img class="img-rounded" data-src="holder.js/200%x250" src="resources/lorenzo_200.jpg">
           </a>
         </div>
       </div>
@@ -91,7 +91,7 @@
         </div>
         <div class="col-md-4">
           <a href="#" class="thumbnail">
-            <img data-src="holder.js/250%x250" src="resources/luca_250.jpg">
+            <img class="img-rounded" data-src="holder.js/250%x250" src="resources/luca_250.jpg">
           </a>
         </div>
       </div>
