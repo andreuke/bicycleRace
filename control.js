@@ -1223,8 +1223,8 @@ var patternView = function(container, controller) {
 
   var title = mainDiv.append("text").attr("class", "title-pattern").style("min-width", "100%").text("Patterns");
 
-
   var divImbalances = mainDiv.append("div").attr("class","div-pattern");
+  var descrImb = divImbalances.append("text").style("min-width","100%").text("Highlight stations with biggest imbalances between inflow and outflow")
   var titleImba = divImbalances.append("text").attr("class","text-pattern").text("Choose Hour:")
 
   var boxHour = divImbalances.append("select").classed("box-filter", true);
@@ -1240,6 +1240,7 @@ var patternView = function(container, controller) {
 
   var divPeriod = mainDiv.append("div").attr("class","div-pattern");
 
+  var descrPeriod = divPeriod.append("text").style("min-width","100%").text("Show most populous trips during:")
   var titlePeriod = divPeriod.append("text").attr("class","text-pattern").text("Choose period:")
   var boxPeriod = divPeriod.append("select").classed("box-filter", true);
 

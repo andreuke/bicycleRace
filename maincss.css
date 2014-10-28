@@ -6,6 +6,7 @@ body{
   left: 0;
   right: 0;
   background-color: rgba(232, 231, 231, 0.62);
+  font-family: sans-serif;
 }
 
 .quart{
@@ -133,6 +134,7 @@ body{
 #mainButtons {
   width: 100%;
   height: 5%;
+  font-family: sans-serif;
 }
 
 .flex-container{
@@ -222,6 +224,7 @@ body{
 }
 .div-graph {
   flex:10;
+  font-size: 55%;
   display: flex;
   margin:1vh;
 }
@@ -302,14 +305,16 @@ body{
 }
 
 .text-pattern{
-  flex:1;
 }
 .title-pattern{
-  flex:1;
+  height: 10vh;
+  font-size: 5vh;
 }
 
 .div-pattern{
   display: flex;
   flex:1;
   flex-direction: row;
+  flex-wrap:wrap;
+  font-size: 3vh;
 }

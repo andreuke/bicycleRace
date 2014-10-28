@@ -18,8 +18,9 @@ body{
 }
 
 .button{
-  width: 2%;
-  font-size: 1 vh;
+  width: 1%;
+  font-size: 3vh;
+  font-family: sans-serif;
   background-color: rgba(232, 231, 231, 0.62);
   border-style: solid;
   border-color: #b3b3b3;
@@ -28,5 +29,5 @@ body{
 }
 
 .text-button{
-
+  margin-top: 30vh;
 }
