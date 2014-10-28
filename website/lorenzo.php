@@ -82,7 +82,10 @@
           <h1>Week 5 <small>October 20th - October 26th </small></h1>
         </div>
           <ul>
-            <li>Creation 5 queries regarding point B</li>
+            <li>creation of all the queries regarding points A and B</li>
+            <li>bug fixes on the application</li>
+            <li>creation of website</li>
+            <li>various database optimizations (views, indices, etc..)</li>
           </ul>
       </div>
 
