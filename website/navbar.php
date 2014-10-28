@@ -16,7 +16,7 @@
               <li><a href="luca.php">Luca</a></li>
             </ul>
         </li>
-        <li><a href="#">App</a></li>
+        <li><a href="http://ldituc2.people.uic.edu/project_2/bicycleRace/">App</a></li>
         <li><a href="data.php">Data</a></li>
         <li><a href="source.php">Source</a></li>
         <li><a href="findings.php">Findings</a></li>
