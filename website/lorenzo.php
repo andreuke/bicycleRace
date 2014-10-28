@@ -30,6 +30,10 @@
       <div class="row">
         <div class="page-header">
           <h1>Week 1 <small> September 23rd - September 28th </small></h1>
+          <ul>
+            <li>Reading different typologies of DB</li>
+            <li>various implementation of DB</li>
+          </ul>
         </div>
       </div>
 
