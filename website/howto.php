@@ -101,7 +101,7 @@
                   <h3 class="panel-title">Map</h3>
                 </div>
                 <div class="panel-body">
-                   <img class="img-responsive" src="resources/app_overview_map1.PNG"/> 
+                   <img class="img-responsive" src="resources/app_overview_map1.png"/> 
                 </div>
               </div>
             </div>
@@ -111,7 +111,7 @@
                   <h3 class="panel-title">Community Area Map</h3>
                 </div>
                 <div class="panel-body">
-                   <img class="img-responsive" src="resources/app_overview_map2.PNG"/> 
+                   <img class="img-responsive" src="resources/app_overview_map2.png"/> 
                 </div>
               </div>
             </div>
@@ -128,7 +128,7 @@
                   <h3 class="panel-title">Map Divvy points</h3>
                 </div>
                 <div class="panel-body">
-                   <img class="img-responsive" src="resources/app_overview_map_points.png"/> 
+                   <img class="img-responsive" src="resources/app_overview_map_points.PNG"/> 
                 </div>
               </div>
             </div>
@@ -138,7 +138,7 @@
                   <h3 class="panel-title">Map Markers</h3>
                 </div>
                 <div class="panel-body">
-                   <img class="img-responsive" src="resources/app_overview_map_marker.png"/> 
+                   <img class="img-responsive" src="resources/app_overview_map_marker.PNG"/> 
                 </div>
               </div>
             </div>
@@ -246,7 +246,7 @@
                   <h3 class="panel-title">Stations Comparison</h3>
                 </div>
                 <div class="panel-body">
-                   <img class="img-responsive" src="resources/app_select_stations.PNG"/> 
+                   <img class="img-responsive" src="resources/app_select_stations.png"/> 
                 </div>
               </div>
             </div>
