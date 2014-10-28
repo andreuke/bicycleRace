@@ -106,6 +106,7 @@ var mainController = function() {
   that.addState("comparison", []);
   that.addState("breakTrips", []); // For break 24 hours in parts
   that.addState("imbalance", [])
+  that.addState("stationList", [])
 
 
   that.addState("divvyStations", {});
@@ -1044,6 +1045,12 @@ var stationDetailsController = function(parent) {
       " - " + dataElaboration.stationsAttributes[stationB].name);
   }
 
+  var handleChangeList = function(stations) {
+    db.dataAggregatedStations(0, stations.list, callBack, "det-gender");
+    db.dataAggregatedStations(1, stations.list, callBack, "det-age");
+    db.dataAggregatedStations(2, stations.list, callBack, "det-type");
+    that.set("title", stations.name);
+  }
 
 
   var callBack = function(json, id) {
@@ -1074,6 +1081,8 @@ var stationDetailsController = function(parent) {
 
   that.onChange("detailStation", handleChange);
   that.onChange("compareStation", handleChangeCompare);
+  that.onChange("stationList", handleChangeList);
+
 
 
   return that;
