@@ -119,7 +119,6 @@ var mainController = function() {
     }
   });
 
-
   d3.json("app/data/community_areas.json", function(error, json) {
     if (error) {
       return console.warn(error);
@@ -270,8 +269,10 @@ var mainView = function(controller) {
   //Changes the dimensions of the 4 main divs
   var handleChangeMode = function(mode) {
     //TODO coprire tutte le mode
+    var allClassStr = "left quart left-center forty ottanta"
     switch (mode) {
       case "initial":
+        divMap.classed(allClassStr, false);
         divMap.classed("left quart", true);
         map.redraw();
         slots[0].attr("class", "flex-item right");
@@ -280,7 +281,7 @@ var mainView = function(controller) {
         slots[3].attr("class", "invisible");
         break;
       case "pickAday":
-        divMap.classed("left", false);
+        divMap.classed(allClassStr, false);
         divMap.classed("left-center forty", true);
         map.redraw();
         slots[0].attr("class", "flex-item-penta right");
@@ -289,7 +290,7 @@ var mainView = function(controller) {
         slots[3].attr("class", "invisible");
         break;
       case "stationDetails":
-      divMap.classed("left", false);
+      divMap.classed(allClassStr, false);
         divMap.classed("left-center forty", true);
         map.redraw();
         slots[0].attr("class", "invisible");
@@ -298,8 +299,7 @@ var mainView = function(controller) {
         slots[3].attr("class", "flex-item-penta right");
         break;
       case "pattern":
-        divMap.classed("left", false);
-
+        divMap.classed(allClassStr, false);
         divMap.classed("left-center ottanta", true);
         map.redraw();
         slots[0].attr("class", "invisible");
@@ -354,15 +354,15 @@ var initialController = function(controller) {
     that.addState(prefix + "-linechart-labl-y", lably);
   }
 
-  addGraphState("ini-time1", [], [], "Number of bikes in the year", "linechart", "date")
-  addGraphState("ini-time2", [], [], "Number of bikes in the week", "barchart", "ordinal")
-  addGraphState("ini-time3", [], [], "Number of rides by hour", "linechart", "numerical")
-  addGraphState("ini-distr1", [], [], "Distribution of rides by distance", "linechart", "numerical")
-  addGraphState("ini-distr2", [], [], "Distribution of rides by time", "linechart", "numerical")
-  addGraphState("ini-distr3", [], [], "Distance for each bike", "linechart", "numerical")
-  addGraphState("ini-demog1", [], [], "Gender", "piechart", "ordinal")
-  addGraphState("ini-demog2", [], [], "Subscribers", "piechart", "ordinal")
-  addGraphState("ini-demog3", [], [], "Age", "linechart", "year")
+  addGraphState("ini-time1", [], [], "Number of bikes in the year", "linechart", "date","days","n° trips")
+  addGraphState("ini-time2", [], [], "Number of bikes in the week", "barchart", "ordinal","n° trips")
+  addGraphState("ini-time3", [], [], "Number of rides by hour", "linechart", "numerical","hours","n° trips")
+  addGraphState("ini-distr1", [], [], "Distribution of rides by distance", "linechart", "numerical","meters","n° trips")
+  addGraphState("ini-distr2", [], [], "Distribution of rides by time", "linechart", "numerical","seconds","n° trips")
+  addGraphState("ini-distr3", [], [], "Distance for each bike", "linechart", "numerical","Bike ID","meters")
+  addGraphState("ini-demog1", [], [], "Gender", "piechart", "ordinal","meters","n° trips")
+  addGraphState("ini-demog2", [], [], "Subscribers", "piechart", "ordinal","n° trips")
+  addGraphState("ini-demog3", [], [], "Age", "linechart", "year","Age","n° trips");
 
   var dataCallback = function(data, id) {
     var tmp;
@@ -491,6 +491,9 @@ var IniSingleGraph = function(controller, where, idElement, idState) {
   var title = mainDiv.append("text")
     .text(_controller.get(idStatus + "-title"))
     .classed("graph-title", true);
+  if (idState !== undefined){
+    title.attr("class","graph-title-zoom");
+  }
   var graphDiv = mainDiv.append("div").attr("id", id + "-div-graph")
     .classed("div-graph", true)
   var graph;
@@ -505,7 +508,7 @@ var IniSingleGraph = function(controller, where, idElement, idState) {
       graph = Chart(_controller.get(idStatus + "-data"), "#" + graphDiv.attr("id"), "100%", "");
       break;
     case "linechart":
-      graph = new LineChart("#" + graphDiv.attr("id"), _controller.get(idStatus + "-data"), _controller.get(idStatus + "-labels"), "", "", _controller.get(idStatus + "-linechart-type"));
+      graph = new LineChart("#" + graphDiv.attr("id"), _controller.get(idStatus + "-data"), _controller.get(idStatus + "-labels"), _controller.get(idStatus + "-linechart-labl-x"), _controller.get(idStatus + "-linechart-labl-y"), _controller.get(idStatus + "-linechart-type"));
       break;
   }
   graph.draw();
@@ -528,9 +531,11 @@ var IniSingleGraph = function(controller, where, idElement, idState) {
   var selectionHighLight = function(selections) {
     var ind = selections.indexOf(id);
     if (ind == -1) {
-      mainDiv.classed("red", false);
+      mainDiv.classed("border-red", false);
+      //title.attr("class","graph-title");
     } else {
-      mainDiv.classed("red", true);
+      mainDiv.classed("border-red", true);
+      //title.attr("class","graph-title-zoom");
     }
 
   }
@@ -746,7 +751,7 @@ var pickAdayController = function(parent, prefixMap) {
     } else {
       db.tripsTakenAccrossFilteredStation("", that.get("filter-gender"),
         that.get("filter-age-min"), that.get("filter-age-max"),
-        that.get("filter-subscriber"), that.get("date"), that.get("hour"), callBackTrips, "chicago");
+        that.get("filter-subscriber"), that.get("date"), hour, callBackTrips, "chicago");
     }
     db.weatherHour(that.get("date"), hour, callBackCurrentWeather);
     that.set("hour", hour);
@@ -1204,13 +1209,16 @@ var patternView = function(container, controller) {
   var alreadyDrawAge = false;
 
   var mainDiv = d3.select(container).append("div")
-    .attr("class", "flex-horizontal")
+    .attr("class", "pattern-main-div")
     .attr("id", "other-main-div");
 
-  var title = mainDiv.append("text").attr("class", "flex-item").style("min-width", "100%");
+  var title = mainDiv.append("text").attr("class", "title-pattern").style("min-width", "100%").text("Patterns");
 
 
-  var boxHour = mainDiv.append("select").classed("box-filter", true);
+  var divImbalances = mainDiv.append("div").attr("class","div-pattern");
+  var titleImba = divImbalances.append("text").attr("class","text-pattern").text("Choose Hour:")
+
+  var boxHour = divImbalances.append("select").classed("box-filter", true);
 
   boxHour.on("change", function() {
     _controller.changeHourSelection(boxHour.property("value"));
@@ -1221,8 +1229,10 @@ var patternView = function(container, controller) {
     boxHour.append("option").text(i);
   };
 
+  var divPeriod = mainDiv.append("div").attr("class","div-pattern");
 
-  var boxPeriod = mainDiv.append("select").classed("box-filter", true);
+  var titlePeriod = divPeriod.append("text").attr("class","text-pattern").text("Choose period:")
+  var boxPeriod = divPeriod.append("select").classed("box-filter", true);
 
   boxPeriod.on("change", function() {
     _controller.changePeriodSelection(boxPeriod.property("value"));

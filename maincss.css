@@ -67,14 +67,22 @@ body{
   flex:1;
   display: flex;
   flex-direction: column;
-  min-width: 48%;
+  min-width: 40%;
+  border-style: solid;
+  border-color: #b3b3b3;
+  margin: 0.5vh;
+  border-radius: 3vh;
 }
 
 .detail-line-div{
   flex:1;
   display: flex;
   flex-direction: column;
-  min-width: 100%;
+  min-width: 80%;
+  border-style: solid;
+  border-color: #b3b3b3;
+  margin: 0.5vh;
+  border-radius: 3vh;
 }
 
 .left{;
@@ -189,7 +197,7 @@ body{
 .initial-zoom-tab{
   display: flex;
   flex : 9;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .blue{
@@ -208,6 +216,10 @@ body{
   flex:1;
 }
 
+.graph-title-zoom{
+  flex:1;
+  font-size: 4vh;
+}
 .div-graph {
   flex:10;
   display: flex;
@@ -235,6 +247,13 @@ body{
   border-radius: 3vh;
 }
 
+.border-red {
+  border-style: solid;
+  border-color: #ff4d4d;
+  margin: 0.5vh;
+  border-radius: 3vh;
+}
+
 .main-buttons-selected{
   text-align: center;
   flex: 1;
@@ -257,6 +276,7 @@ body{
   display: flex;
   flex-direction : row;
   flex-wrap : wrap;
+
 }
 
 .pick-single-graph{
@@ -273,4 +293,23 @@ body{
 .pick-titles{
   font-size: 3vh;
   font-family: sans-serif;
+}
+
+.pattern-main-div {
+  flex:1;
+  display: flex;
+  flex-direction: column;
+}
+
+.text-pattern{
+  flex:1;
+}
+.title-pattern{
+  flex:1;
+}
+
+.div-pattern{
+  display: flex;
+  flex:1;
+  flex-direction: row;
 }
