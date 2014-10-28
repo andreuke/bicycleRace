@@ -24,5 +24,7 @@ var button = d3.select("body")
   .append("div")
   .attr("sel","single")
   .attr("class","button")
-  .text("Add Map")
   .on("click",handleButtonClick);
+
+
+  button.append("text").text("Add Map").attr("class","text-button");

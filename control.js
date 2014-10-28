@@ -1253,7 +1253,7 @@ var patternView = function(container, controller) {
   boxPeriod.append("option").text("Lunch");
   boxPeriod.append("option").text("Afterwork");
   boxPeriod.append("option").text("Evening");
-  boxPeriod.append("option").text("Night");
+  //boxPeriod.append("option").text("Night");
 
 
 
