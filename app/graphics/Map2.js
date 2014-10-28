@@ -569,7 +569,7 @@ Map.prototype.switchPopupContent = function(mode) {
 			content +=
 				"<br>" +
 				"<div id='popup-graph-container'></div>" +
-				"<br>"
+				"<br>" +
 				"Preview: " +
 				"<button id='age_btn' class=popup-text>AGE</button>" +
 				"<button id='gender_btn' class=popup-text>GENDER</button>" +
@@ -577,7 +577,6 @@ Map.prototype.switchPopupContent = function(mode) {
 				"<br>" +
 				"<br>" +
 				"<button id='detail_btn' class=popup-text>SHOW DETAILS</button>";
-
 		} else if (mode === "pickAday")  {
 			content +=
 				"<div id='popup-graph-container'></div>" +
@@ -601,8 +600,7 @@ Map.prototype.switchPopupContent = function(mode) {
 				"<button id='detail_btn' class=popup-text>STATION A</button>" +
 				"<button id='compare_btn' class=popup-text>STATION B</button>";
 		}
-
-
+		
 		var station = this.stationsMarkers[i].marker;
 
 		var popup = L.popup({
